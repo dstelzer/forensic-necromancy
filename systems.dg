@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                       Dreams and Waking                       %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Player character in the real world
+#p-real
+(animate *)
+(current player *)
+(* is #in #nabiyunus)
+(descr *) You look like a very respectable archaeologist-in-training. Maybe a bit frazzled, and more than a bit sleep-deprived, but you’ll have time to sleep once your thesis is done. Until then, the research comes first.
+
+%% Player character in the memory world
+#p-memory
+(animate *)
+(supposed to be nowhere *)
+(descr *) %% Individual memory protagonists get their own descriptions
+	(current room $Room)
+	(protagonist description for $Room)
+(descr *) %% Not in a specific memory
+	You look exactly like yourself—(no space)(emph {too}) much like yourself, really. It’s like you’ve been clumsily photoshopped into your surroundings. Your outlines are just a bit too sharp, your colors a bit too saturated.
+
+%% For readability
+(dreaming)	(current player *)
+
