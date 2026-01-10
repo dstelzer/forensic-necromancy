@@ -10,13 +10,139 @@
 (story blurb)
 	The theory holds up, and the lab data is promising. But if you want to be the first PhD in Forensic Necromancy, you need results the world can’t ignore. Which is why you’re now creeping through Nineveh in the dead of night, searching for human remains in situ. What millennia-old secrets are waiting to be unearthed? And most importantly—will they be enough to impress a thesis committee?
 
-(startup)
-	Five years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or department paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or have nothing to show for it all. (par)
-	Your data is promising. The experimental data is fantastic and your p-values are significant. But if you want to be the first PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
+%% Required by TALJ rules
+(content warnings)
+	(div @meta) {
+		(span @bold) { Content warning: }
+		This game includes major \( but non-graphic \) discussion of murder and capital punishment, and minor depiction of psychedelics used for ritual purposes. (par)
+		(if) (interpreter supports links) (then)
+			Click below or press ENTER to continue.
+		(else)
+			Press any key to continue.
+		(endif)
+	}
+	(pause)
+	(clear all)
+
+(intro)
+	(content warnings)
+	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or have nothing to show for it all. (par)
+	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But if you want to be the first PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
 	Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
+	(banner)
+	(try [look])
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%                         The Real World                        %%%%%%%%%
+%%%%%%%%%                            Tutorial                           %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Give people a way to turn it off, but it starts enabled
+(tutorial is active)
+(understand command [tutorial off])
+(perform [tutorial off]) (now) ~(tutorial is active)
+(give the tutorial) ~(tutorial is active)
+
+(give the tutorial)
+	~(taught rope)
+	(current focus #rope)
+	(div @tutorial) {
+		Examining things will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
+	}
+	(now) (taught rope)
+
+(give the tutorial)
+	~(taught moving)
+	(#camp is unvisited) %% These are the two rooms adjacent to the start
+	(#abovedig is unvisited)
+	(div @tutorial) {
+		Most text adventures are played by
+		(if) (interpreter supports links) (then)
+			clicking links or
+		(endif)
+		typing in commands. To move around, for example, type a compass direction: (command link {southwest}) \( (command link {sw}) \) or (command link {south}) \( (command link {s}) \) .
+	}
+	(now) (taught moving)
+
+(give the tutorial)
+	~(taught examining)
+	(current room $Room)
+	*($Obj has ancestor $Room)
+	~(current player $Obj)
+	(div @tutorial) {
+		(color link [links] {Highlighted}) words indicate things you can interact with.
+		(if) (interpreter supports links) (then)
+			Click the words
+		(else)
+			Type these words
+		(endif)
+		to examine them.
+	}
+	(now) (taught examining)
+
+(give the tutorial)
+	~(taught items)
+	~(taught inventory)
+	(current focus $Obj)
+	(item $Obj)
+	(div @tutorial) {
+		When you see a small object, like (the $Obj), you can pick it up and take it with you. Try to (command link {take (the $Obj)}).
+	}
+	(now) (hinted items)
+
+(give the tutorial)
+	~(taught interaction)
+	(current focus #backpack)
+	(suggestions enabled)
+	(div @tutorial) {
+		The bar above the command prompt suggests some possible commands you could try.
+		(if) (#backpack is open) (then)
+			If something is open, for example, you might close it;
+		(else)
+			If something is closed, for example, you might open it;
+		(endif)
+		(if) (#backpack is #wornby $) (then)
+			if you’re wearing something, you might take it off.
+		(else)
+			if something is wearable, you might put it on.
+		(endif)
+		But you can always ignore it and type your own commands instead.
+	}
+	(now) (taught interaction)
+
+(give the tutorial)
+	~(taught inventory)
+	*($Obj is #heldby #p-real)
+	~($Obj = #tools)
+	(div @tutorial) {
+		Quite a lot of text adventure puzzles involve finding objects and moving them around. To see what you’re currently holding, (command link {take inventory}) \( or (command link {i}) for short \) .
+	}
+	(now) (taught inventory)
+
+(give the tutorial)
+	~(taught map)
+	(map enabled)
+	(#camp is visited) %% At least three visited rooms on the map
+	(#abovedig is visited)
+	(div @tutorial) {
+		The map
+		(if) (interpreter supports status bar) (then)
+			at the top of the screen
+		(else)
+			above the command prompt
+		(endif)
+		marks your current location with a (span @command) \@
+		(if) (pointers enabled) (then)
+			, and any puzzles you’re currently able to solve with a (space) (span @command) !
+		(endif)
+		.
+		(if) (interpreter supports links) (then)
+			Click any room to go there.
+		(endif)
+	}
+	(now) (taught map)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                     The Real World : Above                    %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #nabiyunus
@@ -27,7 +153,7 @@
 	No hiking through the desert for you: the dig site is right in the heart of Mosul, Iraq, the mound known as Prophet Jonah’s Hill. There’s supposed to be a very nice bakery across the street, but it wasn’t open at 2:00 AM; you had to make do with a box of cookies from the supermarket on the way over. (par)
 	But you made it.
 	(if) (#dig is unvisited) (then)
-		They say the dig team came across more bones today, and that’s exactly what you need.
+		They say the field crew came across more bones today, and that’s exactly what you need.
 	(else)
 		You found the human remains you’re looking for; now all you need is enough data to cap off your thesis.
 	(endif)
@@ -35,12 +161,33 @@
 (from * go #south to #abovedig)
 (from * go #southwest to #camp)
 
+#tools
+(name *) various tools
+(dict *) tool ball compass mirror entheogen entheogens tablet tablets pill pills keychain packet
+(plural *)
+(your *)
+(item *)
+(* is #heldby #p-real)
+(descr *)
+	The tools of a forensic necromancer’s trade: a mirror, a packet of entheogens, and a keychain with a little ball compass. Everything you need to divine memories of the past. (par)
+	Well, maybe the compass isn’t strictly necessary. But archaeologists lay everything out by compass directions, so that one helps you find those memories in the first place.
+
+(prevent [drop/put * | $])
+	But without your tools, how would you accomplish anything here?
+
+(prevent [take *]) %% Needs to handle both TAKE COMPASS and TAKE PILLS
+	You’ve got them all close at hand, ready to use when the moment comes.
+	(if) (current room #dig/#looseearth/#deeppit) (then)
+		All you have to do now is (link) {divine the bones} .
+	(endif)
+
 #camp
 (room *)
 (name *) camp
 (your *)
+(room heading *) Your camp
 (look *)
-	The main dig team keeps their equipment off to the (#south), but you’ve made an unobtrusive little camp here
+	The main field crew keeps their equipment off to the (#south), but you’ve made an unobtrusive little camp here
 	(if) (#backpack is pristine) (then)
 		: your (#bike) locked to a piece of machinery, your (#backpack) looped over the handlebars.
 	(else)
@@ -74,97 +221,34 @@
 #backpack
 (name *) backpack
 (your *)
-(descr *) Very large and very sturdy.
+(descr *)
+	Very large and very sturdy
+	(if) (* is open) (then)
+		(collect $Item)
+			*($Item is #in *)
+		(into $List)
+		. (A $List) (is $List) packed inside.
+	(else)
+		, and currently zipped up tight.
+	(endif)
 (container *)
 (openable *)
 (wearable *)
 (* is #on #bike)
 
-#rope
-(name *) nylon rope
-(uncountable *)
-(* is #in #backpack)
-(* is handled) %% Initial appearance
-(descr *) Strong enough to hold your weight.
-(item *)
-%% TODO move all this to systems.dg
-(door *) (rope in upper pit) (or) (rope in lower pit)
-
-(prevent [tie * to *]) It’s more useful without a loop in it.
-(instead of [tie $Obj to *])
-	~($Obj = *)
-	(try [tie * to $Obj])
-
-(prevent [take *])
-	{ (rope in upper pit) (or) (rope in lower pit) }
-	You would need to untie it first.
-(prevent [untie *])
-	{
-		(rope in upper pit) ~(current room #abovedig)
-	(or)
-		(rope in lower pit) ~(current room #unstable)
-	}
-	It’s fastened up above; you would need to climb up there to undo it.
-
-(prevent [tie * to (item $Obj)])
-	The rope is quite thick—it’s meant to be knotted around something bigger than (the $Obj).
-
-#dictionary
-(name *) (emph {Pocket Encyclopedia of the Neo-Assyrian World})
-(dict *) book dictionary neo assyrian
-(consultable *)
-(item *)
-(* is #in #backpack)
-(* is handled) %% Initial appearance
-(descr *)
-	When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book.
-	
-	(collect $Topic)
-		*(topic $Topic)
-		($Topic is unlocked)
-	(into $List)
-	(if) (nonempty $List) (then)
-		This one has entries on (topic-listing $List), among others.
-		
-		(select)
-			(div @tutorial) {
-				To look one up, try (span @command) { LOOK UP \[ topic \] IN DICTIONARY }, or just (span @command) { LOOK UP \[ topic \] } .
-			}
-		(or)
-		(stopping)
-	(else)
-		(select)
-			(div @tutorial) {
-				Once you’ve come across some obscure names and terms, examining the encyclopedia will list them all.
-			}
-		(or)
-		(stopping)
-	(endif)
-(instead of [read *]) (try [examine *])
-
-%% List bare names, bolding ones that haven’t been read yet
-(topic-listing $List)
-	(listing $List {(topic-item $_)} @and [] 0)
-(topic-item $Topic)
-	(collect words)
-		look up (name $Topic) in the dictionary
-	(into $Words)
-	(if) ($Topic is visited) (then)
-		(link $Words) (name $Topic)
-	(else)
-		(link $Words) { (span @bold) (name $Topic) }
-	(endif)
-
-%% Convenience
-(unlock $Topic) (now) ($Topic is unlocked)
+(appearance $ #in *) %% Let the description handle the appearances
 
 #waterbottle %% Not useful, but shows that you can’t carry things into dreams
 (name *) water bottle
 (item *)
 (* is #in #backpack)
-(openable *) %% Not really
 (potable *)
-(descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 at night. Passing out from dehydration won’t help get your thesis finished.
+(descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 at night. Passing out from dehydration won’t get your thesis finished.
+
+(instead of [open *]) (try [drink *])
+(narrate drinking *) You take a judiciously-measured drink. Compared to the air around you, it’s still nice and cold.
+
+%% Book and rope are also in backpack: see systems.dg
 
 #abovedig
 (name *) above the dig site
@@ -175,8 +259,11 @@
 (from * go #north to #nabiyunus)
 (from * go #west to #camp)
 (from * go #east through #rope to #dig) (rope in upper pit)
+(from * go #east through #ladder to #dig) (#ladder is #in #dig)
 (from * go #east to #dig) ~(rope in upper pit) %% Prevented
 (from * go #down to #east)
+
+(* attracts #grid/#markers/#fence)
 
 #realcamp
 (name *) official camp
@@ -186,3 +273,8 @@
 (prevent entering *)
 	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the expedition, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things at 2:00 in the morning when you don’t have to explain what a forensic necromancer is or why you need silence to meditate over the bones.
 	(now) (real camp explained) %% Remove the map connection
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                     The Real World : Below                    %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
