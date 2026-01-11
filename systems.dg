@@ -165,6 +165,9 @@
 #rope-u
 (rope door *)
 
+(appearance * #in #abovedig) Your (vlink {rope}) is tied to the post, offering an easy climb down to the east.
+(appearance * #in #dig) Your (vlink {rope}) trails down from the origin marker, offering an easy climb up to the west.
+
 (prevent [untie * | $])
 	~(current room #abovedig)
 	The rope is anchored to the post above the dig site. You’d need to (link [go to above the dig site]) {go there} to untie it.
@@ -184,6 +187,9 @@
 %% Lower rope, tied to the cart
 #rope-d
 (rope door *)
+
+%% (appearance * #in #deeppit) Your (vlink {rope}) is tied to the cart, offering a route down into the chamber below. %% Moved to cart appearance
+(appearance * #in #chamber) Your (vlink {rope}) is anchored to the cart up above, giving you a way to climb back out.
 
 (prevent [untie * | $])
 	~(current room #deeppit)
@@ -221,6 +227,17 @@
 		are locked to keep it from rolling around.
 	(else)
 		are unlocked to make it easy to push around.
+	(endif)
+(appearance *)
+	A (vlink {wheeled equipment cart})
+	(if) (* is locked) (then)
+		is securely parked
+	(else)
+		sits
+	(endif)
+	off to one side.
+	(if) (lower rope connected) (then)
+		A (vlink {rope}) is tied around it, offering a route down into the chamber below.
 	(endif)
 
 (before [climb *])
@@ -513,6 +530,14 @@
 	(dreaming)
 	(bullet) (vlink {wake up})
 
+(intransitive action)
+	~(any vignette is unvisited)
+	(bullet) (vlink {finish})
+
+(any vignette is unvisited)
+	*(vignette $Room)
+	($Room is unvisited)
+
 (link bar paragraph) %% Current focus, and transitive actions
 	(current focus $Focus)
 	(div @barpar) {
@@ -535,31 +560,31 @@
 
 (transitive action (item $Obj))
 	~(held $Obj)
-	(bullet) (vlink {take (the $Obj)} {take (them $Obj)})
+	(bullet) (vlink {take (link name $Obj)} {take (them $Obj)})
 
 (transitive action (item $Obj))
 	(held $Obj)
-	(bullet) (vlink {drop (the $Obj)} {drop (them $Obj)})
+	(bullet) (vlink {drop (link name $Obj)} {drop (them $Obj)})
 
 (transitive action (item $Obj))
 	(held $Obj)
 	(current room $Room)
 	*($New has ancestor $Room)
 	(supporter $Obj)
-	(bullet) (vlink {put (the $Obj) on} {put (them $Obj) on something})
+	(bullet) (vlink {put (link name $Obj) on} {put (them $Obj) on something})
 
 (transitive action (item $Obj))
 	(held $Obj)
 	(current room $Room)
 	*($New has ancestor $Room)
 	(container $Obj)
-	(bullet) (vlink {put (the $Obj) in} {put (them $Obj) in something})
+	(bullet) (vlink {put (link name $Obj) in} {put (them $Obj) in something})
 
 (transitive action (edible $Obj))
-	(bullet) (vlink {eat (the $Obj)} {eat (them $Obj)})
+	(bullet) (vlink {eat (link name $Obj)} {eat (them $Obj)})
 
 (transitive action (potable $Obj))
-	(bullet) (vlink {drink from (the $Obj)} {drink from (them $Obj)})
+	(bullet) (vlink {drink from (link name $Obj)} {drink from (them $Obj)})
 
 (transitive action (wearable $Obj))
 	~(worn $Obj)
@@ -567,11 +592,70 @@
 
 (transitive action (wearable $Obj))
 	(worn $Obj)
-	(bullet) (vlink {remove (the $Obj)} {wear (them $Obj)})
+	(bullet) (vlink {remove (link name $Obj)} {wear (them $Obj)})
+
+%% #rope is only when untied
+(transitive action #rope)
+	(bullet) (vlink {tie (link name $Obj)} {tie (them $Obj)})
+
+%% (rope door $) is only when tied
+(transitive action (rope door $Obj))
+	(bullet) (vlink {untie (link name $Obj)} {untie (them $Obj)})
+
+(transitive action (liquid container $Obj))
+	(held $Obj)
+	(current room $Room)
+	~($Obj is filled with $)
+	*($Source has ancestor $Room)
+	(liquid source $Source)
+	(bullet) (vlink {fill (link name $Obj)} {fill (them $Obj)})
+
+(transitive action (liquid container $Obj))
+	($Obj is filled with $)
+	(bullet) (vlink {empty (link name $Obj)} {empty (them $Obj)})
+
+(transitive action #lamp)
+	(#lamp is filled with #oil)
+	~(fire source #lamp)
+	*($Source has ancestor $Room)
+	(fire source $Source)
+	(bullet) (vlink {light (the #lamp)} {light it})
+
+(transitive action (fire source $Obj))
+	(bullet) (vlink {douse (link name $Obj)} {douse (them $Obj)})
+
+(transitive action (openable $Obj))
+	($Obj is open)
+	(bullet) (vlink {close (link name $Obj)} {close (them $Obj)})
+
+(transitive action (openable $Obj))
+	($Obj is closed)
+	(bullet) (vlink {open (link name $Obj)} {open (them $Obj)})
+
+(transitive action (lockable $Obj))
+	($Obj is unlocked)
+	(bullet) (vlink {lock (link name $Obj)} {lock (them $Obj)})
+
+(transitive action (lockable $Obj))
+	($Obj is locked)
+	(bullet) (vlink {unlock (link name $Obj)} {unlock (them $Obj)})
+
+(suggest pushing $) (fail)
+(transitive action $Obj)
+	{ (pushable $Obj) (or) (suggest pushing $Obj) }
+	(bullet) (vlink {push (link name $Obj)} {push (them $Obj)})
+
+(transitive action $Obj)
+	{ (rope door $Obj) (or) (actor supporter $Obj) }
+	(bullet) (vlink {climb (link name $Obj)} {climb (them $Obj)})
+
+(transitive action (door $Obj))
+	{ (door $Obj) ~(rope door $Obj) (or) (actor container $Obj) } %% Ropes are climbed, not entered
+	(bullet) (vlink {enter (link name $Obj)} {enter (them $Obj)})
 
 (transitive action $Obj)
 	($Obj divines to $)
-	(bullet) (vlink {divine (the $Obj)} {divine (them $Obj)})
+	(bullet) (vlink {divine (link name $Obj)} {divine (them $Obj)})
 
 (link bar paragraph) %% Room, and navigation
 	(current room $Room)
@@ -585,6 +669,10 @@
 		}
 	}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                       Suggested Actions                       %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% We also need new syntax for PUT with missing objects
 %% I don’t expect these to get used without links so I’m being simple in the syntax
 (grammar [put/set/insert [single] [on onto]] for [put $ #on])
@@ -593,7 +681,155 @@
 	(uppercase) (name $Rel) what?
 	(asking for object in [put $Obj $Rel []])
 
+%% Notably the former is ambiguous with wearing, so let’s make these unlikely
+(unlikely [put (object $Obj) (object $Rel)])
+%% The (object $) checks are in case someone makes other syntax in this style; two wildcards in a row makes me nervous
+
 %% In Miss Gosling I also supported PUT with missing *first* object, but containers and supporters aren’t very important here, so I’m leaving them out
 
-%% And extend DRINK a little
+%% And extend DRINK a little; don’t know why this isn’t standard already
 (grammar [drink/sip from [object]] for [drink $])
+
+%% Likewise we’re using old-fashioned lighting
+(grammar [light/burn/ignite [object]] for [light $])
+(grammar [douse [object]] for [douse $])
+(grammar [put out [object]] for [douse $])
+(grammar [put [object] out] for [douse $])
+
+(prevent [light (fire source $Obj)])
+	(The $Obj) (is $Obj) already alight.
+
+(prevent [light $Obj])
+	~{
+		*($Source has ancestor $Room)
+		(fire source $Source)
+	}
+	You have no source of fire.
+
+(prevent [light $Obj])
+	~(item $Obj)
+	If (the $Obj) actually did catch fire, it might end very badly for you!
+
+(perform [light $Obj])
+	(The $Obj) refuse(s $Obj) to ignite.
+	(tick) (stop)
+
+(prevent [douse $Obj])
+	~(fire source $Obj)
+	(The $Obj) (is $Obj) not burning.
+
+(perform [douse $Obj])
+	You have no way to douse the flames.
+	(tick) (stop)
+
+%% Filling and emptying liquid containers
+
+%% Alias; this property is unused for nonrooms
+@($Obj is filled with $Liquid) ($Obj has coordinates $Liquid)
+(dict (liquid container $Obj))
+	%% First, add “water filled”
+	($Obj is filled with $Liquid)
+	*(dict $Liquid)
+	filled
+	%% Then, add “water-filled”
+	(collect words)
+		(name $Liquid)
+	(into $Name)
+	(append $Name [-filled] $Tmp)
+	(join $Tmp into $Compound)
+	$Compound
+(liquid source $Container)
+	*(liquid container $Container)
+	($Container is filled with $)
+
+%% We also want to list the liquids that liquid containers are full of
+(name (liquid container $Obj))
+	~($Obj is filled with $)
+	empty (real name $Obj)
+(name (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	(name $Liquid) (no space) -filled
+
+%% And get the articles right!
+(an (liquid container $Obj))
+	~($Obj is filled with $) (just)
+(an (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	(an $Liquid) (just)
+
+%% In case people try the other way around
+(instead of [put (liquid source $Liquid) #in $Obj])
+	(try [fill $Obj with $Liquid])
+
+(grammar [fill [single] with/from [single]] for [fill $ with $])
+(grammar [fill [single]] for [fill $])
+
+(before [fill $Obj | $])
+	~(held $Obj)
+	(first try [take $Obj])
+
+(prevent [fill $Obj | $])
+	~(liquid container $Obj)
+	(The $Obj) (is $Obj) not designed to hold liquids.
+
+(prevent [fill $Obj | $])
+	($Obj is filled with $Liquid)
+	(The $Obj) (is $Obj) already full of (name $Liquid). You would need to (vlink {empty (the $Obj)} {empty (them $Obj)}) first.
+
+(prevent [fill $Obj with $Source])
+	~(liquid source $Source)
+	(The $Obj) (is $Obj) only designed to hold liquids, which (the $Source) (is $Source) not.
+
+(instead of [fill $Obj])
+	(current room $Room)
+	*($Source has ancestor $Room)
+	(liquid source $Source)
+	\( with (name $Source) \) (line)
+	(try [fill $Obj with $Source)
+
+(perform [fill $Obj]) %% Couldn’t find a source
+	You don’t see any liquid around to fill (the $Obj) with.
+
+(perform [fill $Obj with $Source])
+	(liquid container $Source)
+	($Source is filled with $Liquid)
+	You pour some (name $Liquid) from (the $Source) into (the $Obj).
+	(now) ($Obj is filled with $Liquid)
+
+(perform [fill $Obj with $Source])
+	You scoop up some (name $source) in (the $Obj).
+	(now) ($Obj is filled with $Liquid)
+
+(grammar [empty [single]] for [empty $])
+
+(before [empty $Obj])
+	~(held $Obj)
+	(first try [take $Obj])
+
+(prevent [empty $Obj])
+	~(container $Obj)
+	~(liquid container $Obj)
+	(The $Obj) (is $Obj) not a container.
+
+(prevent [empty $Obj])
+	~($ is #in $Obj)
+	~($Obj is filled with $)
+	(The $Obj) (is $Obj) already empty.
+
+(perform [empty (container $Obj)])
+	(current player $Player)
+	($Player is $Rel $Parent)
+	(collect $Item)
+		*($Item is #in $Obj)
+		(item $Item) %% Don’t move non-items
+	(into $List)
+	You dump (the $List) out of (the $Obj).
+	(exhaust) {
+		*($Item is one of $List)
+		(now) ($Item is $Rel $Parent)
+	}
+
+(perform [empty (liquid container $Obj)])
+	($Obj is filled with $Liquid)
+	You find an unobtrusive spot to dump (the $Liquid) out of (the $Obj).
+	(now) ~($Obj is filled with $)

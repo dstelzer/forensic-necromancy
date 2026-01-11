@@ -14,7 +14,7 @@
 (content warnings)
 	(div @meta) {
 		(span @bold) { Content warning: }
-		This game includes major \( but non-graphic \) discussion of murder and capital punishment, and minor depiction of psychedelics used for ritual purposes. (par)
+		This game includes significant \( but non-graphic \) discussion of murder and capital punishment, and minor depiction of psychedelics used for ritual purposes. The author considers it “PG” rated. (par)
 		(if) (interpreter supports links) (then)
 			Click below or press ENTER to continue.
 		(else)
@@ -122,7 +122,7 @@
 	~(taught map)
 	(map enabled)
 	(#camp is visited) %% At least three visited rooms on the map
-	(#abovedig is visited)
+	(#abovedig is visited) %% You need to specifically visit these two (plus the starting room) before you can get anywhere else
 	(div @tutorial) {
 		The map
 		(if) (interpreter supports status bar) (then)
@@ -206,7 +206,7 @@
 (descr *) It’s faster than walking, and more reliable than a cab in the early hours of the morning.
 (on-seat *)
 
-(prevent [enter/climb/unlock/open/untie *]) (bike refusal)
+(prevent [enter/climb/unlock/open/untie * | $]) (bike refusal)
 
 #machinery
 (name *) piece of machinery
@@ -214,7 +214,7 @@
 (* is #in #camp)
 (descr *) You have no idea what this machine does, but for right now it’s large and immovable.
 
-(prevent [unlock/open/untie *]) (bike refusal)
+(prevent [unlock/open/untie * | $]) (bike refusal)
 
 (bike refusal) You’re not ready to leave yet, and you’re also not ready to bring a bike any closer to a delicate archaeological site.
 
@@ -245,36 +245,150 @@
 (potable *)
 (descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 at night. Passing out from dehydration won’t get your thesis finished.
 
-(instead of [open *]) (try [drink *])
+(instead of [open/empty *]) (try [drink *])
+(instead of [fill * | $]) There’s nothing else around to fill it from. Better make it last.
 (narrate drinking *) You take a judiciously-measured drink. Compared to the air around you, it’s still nice and cold.
 
 %% Book and rope are also in backpack: see systems.dg
 
 #abovedig
 (name *) above the dig site
+(dict *) origin
+(heads *) above
 (room *)
-(look *) From this upper rim, you can see the whole excavation spread out below you: the (zlink {grid of strings}) marking out the locations like a chessboard, the squares excavated down to various depths, the (zlink {markers}) documenting all the different finds, the (zlink {fences}) to keep away the tourists.
+(look *) From this upper rim you can see the whole excavation spread out below you, marked out with (zlink {string}) into a chessboard of squares. A (zlink {metal post}) marks the origin point of the whole thing.
 
 (from * go #south to #realcamp) ~(real camp explained)
 (from * go #north to #nabiyunus)
 (from * go #west to #camp)
-(from * go #east through #rope to #dig) (rope in upper pit)
-(from * go #east through #ladder to #dig) (#ladder is #in #dig)
-(from * go #east to #dig) ~(rope in upper pit) %% Prevented
+(from * go #east through #rope-u to #dig) (upper rope connected)
+(from * go #east to #dig) ~(upper rope connected) %% Prevented
 (from * go #down to #east)
 
-(* attracts #grid/#markers/#fence)
+(prevent [leave * #east])
+	~(upper rope connected)
+	~{ (#cart is #in #dig) (#cart is locked) }
+	This ledge is about three meters above the dig site—farther than you’re willing to jump. You’ll need some way to climb down.
+
+#post
+(name *) survey post
+(dict *) metal datum
+(* is #in #abovedig)
+(descr *) This metal post marks the datum: the origin of the archaeologists’ coordinate system. It’s anchored very securely into the ground—if it moved even a few centimeters, after all, every single measurement would need to be redone.
+
+#grid
+(name *) grid of string
+(dict *) strings square squares nail nails
+(descr *) Nails are set into the ground every ten meters, north and south and east and west \( and in some cases up and down \). A grid of strings between them divides the whole site into squares.
+
+(#abovedig/#dig/#looseearth/#deeppit attracts *)
 
 #realcamp
 (name *) official camp
 (room *)
-(look *) You should never be here!
+(look *) You should never be here! Please report this bug!
 
 (prevent entering *)
-	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the expedition, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things at 2:00 in the morning when you don’t have to explain what a forensic necromancer is or why you need silence to meditate over the bones.
+	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the archaeologists, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things at 2:00 in the morning when you don’t have to explain what a forensic necromancer is or why you need silence to meditate over the bones.
 	(now) (real camp explained) %% Remove the map connection
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                     The Real World : Below                    %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#dig
+(name *) excavation
+(dict *) dig site 0n10e 0n 10e
+(heads *) dig site
+(room *)
+(look *)
+	Or as the archaeologists call it, 0N10E: zero meters north and ten meters east of the datum. This square has been excavated more than its neighbors, sinking it a few meters into the earth.
+	(if) (eastern connection unlocked) (#looseearth is unvisited) (then)
+		(par) It’s hard to keep your bearings between the real world and a memory, but those other remains should be somewhere to the east. Hopefully some of them are still there.
+	(endif)
+	(if) (northern connection unlocked) (#deeppit is unvisited) (then)
+		(par) If those other bones were to the east, then the secret passage should be...due north.
+	(endif)
+
+(from * go #east to #looseearth) (eastern connection unlocked)
+(from * go #north to #deeppit) (northern connection unlocked)
+(from * go #west through #rope-u to #abovedig) (upper rope connected)
+(from * go #west to #abovedig) ~(upper rope connected) %% Prevented
+(from * go #up to #west)
+
+(before [leave * #west])
+	(#cart is #in *)
+	(current player $Player)
+	~($Player is #on #cart)
+	(first try [enter #cart])
+
+(prevent [leave * #west])
+	~(upper rope connected)
+	(current player $Player)
+	~($Player is #on #cart)
+	The datum is about three meters above the dig site, and the slope is steep. You’ll need some way to climb up.
+
+%% There are many bones in this game
+(name (bones $)) bone fragments
+(dict (bones $)) bones fragment remains
+(clarify location of *(bones $))
+(when (bones $) is out of reach)
+	Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
+
+#bones-n
+(bones *)
+(dict *) of nabuu-shumu-ishkun nabuu shumu ishkun
+(* is #in #dig)
+(* divines to #n-ziqqurat)
+(descr *)
+	There’s not much, just a few white glints in the moonlight
+	(if) (#n-execution is unvisited) (then)
+		...or is it just your imagination? There’s only one way to be sure: put your skills to the test and (link [divine the bones]) {divine them} .
+	(else)
+		: the remains of Nabuu-shumu-ishkun of Babylon.
+	(endif)
+(appearance *)
+	(if) (#n-ziqqurat is unvisited) (then)
+		According to the dig reports, these are the coordinates where human remains were found earlier today. With any luck, there should be some (vlink {bone fragments}) left to find.
+	(else)
+		You can just barely make out some (vlink {bone fragments}) in the moonlight.
+	(endif)
+
+#looseearth
+(name *) loose earth
+(dict *) 0n20e 0n 20e
+(room *)
+(look *) The square at 0N20E has been less thoroughly excavated than 0N10E, and the earth is softer here: the archaeologists have been working their way through it, breaking up each layer and sifting through the dirt for artifacts.
+
+(from * go #west to #dig)
+(from * go #northwest to #deeppit) (#deeppit is visited) %% Cleaner to only show the north-south connection on the map until it’s been explored, but after that it’s fine to allow NW-SE movement also
+
+#bones-s
+(bones *)
+(dict *) of sharhiya sharhiya’s sharhiya's artifact artifacts latest finds
+(* is #in #looseearth)
+(* divines to #s-palace)
+(descr *)
+	Just a few white fragments among the artifacts—it’s hard to even tell which bones they are.
+	(if) (#s-palace is unvisited) (then)
+		Could they belong to the Sharhiya from the memories?
+	(else)
+		But they’re certainly Sharhiya’s.
+	(endif)
+(appearance *)
+	The (vlink {latest finds}) have been carefully sorted and labelled in trays off to one side
+	(if) (#s-palace is visited) (then)
+		(no space) —including the bones of Sharhiya of Babylon
+	(endif)
+	.
+
+%% Cart is also here, see systems.dg
+
+#deeppit
+(name *) deep pit
+(dict *) n10e10 n10 e10
+(room *)
+(look *) N10E10 is only half a square: a five-by-ten rectangle slanting sharply downward until it 
+
+(from * go #south to #dig)
+(from * go #southeast to #looseearth)
