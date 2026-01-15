@@ -14,7 +14,7 @@ Each memory is first narrated, and then you can explore a frozen replica, like O
 
 The murder of Siin-ahhe-eriba (Sennacherib)\! Parpola’s theory (Urad-Mulissi did it) is recently overturned in favor of Dalley and Siddall’s (Asshur-ahu-iddina/Esarhaddon did it); use the former as a red herring and the latter as the real truth that the grad student is figuring out
 
-You find the bones of sharhiya, the one of the three goldsmith brothers who tried to make a report to the king, got Urad-Mulissi instead, and (Parpola thinks he was executed, D\&S think he was released)
+You find the bones of Sharhiya, the one of the three goldsmith brothers who tried to make a report to the king, got Urad-Mulissi instead, and (Parpola thinks he was executed, D\&S think he was released)
 
 In this version, he was released, but then killed by accomplices (the officials who took his testimony, Nabuu-shumu-ishkun and Ṣillaya) before he could tell Urad-Mulissi who exactly gave him the information
 
@@ -30,7 +30,7 @@ Asshur-ahu-iddina had lots of influence in Babylon where the goldsmith brothers 
   * Urad-Mulissi was the *next* obvious choice, as the oldest surviving son and the child of the primary wife, and he was originally named such  
   * But Naqi’a’s scheming got the title moved to the young and sickly Asshur-ahu-iddina a few years later  
 * Asshur-ahu-iddina was popular in Babylon, but Urad-Mullissi was far more popular in Assyria itself, and he worked hard to retake the position of crown prince  
-* Some time before Siin-ahhe-eriba’s death, three brothers (goldsmiths from Babylon: sharhiya, \[unknown\], and Nabuu-ahu-eresh) came to the palace to report rumors of treason: sharhiya reported that Urad-Mullissi had made an “oath of mutiny” and planned to kill the king  
+* Some time before Siin-ahhe-eriba’s death, three brothers (goldsmiths from Babylon: Sharhiya, \[unknown\], and Nabuu-ahu-eresh) came to the palace to report rumors of treason: Sharhiya reported that Urad-Mullissi had made an “oath of mutiny” and planned to kill the king  
   * Unbeknownst to him, he (blindfolded) was not reporting to Siin-ahhe-eriba but to Urad-Mulissi himself; he was questioned by the prince, then released  
   * This situation was arranged by two high-ranking advisors, Nabuu-shumu-ishkun and Ṣillaya  
   * † The rumors they overheard were planted by \[TODO NAME\], a Babylonian priest loyal to Asshur-ahu-iddina; he was disposed of as well, to ensure he couldn’t reveal any secrets  
@@ -47,8 +47,8 @@ Asshur-ahu-iddina had lots of influence in Babylon where the goldsmith brothers 
 
 ## **Facts to reveal (approximate order)**
 
-* \* sharhiya was executed, ostensibly by order of Urad-Mullissi  
-* \* sharhiya and Nabuu-ahu-eresh learned a dangerous secret that they went to the capital to report to the king  
+* \* Sharhiya was executed, ostensibly by order of Urad-Mullissi  
+* \* Sharhiya and Nabuu-ahu-eresh learned a dangerous secret that they went to the capital to report to the king  
 * \* The overall background of the king and his wives and his sons and the drama over choosing a crown prince  
 * \* Assyria and Babylon don’t get along; the brothers had mixed feelings about the report  
 * \* The report was given blindfolded, and it was actually Urad-Mullissi listening  
@@ -64,7 +64,7 @@ You’re sneaking into an archaeological site (illegally) near Nineveh where hum
 
 First, some easy object manipulation puzzles as the tutorial (using a rope to climb down a pit)
 
-Then, you find the bones of Nabuu-ahu-eresh and sharhiya, letting you explore their memory palaces (one points to the other)
+Then, you find the bones of Nabuu-ahu-eresh and Sharhiya, letting you explore their memory palaces (one points to the other)
 
 Eventually, these memories point out a new direction to explore in the real world, unlocking a new room
 
@@ -90,7 +90,7 @@ With a lamp, you can see Ṣillaya sneaking off toward a secret passage, unlocki
 
 Unlocked with the spear (clear something blocking the other side of a door)
 
-Hearing the announcement that Asshur-ahu-iddina has been named crown prince, discussing with sharhiya what this means
+Hearing the announcement that Asshur-ahu-iddina has been named crown prince, discussing with Sharhiya what this means
 
 Gives TODO SOME KIND OF KEY (flask of water?)
 
@@ -104,7 +104,7 @@ The brothers argue about whether to report what they saw or just keep their head
 
 There’s a lamp on the table but it’s guttering out (needs oil)
 
-## **sharhiya: Audience**
+## **Sharhiya: Audience**
 
 Default available from his bones (requiring information from his brother)
 
@@ -114,7 +114,7 @@ Shocked at the end to learn that it was Urad-Mullissi on the throne
 
 You can keep the blindfold
 
-## **sharhiya: Conspiracy**
+## **Sharhiya: Conspiracy**
 
 Unlocked with the TODO SOME KIND OF KEY
 
@@ -122,7 +122,7 @@ They’re working in the Temple of Marduk when they overhear some discussion tha
 
 They’re working with sweet-scented oil which can be put in the lamp
 
-## **sharhiya: Revelation**
+## **Sharhiya: Revelation**
 
 Unlocked with lamp \+ oil (darkness that needs to be navigated)
 
@@ -142,63 +142,61 @@ Basically acts as an epilogue capping off all the stories
 
 ## **GraphViz Code**
 
-```
 digraph G {  
-    START -> TeachMovement -> Camp -> Rope;  
-    TeachMovement -> Pit;  
-    Rope -> TeachItems -> Bones_N;  
-    Pit -> TeachItems;  
+    START \-\> TeachMovement \-\> Camp \-\> Rope;  
+    TeachMovement \-\> Pit;  
+    Rope \-\> TeachItems \-\> Bones\_N;  
+    Pit \-\> TeachItems;  
       
-    Bones_N -> Execution -> Spear;  
-    Bones_N -> Announcement -> Water;  
-    Spear -> Announcement;  
-    Bones_N -> Argument -> Lamp;  
-    Blindfold -> Argument;  
+    Bones\_N \-\> Execution \-\> Spear;  
+    Bones\_N \-\> Announcement \-\> Water;  
+    Spear \-\> Announcement;  
+    Bones\_N \-\> Argument \-\> Lamp;  
+    Blindfold \-\> Argument;  
       
-    Execution -> Bones_S;  
-    Bones_S -> Audience -> Blindfold;  
-    Bones_S -> Conspiracy -> Oil;  
-    Bones_S -> Revelation;  
-    Water -> Conspiracy;  
+    Execution \-\> Bones\_S;  
+    Bones\_S \-\> Audience \-\> Blindfold;  
+    Bones\_S \-\> Conspiracy \-\> Oil;  
+    Bones\_S \-\> Revelation;  
+    Water \-\> Conspiracy;  
       
-    Oil -> Light;  
-    Lamp -> Light;  
+    Oil \-\> Light;  
+    Lamp \-\> Light;  
       
-    Light -> Revelation;  
-    Light -> SecondPit;  
-    Execution -> SecondPit;  
-//    Rope -> SecondPit;  
+    Light \-\> Revelation;  
+    Light \-\> SecondPit;  
+    Execution \-\> SecondPit;  
+//    Rope \-\> SecondPit;  
       
-    SecondPit -> Bones_M;  
-    Bones_M -> Epilogue;  
+    SecondPit \-\> Bones\_M;  
+    Bones\_M \-\> Epilogue;  
 }
-```
 
 # History (printed at the end)
 
-All the people mentioned in this story are real. The murderer of Siin-ahhe-eriba is still an open question, but in my opinion, the evidence is strongly in favor of Asshur-ahu-iddina being the real killer. The background of the murder is widely agreed upon: when the original crown prince was killed by Babylonian rebels, Urad-Mullissi (the obvious candidate) was passed over in favor of Asshur-ahu-iddina (a younger son of a secondary wife), probably due to his mother’s machinations. What happened after that, though, is less clear.
+All the people mentioned in this story are real. The murderer of Siin-ahhe-eriba is still an open question, but in my opinion, the evidence is strongly in favor of Asshur-ahu-iddina being the real killer. The background of the murder is widely agreed upon: when the original crown prince was killed by Babylonian rebels, Urad-Mullissi (the obvious candidate) was suddenly passed over in favor of Asshur-ahu-iddina (a younger son of a secondary wife), probably due to that secondary wife’s machinations. What happened after that, though, is less clear.
 
 For a long time, our only information came from the Bible (2 Kings 19:36-37):
 
-*So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-uṣur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.*
+*So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-utzur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.*
 
-This seems to have been the “official” version of events, and in 1979, Simo Parpola found more evidence to support it: a clay tablet called SAA 18 100\. While it’s damaged, the surviving text is quite suggestive:
+This seems to have been the official explanation, and in 1979, Simo Parpola found more evidence to support it: a clay tablet called SAA 18 100\. While it’s damaged, the surviving text is quite suggestive:
 
-*\[…heard a report from\] three Babylonian brothers \[…\] goldsmiths in the Temple of \[…\] When they heard about the ‘oath of mutiny’ \[…\] one \[of them said\] prior to the murder\*, “It is a matter for the king.” When he came, Nabuu-shumu-ishkun and Ṣil\[laya\] questioned \[him\], saying: “\[What is\] your appeal to the king about?” He said, “It is about Urad-\[Mullissi\].” \[They covered\] his face with his cloak, and made him stand in front of Urad-Mullissi, saying, “Behold, \[your audience\] is granted. Speak with your own voice.” So he said: “Your son, Urad-\[Mullissi\], is going to murder you.” When they uncovered his face, and when Urad-Mullissi had interrogated him, Urad-Mullissi \[executed\*\] him and his brothers \[…\] the names of the men are sharhiya, \[…\], and Nabuu-ahu-eresh. \[…\]*
+*\[…heard a report from\] three Babylonian brothers \[…\] goldsmiths in the Temple of \[…\] When they heard about the ‘oath of mutiny’ \[…\] one \[of them said\] prior to the murder\*, “It is a matter for the king.” When he came, Nabuu-shumu-ishkun and Tzil\[laya\] questioned \[him\], saying: “\[What is\] your appeal to the king about?” He said, “It is about Urad-\[Mullissi\].” \[They covered\] his face with his (cloak?), and made him stand in front of Urad-Mullissi, saying, “Behold, \[your audience\] is granted. Speak with your own voice.” So he said: “Your son, Urad-\[Mullissi\], is going to murder you.” When they uncovered his face, and when Urad-Mullissi had interrogated him, Urad-Mullissi \[executed\*\] him and his brothers. The names of the men are Sharhiya, \[…\], and Nabuu-ahu-eresh. \[…\]*
 
-Parpola argued (“The Murderer of Sennacherib”) that Urad-Mullissi was indeed guilty. In his interpretation, Urad-Mullissi came up with a scheme to take back his birthright by force: when Asshur-ahu-iddina was sent out of Nineveh for his own protection, Urad-Mullissi murdered his father and tried to seize the throne. But the people refused to accept him, and Asshur-ahu-iddina returned with an army, sending Urad-Mullissi fleeing to Armenia. This accords well with the biblical evidence, and was widely accepted for several decades.
+Parpola argued (“The Murderer of Sennacherib”) that Urad-Mullissi was indeed guilty. In his interpretation, Urad-Mullissi came up with a scheme to take back his birthright by force: when Asshur-ahu-iddina was sent out of Nineveh for his own safety, Urad-Mullissi murdered his father and tried to seize the throne. But the people refused to accept him, and Asshur-ahu-iddina returned with an army, sending Urad-Mullissi fleeing to Armenia. This accords well with the biblical evidence, and was widely accepted for several decades.
 
-In 2020, though, Knapp reopened the question (“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”). Parpola had framed his paper as a legal argument, so Knapp responded with a legal defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself\!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace. If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina catch him flat-footed with an entire army? And perhaps most damningly, Asshur-ahu-iddina never actually accuses his brothers of the murder, only of slandering him to their father. Perhaps the murderer was the one person who benefitted the most?
+In 2020, though, Knapp reopened the question (“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”). Parpola had framed his paper as a legal argument, so Knapp responded with a defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself\!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace (rather than to protect him). If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina catch him flat-footed with an entire army? And perhaps most damningly, Asshur-ahu-iddina’s own writings never actually accuse his brothers of the murder, only of slandering him to their father. *Cui bono*: what if the murderer was the one person who benefitted the most?
 
-Then in 2021 came another breakthrough. Dalley and Siddall (“A Conspiracy to Murder Sennacherib?”) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written *before* the regicide, as Urad-Mullissi collected evidence that his brother was trying to frame him.
+Then in 2021 came another breakthrough. Dalley and Siddall (“A Conspiracy to Murder Sennacherib?”) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written *before* the regicide, as Urad-Mullissi collected evidence that his brother was trying to frame him, to present to his father.
 
-Their arguments make quite a lot of sense to me. Other documents show that Ṣillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale (“The Story of Ahiqar”) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner. Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved?
+Their arguments make quite a lot of sense to me. Other documents show that Tzillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale (“The Story of Ahiqar”) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner. Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved?
 
-As such, I think the version of events shown here is most likely: that Asshur-ahu-iddina tried to frame his brother for conspiracy, failed, and fled Nineveh to avoid his father’s retribution. Before the king could reinstate Urad-Mullissi as crown prince, Asshur-ahu-iddina’s loyalists (perhaps including his mother) had him assassinated, and while the court was still reeling from the news, Asshur-ahu-iddina’s forces marched on Nineveh. Urad-Mullissi fled to Armenia as the new king began to eliminate his brothers and other male relatives, and Asshur-ahu-iddina spent his reign in a state of constant paranoia, purging his own administrators and any males he considered insufficiently loyal—after the regicide, he could never fully trust another man.
+As such, I think the version of events shown here is most likely: that Asshur-ahu-iddina tried to frame his brother for conspiracy, failed, and fled Nineveh to avoid his father’s retribution. Before the king could reinstate Urad-Mullissi as crown prince, Asshur-ahu-iddina’s loyalists (perhaps including his mother) had the king assassinated, and while the court was still reeling from the news, Asshur-ahu-iddina’s forces marched on Nineveh. Urad-Mullissi fled to Armenia as the new king began to eliminate his brothers and other male relatives, and Asshur-ahu-iddina spent his reign in a state of constant paranoia, purging his own administrators and any males he considered insufficiently loyal—after the regicide, he could never fully trust another man.
 
-(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation.)
+(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation. It’s equally possible they returned, well-rewarded, to Babylon.)
 
-If you’re interested in reading more, all of these papers should be available online with some searching\! You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” (different inflections) or “Warad” or “Arad” (different dialects) or some combination of those; each author tends to pick the form they prefer.
+If you’re interested in reading more, all of these papers should be available online with some searching\! You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” (different inflections) or “Warad” or “Arad” (different dialects) or some combination of those; each author tends to pick the form they prefer. But I’ve simplified and glossed over many details here—please check the sources if you’re interested\!
 
 # Encyclopedia Entries
 
@@ -238,3 +236,13 @@ The many gods of the Neo-Assyrian empire included:
 * Siin, god of the moon, fertility, and dairy products
 
 Most Assyrian and Babylonian names were full sentences, and including a god in your child’s name was a good way to ensure that god would favor them.
+
+# Sequels?
+
+Just jotting down some ideas here for other applications of this concept, if it turns out to be a hit. Egypt seems the most promising, but there should be some fun options in Mesopotamia as well.
+
+Tomb robbery papyri from the reign of Ramesses IX: Paser, mayor of Eastern Thebes, accused Paweraa, mayor of Western Thebes, of facilitating or maybe participating in tomb robberies in the Valley of the Kings. Governor Khaemwaset ordered an investigation and put Paweraa in charge of it. He found himself innocent of all charges and Paser disappeared from the historical record while Paweraa flourished.
+
+Harem Conspiracy against Ramesses III: See Judicial Papyrus of Turin. A secondary wife assassinated the Pharaoh in a huge conspiracy; official records show that Ramesses III himself oversaw the trials, but actually he died in the attacks and his oversight was a fiction put on by his successor. (Iirc one of the conspirators was a scribe who stole a magical document to get through the Pharaoh’s protections?)
+
+The Zannanza Affair?

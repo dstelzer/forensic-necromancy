@@ -331,13 +331,14 @@
 %% There are many bones in this game
 (name (bones $)) bone fragments
 (dict (bones $)) bones fragment remains
+(plural *(bones $))
 (clarify location of *(bones $))
 (when (bones $) is out of reach)
 	Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
 
 #bones-n
 (bones *)
-(dict *) of nabuu-shumu-ishkun nabuu shumu ishkun
+(dict *) of nabuu-ahu-eresh nabuu ahu eresh
 (* is #in #dig)
 (* divines to #n-ziqqurat)
 (descr *)
@@ -345,7 +346,7 @@
 	(if) (#n-execution is unvisited) (then)
 		...or is it just your imagination? There’s only one way to be sure: put your skills to the test and (link [divine the bones]) {divine them} .
 	(else)
-		: the remains of Nabuu-shumu-ishkun of Babylon.
+		: the remains of Nabuu-ahu-eresh of Babylon.
 	(endif)
 (appearance *)
 	(if) (#n-ziqqurat is unvisited) (then)
@@ -388,7 +389,228 @@
 (name *) deep pit
 (dict *) n10e10 n10 e10
 (room *)
-(look *) N10E10 is only half a square: a five-by-ten rectangle slanting sharply downward until it 
+(look *) N10E10 is only half a square: a five-by-ten rectangle angled sharply downward until it intersects some kind of underground (vlink {cavity}). The other half of the square is nothing but a yawning pit, extending under the ground to the north.
 
 (from * go #south to #dig)
 (from * go #southeast to #looseearth)
+(from * go #down to #north)
+(from * go #north through #rope-d to #tunnel) (lower rope connected)
+(from * go #north to #tunnel) ~(lower rope connected) %% Blocked
+
+(prevent [leave * #north])
+	~(lower rope connected)
+	You can’t see much in the moonlight, but the pit must be at least a few meters deep—farther than you’re willing to drop without something to hold onto.
+
+#cavity
+(name *) opening in the ground
+(dict *) hole cavity dark deep
+(* is #in #deeppit)
+(actor container *)
+(descr *) It doesn’t look like it was dug by the archaeologists—it doesn’t follow the grid, and there’s a good meter and a half of solid dirt above it. And the (vlink {electrical wires}) are clearly improvised.
+
+(perform [enter *])
+	(try [go #down])
+(perform [put $Obj #in *])
+	You toss (the $Obj) into the pit, and it lands with a muffled
+	(select)
+		(emph {thump})
+	(or)
+		(emph {whump})
+	(or)
+		(emph {thud})
+	(at random)
+	.
+
+%% Don’t let them throw the rope in or they won’t be able to get it back
+%% Anything else can be recovered by means of the cart and rope
+(prevent [put #rope #in *])
+	Tossing the rope into the pit is a fine idea, but it should be tied to something first. Otherwise, how will you get it back?
+
+#wires
+(name *) electrical wires
+(plural *)
+(dict *) electric cable wire cables
+(* is #partof #cavity)
+(descr *)
+	These ones do follow the grid as they snake down into the pit
+	(if) (#tunnel is visited) (then)
+		, powering the lights down below.
+	(else)
+		. Maybe there are lights set up down there?
+	(endif)
+
+#tunnel
+(name *) looters’ tunnel
+(dict *) looter looter's looter’s looters'
+(room *)
+(look *) The archaeologists are working through the site layer by layer, but looters are less meticulous: the fastest way to get at the artifacts is to tunnel in from the side. This one is narrow, about four feet across, and runs approximately northwest to southeast.
+
+(from * go #south through #rope-d to #deeppit) (lower rope connected)
+(from * go #south to #deeppit) ~(lower rope connected) %% This should never happen
+
+(prevent [leave * #south])
+	~(lower rope connected)
+	ERROR: You should never be able to trap yourself in the tunnel. Please report how you did this!
+
+%% These two exits disappear once you try either
+(from * go #northwest to #tunnel2) ~(tunnel darkness refused)
+(from * go #southeast to #tunnel2) ~(tunnel darkness refused)
+
+(prevent [leave * #northwest/#southeast])
+	Only this little section has been rigged up with lights, and who knows what damage you might do stumbling around in the dark? Whatever you need,
+	(if) (#m-unfinished is unvisited) (then)
+		you’ll have to hope it’s right here.
+	(else)
+		it should be right here.
+	(endif)
+	(now) (tunnel darkness refused)
+
+#lighting
+(name *) electric lights
+(dict *) light blue actinic electrical
+(plural *)
+(* is #in #tunnel)
+(descr *) Small but bright, and judiciously placed to light up this entire section.
+(appearance *) Small (*) flicked on when you got close, bathing the tunnel in an actinic blue. The proper excavation here has only just started, but (vlink {white fragments}) shine in one of the walls.
+
+#bones-m
+(bones *)
+(* is #in #tunnel)
+(* divines to #m-unfinished)
+(descr *)
+	Something in the light makes them almost glow, despite being buried in the dirt
+	(if) (#m-unfinished is unvisited) (then)
+		. But whose could they be?
+	(else)
+		: the bones of the unfortunate high priest.
+	(endif)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                   Dreams of Nabuu-ahu-eresh                   %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Where the divination first places you
+#n-ziqqurat
+
+%% Vignette 1, automatically unlocked
+#n-execution
+
+%% Puzzle room blocking Vignette 2
+#n-house
+
+%% Vignette 2
+#n-announcement
+
+%% Puzzle room blocking Vignette 3
+#n-workshop
+
+%% Vignette 3
+#n-argument
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                       Dreams of Sharhiya                      %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Where the divination first places you
+#s-palace
+
+%% Vignette 1, automatically unlocked
+#s-audience
+
+%% Puzzle room blocking Vignette 2
+#s-temple
+
+%% Vignette 2
+#s-argument
+
+%% Puzzle room blocking Vignette 3
+#s-throneroom
+
+%% Vignette 3
+#s-revelation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                   Dreams of Marduk-uballith                   %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Where the divination first places you
+#m-unfinished
+
+%% Vignette 1, automatically unlocked
+#m-epilogue
+
+%% No more vignettes for this guy, he’s just the endgame content
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                             Finis                             %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(late on every tick)
+	(current room $Room)
+	~(vignette $Room)
+	~(any vignette is unvisited)
+	(select)
+		(par) That should be the last one—you’ve explored every corner of these disjointed memories, and gathered more data than your advisor could have dreamed. Now all you have to do is put it together.
+		(div @meta) {
+			You’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type (command link {FINISH}) to wrap things up.
+		}
+	(or)
+	(stopping)
+
+(understand command [finish])
+(prevent [finish])
+	(any vignette is unvisited)
+	Your work isn’t finished yet—there are still more
+	(if)
+		(#n-ziqqurat is visited)
+		(#s-palace is visited)
+		(#m-unfinished is visited)
+	(then)
+		bone fragments to track down and
+	(endif)
+	memories to explore!
+(perform [finish])
+	There you have it: everything you might need for your thesis. You
+	(if) (dreaming) (then)
+		hyperventilate yourself back to the physical world
+	(endif)
+	and make your way out of the archaeological dig, back to your bike, back to the motel, and eventually, back to the university. You’ve witnessed things no human being has seen in millennia—the department will (emph {have}) to give you a doctorate for this! (par)
+	Now, you just have to write it...
+	(game over {The End})
+
+(final question option)
+	see the real HISTORY behind this game
+(parse final question option [history])
+	(history)
+	(pause)
+
+%% TODO should this be an external resource instead?
+
+(history)
+	All the people mentioned in this story are real. The murderer of Siin-ahhe-eriba is still an open question, but in my opinion, the evidence is strongly in favor of Asshur-ahu-iddina being the real killer. The background of the murder is widely agreed upon: when the original crown prince was killed by Babylonian rebels, Urad-Mullissi \(the obvious candidate\) was suddenly passed over in favor of Asshur-ahu-iddina \(a younger son of a secondary wife\), probably due to that secondary wife’s machinations. What happened after that, though, is less clear. (par)
+	
+	For a long time, our only information came from the Bible \(2 Kings 19:36-37\): (par)
+	
+	(div @italic) {
+		So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-utzur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.
+	} (par)
+	
+	This seems to have been the official explanation, and in 1979, Simo Parpola found more evidence to support it: a clay tablet called SAA 18 100. While it’s damaged, the surviving text is quite suggestive: (par)
+	
+	(div @italic) {
+		\[...heard a report from\] three Babylonian brothers \[...\] goldsmiths in the Temple of \[...\] When they heard about the ‘oath of mutiny’ \[...\] one \[of them said\] prior to the murder\*, “It is a matter for the king.” When he came, Nabuu-shumu-ishkun and Tzil\[laya\] questioned \[him\], saying: “\[What is\] your appeal to the king about?” He said, “It is about Urad-\[Mullissi\].” \[They covered\] his face with his (cloak?), and made him stand in front of Urad-Mullissi, saying, “Behold, \[your audience\] is granted. Speak with your own voice.” So he said: “Your son, Urad-\[Mullissi\], is going to murder you.” When they uncovered his face, and when Urad-Mullissi had interrogated him, Urad-Mullissi \[executed\*\] him and his brothers. The names of the men are Sharhiya, \[...\], and Nabuu-ahu-eresh. \[...\]
+	} (par)
+	
+	Parpola argued \(“The Murderer of Sennacherib”\) that Urad-Mullissi was indeed guilty. In his interpretation, Urad-Mullissi came up with a scheme to take back his birthright by force: when Asshur-ahu-iddina was sent out of Nineveh for his own safety, Urad-Mullissi murdered his father and tried to seize the throne. But the people refused to accept him, and Asshur-ahu-iddina returned with an army, sending Urad-Mullissi fleeing to Armenia. This accords well with the biblical evidence, and was widely accepted for several decades. (par)
+	
+	In 2020, though, Knapp reopened the question \(“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”\). Parpola had framed his paper as a legal argument, so Knapp responded with a defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace \(rather than to protect him\). If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina catch him flat-footed with an entire army? And perhaps most damningly, Asshur-ahu-iddina’s own writings never actually accuse his brothers of the murder, only of slandering him to their father. (emph {Cui bono}): what if the murderer was the one person who benefitted the most? (par)
+	
+	Then in 2021 came another breakthrough. Dalley and Siddall \(“A Conspiracy to Murder Sennacherib?”\) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written (emph {before}) the regicide, as Urad-Mullissi collected evidence that his brother was trying to frame him, to present to his father. (par)
+	
+	Their arguments make quite a lot of sense to me. Other documents show that Tzillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale \(“The Story of Ahiqar”\) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner. Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved? (par)
+	
+	As such, I think the version of events shown here is most likely: that Asshur-ahu-iddina tried to frame his brother for conspiracy, failed, and fled Nineveh to avoid his father’s retribution. Before the king could reinstate Urad-Mullissi as crown prince, Asshur-ahu-iddina’s loyalists \(perhaps including his mother\) had the king assassinated, and while the court was still reeling from the news, Asshur-ahu-iddina’s forces marched on Nineveh. Urad-Mullissi fled to Armenia as the new king began to eliminate his brothers and other male relatives, and Asshur-ahu-iddina spent his reign in a state of constant paranoia, purging his own administrators and any males he considered insufficiently loyal—after the regicide, he could never fully trust another man. (par)
+	
+	\(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation. It’s equally possible they returned, well-rewarded, to Babylon.\) (par)
+	
+	If you’re interested in reading more, all of these papers should be available online with some searching! You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” \(different inflections\) or “Warad” or “Arad” \(different dialects\) or some combination of those; each author tends to pick the form they prefer. But I’ve simplified and glossed over many details here—please check the sources if you’re interested!

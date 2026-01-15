@@ -6,7 +6,7 @@
 			<objects>Nabuu-ahu-eresh</objects>
 		</room>
 		<room id="2" name="Deep Pit" subtitle="" x="-320" y="-128" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
-		<room id="3" name="Buried Chamber" subtitle="" x="-320" y="-224" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+		<room id="3" name="Looters' Tunnel" subtitle="" x="-320" y="-224" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
 			<objects>Marduk-uballith</objects>
 		</room>
 		<line id="5" name="" description="" style="dashed">
@@ -84,19 +84,10 @@
 			<dock index="0" id="27" port="e" />
 			<dock index="1" id="25" port="w" />
 		</line>
-		<room id="29" name="Crumbling Hallway" subtitle="" x="160" y="-32" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
-		<room id="30" name="Workshop" subtitle="" x="64" y="-32" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+		<room id="30" name="Workshop" subtitle="" x="160" y="-32" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
 			<objects>Cult statue</objects>
 		</room>
-		<line id="31" name="" description="" style="dashed">
-			<dock index="0" id="30" port="e" />
-			<dock index="1" id="29" port="w" />
-		</line>
-		<line id="32" name="" description="" style="dashed" startText="Light">
-			<dock index="0" id="29" port="e" />
-			<dock index="1" id="15" port="w" />
-		</line>
-		<room id="33" name="N: Argument" subtitle="" x="-32" y="64" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+		<room id="33" name="N: Argument" subtitle="" x="64" y="64" w="64" h="64" region="NoRegion" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
 			<objects>Lamp</objects>
 		</room>
 		<line id="34" name="" description="">
@@ -131,6 +122,22 @@
 		<line id="39" name="" description="">
 			<dock index="0" id="36" port="ne" />
 			<dock index="1" id="38" port="sw" />
+		</line>
+		<line id="45" name="" description="" style="dashed">
+			<dock index="0" id="2" port="se" />
+			<dock index="1" id="6" port="nw" />
+		</line>
+		<line id="46" name="" description="" style="dashed">
+			<dock index="0" id="3" port="nw" />
+			<dock index="1" id="3" port="nw" />
+		</line>
+		<line id="47" name="" description="" style="dashed">
+			<dock index="0" id="3" port="se" />
+			<dock index="1" id="3" port="se" />
+		</line>
+		<line id="29" name="" description="" style="dashed" startText="Light">
+			<dock index="0" id="30" port="e" />
+			<dock index="1" id="15" port="w" />
 		</line>
 	</map>
 	<settings>

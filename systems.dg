@@ -189,7 +189,7 @@
 (rope door *)
 
 %% (appearance * #in #deeppit) Your (vlink {rope}) is tied to the cart, offering a route down into the chamber below. %% Moved to cart appearance
-(appearance * #in #chamber) Your (vlink {rope}) is anchored to the cart up above, giving you a way to climb back out.
+(appearance * #in #tunnel) Your (vlink {rope}) is anchored to the cart up above, giving you a way to climb back out.
 
 (prevent [untie * | $])
 	~(current room #deeppit)
@@ -351,14 +351,26 @@
 		You don’t have any reference works on hand.
 	(endif)
 
+(style class @dictionary)
+	font-style: italic;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
 (perform [consult #dictionary about $Topic])
 	(topic $Topic)
-	(div @dictionary) (dictionary entry for $Topic)
+	(div @dictionary) {
+		(span @bold) { (name $Topic) : }
+		(dictionary entry for $Topic)
+	}
 (perform [consult #dictionary about $])
 	You flip through the encyclopedia, but don’t see an entry for that.
 	(div @tutorial) { (link) { Read the dictionary } to see what entries it contains. }
 
 %% Now for the actual contents!
+
+(style class @topic)
+	text-decoration: underline;
+	text-decoration-style: dotted;
 
 #t-babylon
 (name *) Babylon
