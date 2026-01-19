@@ -43,12 +43,29 @@
 (give the tutorial) ~(tutorial is active)
 
 (give the tutorial)
+	~(taught secondary objects)
+	(current focus $Focus)
+	($Focus has secondary objects) %% Things that mention nouns in their description
+	(div @tutorial) {
+		
+	}
+	(now) (taught secondary objects)
+
+(give the tutorial)
 	~(taught rope)
 	(current focus #rope)
 	(div @tutorial) {
 		Examining things will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
 	}
 	(now) (taught rope)
+
+(give the tutorial) %% Teaches you about moving objects in dreams
+	~(taught spear)
+	(current focus #spear)
+	(div @tutorial) {
+		You can’t change the past, but all of this is happening inside your head: if you pick things up and move them from one memory to another, they’ll act the way your brain expects.
+	}
+	(now) (taught spear)
 
 (give the tutorial)
 	~(taught moving)
@@ -147,6 +164,7 @@
 
 #nabiyunus
 (room *)
+(* has coordinates [2 2 1])
 (name *) Tell Nabi Yunus
 (proper *)
 (look *)
@@ -231,6 +249,7 @@
 	(else)
 		, and currently zipped up tight.
 	(endif)
+(* has secondary objects) (* is open) ($ is #in *)
 (container *)
 (openable *)
 (wearable *)
@@ -355,6 +374,17 @@
 		You can just barely make out some (vlink {bone fragments}) in the moonlight.
 	(endif)
 
+(narrate divining *)
+	%% Always the first bones you divine, probably also the first bones you return to
+	(select)
+		This is it. You sit down and get as comfortable as you can, making sure the bones are clearly in your field of view. The mirror goes in front of your left eye, adjusted until the images overlap: one eye seeing the bones, the other reflected back at itself. The entheogen tablet under your tongue, where it starts to dissolve. Now, to meditate. (par)
+		The idea of a memory palace goes back to the ancient Greeks: anchoring your memories by laying them out in an imaginary space. Forensic necromancy is the same; you just do it for someone else’s memories instead. Drawing them from the bones, guiding them, giving them shape. Until lines start to shine in your mind, and colors, and...
+	(or)
+		The second time is always easier than the first. You know the shape of the memory palace already, and you can use it to guide yourself back. Pull out the mirror, slip another tablet under your tongue, and imagine the outlines of the ziggurat, overlaid on the site...
+	(or)
+		With practiced ease, you sit down next to the bone fragments and will yourself back into memory.
+	(stopping)
+
 #looseearth
 (name *) loose earth
 (dict *) 0n20e 0n 20e
@@ -382,6 +412,14 @@
 		(no space) —including the bones of Sharhiya of Babylon
 	(endif)
 	.
+
+(narrate divining *)
+	(select)
+		You have to try a couple positions before you find one that works: you need a clear view of the bones, but if you’re too vertical, you might fall over when the visions set in. Eventually you settle down on the wall between the grid squares and pull out your mirror and tablets. (par)
+		This one is easier than the first. You already have some memories from the same time and place; you hold your focus on those, using them as an anchor for the new visions. Soon the outlines start to take form...
+	(or)
+		You sit back on the wall, pulling out your mirror and slipping easily back into the memories.
+	(stopping)
 
 %% Cart is also here, see systems.dg
 
@@ -479,7 +517,7 @@
 (* divines to #m-unfinished)
 (descr *)
 	Something in the light makes them almost glow, despite being buried in the dirt
-	(if) (#m-unfinished is unvisited) (then)
+	(if) (#m-epilogue is unvisited) (then)
 		. But whose could they be?
 	(else)
 		: the bones of the unfortunate high priest.
@@ -489,17 +527,319 @@
 %%%%%%%%%                   Dreams of Nabuu-ahu-eresh                   %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+(room *(vignette $))
+
 %% Where the divination first places you
 #n-ziqqurat
+(name *) ziggurat
+(room *)
+(* has coordinates [3 3 2])
+(look *)
+	(select)
+		Everything is a haze. Colors muted, sounds muffled. But you can make out one line, and then another, and another—something solid, something (emph {real}). You try to focus your mind on it, and a shape begins to emerge. The fog recedes in a great rush and a ringing silence fills your ears.
+		(pause)
+	(or)
+	(stopping)
+	
+	You’re standing on a wide platform halfway up a tower of towers: one massive pillar stacked on another, on another, on another. The top vanishes into the mists above and the ground is nothing but a distant blur. You’re left on the walkway in between, canted at a steeper angle than is really comfortable. (par)
+	
+	All around, other memories have forced their way in like tree roots cracking through a sidewalk. To the south, the walkway runs headlong into the front of a mud-brick house, its (vlink {door})
+	(if) (#door is open) (then)
+		standing open
+	(elseif) (#door is openable) (then)
+		loosely closed
+	(else)
+		firmly barred from the other side
+	(endif)
+	; west, the steps down barely make it a meter before
+	(if) ~(statue is turned) (then)
+		they’re lost in a (vlink {blinding light})
+	(else)
+		turning into a trampled hallway
+	(endif)
+	(if) (#m-unfinished is visited) (then)
+		; and some new (vlink {construction}) intrudes from the north
+	(endif)
+	.
+	
+	(if) (#n-execution is unvisited) (then)
+		(par) The whole tableau is frozen, unmoving, like a fly trapped in amber. The dust swirls around your feet with every step, but the moment you’re past, it hangs motionless in the air. The only flicker of movement is along the walkway to the northwest.
+	(else)
+		The whole tableau is frozen, unmoving, like a fly trapped in amber.
+	(endif)
+
+(from * go #down to #west)
+(from * go #west through #light to #n-workshop) ~(statue is turned)
+(from * go #west to #n-workshop) (statue is turned)
+(from * go #south through #door to #n-home)
+
+(from * go #northwest to #n-execution)
+
+%% Other sections of the dream connect once you find them
+(from * go #north to #m-unfinished) (#m-unfinished is visited)
+(from * go #east to #s-palace) (#s-palace is visited)
 
 %% Vignette 1, automatically unlocked
 #n-execution
+(vignette *)
+(name *) dungeon
+(look *)
+	You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
+	The (vlink {wiry man}) waves the torch eastward with an awful smirk, letting you see the (vlink {crumpled figure}) lying there. The (vlink {other man}) is mostly lost in the shadows.
+	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
+		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
+	(endif)
+
+(narrate vignette for *)
+	“On your knees!” You drop down, too scared to resist. Two men in gold-fringed shawls circle around until they’re side by side in front of you. The wiry one keeps his speartip in your face while the stout one pulls out a tablet. (par)
+	“Nabuu-ahu-eresh of Babylon, goldsmith of the Temple. For your crimes against His Majesty, Siin-ahhe-eriba, King of the World, King of Assyria, King of the Four Quarters, for your treason and your role in the conspiracy to his murder, you are hereby sentenced to death by impalement.” (par)
+	Your breath catches in your throat. “T-treason? Conspiracy? I don’t—what is this—I don’t know what you’re—” (par)
+	Your protests are cut off by a warning jab of the spear. You try one more time to force out the words. “I’m innocent! I swear by all the gods! The conspiracy—that wasn’t—my brother and me, we knew about it, but we made a report, he went to Nineveh to tell the palace! He can confirm what I’m saying, we’ll both swear to it in court! Sharhiya of Babylon, he’s a goldsmith too, he’s—” (par)
+	The wiry man spits and tosses his spear down in disgust. “Your brother? Oh, he’s told us (emph {plenty}).” He grabs the torch from the wall and holds it up, letting you see the fallen, crumpled shape lying in the shadows. (emph {No...}) (par)
+	The stout man looks back at his tablet. “There will be no trial. The sentence is final, by order of Prince Urad-Mullissi.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?”
+	
+	%% A few topics are mentioned
+	(unlock #t-babylonia)
+	(unlock #t-siin-ahhe-eriba)
+	(unlock #t-urad-mullissi)
+
+(protagonist description for *)
+	In this memory, you seem to be a tall man in a Babylonian tunic, a little bruised, more than a little dishevelled.
+
+(from * go #south to #n-ziqqurat)
+
+(instead of [leave * #east])
+	\( going over to the crumpled figure \)
+	(try [examine #exec-sharhiya])
+(instead of [leave * #north])
+	\( going over to the stout man \)
+	(try [examine #exec-tzillaya])
+
+#spear
+(name *) iron-tipped spear
+(an *)
+(item *)
+(* is #in #n-execution)
+
+(appearance * #in #n-execution)
+	The dropped (vlink {spear}) lies just out of arm’s reach.
+
+(descr *)
+	(if) (* is #in #n-execution) (then)
+		Even if the prisoner couldn’t reach it two thousand years ago, you have no such restrictions—you stand up and walk over to the spear while the scene stays frozen like a diorama around you.
+	(endif)
+	One and a half meters of well-polished wood, with a sharp iron point mounted on the end. It’s lighter than you’d expected, but feels nice and sturdy.
+
+(suggest pushing *) %% For the door bar puzzle
+	(* is #partof $)
+
+#exec-nabiya
+(name *) wiry man
+(dict *) shawl fringe gold
+(male *)
+(* is #in #n-execution)
+(descr *) Both of the men have fine clothes, richly-dyed and well-fringed, in a way you wouldn’t expect in a dungeon—but this one at least also has strong muscles and callouses on his hands. His (vlink {torch}) is held high, pointing to the east.
+(* has secondary objects)
+
+#torch
+(name *) torch
+(dict *) fire
+(fire source *)
+(item *)
+(* is #heldby #exec-nabiya)
+(descr *) The fire looks quite odd, frozen in place, but it still casts enough light to see by.
+
+#exec-sharhiya
+(name *) cadaver
+(dict *) crumpled figure fallen shape corpse body brother
+(* is #in #n-execution)
+(descr *)
+	(if) (#lamp is in room #n-execution) (fire source #lamp) (then)
+		The lamplight lets you make out a bit more detail. Enough to be quite certain he’s dead.
+	(else)
+		The torchlight \( thankfully \) isn’t bright enough to make out much detail. But you can make out the Babylonian tunic, and the unnatural position.
+	(endif)
+	(if) (#looseearth is unvisited) (then)
+		(par) If this is where “you” died, and the bodies weren’t moved post mortem...then the brother’s bones should be about ten meters to the east, back in the present day.
+		(now) (eastern connection unlocked)
+	(endif)
+
+#exec-tzillaya
+(name *) stout man
+(dict *) other
+(male *)
+(* is #in #n-execution)
+(descr *)
+	(#lamp is in room #n-execution) (fire source #lamp)
+	You can see him better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there.
+	(now) (northern connection unlocked)
+(descr *)
+	His form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now.
 
 %% Puzzle room blocking Vignette 2
 #n-house
+(name *) house
+(dict *) entrance hall passage
+(room *)
+(look *) Or perhaps “entrance hall” would be a better term. The room isn’t large, but the floor is nicely-smoothed clay, the walls painted with abstract (vlink {designs}) in red and blue. By Iron Age standards, whoever lived here must have been distinctly well off. The passage to the west is indistinct, but has a feeling of motion in its haziness.
+
+(from * go #north through #door to #n-ziqqurat)
+(from * go #west to #n-announcement)
+
+#house-scenery
+(name *) walls and floor
+(dict *) wall clay painting design designs
+(* is #in #n-house)
+(descr *) The walls and floor have been covered with a thin layer of fine white clay, with geometric motifs painted on top once it dried. It looks much nicer than plain mud brick.
+
+#door %% The blocking puzzle itself
+(name *) front door
+(dict *) wooden wood
+(door *)
+(openable *)
+(descr *)
+	The door of the house is made of thick, sturdy wood mounted in the mud-brick walls.
+	(if) (* is closed) (then)
+		It’s firmly closed, but the (vlink {crack}) where it meets the wall is wide enough to see through.
+	(else)
+		It’s now hanging open.
+	(endif)
+(* has secondary objects) (* is closed) %% The crack goes away after that
+
+(prevent [close/lock *])
+	(if) (* is open) (then)
+		You certainly could close it again, and bar it with the spear—but what would be the point, after all the work it took to open it?
+	(else)
+		It’s already quite thoroughly shut.
+	(endif)
+
+(instead of [put $Obj $Rel *])
+	(#crack is #partof *)
+	(try [put $Obj $Rel #crack])
+
+(instead of [unlock * with #spear])
+	(#crack is #partof *)
+	\( putting the spear in the crack \) (line)
+	(try [put #spear #in #crack])
+	(tick)
+	\( pushing the spear \) (line)
+	(try [push #spear])
+
+#crack
+(name *) wide crack
+(dict *) heavy bar of wood
+(* is #partof #door)
+(container *)
+(descr *)
+	The crack is about three centimeters wide. Through it you can see a heavy bar of wood on the other side, holding the door closed.
+	(if) (#spear is #partof *) (then)
+		(par) A (vlink {spear}) is wedged under the bar.
+	(endif)
+(* has secondary objects) (#spear is #partof *)
+
+(instead of [search *])
+	(try [examine *])
+(instead of [look $ *])
+	(try [examine *])
+(instead of [open *])
+	(try [open #door])
+(instead of [put $Obj $Rel *]) %% In case of PUT SPEAR UNDER BAR
+	~($Rel = #in)
+	(try [put $Obj #in *])
+
+(prevent [put $Obj #in *])
+	~($Obj = #spear)
+	The crack is only a few centimeters wide, not large enough to fit (a $Obj) in.
+
+(perform [put #spear #in *])
+	You push the spear through the crack, wedging it under the bar.
+	(now) (#spear is #partof *)
+
+(perform [push/pull/turn #spear])
+	(#spear is #partof *)
+	You give the spear a mighty shove...and nothing happens. Another shove, still nothing. The bar is quite firmly wedged in place. But when you set your full weight against it, you feel something start to give—and then with an almighty (emph {CRASH}) the bar is forced aside! The spear clatters to the ground as the door swings open.
+	(now) (* is nowhere)
+	(now) (#spear is #in #n-ziqqurat)
+	(now) (#door is open)
 
 %% Vignette 2
 #n-announcement
+(vignette *)
+(name *) marketplace
+(look *)
+	This plaza must have been magnificent, at one point. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered (vlink {reliefs}), and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par)
+	The (vlink {messenger}) is barely visible among the (vlink {crowd}), all frozen like a sea of statues. Your (vlink {brother}) is caught mid-run, both feet off the ground.
+
+(narrate vignette for *)
+	“Attention, citizens of Babylon!” A new voice cuts through the mid-morning chatter. You set down your bucket with a sigh, and give your brother a nudge. A stranger has stepped up on the edge of the fountain to bellow to the crowd. (par)
+	“His Majesty Siin-ahhe-eriba, Great King, Mighty King, King of the World, King of Assyria, King of the Four Quarters, the capable shepherd, favorite of the Great Gods, guardian of truth, he who loves justice, renders assistance, offers aid to the weak, and strives after good deeds, the Perfect Man, the virile warrior, foremost of all rulers, the bridle that tames the rebellious, the one who strikes his enemies with lightning—” (par)
+	He cuts off abruptly, glancing around. The tone of the crowd has become decidedly hostile. He swallows, clears his throat, and starts again. “His Majesty, in his wisdom, has selected an heir. After his passing, he will not be succeeded by his eldest son, Urad-Mullissi, but by his chosen crown prince, Asshur-ahu-iddina.” (par)
+	(emph {That}) gets the crowd’s attention. Sharhiya stands up, squinting at the messenger. “Asshur-ahu-iddina? He’s not even a son of the queen, is he?” (par)
+	You shake your head. “No. Just a concubine. And he’s (emph {young}), too. But they say his mother is a clever one. Maybe he takes after her.” (par)
+	He shushes you, and you go quiet as the messenger continues. “In one month’s time, all the lords of Babylonia will assemble at the Great Palace in Nineveh to renew your oaths of fealty. May His Maj—” (par)
+	That’s when a vegetable hits him across the face. “Heir or no heir, he’s no true king until he’s crowned by Marduk!” The messenger tries to get back to his feet, but the whole audience is shouting now. “Send soldiers if you want! What’ll they do that they haven’t done already?” “Make him remember what happened to the last crown prince who set foot in Babylon!” (par)
+	“Come on!” Sharhiya grabs you by the shoulder, and the pair of you turn and run. There’s no sign of the messenger now behind the crowd of angry Babylonians.
+	(unlock #t-babylonia)
+	(unlock #t-gods)
+	(unlock #t-siin-ahhe-eriba)
+	(unlock #t-urad-mullissi)
+	(unlock #t-asshur-ahu-iddina)
+
+(protagonist description for *)
+	You’re the same tall man in a Babylonian tunic, though your clothes are simpler and less dishevelled here than at the execution. Daily about-town sort of wear.
+
+#ann-buildings
+(name *) soot-blackened buildings
+(plural *)
+(dict *) soot blackened building
+(* is #in #n-announcement)
+(descr *) Some of them have crumbled beyond recognition. Others have been hastily repaired, at least enough to live in. Only a few have been properly rebuilt.
+
+#ann-reliefs
+(name *) shattered reliefs
+(plural *)
+(dict *) relief wall walls
+(* is #in #n-announcement)
+(descr *) This one might have been a lion? Or some other large animal—someone has set at it with a hammer, breaking right through the wall in a few places.
+
+#ann-fountain
+(name *) grand fountain
+(* is #in #n-announcement)
+(descr *) Whatever it used to be, now it’s just an enormous basin full of mildly stagnant water. Cracks on one side leak a trickle out onto the ground—you don’t see any sort of aqueduct, so it must need regular refilling.
+(liquid source *)
+(* is filled with #water)
+
+#ann-messenger
+(name *) messenger
+(* is #in #n-announcement)
+(male *)
+(dict *) man assyrian
+(descr *) His dress and his dialect are both Assyrian, while everyone else here is Babylonian. Fortunately you’re proficient in both. \( A necromancy degree involves quite a lot of dead languages. \)
+
+#ann-crowd
+(name *) crowd
+(* is #in #n-announcement)
+(gender-neutral *) %% Gets us the right “they” behavior here
+(dict *) people babylonian babylonians
+(descr *) They blur together, an indistinct mass of figures.
+
+#ann-sharhiya
+(name *) brother
+(your *)
+(dict *) sharhiya
+(* is #in #n-announcement)
+(male *)
+(descr *) Noticeably shorter than you, and just a bit rounder, but the family resemblance is easy to see.
+
+#bucket
+(name *)
+	(if) (* is pristine) (then) dropped (end if)
+	bucket
+(item *)
+(* is #in #n-announcement)
+(descr *) It’s made of leather instead of plastic, but the best way to carry water hasn’t really changed in the past two thousand years.
+(liquid container *)
+(initial appearance *) Your \( well, “your” \) bucket has fallen next to the fountain, abandoned in your haste.
 
 %% Puzzle room blocking Vignette 3
 #n-workshop

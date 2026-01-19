@@ -79,6 +79,27 @@
 		You pause, close your eyes, and start to hyperventilate, until...
 	(stopping)
 
+%% We also cut off all NPC interaction in the dream world
+(prevent [talk to (animate $)]) (when dreaming)
+(prevent [tell (animate $) to | $]) (when dreaming)
+(prevent [give/show $ to (animate $)]) (when dreaming)
+(prevent $Action)
+	*($Action requires $Obj to be touched)
+	(animate $Obj)
+	(when dreaming)
+
+(when dreaming)
+	(dreaming)
+	Humans in memories are tricky things. The psychic impressions only record what actually happened; everything else is happening inside your head, as your brain fills in how things (emph {ought}) to work. (par)
+	But people are harder to predict than spears and doors. If you do much of anything beyond looking at them, they get hazy and indistinct. You’re hoping to find a way to fix this, eventually.
+
+%% And a special case that doesn’t require touching the person, but still falls under this
+(prevent [take $Obj])
+	(dreaming)
+	($Obj is #heldby $Other)
+	~(current player $Other)
+	(The $Other) (is $Other) frozen like a statue, and (its $Other) hand won’t release (the $Obj).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                       Ropes and Climbing                      %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -503,7 +524,7 @@
 		(from $Room go $Dir to $Next)
 		{ (room $Next) (or) (door $Next) }
 	(into $Raw)
-	(remove duplicates $Raw $List)
+	(remove duplicates $Raw $List) %% Shouldn’t happen but just in case
 	(inline status bar @linkbar) (link list $List)
 
 (link bar) %% Bar of objects
@@ -514,7 +535,7 @@
 		(player can see $Obj)
 		~(current player $Obj)
 	(into $List)
-	(remove duplicates $Raw $List)
+	(remove duplicates $Raw $List) %% Also shouldn’t happen but just in case
 	(current player $Player) %% Put at the beginning instead of somewhere in the middle
 	(inline status bar @linkbar) (link list [$Player | $List])
 
@@ -665,6 +686,9 @@
 	{ (door $Obj) ~(rope door $Obj) (or) (actor container $Obj) } %% Ropes are climbed, not entered
 	(bullet) (vlink {enter (link name $Obj)} {enter (them $Obj)})
 
+(transitive action (animate $Obj))
+	(bullet) (vlink {greet (link name $Obj)} {greet (them $Obj)})
+
 (transitive action $Obj)
 	($Obj divines to $)
 	(bullet) (vlink {divine (link name $Obj)} {divine (them $Obj)})
@@ -767,7 +791,22 @@
 	~($Obj is filled with $) (just)
 (an (liquid container $Obj))
 	($Obj is filled with $Liquid)
-	(an $Liquid) (just)
+	(just) (an $Liquid)
+
+(after [examine (liquid container $Obj)])
+	($Obj is filled with $Liquid)
+	(par) (It $Obj) (is $Obj) currently full of (name $Liquid) .
+
+(potable (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	(potable $Liquid)
+
+%% Two liquids in this game
+#water
+(name *) water
+(potable *)
+#oil
+(name *) oil
 
 %% In case people try the other way around
 (instead of [put (liquid source $Liquid) #in $Obj])
@@ -845,3 +884,40 @@
 	($Obj is filled with $Liquid)
 	You find an unobtrusive spot to dump (the $Liquid) out of (the $Obj).
 	(now) ~($Obj is filled with $)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                           Vignettes                           %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(room *(vignette $))
+
+(narrate entering (vignette $Room))
+	You move toward the traces of motion, and the dream shifts... (par)
+	(div @vignette) {
+		(now) (currently italic)
+		(narrate vignette for $Room)
+		(now) ~(currently italic)
+	}
+	(if) ($Room is unexamined) (then) %% We repurpose this flag for whether the vignette has been shown, because the ($ is visited) flag gets set too early
+		(pause)
+		(select)
+			You jerk yourself free of the memory, and everything freezes again.
+		(or)
+			You pull yourself out of the memory with a (emph {snap}), and everything goes still.
+		(or)
+			You snap yourself out of the memory and take a look around.
+		(then at random)
+		(select) %% Little tutorial
+			Now you have the freedom to look around the tableau; you can’t change the past, but you can search and poke and prod to your heart’s content. A gap to the south leads back to the memory palace.
+		(or)
+		(stopping)
+	(else)
+		You (select) jerk (or) pull (or) snap (at random) back out of the memory.
+	(endif)
+	(par) (try [look])
+
+(narrate failing to leave (vignette $Room) $Dir)
+	Each memory only captures a brief moment in time: what the person saw, heard, and felt in those scant few seconds. Everything beyond that is lost in a dark haze.
+	(if) *(from $Room go $Alt to $Next) (room $Next) (then) %% Should always be true
+		(par) If you want to go back to the memory palace, there’s a tear in the haze to the ($Alt), like a hole crudely ripped in a cloth backdrop.
+	(endif)
