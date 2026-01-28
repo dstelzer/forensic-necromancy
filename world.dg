@@ -582,13 +582,6 @@
 %% Vignette 1, automatically unlocked
 #n-execution
 (vignette *)
-(name *) dungeon
-(look *)
-	You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
-	The (vlink {wiry man}) waves the torch eastward with an awful smirk, letting you see the (vlink {crumpled figure}) lying there. The (vlink {other man}) is mostly lost in the shadows.
-	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
-		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
-	(endif)
 
 (narrate vignette for *)
 	“On your knees!” You drop down, too scared to resist. Two men in gold-fringed shawls circle around until they’re side by side in front of you. The wiry one keeps his speartip in your face while the stout one pulls out a tablet. (par)
@@ -605,6 +598,14 @@
 
 (protagonist description for *)
 	In this memory, you seem to be a tall man in a Babylonian tunic, a little bruised, more than a little dishevelled.
+
+(name *) dungeon
+(look *)
+	You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
+	The (vlink {wiry man}) waves the torch eastward with an awful smirk, letting you see the (vlink {crumpled figure}) lying there. The (vlink {other man}) is mostly lost in the shadows.
+	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
+		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
+	(endif)
 
 (from * go #south to #n-ziqqurat)
 
@@ -765,10 +766,6 @@
 %% Vignette 2
 #n-announcement
 (vignette *)
-(name *) marketplace
-(look *)
-	This plaza must have been magnificent, at one point. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered (vlink {reliefs}), and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par)
-	The (vlink {messenger}) is barely visible among the (vlink {crowd}), all frozen like a sea of statues. Your (vlink {brother}) is caught mid-run, both feet off the ground.
 
 (narrate vignette for *)
 	“Attention, citizens of Babylon!” A new voice cuts through the mid-morning chatter. You set down your bucket with a sigh, and give your brother a nudge. A stranger has stepped up on the edge of the fountain to bellow to the crowd. (par)
@@ -788,40 +785,36 @@
 (protagonist description for *)
 	You’re the same tall man in a Babylonian tunic, though your clothes are simpler and less dishevelled here than at the execution. Daily about-town sort of wear.
 
+(name *) marketplace
+(look *)
+	This plaza must have been magnificent, at one point. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered reliefs, and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par) All around you, the (vlink {crowd}) is frozen like a sea of nameless, faceless statues.
+
+(from * go #east to #n-house)
+
 #ann-buildings
 (name *) soot-blackened buildings
 (plural *)
-(dict *) soot blackened building
+(dict *) soot blackened building wall walls relief reliefs
 (* is #in #n-announcement)
-(descr *) Some of them have crumbled beyond recognition. Others have been hastily repaired, at least enough to live in. Only a few have been properly rebuilt.
-
-#ann-reliefs
-(name *) shattered reliefs
-(plural *)
-(dict *) relief wall walls
-(* is #in #n-announcement)
-(descr *) This one might have been a lion? Or some other large animal—someone has set at it with a hammer, breaking right through the wall in a few places.
+(descr *) Some of the buildings have crumbled beyond recognition. Others have been hastily repaired, at least enough to live in. Only a few have been properly rebuilt. Mud brick is pretty resilient against fire, but not against dozens of people going at the walls with chisels and hammers.
 
 #ann-fountain
 (name *) grand fountain
+(dict *) sculpture statue water mildly stagnant
 (* is #in #n-announcement)
-(descr *) Whatever it used to be, now it’s just an enormous basin full of mildly stagnant water. Cracks on one side leak a trickle out onto the ground—you don’t see any sort of aqueduct, so it must need regular refilling.
+(descr *) Whatever this fountain used to be, now it’s just an enormous basin full of mildly stagnant water. Cracks on one side leak a trickle out onto the ground—you don’t see any sort of aqueduct, so it must need regular refilling.
 (liquid source *)
 (* is filled with #water)
 
-#ann-messenger
-(name *) messenger
+#ann-people
+(name *) crowd of people
 (* is #in #n-announcement)
-(male *)
-(dict *) man assyrian
-(descr *) His dress and his dialect are both Assyrian, while everyone else here is Babylonian. Fortunately you’re proficient in both. \( A necromancy degree involves quite a lot of dead languages. \)
-
-#ann-crowd
-(name *) crowd
-(* is #in #n-announcement)
-(gender-neutral *) %% Gets us the right “they” behavior here
-(dict *) people babylonian babylonians
-(descr *) They blur together, an indistinct mass of figures.
+(gender-neutral *) %% Uses singular verbs with the noun and plural verbs with the pronoun
+(dict *) messenger man assyrian babylonian babylonians
+(descr *)
+	You have to move around a bit to see the messenger, but he stands out: his dress and his dialect are both Assyrian, while everyone else here is distinctly Babylonian. Fortunately you’re proficient in both. \( A necromancy degree involves quite a lot of dead languages. \) (par)
+	The only other individual you can make out is your (vlink {brother}), caught mid-run with both feet off the ground. The rest are remembered only as a sort of indistinct blur.
+(* has secondary objects)
 
 #ann-sharhiya
 (name *) brother
@@ -843,9 +836,123 @@
 
 %% Puzzle room blocking Vignette 3
 #n-workshop
+(room *)
+(name *) workshop
+(dict *) work shop
+(look *) This room is not small: the ceiling is high and the floor wide. But the heat and the smoke make it feel tight all the same, and you’re hemmed in on all sides by (vlink {tools and equipment}). The scent of hot metal stings in your nose.
+
+(* attracts #light) %% Keep the light here even when it’s not a door
+
+(from * go #east through #light to #n-ziqqurat) ~(statue is pushed)
+(from * go #east to #n-ziqqurat) (statue is pushed)
+(from * go #southwest to #n-argument)
+
+#tools
+(name *) tools and equipment
+(plural *)
+(dict *) tool crucibles crucible anvils anvil hammers hammer
+(* is #in #n-workshop)
+(descr *) Crucibles, anvils, hammers, all sorts of tools you don’t even know the names of, blurring and merging into a sort of formless collective every time you take your eyes off them. The (vlink {forge}) is big enough to stay mostly in one place, at least, and pieces of (vlink {gold and silver}) shine in the light.
+(* has secondary objects)
+(item *) %% Not really
+(prevent [take *]) %% But it gives some lore on how memories work
+	You try to pick up one of the tools, but you can’t pull it free of the rest. Without a goldsmith’s knowledge, these aren’t really individual objects in your mind, just as a vague, collective mass of equipment.
+
+#forge
+(name *) forge
+(dict *) coal coals hot heat wave waves
+(* is #partof #tools)
+(descr *) It’s about the size of a microwave, probably better for fine detail work than large-scale blacksmithing. The heat waves from the hot coals are frozen in memory, making the air look like an obscure-glass window.
+(fire source *)
+
+%% The puzzle itself
+#light
+(name *) blinding light
+(dict *) beam
+(door *) %% Technically
+(intangible *)
+~(action [enter *] requires * to be touched) %% You don’t have to touch it to enter it
+(when * blocks passage)
+	~(current room #workshop) %% One-way door
+	~(worn #blindfold)
+	You squint your eyes and try to move through the light, but it’s like pushing against a strong wind: it burns in your eyes, physically forcing you back. Eventually you’re forced to retreat, tears streaming down your face.
+(when * blocks passage)
+	(current room #workshop)
+	(current player $Player)
+	~(#blindfold has ancestor $Player)
+	It wouldn’t be hard to move through the light in this direction, but if you left the blindfold behind, how would you ever get back?
+	(if) (player can see #blindfold) (then)
+		Better (link [take the blindfold]) {take it with you}.
+	(endif)
+(descr *) It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam shining through dust. From the side you can clearly see its path traced out in fiery gold.
+
+#statue
+(name *) statue of Marduk
+(dict *) cult gold-plated gold plated skin
+(heads *) statue Marduk
+(suggest pushing *)
+(* is #in #n-workshop)
+(* has secondary objects)
+
+(appearance *)
+	A towering (vlink {statue}) dominates the room, light blazing from its gold-plated skin.
+	(if) ~(statue is pushed) (then)
+		Its fiery gaze is fixed on the door to the east.
+	(else)
+		The work platform has been rotated so it now faces the north wall.
+	(endif)
+
+(descr *)
+	It stands tall and imperious, at least double your height, its skin plated with finely-hammered gold and silver, its hair and beard set with lapis lazuli. It must represent one of the gods, probably Marduk; a fiery glow radiates from its face, filling
+	(if) (statue is pushed) (then)
+		the north side of the room
+	(else)
+		the eastern passage
+	(endif)
+	with light. (par)
+	It’s only once your eyes adjust that you can see the more mundane side: the wooden scaffolding around it, the movable (vlink {work platform}) underneath. This god seems to be under construction.
+	(unlock #t-gods)
+
+#st-platform
+(name *) work platform
+(dict *) movable scaffolding scaffold wooden wood
+(suggest pushing *)
+(* is #partof #statue)
+(descr *) The whole apparatus seems designed to rotate, letting the goldsmiths access every side of their work.
+
+(instead of [push/pull/turn #statue | $])
+	(try [push *])
+(perform [push/pull/turn * | $])
+	(if) ~(statue is pushed) (then)
+		Squinting against the glare, you take hold of the platform—(no space) (emph {not}) touching the statue itself—and give it a mighty heave. It shakes and rocks, tilting dangerously to one side for a moment...but then it starts to turn. Marduk’s gaze burns a fiery trail across the wall until it’s aimed safely away from the doors.
+		(now) (statue is pushed)
+	(else)
+		You adjust the position of the statue a bit, making sure the gaze doesn’t linger too long on any one spot.
+	(endif)
 
 %% Vignette 3
 #n-argument
+(vignette *)
+
+(narrate vignette for *)
+	“Absolutely not.” You glare across the table at your brother. The single lamp gives his face a strange, uncanny cast. “We have everything to lose, and (emph {nothing}) to gain.” (par)
+	“Except for saving someone’s life. Saving the (emph {king’s}) life!” (par)
+	“He wasn’t crowned by Marduk. He’s no true king. And have you forgotten what he did to Babylon? Let the Assyrians all stab each other in the back, for all I care. What happens up in Nineveh isn’t our concern.” (par)
+	“If some Babylonians save the king’s life, maybe that will change.” He searches your face, eyes gleaming, and sighs at what he sees. “And besides. The crown prince is different. Asshur-ahu-iddina spends time around here, he fixes things that need fixing. Urad-Mullissi is just another Assyrian. If he seizes the throne, this continues on for decades. If we stop this, if Asshur-ahu-iddina inherits, we’ll have someone reasonable in power. Someone who will get Marduk’s blessing and rebuild the temples.” (par)
+	You close your eyes for a long moment. “Fine. Make the trip, make your report. I’ll take care of things back here. But if you expect gratitude from the Assyrians...” (par)
+	You meet his gaze and hold it as the shadows start to close in. “You’re going to be disappointed.” (par)
+	And the light gutters out.
+
+(name *) back room
+(dict *) backroom
+(look *)
+	This room is suggested more than seen, the moonlight through the (vlink {window}) tracing the outlines in shades of black.
+	(if) (#lamp is in room *) (fire source #lamp) (then)
+		Even the lamplight goes soft and silvery in the memory.
+	(endif)
+	Is it a workshop, a kitchen, a storage space? All you can see clearly is (vlink {your brother}), eyes fixed intently on the (vlink {table}).
+
+(from * go #northeast to #n-workshop)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                       Dreams of Sharhiya                      %%%%%%%%%
@@ -924,33 +1031,20 @@
 	(history)
 	(pause)
 
-%% TODO should this be an external resource instead?
-
 (history)
-	All the people mentioned in this story are real. The murderer of Siin-ahhe-eriba is still an open question, but in my opinion, the evidence is strongly in favor of Asshur-ahu-iddina being the real killer. The background of the murder is widely agreed upon: when the original crown prince was killed by Babylonian rebels, Urad-Mullissi \(the obvious candidate\) was suddenly passed over in favor of Asshur-ahu-iddina \(a younger son of a secondary wife\), probably due to that secondary wife’s machinations. What happened after that, though, is less clear. (par)
-	
-	For a long time, our only information came from the Bible \(2 Kings 19:36-37\): (par)
-	
-	(div @italic) {
-		So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-utzur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.
-	} (par)
-	
-	This seems to have been the official explanation, and in 1979, Simo Parpola found more evidence to support it: a clay tablet called SAA 18 100. While it’s damaged, the surviving text is quite suggestive: (par)
-	
-	(div @italic) {
-		\[...heard a report from\] three Babylonian brothers \[...\] goldsmiths in the Temple of \[...\] When they heard about the ‘oath of mutiny’ \[...\] one \[of them said\] prior to the murder\*, “It is a matter for the king.” When he came, Nabuu-shumu-ishkun and Tzil\[laya\] questioned \[him\], saying: “\[What is\] your appeal to the king about?” He said, “It is about Urad-\[Mullissi\].” \[They covered\] his face with his (cloak?), and made him stand in front of Urad-Mullissi, saying, “Behold, \[your audience\] is granted. Speak with your own voice.” So he said: “Your son, Urad-\[Mullissi\], is going to murder you.” When they uncovered his face, and when Urad-Mullissi had interrogated him, Urad-Mullissi \[executed\*\] him and his brothers. The names of the men are Sharhiya, \[...\], and Nabuu-ahu-eresh. \[...\]
-	} (par)
-	
-	Parpola argued \(“The Murderer of Sennacherib”\) that Urad-Mullissi was indeed guilty. In his interpretation, Urad-Mullissi came up with a scheme to take back his birthright by force: when Asshur-ahu-iddina was sent out of Nineveh for his own safety, Urad-Mullissi murdered his father and tried to seize the throne. But the people refused to accept him, and Asshur-ahu-iddina returned with an army, sending Urad-Mullissi fleeing to Armenia. This accords well with the biblical evidence, and was widely accepted for several decades. (par)
-	
-	In 2020, though, Knapp reopened the question \(“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”\). Parpola had framed his paper as a legal argument, so Knapp responded with a defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace \(rather than to protect him\). If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina catch him flat-footed with an entire army? And perhaps most damningly, Asshur-ahu-iddina’s own writings never actually accuse his brothers of the murder, only of slandering him to their father. (emph {Cui bono}): what if the murderer was the one person who benefitted the most? (par)
-	
-	Then in 2021 came another breakthrough. Dalley and Siddall \(“A Conspiracy to Murder Sennacherib?”\) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written (emph {before}) the regicide, as Urad-Mullissi collected evidence that his brother was trying to frame him, to present to his father. (par)
-	
-	Their arguments make quite a lot of sense to me. Other documents show that Tzillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale \(“The Story of Ahiqar”\) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner. Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved? (par)
-	
-	As such, I think the version of events shown here is most likely: that Asshur-ahu-iddina tried to frame his brother for conspiracy, failed, and fled Nineveh to avoid his father’s retribution. Before the king could reinstate Urad-Mullissi as crown prince, Asshur-ahu-iddina’s loyalists \(perhaps including his mother\) had the king assassinated, and while the court was still reeling from the news, Asshur-ahu-iddina’s forces marched on Nineveh. Urad-Mullissi fled to Armenia as the new king began to eliminate his brothers and other male relatives, and Asshur-ahu-iddina spent his reign in a state of constant paranoia, purging his own administrators and any males he considered insufficiently loyal—after the regicide, he could never fully trust another man. (par)
-	
-	\(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation. It’s equally possible they returned, well-rewarded, to Babylon.\) (par)
-	
-	If you’re interested in reading more, all of these papers should be available online with some searching! You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” \(different inflections\) or “Warad” or “Arad” \(different dialects\) or some combination of those; each author tends to pick the form they prefer. But I’ve simplified and glossed over many details here—please check the sources if you’re interested!
+	(if) (interpreter supports links) (then) %% Web terp with links
+		(div @meta) {
+			(link resource @history) { Click here to open the history in a new tab. }
+			\( It’s rather long! \)
+		}
+	(elseif) (interpreter supports quit) (then) %% Offline
+		(div @meta) {
+			You’ll find the history in the file (span @command) {history.html} included in the download. \( It’s long enough that it doesn’t fit nicely in an interpreter window—sorry about that! \)
+		}
+	(else) %% Web terp without links
+		(div @meta) {
+			You’ll find the history in the file (span @command) {history.html} included in the download. If you turn on links, you can also open it in a new tab (link resource @history) {here}.
+		}
+	(endif)
+
+(define resource @history) history.html

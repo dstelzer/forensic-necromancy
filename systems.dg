@@ -835,7 +835,7 @@
 	(current room $Room)
 	*($Source has ancestor $Room)
 	(liquid source $Source)
-	\( with (name $Source) \) (line)
+	\( from (the $Source) \) (line)
 	(try [fill $Obj with $Source)
 
 (perform [fill $Obj]) %% Couldn’t find a source
@@ -848,7 +848,8 @@
 	(now) ($Obj is filled with $Liquid)
 
 (perform [fill $Obj with $Source])
-	You scoop up some (name $source) in (the $Obj).
+	($Source is filled with $Liquid)
+	You scoop up some (name $Liquid) in (the $Obj).
 	(now) ($Obj is filled with $Liquid)
 
 (grammar [empty [single]] for [empty $])
