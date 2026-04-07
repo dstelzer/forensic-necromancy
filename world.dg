@@ -39,8 +39,20 @@
 %% Give people a way to turn it off, but it starts enabled
 (tutorial is active)
 (understand command [tutorial off])
-(perform [tutorial off]) (now) ~(tutorial is active)
+(perform [tutorial off])
+	(now) ~(tutorial is active)
+	(div @meta) { Tutorial messages will no longer be shown. }
+(understand command [tutorial on])
+(perform [tutorial on])
+	(now) (tutorial is active)
+	(div @meta) { Tutorial messages will now be shown at various points. }
 (give the tutorial) ~(tutorial is active)
+(options paragraph)
+	(if) (tutorial is active) (then)
+		Tutorial messages will appear at various points. Use (command link {TUTORIAL OFF}) to change this.
+	(else)
+		Tutorial messages will not appear. Use (command link {TUTORIAL ON}) to change this.
+	(endif)
 
 (give the tutorial)
 	~(taught secondary objects)
@@ -557,6 +569,9 @@
 	(else)
 		turning into a trampled hallway
 	(endif)
+	(if) (#s-palace is visited) (then)
+		; east, a balcony leads straight through the side of the ziggurat
+	(endif)
 	(if) (#m-unfinished is visited) (then)
 		; and some new (vlink {construction}) intrudes from the north
 	(endif)
@@ -937,11 +952,14 @@
 (narrate vignette for *)
 	“Absolutely not.” You glare across the table at your brother. The single lamp gives his face a strange, uncanny cast. “We have everything to lose, and (emph {nothing}) to gain.” (par)
 	“Except for saving someone’s life. Saving the (emph {king’s}) life!” (par)
-	“He wasn’t crowned by Marduk. He’s no true king. And have you forgotten what he did to Babylon? Let the Assyrians all stab each other in the back, for all I care. What happens up in Nineveh isn’t our concern.” (par)
-	“If some Babylonians save the king’s life, maybe that will change.” He searches your face, eyes gleaming, and sighs at what he sees. “And besides. The crown prince is different. Asshur-ahu-iddina spends time around here, he fixes things that need fixing. Urad-Mullissi is just another Assyrian. If he seizes the throne, this continues on for decades. If we stop this, if Asshur-ahu-iddina inherits, we’ll have someone reasonable in power. Someone who will get Marduk’s blessing and rebuild the temples.” (par)
+	“He wasn’t crowned by Marduk. He’s no true king. And have you forgotten what he did to Babylon? Let the Assyrians all stab each other in the back. What happens up in Nineveh isn’t our concern.” (par)
+	“If some Babylonians save the king’s life, maybe that will change.” He searches your face, eyes gleaming, and sighs at what he sees. “And besides. The crown prince is different. Asshur-ahu-iddina spends time around here, he fixes things that need fixing. Urad-Mullissi is just another Assyrian. If he seizes the throne, this continues on for a generation more. If we stop this, if Asshur-ahu-iddina inherits, we’ll have someone reasonable in power. Someone who will get Marduk’s blessing and rebuild the temples.” (par)
 	You close your eyes for a long moment. “Fine. Make the trip, make your report. I’ll take care of things back here. But if you expect gratitude from the Assyrians...” (par)
 	You meet his gaze and hold it as the shadows start to close in. “You’re going to be disappointed.” (par)
 	And the light gutters out.
+
+(protagonist description for *)
+	You’re the same tall man in a Babylonian tunic, though your clothes are simple and comfortable for lounging about the house.
 
 (name *) back room
 (dict *) backroom
@@ -960,21 +978,247 @@
 
 %% Where the divination first places you
 #s-palace
+(room *)
+(name *) royal palace
+(look *)
+	The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the ({lamassu}) are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life. (par)
+	Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled
+	(if) (coals cooled) (then)
+		({no-longer-hot coals})
+	(else)
+		({hot coals})
+	(endif)
+	across the floor; west, an outdoor balcony juts in a meter above the floor.
+
+(from * go #north to #s-audience)
+(from * go #east to #s-throneroom)
+(from * go #southeast through #coals to #s-temple)
+
+(from * go #west to #n-ziqqurat) %% Connection to other dreams
+
+#lamassu
+(name *) lamassu
+(dict *) lammasu
+(plural *)
+(* is #in #s-palace)
+(descr *) Massive statues of winged lions with human heads, standing guard over the royal palace.
+
+#coals
+(name *)
+	(coals cooled)
+	no-longer-hot coals
+(name *)
+	hot coals
+(dict *) no longer hot coal %% For simplicity
+(plural *)
+(door *)
+(descr *)
+	(coals cooled)
+	Just a bunch of charred black gravel now.
+(descr *)
+	The heat waves coming off them are frozen in space, like a lens floating in the air.
+(fire source *) ~(coals cooled)
+(prevent [take *])
+	(coals cooled)
+	What would be the use? They’d just stain everything black.
+
+(when * blocks passage)
+	~(coals cooled)
+	Even frozen in time, the coals are still hot enough to burn right through your shoes.
+
+%% TODO pour water on them to cool them
 
 %% Vignette 1, automatically unlocked
 #s-audience
+(vignette *)
+
+(narrate vignette for *)
+	“And what is your business with His Majesty, ‘Sharhiya of Babylon’?” The wiry man looks you up and down with obvious distaste, and you try not to flinch. You wore your best clothes for this, but there’s a vast gap between your best clothes and royal gold. (par)
+	“I have important information for the King. About a threat to his royal personage. I sent a letter—” (par)
+	The stout man flips his tablet over and clears his throat. “He’s right. It’s recorded here. We’re to take him to the throne room immediately.” (par)
+	The wiry man sighs and gestures toward you. “Fine. But first, your cloak. Give it here. No Babylonian can look at the unveiled face of royalty.” (par)
+	You grit your teeth and comply. Another indignity as he takes your cloak, folds it over, and ties it around your head as a blindfold. Maybe your brother was right; maybe you never should have come here. But you can hear the grand door being pushed open, and you’re pulled forward by the arm. (par)
+	“Sharhiya of Babylon.” The stout man’s voice rings out with surprising power. “You stand before the Great King, Siin-ahhe-eriba, Mighty King, King of the World, King of Assyria, King of the Four Quarters...” You tune out the litany and rehearse your speech, waiting for him to finish. “...your appeal is granted. Speak with your own voice.” (par)
+	“Your Majesty.” You lick your lips. They’ve suddenly gone dry. “Your oldest son, Urad-Mullissi...he’s...he’s not happy about being passed over as crown prince. He’s planning to murder you and seize the throne.” (par)
+	The silence stretches on and on. Finally, a new voice speaks, young and strong. Not the voice you’d expected from an elderly king. (par)
+	“So the reports were right. And if I hadn’t intervened, you would have told my father. I should thank the gods that I got to you first.”
+	
+	(unlock #t-siin-ahhe-eriba)
+	(unlock #t-urad-mullissi)
+	
+	(select) %% Apply blindfold the first time
+		(now) (#blindfold is #wornby #player)
+	(or)
+	(stopping)
+
+(protagonist description for *)
+	As best you can tell by touch, you’re a short, rather rotund man in a freshly-pressed tunic and shawl.
+
+(name *) darkness
+(look *)
+	Even without the blindfold, there’s nothing to see. All Sharhiya remembers is darkness. You have to guess that you entered from the south, and ({that voice}) came from the north.
+
+(from * go #south to #s-palace)
+
+#audience-voice
+(name *) unknown voice
+(dict *) that
+(singleton *)
+(* is #in #s-audience)
+(intangible *)
+(descr *)
+	Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. So that is the voice of ex-crown-prince Urad-Mullissi.
+
+#blindfold
+(name *) blindfold
+(dict *) folded cloak blind fold cloth
+(item *)
+(wearable *)
+(descr *) Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover his face.
+
+(prevent [look])
+	(worn *)
+	(div @roomheader) {?????}
+	You can’t see anything with the ({blindfold}) on.
+
+(before [leave $Room $Dir])
+	(worn *)
+	~{ ($Room = #n-ziqqurat) ($Dir = #west) } %% Exception: the one place it’s needed for a puzzle
+	\( taking off the blindfold, so you can see where you’re going \) (line)
+	(try [remove *])
 
 %% Puzzle room blocking Vignette 2
 #s-temple
+(name *) ruined temple
+(room *)
+(look *)
+	At first glance, this building looks like any of the others the archaeologists have found. But the ({bricks and rubble}) covering the floor are recent, and the gaps in the walls and ceiling are deliberate—this is the work of soldiers, not just the ravages of time. At least it’s not actively on fire. The flickering light in the sanctum to the east looks more like carefully-controlled torches than arson.
+
+(from * go #northwest through #coals to #s-palace)
+(from * go #east to #s-conspiracy)
+
+#rubble
+(name *) bricks and rubble
+(dict *) brick rough path wreckage
+(plural *)
+(* is #in #s-temple)
+(descr *) A rough path has been cleared through the wreckage, letting the priests continue their duties. Actually repairing the walls must have been too much for the temple to afford.
 
 %% Vignette 2
-#s-argument
+#s-conspiracy
+(vignette *)
+
+(narrate vignette for *)
+	“Hey, what’s—” (par)
+	You grab your brother’s wrist and pull him down next to you, putting a finger over your lips. “Shh! Listen.” He doesn’t understand, but he complies. You squat together behind the massive pithos. (par)
+	A moment later you see them: two men carrying torches, moving toward the pool at the center of the room. One hands his torch to the other and kneels to rinse his hands in the water; then his companion does the same. (par)
+	“...absolutely sure of the report.” That has to be the high priest; you would recognize his voice anywhere. “Urad-Mullissi might have accepted someone else as crown prince, but a son of a secondary wife? It’s insult on top of insult.” (par)
+	“And he’s really going to...” (par)
+	The high priest nods. “It’s the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. It will mean civil war. Chaos.” (par)
+	“Then what will we do to prevent it?” (par)
+	“Prevent it?” The high priest shakes his head. “No. Civil war can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing on his kingship. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.” (par)
+	The two figures turn and start to move away, and you can’t make out what they say next. But the high priest’s last words come in a sharp whisper: “No. Tell no one, on pain of death.”
+
+(protagonist description for *)
+	You can see yourself properly this time: a short, rotund man, the older brother of that first Babylonian you encountered. Your matching clothes suggest temple personnel of some sort, medium-high-ranking. Artisans rather than priests, perhaps?
+
+(name *) moonlit courtyard
+(look *) The edges of the memory are blurry, but this must be somewhere in the Temple of Marduk: the floor is an intricate mosaic, hundreds of twisting paths all leading to the ({pool}) in the center. ({Your brother}) is crouched behind a large ({pithos}), watching the ({shadowy figures}) on the opposite side.
+
+#cons-pool
+(name *) deep pool
+(dict *) apsu abzu
+(singleton *)
+(* is #in #s-conspiracy)
+(liquid source *)
+(* is filled with #water)
+(descr *)
+	In Mesopotamian cosmology, underground fresh water was the source of all life: the corpse of a titan who was killed to create the world. Each major temple had a pool at its heart representing that fresh water, for rituals and such.
+
+#cons-brother
+(name *) brother
+(your *)
+(male *)
+(* is #in #s-conspiracy)
+(descr *) Finally you can get a good look at the protagonist from the first few memories: a tall man with an anxious sort of face. His clothes match yours.
+
+#cons-pithos
+(name *) pithos
+(dict *) large clay jar
+(* is #in #s-conspiracy)
+(liquid source *)
+(* is filled with #oil)
+(descr *)
+	A huge jar, about the size of a person. This one is filled with a sweet-smelling oil. For anointing, maybe?
+
+#cons-figures
+(name *) shadowy figures
+(dict *) figure high priest priests
+(plural *)
+(animate *)
+(* is #in #s-conspiracy)
+(descr *)
+	One of them remains hazy, even when you move closer, but the other resolves into a lean, round-shouldered form: the high priest of Marduk. His hair has gone wispy and gray with age, but his voice never falters.
 
 %% Puzzle room blocking Vignette 3
 #s-throneroom
+(name *) cramped passage
+(room *)
+(inherently dark *)
+(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky darkness coats every surface, flowing back into place as soon as your lamp moves past. Off to the east, though, you can make out a flicker of movement.
+
+(from * go #west to #s-palace)
+(from * go #northeast to #s-revelation)
 
 %% Vignette 3
 #s-revelation
+(vignette *)
+
+(narrate vignette for *)
+	You don’t dare take the blindfold off, or run, or anything drastic—so you’re left frozen there while the people around you discuss your fate. You were betrayed. Who else could the man on the throne be except Urad-Mullissi? (par)
+	The sound of your name pierces through your thoughts. “Sharhiya of Babylon, was it?” \( You try your best to nod. \) “You can take that off now. The little charade’s served its purpose.” (par)
+	As your eyes come into focus, you can see him directly now: tall and broad, built like a wrestler, with fierce eyes and a thick beard. He waits patiently for you to fumble your cloak back on. (par)
+	“Now, Sharhiya of Babylon, this is very important. I need you to tell me exactly what you heard, and who you heard it from. Tzillaya, please get this verbatim.” The stout man nods and pulls out a new stylus. Then all three of them look at you expectantly while you stammer and grasp for the words. (par)
+	Eventually, Urad-Mullissi sighs and stands up from the throne. “I swear to Asshur that you will not be punished for anything you speak of today. Nabiya, Tzillaya, make sure he’s properly compensated, with a little extra for lodgings until he returns to Babylon. But I need to know every detail, exactly as you remember it. (par)
+	“You see,” he steps toward you, and you have to fight the urge to back away, “my brother has been planning something, he and his mother. He doesn’t know how to quit while he’s ahead. Father’s gotten suspicious. And now he’s overplayed his hand—now, I have proof that he’s trying to frame me for treason. This testimony should be enough to get him exiled, or worse.” (par)
+	The prince sees your flinch, and stops moving closer. “So I would consider it a great favor if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.” (par)
+	So you think back, and start to recount your story...
+
+(protagonist description for *)
+	You’re the short, rotund Babylonian again, sweating through your finest clothes after discovering that it was Urad-Mullissi on the throne.
+
+(name *) audience chamber
+(look *)
+	This room must be designed specifically to make you feel small as you stand before the ({throne}). It’s enormous even by modern standards; to an ancient Assyrian, this must have been the largest space they’d ever seen. With ({Urad-Mullissi}) and ({the two officials}) standing around you, though, the effect makes them seem just as tiny.
+
+#rev-throne
+(name *) royal throne
+(singleton *)
+(* is #in #s-revelation)
+(descr *) All the patterns in the walls and ceiling and floor converge on a single point, a huge structure richly decorated in metals and lapis lazuli.
+(on-seat *) %% Player can sit on it, though it’s not useful
+(narrate climbing *) You take your place on the throne.
+
+#rev-urad
+(name *) Urad-Mullissi
+(proper *)
+(male *)
+(dict *) prince man
+(* is #in #s-revelation)
+(descr *) Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man. Tall and broad, with dark, perpetually-angry eyes and an intricate beard that hides his mouth from view.
+
+#rev-officials
+(name *) two officials
+(singleton *)
+(plural *) %% Weird combination of traits on these guys
+(male *)
+(ambiguously plural *)
+(dict *) official man men stout wiry
+(animate *)
+(* is #in #s-revelation)
+(descr *) The two now-familiar men—Nabiya and Tzillaya, the prince called them—are standing a short distance apart, trying not to get in his way. The stout one is whispering something to the wiry one, but your narrator must have been too distracted \( or just too far away \) to hear it.
+
+(from * go #west to #s-throneroom)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Dreams of Marduk-uballith                   %%%%%%%%%
@@ -982,9 +1226,62 @@
 
 %% Where the divination first places you
 #m-unfinished
+(name *) half-finished building
+(dict *) construction site
+(room *)
+(look *) Or perhaps “construction site”? This area is an odd mixture of old and new: ({surveying lines}) are laid out over crumbling walls, piles of new ({bricks}) carted in to join to the old. Two real passages cut through the maze of chest-high and waist-high walls, one leading north, the other south.
+
+(from * go #south to #n-ziqqurat)
+(from * go #north to #m-epilogue)
+
+#cons-lines
+(name *) surveying lines
+(dict *) survey line walls wall cord cords rope ropes peg pegs
+(plural *)
+(* is #in #m-unfinished)
+(descr *) These surveying lines don’t look too different from the cords the modern archaeologists used to lay out their grid. Even thousands of years later, the best way to make a straight line is still to stretch a rope between a couple pegs. Instead of a regular grid, though, these ones seem to be tracing the original walls, making sure the new ones follow exactly the same outline.
+
+#cons-bricks
+(name *) piles of bricks
+(dict *) pile brick old new
+(plural *)
+(* is #in #m-unfinished)
+(descr *)
+	Stacks and stacks of new bricks, fresh out of the kiln, their edges still perfectly sharp. A short inscription is stamped on each one in Assyrian: “I am Asshur-ahu-iddina, King of Assyria, Viceroy of Babylon, beloved of Asshur, beloved of Marduk.”
+	(unlock #t-asshur-ahu-iddina)
+	(unlock #t-gods)
 
 %% Vignette 1, automatically unlocked
 #m-epilogue
+(vignette *)
+
+(narrate vignette for *)
+	“The construction is almost finished, Your Majesty.” You keep your nose pressed to the floor as you hear the king move; he’s not the sort to tolerate insubordination. “We thank you again for your generosity. We greatly appreciate it—and so does Marduk. Once the temple is fully rebuilt, he is certain to bless your reign.” (par)
+	“Certain?” The king’s voice is sharp and accusing, and you try not to wince. “How can you be certain when it comes to the gods?” (par)
+	Better play it safe. “How could anyone, divine or mortal, not appreciate such a gift as Your Majesty has given? How could anyone in Babylon doubt your kingship after the wisdom and kindness you have shown? The four corners of the world bow to you, Your Majesty, as well they should.” (par)
+	He sniffs and turns away, and you relax just a fraction. “Very well. Finish the construction. I want to see the cult statue placed before the end of the year. I need Marduk’s blessing as soon as possible. (emph {Need}) it. Do you understand? And also, I need a full review of the temple staff. My mother’s diviners say there are traitors there, and I need to root them out. Purging...let’s say two thirds of the staff should do it.” (par)
+	“Two thirds?!” You sit up sharply before you can stop yourself. “Your Majesty! The Temple of Marduk is loyal to you! We need—” (par)
+	Suddenly the king is very, very close to you, his eyes blazing with fury. “Is it you, then? You’re the one she warned me about? It must be. It has to be. Yes. That’s why—that’s why it—” (par)
+	“Your Majesty! Please! My loyalty has never been in question! I orchestrated that ‘conspiracy’ for you; without me, you wouldn’t—” (par)
+	It was the wrong thing to say. In a split second the king’s hands are on your throat, with far more strength than you would have expected from his frail body. “I. Need. (emph {No one}). I can trust. (emph {No one}). It was you...it was you, all along! And once I’m rid of you...then, then, that’s when I’ll finally be safe!”
+
+(protagonist description for *) Lean and round-shouldered, with wispy gray hair: this must be the High Priest of Marduk that the brothers reported to.
+
+(name *) hidden chamber
+(look *)
+	(select)
+		\( You extricate yourself from the king’s grip and stand up, brushing yourself off. That was unpleasant. \) (par)
+	(or)
+	(stopping)
+	A small, windowless room, tight and low-ceilinged, hidden somewhere behind the palace walls. The gap to the south looks like an intrusion from a different memory; without it, you can’t see any trace of an entrance or exit. (par)
+	The only other occupant is ({a frail man}) in resplendent clothes, his face contorted with rage.
+
+#asshiya
+(name *) frail man
+(dict *) king asshur-ahu-iddina resplendent clothes face
+(male *)
+(* is #in #m-epilogue)
+(descr *) He doesn’t seem at all well—he looks thin and weak despite a royal diet, and a livid red rash spreads from the bridge of his nose across each cheek. Before modern medicine, that would have been taken as either a curse or a sign of divine disfavor. Neither is a good look for a king.
 
 %% No more vignettes for this guy, he’s just the endgame content
 
