@@ -50,7 +50,7 @@
 %% TODO: it would be nice to put [u]...[/u] around this in the transcript
 
 (style class @link) %% A link to an object or room, which we want to highlight on Z-machine and in the transcript, as well as on Å-machine (where it’ll be formatted as a proper link no matter what we do)
-	color: \#888888; %% This color should be fairly visible in both dark and light color schemes; if it doesn’t work for someone, they can use brackets
+	color: \#c95c03; %% This color should be fairly visible in both dark and light color schemes; if it doesn’t work for someone, they can use brackets
 
 %% BRACKETS setting will replace the color with [brackets]
 (color link $Closure)
@@ -90,6 +90,12 @@
 		(color link {Links}) will now be marked with brackets.
 		Use (command link {BRACKETS OFF}) to go back to color highlighting.
 	}
+(option paragraph)
+	(if) (brackets enabled) (then)
+		({Links}) will be shown in brackets. Use (command link {BRACKETS OFF}) to switch to (span @link) color .
+	(else)
+		({Links}) will be shown in a different color. Use (command link {BRACKETS ON}) to switch to \[brackets\].
+	(endif)
 
 %% And since “links” gets displayed as a link...
 
@@ -108,6 +114,10 @@
 
 ((object $Object) (closure $Closure))	(vlink {(name $Object)} $Closure)
 
+%% We also make this an alias for ($) and ($ $)
+(maybe link $Object)			(color link {(name $Object)})
+(maybe link $Object $Closure)	(vlink {(name $Object)} {(query $Closure $Object)})
+
 %% Third, the versatile (vlink $) and (vlink $ $) implementation
 
 (vlink (closure $Closure))		(color link $Closure)
@@ -124,16 +134,18 @@
 (word-vlink $Words (object $Object))	(color link $Words {(the $Object)})
 
 %% Fourth, (link name $) to deal with personal pronouns in (vlink $Object)
+%% While (the $) is how something should be shown to the player, (link name $) is how it should be typed in a command: X ME, not X YOURSELF
 
 (link name (current player $))		me
 (link name (your $Your))			my (name $Your)
 (link name $Object)					(the $Object)
 
 %% Finally, (command link $) is like (zlink $) but in a fixed-pitch font
+%% To avoid a weird bug with spans inside closures, we have to put the closure inside a span instead - this predicate makes sure it doesn’t happen the wrong way around
 
 (style class @command)
 	font-family: monospace;
-	font-style: normal;
+%%	font-style: normal;
 
-(command link $Closure) %% To avoid a weird bug with spans inside closures, we instead put the closure inside a span
+(command link $Closure)
 	(span @command) (color link $Closure)

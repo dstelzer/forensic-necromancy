@@ -1,0 +1,19 @@
+{
+	:name   "A Murder in Nineveh: Submitted in partial fulfillment of the requirements for the degree of Doctor of Philosophy in Forensic Necromancy"
+	:format [:zblorb :aastory]
+;	:build
+;		{:zblorb
+;			{:options ["--cover"     "cover.jpg"
+;					   "--cover-alt" "Stained glass showing the Great Deluge from the Bible"]
+;			}
+;		}
+	:sources
+		{
+		:main
+			["src/meta.dg" "secrets" "src/world.dg" "src/systems.dg" "src/interface.dg"]
+		:debug
+			["lib/dialog/debug"]
+		:library
+			["lib", "lib/dialog"]
+		}
+}

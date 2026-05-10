@@ -1,5 +1,6 @@
+%% Auto-generated from stdlib.dg: straight quotes changed to curly
 
-(library version) Library version 1.0.0-dev.
+(library version) Library version 1.1.1-dev.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Global variables
@@ -23,8 +24,8 @@
 %% These declarations are merely hints to the backend and/or interpreter.
 
 %% Attributes can be ignored based on context. On the Z-machine backend, for
-%% instance, 'height' only has an effect on (status bar $) boxes, whereas
-%% 'width' and 'float' only affect (div $) boxes that are nested inside a
+%% instance, ‘height’ only has an effect on (status bar $) boxes, whereas
+%% ‘width’ and ‘float’ only affect (div $) boxes that are nested inside a
 %% (status bar $) box. The height and width may be specified in em/ch or %.
 
 (style class @status)
@@ -47,6 +48,11 @@
 	margin-top: .3em;
 	font-family: Geneva, sans-serif;
 
+(style class @gameover)
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
 (style class @bold)
 	font-weight: bold;
 
@@ -62,6 +68,7 @@
 %% Interface declarations for predicates typically defined in story code
 
 (interface (name $<Obj))
+(interface (tagged name $<Obj))
 (interface (descr $<Obj))
 (interface (initial appearance $<Obj))
 (interface (appearance $<Obj))
@@ -106,6 +113,9 @@
 (interface (perform $<Action))
 (interface (after $<Action))
 
+(interface (action $<Action requires $>Obj to be present))
+(interface (action $<Action requires $>Obj to be touched))
+
 (interface (group-before $<GroupAction))
 (interface (group-refuse $<GroupAction))
 (interface (group-instead of $<GroupAction))
@@ -139,6 +149,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Relations
+
+%% Avoid compiler warnings with --warn-not-topic
+#in
+#on
+#partof
+#heldby
+#wornby
+#under
+#behind
 
 (relation #in)		%% Note: #in is also a direction
 (relation #on)
@@ -180,7 +199,7 @@
 (reverse-name #under)	out from under
 (reverse-name #behind)	out from behind
 
-(the single (relation $Rel))	(name $Rel)
+(the (relation $Rel))	(name $Rel)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Directions
@@ -304,8 +323,8 @@
 (openable $Obj)			*(lockable $Obj)
 (plural $Obj)			*(pair $Obj)
 
-%% "Edison's Lament: No switch is ever in the right position."
-%% (From "The Grand List Of Console Role Playing Game Clichés")
+%% “Edison’s Lament: No switch is ever in the right position.”
+%% (From “The Grand List Of Console Role Playing Game Clichés”)
 %% Of course, you can override these defaults on an object-by-object basis:
 
 ((openable $) is closed)
@@ -369,7 +388,7 @@
 %% Rooms and doors
 
 (name (room $))		location
-(room header $Room)	(Name $Room)
+(room header $Room)	(Tagged name $Room)
 (look (room $R))	You are here.
 
 (interface (from $<Room go $>Dir to room $>Obj))
@@ -416,7 +435,7 @@
 		($Obj = $Point)
 	(endif)
 
-(the single (current room $))	this location
+(the (current room $))	this location
 
 (name (door $))		door
 
@@ -675,16 +694,20 @@
 (interface (enter $<Room))
 
 (enter $Room)
+	(now) (don’t mark the room as visited yet) %% We keep ($ is visited) unset until after (narrate entering $) has had its chance to describe things
 	(move player to #in $Room)
 	(narrate entering $Room)
+	(mark the location as visited)
 
 (interface (enter $<Room by $<Vehicle))
 
 (enter $Room by $Vehicle)
 	(now) ($Vehicle is #in $Room)
 	(now) ($Vehicle is handled)
+	(now) (don’t mark the room as visited yet)
 	(update environment around player)
 	(narrate entering $Room)
+	(mark the location as visited)
 
 (update environment around player)
 	(if) (current player $Player) ($Player is in room $Room) (then)
@@ -694,12 +717,19 @@
 			(now) ($Object is #in $Room)
 		}
 		(recompute visibility)
-		(if) ($Room is unvisited) (player can see) (then)
-			(now) ($Room is visited)
-		(endif)
+		(mark the location as visited)
 	(endif)
 
-(narrate entering (room $))
+(mark the location as visited)
+	(don’t mark the room as visited yet) %% This flag prevents it only once
+	(now) ~(don’t mark the room as visited yet)
+(mark the location as visited)
+	(if) (current room $Room) ($Room is unvisited) (player can see) (then)
+		(now) ($Room is visited)
+	(endif)
+
+(narrate entering (room $Room))
+	(now) (looking after moving)
 	(par)
 	(try [look])
 
@@ -709,12 +739,12 @@
 (interface (prevent entering $<Obj))
 
 (prevent entering $Obj)
-	(when $Obj won't accept actor #in)
+	(when $Obj won’t accept actor #in)
 
 (interface (narrate failing to leave $<Obj $<Dir))
 
 (narrate failing to leave $ $)
-	There doesn't appear to be an exit in that direction.
+	There doesn’t appear to be an exit in that direction.
 
 %% Extend the following predicate to simulate objects occupying multiple rooms:
 
@@ -734,7 +764,7 @@
 
 (prevent [look $])
 	~(player can see)
-	You can't see in the darkness.
+	You can’t see in the darkness.
 
 (perform [look $Dir])
 	(if)
@@ -750,12 +780,12 @@
 				Through (the $Target) you see (a $OtherRoom).
 				(notice $OtherRoom)
 			(else)
-				You can't quite make out what's on the other
+				You can’t quite make out what’s on the other
 				side of (the $Target).
 				(notice $Target)
 			(endif)
 		(elseif) (room $Target) ($Target is unvisited) (then)
-			You can't get a good view of what's in that direction.
+			You can’t get a good view of what’s in that direction.
 		(else)
 			(Name $Dir) from here (is $Target) (a $Target).
 			(notice $Target)
@@ -774,7 +804,7 @@
 	Your introspection reveals nothing.
 
 (narrate failing to look #out)
-	There's no obvious way out of here.
+	There’s no obvious way out of here.
 
 (narrate failing to look $)
 	You see nothing unexpected in that direction.
@@ -794,12 +824,9 @@
 
 %% Reachability not required, but visibility:
 
-(refuse [look $ $Obj])
-	(just)
-	{
-		(when $Obj is not here)
-		(or) (when $Obj is out of sight)
-	}
+~(action [look $ $] requires $ to be touched)
+(refuse [look $ $Obj]) (when $Obj is out of sight)
+%% This is the only action in the standard library that refuses based on visibility, so it’s implemented as a specific rule here instead of a more general (action $ requires $ to be seen). If more actions require it in the future, though, that could easily change.
 
 (before [look #in (opaque $Obj)])
 	($Obj is closed)
@@ -822,7 +849,7 @@
 
 (prevent [look #in $Obj])
 	~(container $Obj)
-	(The $Obj) can't contain things.
+	(The $Obj) can’t contain things.
 
 (prevent [look #in (opaque $Obj)])
 	($Obj is closed)
@@ -830,11 +857,11 @@
 	(if) (openable $Obj) (then)
 		(The $Obj is) closed.
 	(else)
-		You can't look inside (the $Obj).
+		You can’t look inside (the $Obj).
 	(endif)
 
 (prevent [look #behind (room $Obj)])
-	Looking behind (the $Obj) doesn't make sense.
+	Looking behind (the $Obj) doesn’t make sense.
 
 (prevent [look #under $Obj])
 	($Obj is #wornby $Actor)
@@ -854,7 +881,7 @@
 			(if) ($Rel is one of [#under #behind]) (then)
 				You find
 			(else)
-				There's
+				There’s
 			(endif)
 			nothing (present-name $Rel) (the $Obj).
 		(endif)
@@ -866,7 +893,7 @@
 
 %% FIND takes the player to the room that currently contains the object.
 %% For objects that move around autonomously, it may be a good idea to override
-%% this rule, to say e.g. "you don't know where the cat might be right now".
+%% this rule, to say e.g. “you don’t know where the cat might be right now”.
 %% Note that floating objects, including doors, will remain in the room where
 %% they were last encountered. This will usually put the player on the expected
 %% side of doors.
@@ -877,10 +904,10 @@
 (unlikely [find $Obj])
 	($Obj is nowhere)
 
-~(refuse [find $])
+~(action [find $] requires $ to be present)
 
 (prevent [find (not here $Obj)])
-	You don't know where to find (the $Obj).
+	You don’t know where to find (the $Obj).
 
 (prevent [find $Obj])
 	(when $Obj is already held)
@@ -900,14 +927,14 @@
 	($Obj is in room $Room)
 	(current room $Here)
 	~(shortest path from $Here to $Room is $)
-	You don't know how to get to (the $Obj) from here.
+	You don’t know how to get to (the $Obj) from here.
 
 (perform [find $Obj])
 	(if) ($Obj is in room $Room) (then)
 		(line) \( attempting to go to (the $Room) \) (line)
 		(try [go to $Room])
 	(else)
-		You don't know where to find (the $Obj).
+		You don’t know where to find (the $Obj).
 	(endif)
 
 %% EXAMINE <obj>
@@ -918,7 +945,7 @@
 (understand [who am i] as [examine $Player])
 	(current player $Player)
 
-~(refuse [examine $]) %% No need for reachability.
+~(action [examine $] requires $ to be touched)
 
 (instead of [examine (room $Obj)])
 	(current room $Here)
@@ -934,7 +961,7 @@
 	(then)
 		(try [look $Dir])
 	(else)
-		You can't get a good view of (the $Obj) from here.
+		You can’t get a good view of (the $Obj) from here.
 	(endif)
 
 (perform [examine $Obj])
@@ -985,11 +1012,32 @@
 (describe action [look])
 	look around
 
+%% We want to reset (moving long distances) just before the final [look]
+(before [look])
+	(last step of movement)
+	(now) ~(moving long distances)
+	(now) ~(last step of movement)
+
+%% And (looking after moving) just after
+(on every tick)
+	(now) ~(looking after moving)
+
 (perform [look])
 	(current player $Player)
 	($Player is $Rel $Loc)
+	{ (verbosity level $Verbosity) (or) ($Verbosity = 2) } %% Just in case
 	(div @roomheader) (location headline)
-	(if) (player can see) (then)
+	(if)
+		(looking after moving)
+		{
+			($Verbosity = 0) (or) %% Verbosity 0: when moving at all
+			(current room $Room) ($Room is visited) ($Verbosity < 2) (or) %% Verbosity 1: when visited
+			(moving long distances) ($Verbosity < 3) %% Verbosity 2: when moving long distances
+		}
+	(then)
+		%% No room description, keep it brief
+		(par)
+	(elseif) (player can see) (then)
 		(current scope ceiling $Ceil)
 		(look $Ceil)
 		(make appearances $Rel $Loc)
@@ -1068,10 +1116,8 @@
 (grammar [listen/hear [single]] for [listen to $])
 (grammar [listen to [single]] for [listen to $])
 
-%% Don't require reachability:
-
-(refuse [listen to $Obj])
-	(just) (when $Obj is not here)
+%% Don’t require reachability:
+~(action [listen to $] requires $ to be touched)
 
 (perform [listen to $Obj])
 	(if) (current player $Obj) (then)
@@ -1103,6 +1149,10 @@
 		($Obj is part of $Player)
 	}
 	Your feelings for yourself are primarily of a platonic nature.
+
+(perform [kiss (animate $Obj)])
+	(The $Obj) (doesn’t $Obj) seem receptive to that sort of thing.
+	(tick) (stop)
 
 (perform [kiss $Obj])
 	(The $Obj is) unmoved by your display of affection.
@@ -1145,7 +1195,7 @@
 (prevent [wave $Obj])
 	(current player $Player)
 	~($Obj is part of $Player)
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [wave $Obj])
 	You wave (the $Obj) in the air, with no apparent consequences.
@@ -1191,15 +1241,8 @@
 		(try [throw $Obj])
 	(endif)
 
-%% The target doesn't have to be reachable:
-
-(refuse [throw $Obj at $Target])
-	(just)
-	{
-		(when $Obj is not here)
-		(or) (when $Target is not here)
-		(or) (when $Obj is out of reach)
-	}
+%% The target doesn’t have to be reachable:
+(action [throw $Obj at $] requires $Obj to be touched) (just)
 
 (before [throw $Obj at $])
 	(current player $Actor)
@@ -1208,7 +1251,7 @@
 
 (prevent [throw $Obj at $])
 	~(current player $Obj)
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [throw $Obj at $Target])
 	Throwing (the $Obj) at (the $Target) would achieve little.
@@ -1230,7 +1273,7 @@
 (grammar [fall asleep] for [sleep])
 
 (perform [sleep])
-	You're not all that sleepy.
+	You’re not all that sleepy.
 
 %% TAKE <obj>
 %% TAKE <obj> FROM <obj>
@@ -1254,11 +1297,11 @@
 	(if) (animate $Parent) (then)
 		(The $Parent) (does $Parent) not have (the $Obj).
 	(elseif) (container $Parent) (then)
-		(The $Obj) (isn't $Obj) in (the $Parent).
+		(The $Obj) (isn’t $Obj) in (the $Parent).
 	(elseif) (supporter $Parent) (then)
-		(The $Obj) (isn't $Obj) on (the $Parent).
+		(The $Obj) (isn’t $Obj) on (the $Parent).
 	(else)
-		That's not where (the $Obj) (is $Obj).
+		That’s not where (the $Obj) (is $Obj).
 	(endif)
 
 (perform [take $Obj from $])
@@ -1276,7 +1319,7 @@
 	(or) (when $Obj is part of something)
 	(or) (when $Obj is held by someone)
 	(or) (when $Obj is worn by someone)
-	(or) (when $Obj can't be taken)
+	(or) (when $Obj can’t be taken)
 
 (narrate taking $Obj)
 	(current player $Actor)
@@ -1321,12 +1364,12 @@
 	($Obj is #under $Cover)
 	(current player $Player)
 	($Cover is worn by $Player)
-	You'd have to remove (the $Cover) first.
+	You’d have to remove (the $Cover) first.
 
 (prevent [remove $Obj])
 	(current player $Player)
 	~($Obj is #wornby $Player)
-	But you aren't wearing (the $Obj).
+	But you aren’t wearing (the $Obj).
 
 (narrate removing $Obj)
 	You take off (the $Obj).
@@ -1376,16 +1419,16 @@
 
 (prevent [wear $Obj])
 	~(wearable $Obj)
-	(The $Obj) can't be worn.
+	(The $Obj) can’t be worn.
 
 (prevent [wear $Obj])
 	(current player $Player)
 	*($Worn is worn by $Player bottom-up)
 	(wearing $Obj removes $Worn)
-	You can't do that while wearing (the $Worn).
+	You can’t do that while wearing (the $Worn).
 
 (prevent [wear $Obj])
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (narrate wearing $Obj)
 	You put on (the $Obj).
@@ -1448,21 +1491,21 @@
 
 (prevent [put $Obj $Rel $Dest])
 	(when $Obj is already $Rel $Dest)
-	(or) (when $Obj isn't directly held)
+	(or) (when $Obj isn’t directly held)
 
 (prevent [put $Obj $Rel $Dest])
 	($Dest is nested $OldRel $Obj)
-	(The $Obj) can't be placed
+	(The $Obj) can’t be placed
 	(if) ~($OldRel is one of [#in #on]) (then)
-		(towards-name $Rel) something that's
+		(towards-name $Rel) something that’s
 	(endif)
 	(present-name $OldRel) (itself $Obj).
 
 (prevent [put $Obj $Rel $Obj])
-	You can't put (the $Obj) (towards-name $Rel) (itself $Obj).
+	You can’t put (the $Obj) (towards-name $Rel) (itself $Obj).
 
 (prevent [put $ $Rel $Dest])
-	(when $Dest won't accept $Rel)
+	(when $Dest won’t accept $Rel)
 
 (prevent [put $ #in $Dest])
 	(when $Dest is closed)
@@ -1494,7 +1537,7 @@
 
 (prevent [drop $Obj])
 	(when $Obj is part of something)
-	(or) (when $Obj isn't directly held)
+	(or) (when $Obj isn’t directly held)
 
 (narrate dropping $Obj)
 	(current player $Actor)
@@ -1533,7 +1576,7 @@
 	(if) (empty $WornList) (then)
 		(narrate wearing nothing)
 	(else)
-		You're wearing (a $WornList).
+		You’re wearing (a $WornList).
 	(endif)
 	(line)
 
@@ -1553,7 +1596,7 @@
 
 (prevent [exits])
 	~(player can see)
-	You can't be sure of where the exits are in the darkness.
+	You can’t be sure of where the exits are in the darkness.
 
 (perform [exits])
 	(current room $Room)
@@ -1644,13 +1687,13 @@
 	(ensure $Obj is held)
 
 (prevent [give $Obj to $])
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [give $ to $Dest])
 	(if) (animate $Dest) (then)
-		(The $Dest) (doesn't $Dest) appear to be interested.
+		(The $Dest) (doesn’t $Dest) appear to be interested.
 	(else)
-		Giving things to (the $Dest) doesn't appear to work.
+		Giving things to (the $Dest) doesn’t appear to work.
 	(endif)
 	(tick) (stop)
 
@@ -1674,13 +1717,7 @@
 
 (unlikely [show $])
 
-(refuse [show $Obj to $Person])
-	(just)
-	{
-		(when $Obj is not here)
-		(or) (when $Person is not here)
-		(or) (when $Obj is out of reach)
-	}
+(action [show $Obj to $] requires $Obj to be touched) (just)
 
 (perform [show $Obj])
 	To whom?
@@ -1692,11 +1729,11 @@
 
 (prevent [show $Obj to $])
 	(item $Obj)
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [show $ to $Dest])
 	(if) (animate $Dest) (then)
-		(The $Dest) (doesn't $Dest) appear to be interested.
+		(The $Dest) (doesn’t $Dest) appear to be interested.
 	(else)
 		Showing things to (the $Dest) has no effect.
 	(endif)
@@ -1720,7 +1757,7 @@
 
 (prevent [open $Obj])
 	~(openable $Obj)
-	(The $Obj) (doesn't $Obj) open.
+	(The $Obj) (doesn’t $Obj) open.
 
 (prevent [open (openable $Obj)])
 	($Obj is open)
@@ -1758,7 +1795,7 @@
 
 (prevent [close $Obj])
 	~(openable $Obj)
-	(The $Obj) can't be closed.
+	(The $Obj) can’t be closed.
 
 (prevent [close $Obj])
 	($Obj is closed)
@@ -1793,7 +1830,7 @@
 
 (prevent [unlock $Obj | $])
 	~(lockable $Obj)
-	(The $Obj) can't be unlocked.
+	(The $Obj) can’t be unlocked.
 
 (prevent [unlock (lockable $Obj) | $])
 	($Obj is unlocked)
@@ -1842,7 +1879,7 @@
 
 (prevent [lock $Obj | $])
 	~(lockable $Obj)
-	(The $Obj) can't be locked.
+	(The $Obj) can’t be locked.
 
 (prevent [lock (lockable $Obj) | $])
 	($Obj is locked)
@@ -1876,7 +1913,7 @@
 
 (prevent [switch on $Obj])
 	~(switchable $Obj)
-	(The $Obj) can't be switched on.
+	(The $Obj) can’t be switched on.
 
 (prevent [switch on $Obj])
 	($Obj is on)
@@ -1906,7 +1943,7 @@
 
 (prevent [switch off $Obj])
 	~(switchable $Obj)
-	(The $Obj) can't be turned off.
+	(The $Obj) can’t be turned off.
 
 (narrate switching off $Obj)
 	You switch (the $Obj) off.
@@ -1929,7 +1966,7 @@
 	(endif)
 
 (perform [switch $Obj])
-	(The $Obj) can't be switched on or off.
+	(The $Obj) can’t be switched on or off.
 	(tick) (stop)
 
 %% SQUEEZE <obj>
@@ -1948,10 +1985,10 @@
 
 (prevent [fix $Obj])
 	($Obj is in order)
-	You can't find anything wrong with (the $Obj).
+	You can’t find anything wrong with (the $Obj).
 
 (perform [fix $Obj])
-	You don't know how to repair (the $Obj).
+	You don’t know how to repair (the $Obj).
 	(tick) (stop)
 
 %% TASTE <obj>
@@ -1965,7 +2002,7 @@
 (prevent [taste $Obj])
 	~(edible $Obj)
 	~(potable $Obj)
-	Don't be gross.
+	Don’t be gross.
 
 (perform [taste $Obj])
 	You savour the taste of (the $Obj).
@@ -2013,15 +2050,15 @@
 	(or)
 		($Obj is part of $Player)
 	}
-	Cannibalism isn't the answer to this one.
+	Cannibalism isn’t the answer to this one.
 
 (prevent [eat $Obj])
 	~(edible $Obj)
-	(The $Obj) (isn't $Obj) edible.
+	(The $Obj) (isn’t $Obj) edible.
 
 (prevent [eat $Obj])
 	(item $Obj)
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (narrate eating $Obj)
 	You eat (the $Obj).
@@ -2045,11 +2082,11 @@
 
 (prevent [drink $Obj])
 	~(potable $Obj)
-	You can't drink (the $Obj).
+	You can’t drink (the $Obj).
 
 (prevent [drink $Obj])
 	(item $Obj)
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [drink $Obj])
 	You take a sip from (the $Obj).
@@ -2111,15 +2148,12 @@
 (unlikely [consult $Obj about $])
 	~(consultable $Obj)
 
-(refuse [consult $Obj about $])
-	(just) {
-		(when $Obj is not here)
-		(or) (when $Obj is out of reach)
-	}
+(action [consult $Obj about $] requires $Obj to be present) (just)
+(action [consult $Obj about $] requires $Obj to be touched) (just)
 
 (prevent [consult $Obj about $])
 	~(consultable $Obj)
-	You can't look things up in (the $Obj).
+	You can’t look things up in (the $Obj).
 
 (perform [consult $Obj about $Topic])
 	You find no information about (describe topic $Topic) in (the $Obj).
@@ -2147,16 +2181,13 @@
 (unlikely [ask/tell $Obj about $])
 	~(animate $Obj)
 
-%% Don't require reachability:
+%% Don’t require reachability (or the presence of the topic):
 
-(refuse [ask $Obj | $])
-	(just) (when $Obj is not here)
+(action [ask $Obj | $] requires $Obj to be present) (just)
+~(action [ask $ | $] requires $ to be touched)
 
-(refuse [tell $Obj about $])
-	(just) (when $Obj is not here)
-
-(refuse [tell $Obj])
-	(just) (when $Obj is not here)
+(action [tell $Obj | $] requires $Obj to be present) (just)
+~(action [tell $ | $] requires $ to be touched)
 
 (perform [ask/tell $Person about $Topic])
 	(try [talk to $Person about $Topic])
@@ -2183,10 +2214,10 @@
 	To whom?
 	(asking for object in [talk to []])
 
-%% Don't require reachability:
+%% Don’t require reachability:
 
-(refuse [talk to $Obj | $])
-	(just) (when $Obj is not here)
+(action [talk to $Obj | $] requires $Obj to be present) (just)
+~(action [talk to $ | $] requires $ to be touched)
 
 (perform [talk to $Obj about $])
 	(try [talk to $Obj])
@@ -2204,26 +2235,6 @@
 (perform [curse])
 	You mumble a few well-chosen words to yourself.
 
-%% SHOUT TO <obj> (redirected to TALK TO by default)
-%% SHOUT (redirected to TALK by default)
-
-(grammar [shout/yell/scream to [animate]] for [shout to $])
-
-(unlikely [shout to $Obj])
-	~(animate $Obj)
-
-(refuse [shout to $Obj])
-	(just) (when $Obj is not here)
-
-(perform [shout to $Obj])
-	(try [talk to $Obj])
-
-(grammar [shout/yell/scream] for [shout])
-
-(perform [shout])
-	To whom?
-	(asking for object in [shout to []])
-
 %% PRAY
 
 (grammar [pray] for itself)
@@ -2238,25 +2249,29 @@
 (perform [shrug])
 	You shrug indifferently.
 
-%% CALL <obj> (redirected to SHOUT TO by default)
-%% CALL (redirected to SHOUT by default)
+%% CALL <obj> (redirected to TALK TO by default)
+%% CALL (redirected to CALL TO by default)
 %% Stories containing a phone would override these.
 
 (grammar [call [animate]] for [call $])
-(grammar [call to [animate]] for [call $])
+(grammar [call/shout to [animate]] for [call $])
 (grammar [call] for itself)
 
 (unlikely [call $Obj])
 	~(animate $Obj)
 
-(refuse [call $Obj])
-	(just) (when $Obj is not here)
+~(action [call $] requires $ to be touched)
+
+(perform [call (current player $)])
+	Why call when you’re already right here?
+	(tick) (stop)
 
 (perform [call $Obj])
-	(try [shout to $Obj])
+	(try [talk to $Obj])
 
 (perform [call])
-	(try [shout])
+	Call whom?
+	(asking for object in [call []])
 
 %% GREET <obj> (redirected to TALK TO by default)
 %% GREET
@@ -2267,8 +2282,7 @@
 (unlikely [greet $Obj])
 	~(animate $Obj)
 
-(refuse [greet $Obj])
-	(just) (when $Obj is not here)
+~(action [greet $] requires $ to be touched)
 
 (perform [greet $Obj])
 	(try [talk to $Obj])
@@ -2296,7 +2310,7 @@
 	*(understand $Right as object $Obj preferably child of $Actor)
 	(current player $Player)
 
-%% The rule for "name comma action" is further down in the file.
+%% The rule for “name comma action” is further down in the file.
 
 (unlikely [tell $Addressee to | $])
 	~(animate $Addressee)
@@ -2313,8 +2327,8 @@
 (unlikely [tell $Obj to | $])
 	~(animate $Obj)
 
-(refuse [tell $NPC to | $])
-	(just) (when $NPC is not here)
+(action [tell $NPC to | $] requires $NPC to be present) (just)
+~(action [tell $ to | $] requires $ to be touched)
 
 (instead of [tell $NPC to greet])
 	(try [greet $NPC])
@@ -2326,7 +2340,7 @@
 	(if) (animate $Actor) (then)
 		(The $Actor) refuse(s $Actor).
 	(else)
-		(The $Actor) (doesn't $Actor) take orders.
+		(The $Actor) (doesn’t $Actor) take orders.
 	(endif)
 
 %% SMELL <obj>
@@ -2335,8 +2349,7 @@
 (grammar [smell/sniff/inhale [object]] for [smell $])
 (grammar [smell/sniff/inhale] for [smell])
 
-(refuse [smell $Obj])
-	(just) (when $Obj is not here)
+~(action [smell $] requires $ to be touched)
 
 (perform [smell $Obj])
 	(The $Obj) smell(s $Obj) as expected.
@@ -2398,13 +2411,13 @@
 	(current player $Actor)
 	{
 		(when $Actor is already #on $Obj)
-		(or) (when $Obj won't accept actor #on)
+		(or) (when $Obj won’t accept actor #on)
 	}
 
 (prevent [climb $Dest])
 	(current player $Actor)
 	($Dest is nested $OldRel $Actor)
-	You can't get onto something that's (present-name $OldRel) yourself.
+	You can’t get onto something that’s (present-name $OldRel) yourself.
 
 (narrate climbing $Obj)
 	You get onto (the $Obj).
@@ -2439,7 +2452,8 @@
 (describe action [enter $Obj])
 	get into (the full $Obj)
 
-~(refuse [enter (room $)])
+%% Rooms are generally not present
+~(action [enter (room $)] requires $ to be present)
 
 (before [enter (actor container $Obj)])
 	($Obj is closed)
@@ -2457,7 +2471,7 @@
 		(direction $Dir) %% Assure the compiler that $Dir is bound.
 		(try [go $Dir])
 	(else)
-		(The $Room) (isn't $Room) here.
+		(The $Room) (isn’t $Room) here.
 		(tick) (stop)
 	(endif)
 
@@ -2485,7 +2499,7 @@
 (prevent [enter $Dest])
 	(current player $Actor)
 	($Dest is nested $OldRel $Actor)
-	You can't get into something that's (present-name $OldRel) yourself.
+	You can’t get into something that’s (present-name $OldRel) yourself.
 
 (perform [enter $Obj])
 	(narrate entering $Obj)
@@ -2516,7 +2530,7 @@
 	(try [leave $Obj])
 
 (perform [stand])
-	You're already standing up.
+	You’re already standing up.
 	(tick) (stop)
 
 %% LEAVE <obj>
@@ -2582,7 +2596,7 @@
 
 (refuse [leave (room $Room)])
 	~(current room $Room)
-	But you aren't in (the $Room).
+	But you aren’t in (the $Room).
 
 (perform [leave])
 	(current player $Player)
@@ -2615,7 +2629,7 @@
 (prevent [leave $Obj])
 	(current player $Player)
 	~($Player has parent $Obj)
-	You're not
+	You’re not
 	(if) (supporter $Obj) (then)
 		(if) (container $Obj) (then)
 			in or
@@ -2662,28 +2676,42 @@
 		*(dict $Room)
 	(matching all of $Filtered)
 
-(unlikely [go to (current room $)])
+(unlikely [go to $]) %% Prefer default actions on objects to default actions on rooms, if both are enabled
+	(default actions enabled)
+	(default actions apply to rooms)
+(very unlikely [go to $Room]) %% Don’t call it very unlikely just because it involves a room
+	(just) (current room $Room) %% But going to the current room should still be very unlikely
 
-~(very unlikely [go to $])
+%% Rooms generally aren’t present
+~(action [go to $] requires $ to be present)
 
-~(refuse [go to $])
+%% Utility like (last $) that also returns the everything-but-last of the list
+%% In other words, it’s the opposite of ($List = [$Head | $Rest])
+(interface (split last element from $<List into $>Rest and $>Last))
+(split last element from [$Last] into [] and $Last)
+(split last element from [$Head | $OldRest] into [$Head | $NewRest] and $Last)
+	(split last element from $OldRest into $NewRest and $Last)
 
 (perform [go to $Room])
 	(current room $Here)
 	(if) ($Here = $Room) (then)
 		You are already in (the $Room).
 		(tick) (stop)
-	(elseif) (shortest path from $Here to $Room is $Path) (then)
+	(elseif)
+		(shortest path from $Here to $Room is $FullPath)
+		(split last element from $FullPath into $Path and $Final)
+	(then)
 		(exhaust) {
 			*($Dir is one of $Path)
-			(line) \( attempting to go (name $Dir) \) (line)
+			(now) (moving long distances) %% Switch to a more minimal reporting style
 			(try [go $Dir])
 			(tick)
 			(par)
 		}
-		(inhibit next tick)
+		(now) (last step of movement) %% And switch back for the last step
+		(try [go $Final])
 	(else)
-		You don't know how to get to (the $Room) from here.
+		You don’t know how to get to (the $Room) from here.
 		(tick) (stop)
 	(endif)
 
@@ -2697,8 +2725,8 @@
 
 %% These are generally the ones to override/extend.
 
-%% The default rules for the aforementioned actions invoke '(prevent entering
-%% $Room)' and '(narrate entering $Room)'. These predicates can of course also
+%% The default rules for the aforementioned actions invoke ‘(prevent entering
+%% $Room)’ and ‘(narrate entering $Room)’. These predicates can of course also
 %% be overridden. Thus, entering a room is not an action of its own, but is
 %% an inherent part of leaving a room.
 
@@ -2780,7 +2808,7 @@
 
 (prevent [push $Obj $])
 	~(pushable $Obj)
-	(The $Obj) can't be pushed from place to place.
+	(The $Obj) can’t be pushed from place to place.
 
 (prevent [push $ $])
 	(current player $Actor)
@@ -2807,7 +2835,7 @@
 	You give (the $Obj) a bit of a push.
 
 (perform [push $Obj])
-	You apply a bit of force to (the $Obj), but (it $Obj doesn't) budge.
+	You apply a bit of force to (the $Obj), but (it $Obj doesn’t) budge.
 
 %% PULL <obj>
 
@@ -2819,7 +2847,7 @@
 	(if) (item $Obj) (then)
 		nothing noteworthy happens.
 	(else)
-		(it $Obj) won't budge.
+		(it $Obj) won’t budge.
 	(endif)
 
 %% TURN <obj>
@@ -2827,7 +2855,7 @@
 (grammar [turn/rotate/twist/screw/unscrew [object]] for [turn $])
 
 (prevent [turn (room $Obj)])
-	You can't turn (the $Obj).
+	You can’t turn (the $Obj).
 
 (perform [turn $Obj])
 	Turning (the $Obj) has no apparent effect.
@@ -2841,7 +2869,7 @@
 	It is too dark to read.
 
 (perform [read $Obj])
-	There's nothing written on (the $Obj).
+	There’s nothing written on (the $Obj).
 
 %% FLUSH <obj>
 %% FLUSH
@@ -2850,7 +2878,7 @@
 (grammar [flush] for itself)
 
 (perform [flush $Obj])
-	You don't know how to flush (the $Obj).
+	You don’t know how to flush (the $Obj).
 	(tick) (stop)
 
 (perform [flush])
@@ -2896,7 +2924,7 @@
 	(asking for object in [tie $Obj to []])
 
 (perform [tie $A to $B])
-	There's no obvious way to tie (the $A) to (the $B).
+	There’s no obvious way to tie (the $A) to (the $B).
 	(tick) (stop)
 
 %% UNTIE <obj> FROM <obj>
@@ -2918,11 +2946,11 @@
 	*(understand $Words as non-all object $Obj)
 
 (perform [untie $Obj])
-	(The $Obj) (isn't $Obj) tied to anything.
+	(The $Obj) (isn’t $Obj) tied to anything.
 	(tick) (stop)
 
 (perform [untie $Obj from $OtherObj])
-	(The $Obj) (isn't $Obj) tied to (the $OtherObj).
+	(The $Obj) (isn’t $Obj) tied to (the $OtherObj).
 	(tick) (stop)
 
 %% ATTACK <obj> WITH <obj>
@@ -2942,7 +2970,7 @@
 	(ensure $Obj is held)
 
 (prevent [attack $ with $Obj])
-	(when $Obj isn't directly held)
+	(when $Obj isn’t directly held)
 
 (perform [attack $Obj with $])
 	(try [attack $Obj])
@@ -2981,6 +3009,11 @@
 			(narrate failing to leave $Room $Dir)
 		(endif)
 	(endif)
+
+%% If this is a step in a long-distance movement, keep the reporting short and sweet
+(narrate leaving $ $Dir)
+	(moving long distances)
+	\( (name $Dir) \) (line)
 
 (narrate leaving $Room $Dir)
 	You
@@ -3028,6 +3061,11 @@
 
 (prevent [leave $Room $Dir by $])
 	(prevent [leave $Room $Dir])
+
+%% As above
+(narrate leaving $ $Dir by $)
+	(moving long distances)
+	\( (name $Dir) \) (line)
 
 (narrate leaving $ $Dir by $Obj)
 	You drive (the $Obj) (name $Dir).
@@ -3138,8 +3176,8 @@
 	(div @meta) {
 		(if) (transcript on) (then)
 			Transcript enabled.
-		(elseif) (interpreter supports inline status bar) (then)
-			%% Do nothing, web interpreter
+		(elseif) (transcript active) (then)
+			%% Do nothing, transcripting is already active
 		(else)
 			Failed to enable transcript.
 			(stop)
@@ -3193,25 +3231,50 @@
 (understand command [pronouns])
 (perform [pronouns])
 	(div @meta) {
-		"Me" refers to yourself. (line)
+		“Me” refers to yourself. (line)
 		(collect $Obj)
-			(player's it refers to $Obj)
+			(player’s it refers to $Obj)
 		(or)
-			(narrator's it refers to $Obj)
+			(narrator’s it refers to $Obj)
 		(into $ItList)
-		(if) (nonempty $ItList) (then) "It" refers to (or-listing $ItList). (line) (endif)
-		(if) (her refers to $Her) (then) "Her" refers to (the $Her). (line) (endif)
-		(if) (him refers to $Him) (then) "Him" refers to (the $Him). (line) (endif)
-		(if) (them refers to $Them) (then) "Them" refers to (the $Them). (line) (endif)
+		(if) (nonempty $ItList) (then) “It” refers to (or-listing $ItList). (line) (endif)
+		(if) (her refers to $Her) (then) “Her” refers to (the $Her). (line) (endif)
+		(if) (him refers to $Him) (then) “Him” refers to (the $Him). (line) (endif)
+		(if) (them refers to $Them) (then) “Them” refers to (the $Them). (line) (endif)
 	}
 
-%% VERBOSE / BRIEF / SUPERBRIEF
+%% VERBOSE / BRIEF / SUPERBRIEF / SUPERVERBOSE
+
+(global variable (verbosity level $))
+%% 0 = superbrief (never show room details)
+%% 1 = brief (show room details only when unvisited)
+%% 2 = verbose (show room details except when moving long distances)
+%% 3 = superverbose (always show room details)
+
+%% If the author doesn’t specify, we start with “verbose”
+(startup)
+	~(verbosity level $)
+	(now) (verbosity level 2)
+
+(understand command [superbrief])
+(perform [superbrief])
+	(now) (verbosity level 0)
+	(div @meta) { (story title or default) is now in SUPERBRIEF mode. Location details will never be shown while moving, even on a first visit. }
+
+(understand command [brief])
+(perform [brief])
+	(now) (verbosity level 1)
+	(div @meta) { (story title or default) is now in BRIEF mode. Location details will not be shown when moving to a previously-visited area. }
 
 (understand command [verbose])
-(understand [brief/superbrief] as [verbose])
 (perform [verbose])
-	(div @meta) { The verbosity level of this story is not adjustable. }
-	(stop)
+	(now) (verbosity level 2)
+	(div @meta) { (story title or default) is now in VERBOSE mode. Location details will not be shown when travelling long distances, but will be shown after normal movement. }
+
+(understand command [superverbose])
+(perform [superverbose])
+	(now) (verbosity level 3)
+	(div @meta) { (story title or default) is now in SUPERVERBOSE mode. Location details will always be shown when moving. }
 
 %% VERSION
 
@@ -3394,7 +3457,7 @@
 	(if) (implicit action wants direction) (then)
 		*(understand $Words as direction $O)
 	(else)
-		%% We don't know the correct policy, so fall back on 'non-all'.
+		%% We don’t know the correct policy, so fall back on ‘non-all’.
 		*(understand $Words as non-all object $O)
 	(endif)
 	(recover implicit action $Implicit $O into $Action)
@@ -3402,7 +3465,12 @@
 (understand $Words as $Action)
 	(default actions enabled)
 	~{ (implicit action is $) ~(implicit action wants direction) }
-	*(understand $Words as non-all object $Obj)
+	{
+		*(understand $Words as non-all object $Obj)
+	(or)
+		(default actions apply to rooms)
+		*(understand $Words as room name $Obj)
+	}
 	~(empty $Obj)
 	~($Obj = [1])
 	(if) ($Obj = [a $RealObj]) (then)
@@ -3411,6 +3479,8 @@
 		(default action $Obj $Action)
 	(endif)
 
+(default action (current room $) [look])
+(default action (room $Obj) [go to $Obj])
 (default action $Obj [examine $Obj])
 
 (understand $Words as $Words)
@@ -3419,10 +3489,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dealing with actions
 
-%% If the player enters multiple actions on one line ("get lamp. n"), they
+%% If the player enters multiple actions on one line (“get lamp. n”), they
 %% are parsed and carried out one at a time.
 
-%% A complex action ("get all") is broken down, and the simple actions are
+%% A complex action (“get all”) is broken down, and the simple actions are
 %% carried out in turn.
 
 %% A (simple) action may invoke preliminary actions (e.g. open the door
@@ -3430,19 +3500,19 @@
 
 %% After the preliminary actions (before) have been carried out, the action
 %% is potentially refused. Normally, actions that involve unreachable objects
-%% are refused; this is overridden by actions, such as look at, that don't
+%% are refused; this is overridden by actions, such as look at, that don’t
 %% require reachability.
 
-%% If the action wasn't refused, it will be handled by the (instead of $)
+%% If the action wasn’t refused, it will be handled by the (instead of $)
 %% predicate. This predicate can be overridden for special cases in the story.
 %% The default behaviour is to further break down handling into two stages:
 %% Prevent and perform.
-%% They are separate because it's convenient to be able to override
+%% They are separate because it’s convenient to be able to override
 %% e.g. what happens when you put the twig in the fire without also overriding
 %% the default checks, such as whether you are holding the twig.
 
 %% (prevent $) should print something and succeed if the player character
-%% tries, but there's a problem with completing the action. When prevent
+%% tries, but there’s a problem with completing the action. When prevent
 %% succeeds, time is advanced (tick), and further actions are stopped.
 
 %% If prevent fails, (perform $) is invoked to carry out the action. For the
@@ -3452,12 +3522,12 @@
 
 %% Note that the world model is updated after narrating. This allows the
 %% narrate rule to query the world as it used to be, before carrying out the
-%% operation, in order to say for instance 'you take the worm out of the can'.
+%% operation, in order to say for instance ‘you take the worm out of the can’.
 
 %% If something dramatic happens, an overriding rule should advance time if
-%% necessary and (stop). So if the player types "n. n", and the first action
+%% necessary and (stop). So if the player types “n. n”, and the first action
 %% implies opening a door, which implies unlocking the door, and the unlocking
-%% triggers a cutscene, then opening the door is cancelled, and the second "n"
+%% triggers a cutscene, then opening the door is cancelled, and the second “n”
 %% is also ignored.
 
 %% After a non-command action, time is advanced using (tick). This can be
@@ -3514,15 +3584,24 @@
 	(tick)
 	(par)
 
+%% In library 1.1.0, (refuse $) was overhauled to call out to two more specific predicates that authors can more easily override for their own actions. Plus, these predicates can now be checked in (prevent $) rules as well!
+
 (refuse $Action)
+	*(action $Action requires $Obj to be present)
+	(when $Obj is not here)
+
+(refuse $Action)
+	*(action $Action requires $Obj to be touched)
+	(when $Obj is out of reach)
+
+(action $Action requires $Obj to be present) %% Assume all physical objects need presence
 	*($Obj is one of $Action)
 	(object $Obj)
 	~(direction $Obj)
 	~(relation $Obj)
-	{
-		(when $Obj is not here)
-		(or) (when $Obj is out of reach)
-	}
+
+(action $Action requires $Obj to be touched)
+	*(action $Action requires $Obj to be present) %% Assume all presence-required objects need touch too
 
 (before $)	(fail)
 
@@ -3534,7 +3613,7 @@
 (prevent $)	(fail)
 
 (perform $Action)
-	You can't (describe action $Action).
+	You can’t (describe action $Action).
 	(tick) (stop)
 
 (after $)	(fail)
@@ -3550,7 +3629,7 @@
 		(report disallowed action $ComplexAction)
 		(stop)
 	(elseif) ([] is one of $ComplexAction) (then)
-		You're not aware of any such thing!
+		You’re not aware of any such thing!
 		(stop)
 	(else)
 		(strip decorations from $ComplexAction into $MultiAction)
@@ -3567,7 +3646,7 @@
 				~(room $Obj)
 			}
 		(then)
-			(notice player's $Obj)
+			(notice player’s $Obj)
 		(endif)
 		(if) *($List is one of $MultiAction) (nonempty $List) (then)
 			(exhaust) {
@@ -3618,7 +3697,7 @@
 	(par)
 
 %% Add rules to the following six predicates, and to
-%% '(action $ may group $ with $)', to deal with groups of objects.
+%% ‘(action $ may group $ with $)’, to deal with groups of objects.
 
 (group-refuse $MultiAction)
 	*(expand group-action $MultiAction into $Simple)
@@ -3767,7 +3846,7 @@
 (level 2 unlikely $Action)
 	(very very unlikely $Action)
 
-%% Current and nearby rooms are in scope, but they're rarely what the player
+%% Current and nearby rooms are in scope, but they’re rarely what the player
 %% means. The following rules ensure that most actions that mention rooms
 %% directly are considered unlikely.
 
@@ -3786,8 +3865,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Daemons
 
+(interface (inhibit next tick))
 (inhibit next tick)
 	(now) (inhibiting next tick)
+
+%% When something dramatic happens in an action rule, we (stop) to cut off any further actions in the sequence. When something dramatic happens in an (on every tick) rule, we DON’T do that, because it would be weird to have only half a tick happen. Instead, we call this, which (stop)s once the tick is done.
+(interface (stop after this tick))
+(stop after this tick)
+	(now) (stopping after this tick)
 
 (tick)
 	(if) (inhibiting next tick) (then)
@@ -3797,6 +3882,10 @@
 		(exhaust) *(early on every tick)
 		(exhaust) *(on every tick)
 		(exhaust) *(late on every tick)
+		(if) (stopping after this tick) (then)
+			(now) ~(stopping after this tick)
+			(stop)
+		(endif)
 	(endif)
 
 %% Stories may add rules to the following predicates:
@@ -3806,12 +3895,12 @@
 	*(on every tick in $Room)
 
 (on every tick)
-	(if) (narrator's it is protected) (then)
-		(now) ~(narrator's it is protected)
-	(elseif) (player's it refers to $) (then)
-		%% The narrator's it is short-lived, except when
-		%% 'it' unambiguously refers to it.
-		(now) ~(narrator's it refers to $)
+	(if) (narrator’s it is protected) (then)
+		(now) ~(narrator’s it is protected)
+	(elseif) (player’s it refers to $) (then)
+		%% The narrator’s it is short-lived, except when
+		%% ‘it’ unambiguously refers to it.
+		(now) ~(narrator’s it refers to $)
 	(endif)
 
 (on every tick in $)		(fail)
@@ -4072,6 +4161,7 @@
 (interface (A $<Obj))
 (interface (A full $<Obj))
 (interface (Name $<Obj))
+(interface (Tagged name $<Obj))
 (interface (The $<Obj))
 (interface (The full $<Obj))
 
@@ -4096,7 +4186,7 @@
 (its [$Single])			(its $Single)
 (itself [$Single])		(itself $Single)
 (is [$Single])			(is $Single)
-(isn't [$Single])		(isn't $Single)
+(isn’t [$Single])		(isn’t $Single)
 (has [$Single])			(has $Single)
 (does [$Single])		(does $Single)
 (s [$Single])			(s $Single)
@@ -4113,23 +4203,17 @@
 (its (nonempty $List))		their
 (itself (nonempty $List))	themselves
 (is (nonempty $List))		are
-(isn't (nonempty $List))	aren't
+(isn’t (nonempty $List))	aren’t
 (has (nonempty $List))		have
 (does (nonempty $List))		do
 (s (nonempty $List))
 (es (nonempty $List))
 (the (nonempty $List) is)	(the $List) are
-(it (nonempty $List) is)	they're
+(it (nonempty $List) is)	they’re
 (them (nonempty $List))		them
 
-(the full (object $Obj))
-	(the full single $Obj)
 (the full $Obj)
 	(the $Obj)
-	(add location information for $Obj)
-%% This is effectively the same as (the full $) for individual objects, but doesn't call (listing...) in any circumstance. Dialog's optimizer struggles when a codepath leads from a (collect words) or (from words) to a closure query, even if that codepath is never executed, so this circumvents that issue.
-(the full single $Obj)
-	(the single $Obj)
 	(add location information for $Obj)
 
 (a full $Obj)
@@ -4153,9 +4237,9 @@
 			(if) (plural $Obj) (then)
 				that are
 			(else)
-				that's
+				that’s
 			(endif)
-			(name $Rel) (the full single $Loc)
+			(name $Rel) (the full $Loc)
 		(endif)
 	(endif)
 
@@ -4179,29 +4263,29 @@
 		You
 	(endif)
 
-(the single $Obj)		(current player $Obj) yourself
+(the $Obj)		(current player $Obj) yourself
 (The $Obj)		(current player $Obj) You
 (it $Obj)		(current player $Obj) you
 (them $Obj)		(current player $Obj) you
 (its $Obj)		(current player $Obj) your
 (itself $Obj)		(current player $Obj) yourself
 (is $Obj)		(current player $Obj) are
-(isn't $Obj)		(current player $Obj) aren't
+(isn’t $Obj)		(current player $Obj) aren’t
 (has $Obj)		(current player $Obj) have
 (does $Obj)		(current player $Obj) do
 (that $Obj)		(current player $Obj) yourself
 (s $Obj)		(current player $Obj)
 (es $Obj)		(current player $Obj)
-(the $Obj is)		(current player $Obj) you're
-(it $Obj is)		(current player $Obj) you're
+(the $Obj is)		(current player $Obj) you’re
+(it $Obj is)		(current player $Obj) you’re
 (That $Obj)		(current player $Obj) You
-(That's $Obj)		(current player $Obj) You're
+(That’s $Obj)		(current player $Obj) You’re
 
 (a (proper $Obj))	(maybe link $Obj)
-(the single (proper $Obj))	(name $Obj)
+(the (proper $Obj))	(tagged name $Obj)
 
 (a (your $Obj))		your (maybe link $Obj)
-(the single (your $Obj))	your (name $Obj)
+(the (your $Obj))	your (tagged name $Obj)
 
 (a (singleton $Obj))	(maybe link $Obj {(the $_)})
 
@@ -4214,15 +4298,15 @@
 (them (plural $))	them
 (itself (plural $))	themselves
 (its (plural $))	their
-(it (plural $) is)	they're
+(it (plural $) is)	they’re
 (s (plural $))
 (es (plural $))
 (is (plural $))		are
-(isn't (plural $))	aren't
+(isn’t (plural $))	aren’t
 (has (plural $))	have
 (does (plural $))	do
 (that (plural $))	those
-(That's (plural $))	Those are
+(That’s (plural $))	Those are
 
 (a (an $Obj))		an (maybe link $Obj)
 
@@ -4230,26 +4314,26 @@
 (them (female $))	her
 (itself (female $))	herself
 (its (female $))	her
-(it (female $) is)	she's
+(it (female $) is)	she’s
 
 (it (male $))		he
 (them (male $))		him
 (itself (male $))	himself
 (its (male $))		his
-(it (male $) is)	he's
+(it (male $) is)	he’s
 
 (it (gender-neutral $))		they
 (them (gender-neutral $))	them
 (itself (gender-neutral $))	themself
 (its (gender-neutral $))	their
-(it (gender-neutral $) is)	they're
+(it (gender-neutral $) is)	they’re
 (it (gender-neutral $) has)	they have
 (it (gender-neutral $) does)	they do
 (it (gender-neutral $) s)
 (it (gender-neutral $) es)
 
 (a $Obj)		a (maybe link $Obj)
-(the single $Obj)		the (name $Obj)
+(the $Obj)		the (tagged name $Obj)
 (it $)			it
 (them $)		it
 (itself $)		itself
@@ -4257,7 +4341,7 @@
 (s $)			(no space) s
 (es $)			(no space) es
 (is $)			is
-(isn't $)		isn't
+(isn’t $)		isn’t
 (has $)			has
 (does $)		does
 (the $O is)		(the $O) (is $O)
@@ -4267,19 +4351,19 @@
 (it $O s)		(s $O)  %% To be used when subject is a pronoun
 (it $O es)		(es $O) %% (behaves differently for they/them)
 (that $)		that
-(That's $)		That's
+(That’s $)		That’s
 
-(doesn't $Obj)		(does $Obj) (no space) n't
-(it $Obj doesn't)	(it $Obj does) (no space) n't
+(doesn’t $Obj)		(does $Obj) (no space) n’t
+(it $Obj doesn’t)	(it $Obj does) (no space) n’t
 
-(the (object $Obj))	(the single $Obj) %% We break (the single $) out from (the $) to improve closure optimization
-
+(tagged name $Obj) (name $Obj)
 (name $)
 
-%% Avoid a compiler warning, since the library doesn't use this:
+%% Avoid a compiler warning, since the library doesn’t use this:
 (interface (Its $<Obj))
 
 (Name $Obj)		(uppercase) (name $Obj)
+(Tagged name $Obj)	(uppercase) (tagged name $Obj)
 (A $Obj)		(uppercase) (a $Obj)
 (The $Obj)		(uppercase) (the $Obj)
 (A full $Obj)		(uppercase) (a full $Obj)
@@ -4292,14 +4376,14 @@
 (interface ($<Obj))
 
 ($Obj)
-	(link) (name $Obj)
+	(link) (tagged name $Obj)
 
 (interface ($<Obj $<Text))
 
 ($Obj $Text)
 	(if) (interpreter supports links) (then)
 		(collect words)
-			(name $Obj)
+			(tagged name $Obj)
 		(into $Words)
 		(link $Words) (query $Text)
 	(else)
@@ -4308,9 +4392,9 @@
 
 (maybe link $Obj)
 	(if) (library links enabled) (then)
-		(link) (name $Obj)
+		(link) (tagged name $Obj)
 	(else)
-		(name $Obj)
+		(tagged name $Obj)
 	(endif)
 
 (maybe link $Obj $Closure)
@@ -4353,8 +4437,12 @@
 		($Rest = $Tail)
 	(endif)
 	(if) (empty $Rest) (then)
-		(if) ($NPrinted > 1) (then) , (endif)
-		(if) ($NPrinted > 0) (then) $Conjunction (endif)
+		(if) ($Conjunction = @,) (then) %% Passing @, as the conjunction means use commas for everything
+			(if) ($NPrinted > 0) (then) , (endif)
+		(else)
+			(if) ($NPrinted > 1) (then) , (endif)
+			(if) ($NPrinted > 0) (then) $Conjunction (endif)
+		(endif)
 	(else)
 		(if) ($NPrinted > 0) (then) , (endif)
 	(endif)
@@ -4392,6 +4480,7 @@
 
 (dict (your $))
 	my mine
+	your %% In case players are excessively literal (or copy-pasting)
 
 (dict (pair $))
 	pair
@@ -4401,7 +4490,7 @@
 
 (dict (openable $Obj))
 	(if) ($Obj is open) (then)
-		%% With default actions, "open box" would look like a request
+		%% With default actions, “open box” would look like a request
 		%% to examine an already-open box, which is probably not
 		%% what the player intended.
 		(if) ~(default actions enabled) (then) open (endif)
@@ -4420,9 +4509,9 @@
 %% By default, any word mentioned in the name rule is included:
 
 (dict $Obj)
-	(name $Obj)
+	(tagged name $Obj)
 
-%% The plural dict should only mention nouns, so the default rule can't
+%% The plural dict should only mention nouns, so the default rule can’t
 %% invoke (plural name $).
 
 (plural dict $)
@@ -4461,10 +4550,10 @@
 			(elseif) (male $Obj) (then)
 				(now) (him refers to $Obj)
 			(else)
-				(now) (narrator's it refers to $Obj)
-				(now) (narrator's it is protected)
-				(if) (player's it refers to $Obj) (then)
-					(now) ~(player's it refers to $)
+				(now) (narrator’s it refers to $Obj)
+				(now) (narrator’s it is protected)
+				(if) (player’s it refers to $Obj) (then)
+					(now) ~(player’s it refers to $)
 				(endif)
 			(endif)
 		(endif)
@@ -4477,12 +4566,12 @@
 		(endif)
 	(endif)
 
-(notice player's $Obj)
+(notice player’s $Obj)
 	(if) ~(current player $Obj) (then)
 		
 		(if) (list $Obj) (then)
 			(if) ($Obj = [$Single]) (then)
-				(notice player's $Single)
+				(notice player’s $Single)
 			(else)
 				(now) (them refers to $Obj)
 			(endif)
@@ -4512,9 +4601,9 @@
 				(elseif) (male $Obj) (then)
 					(now) (him refers to $Obj)
 				(else)
-					(now) (player's it refers to $Obj)
-					(if) (narrator's it refers to $Obj) (then)
-						(now) ~(narrator's it refers to $)
+					(now) (player’s it refers to $Obj)
+					(if) (narrator’s it refers to $Obj) (then)
+						(now) ~(narrator’s it refers to $)
 					(endif)
 				(endif)
 			(endif)
@@ -4523,18 +4612,18 @@
 	(endif)
 
 (clear all pronouns)
-	(now) ~(player's it refers to $)
-	(now) ~(narrator's it refers to $)
+	(now) ~(player’s it refers to $)
+	(now) ~(narrator’s it refers to $)
 	(now) ~(her refers to $)
 	(now) ~(him refers to $)
 	(now) ~(them refers to $)
 
 (forget pronouns out of scope)
-	(if) (player's it refers to $Obj) ~($Obj is in scope) (then)
-		(now) ~(player's it refers to $)
+	(if) (player’s it refers to $Obj) ~($Obj is in scope) (then)
+		(now) ~(player’s it refers to $)
 	(endif)
-	(if) (narrator's it refers to $Obj) ~($Obj is in scope) (then)
-		(now) ~(narrator's it refers to $)
+	(if) (narrator’s it refers to $Obj) ~($Obj is in scope) (then)
+		(now) ~(narrator’s it refers to $)
 	(endif)
 	(if) (him refers to $Obj) ~($Obj is in scope) (then)
 		(now) ~(him refers to $)
@@ -4706,30 +4795,30 @@
 
 (when $ is out of sight)
 	~(player can see)
-	You can't see well enough to do that in the darkness.
+	You can’t see well enough to do that in the darkness.
 
 (when $Obj is out of sight)
 	~(player can see $Obj)
-	You can't see any such thing.
+	You can’t see any such thing.
 
 (when $Obj is already held)
 	(current player $Player)
 	($Obj is #heldby $Player)
-	You're already holding (the $Obj).
+	You’re already holding (the $Obj).
 
 (when $Obj is already worn)
 	(current player $Player)
 	($Obj is worn by $Player)
-	You're already wearing (the $Obj).
+	You’re already wearing (the $Obj).
 
-(when $O isn't directly held)
+(when $O isn’t directly held)
 	(current player $Actor)
 	~($O is #heldby $Actor)
-	You're not holding (the $O).
+	You’re not holding (the $O).
 
 (when $Obj is not here)
 	(not here $Obj)
-	(The $Obj) (isn't $Obj) here.
+	(The $Obj) (isn’t $Obj) here.
 
 (when (intangible $Obj) is out of reach)
 	(The $Obj is) intangible.
@@ -4737,14 +4826,14 @@
 (when $Obj is out of reach)
 	~(player can reach $Obj)
 	(if) (player can see $Obj) (then)
-		You can't reach (the $Obj).
+		You can’t reach (the $Obj).
 	(else)
-		(The $Obj) (isn't $Obj) here.
+		(The $Obj) (isn’t $Obj) here.
 	(endif)
 
 (when $O is part of something)
 	($O is #partof $Parent)
-	(That's $O) part of (the $Parent).
+	(That’s $O) part of (the $Parent).
 
 (when $O is held by someone)
 	($O is #heldby $Parent)
@@ -4759,7 +4848,7 @@
 	(if) (animate $Obj) (then)
 		(uppercase) (it $Obj is)
 	(else)
-		(That's $Obj)
+		(That’s $Obj)
 	(endif)
 	(if) (gender-neutral $Obj) (then)
 		%% Slightly awkward special case for singular they/them
@@ -4768,29 +4857,29 @@
 		fine where (it $Obj) (is $Obj).
 	(endif)
 
-(when ~(item $O) can't be taken)
-	You can't take (the $O).
+(when ~(item $O) can’t be taken)
+	You can’t take (the $O).
 
-~(when (supporter $O) won't accept #on)
+~(when (supporter $O) won’t accept #on)
 
-~(when (container $O) won't accept #in)
+~(when (container $O) won’t accept #in)
 
-(when $O won't accept $Rel)
+(when $O won’t accept $Rel)
 	(if) ($Rel is one of [#under #behind]) (then)
 		Putting things (name $Rel) (the $O) would achieve little.
 	(else)
-		You can't put things (name $Rel) (the $O).
+		You can’t put things (name $Rel) (the $O).
 	(endif)
 
-~(when (actor supporter $O) won't accept actor #on)
+~(when (actor supporter $O) won’t accept actor #on)
 
-~(when (actor container $O) won't accept actor #in)
+~(when (actor container $O) won’t accept actor #in)
 
-(when $O won't accept actor $Rel)
+(when $O won’t accept actor $Rel)
 	(if) ($Rel is one of [#under #behind]) (then)
 		Going (name $Rel) (the $O) would achieve little.
 	(else)
-		It's not possible to get (towards-name $Rel) (the $O).
+		It’s not possible to get (towards-name $Rel) (the $O).
 	(endif)
 
 (when $O is already $Rel $Dest)
@@ -4810,24 +4899,26 @@
 	(if) ($Obj is closed) (then)
 		(The $Obj is) closed.
 	(else)
-		(The $Obj) (doesn't $Obj) allow you to pass.
+		(The $Obj) (doesn’t $Obj) allow you to pass.
 	(endif)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Program entry, main loop, status bar, score
 
+(interface (startup))
+
 (program entry point)
+	(exhaust) *(startup) %% Put hooks here for anything that needs to be handled before play begins
 	(div @initial-spacer) {}
 	(update environment around player)
 	(stoppable) (intro)
 	*(repeat forever) (read-parse-act) (fail)
 
 (intro)
-	(exhaust) *(startup) %% DMS
 	(banner)
 	(try [look])
 
-%% When the game asks a disambiguating question ("Did you ..."), and the player
+%% When the game asks a disambiguating question (“Did you ...”), and the player
 %% types an unrecognized response, this needs to be parsed as a regular action
 %% instead. If this happens several times in a row, the heap would fill up with
 %% half-finished parsing attempts, and eventually overflow. To prevent this, we
@@ -4848,6 +4939,15 @@
 	(else)
 		(par)
 		(stoppable) {
+			%% If this flag is still set, then a long-distance movement was interrupted by a (stop) before it reached its last step. We should explain this to the player.
+			(if) (moving long distances) (then)
+				(div @meta) {
+					Because something dramatic happened, your movement was cut short.
+				}
+				(now) ~(moving long distances)
+				(now) ~(last step of movement)
+			(endif)
+			
 			(if)
 				(scoring enabled)
 				(score notifications are on)
@@ -4888,10 +4988,14 @@
 	*(repeat forever)
 	> (get input $Words)
 
-	%% '*' is by convention used by testers to put comments in a
+	%% ‘*’ is by convention used by testers to put comments in a
 	%% transcript. Ignore it and try again.
-
-	~($Words = [\* | $])
+	(if) ($Words = [\* | $]) (then)
+		(if) ~(transcript active) (then)
+			(div @meta) { A transcript is not currently being recorded. Use SCRIPT ON to start one. }
+		(endif)
+		(fail)
+	(endif)
 
 (interface (get choice of $<ChoiceList into $>Words))
 
@@ -4943,7 +5047,7 @@
 	}
 
 (redraw status bar)
-	%% This predicate shouldn't fail.
+	%% This predicate shouldn’t fail.
 
 (status headline)
 	(location headline)
@@ -5007,7 +5111,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Banner and default metadata
 
-%% There is no formal requirement to print the banner, but it's appreciated
+%% There is no formal requirement to print the banner, but it’s appreciated
 %% and useful to the community and yourself.
 
 (banner)
@@ -5044,7 +5148,7 @@
 (story author or default)	(story author)
 (story author or default)	Anonymous
 
-%% Don't warn about querying these; however, this does not disable the warning
+%% Don’t warn about querying these; however, this does not disable the warning
 %% about them not being defined (for a sufficiently large story):
 
 (story title)		(fail)
@@ -5078,11 +5182,14 @@
 (interface (game over $<Closure))
 
 (game over $Message)
-	(par)
-	(space 5)
-	(span @bold) { \*\*\* (query $Message) \*\*\* }
+	(div @gameover) {
+		(space 5)
+		\*\*\* (query $Message) \*\*\*
+		(space 5)
+		%% Why the second (space 5)? So that if someone sets text-align: center for the Å-machine web interpreter, the initial (space 5) won’t put it off-center again.
+	}
 	(now) (game has ended)
-	(stop)
+	(stop) %% This breaks out of the main game loop to free memory; the fact that (game has ended) then makes the main loop call (game over) to end things properly
 
 (game over status bar)
 	(status bar @status) {
@@ -5176,8 +5283,8 @@
 (global variable (last command was $))
 (global variable (implicit action is $))
 
-(global variable (player's it refers to $))
-(global variable (narrator's it refers to $))
+(global variable (player’s it refers to $))
+(global variable (narrator’s it refers to $))
 (global variable (her refers to $))
 (global variable (him refers to $))
 (global variable (them refers to $))
@@ -5202,6 +5309,10 @@
 (understand $Words as direction $Output)
 	(parse direction list $Words $ObjList)
 	(mark multi-object $ObjList into $Output)
+
+%% Deal with serial commas
+(parse direction list [and | $Rest] $Out)
+	*(parse direction list $Rest $Out)
 
 (parse direction list $Words [$Head | $Tail])
 	*(split $Words by [, and] into $Left and $Right)
@@ -5237,7 +5348,7 @@
 %%	a list of objects (possibly decorated) [+ $Obj1 $Obj2 ...], or
 %%	an error code [], [,], [all]
 %% No output or other side effects are produced by the following rules.
-%% Policy/ExcludeList are ignored when there's just one matching object.
+%% Policy/ExcludeList are ignored when there’s just one matching object.
 %% Ambiguous expressions result in backtracking.
 
 (interface (understand $<Words as non-all object $>ObjList))
@@ -5292,7 +5403,7 @@
 
 (understand $Words as single object $Output preferably animate)
 	*(parse $Words as single object $Output {(animate $_)} [1])
-	%% [1] produces 'someone' instead of 'something' in error responses.
+	%% [1] produces ‘someone’ instead of ‘something’ in error responses.
 
 (understand $Words as object $Output preferably worn)
 	(current actor $Actor)
@@ -5402,7 +5513,7 @@
 	*(parse basic noun $Left as $LeftObj $Policy $AllAllowed)
 	*(parse noun list $Right as $RightObj $Policy $AllAllowed)
 	(if) ($RightObj = [$Head | $Tail]) (last $LeftObj $Head) (then)
-		%% ensure e.g. "black and white photo" is parsed as one thing
+		%% ensure e.g. “black and white photo” is parsed as one thing
 		(append $LeftObj $Tail $ObjList)
 	(else)
 		(append $LeftObj $RightObj $ObjList)
@@ -5447,9 +5558,9 @@
 
 (parse basic noun [it/that] as [$Obj] $ $)
 	{
-		(player's it refers to $Obj)
+		(player’s it refers to $Obj)
 	(or)
-		(narrator's it refers to $Obj)
+		(narrator’s it refers to $Obj)
 	}
 
 (parse basic noun [some] as [$Obj] $Policy $AllAllowed)
@@ -5517,7 +5628,7 @@
 	(filter $Words into $Filtered)
 	(nonempty $Filtered)
 	(collect $Obj)
-		%% catch expressions like 'open the eastern window'
+		%% catch expressions like ‘open the eastern window’
 		($Filtered = [$Head | $Tail])
 		(nonempty $Tail)
 		(parse direction [$Head] $Dir)
@@ -5745,7 +5856,7 @@
 %% Parser: Toplevel
 
 %% Parse and attempt each action in turn, and abort if one fails.
-%% That's because an action may modify the scope, which affects the parsing of
+%% That’s because an action may modify the scope, which affects the parsing of
 %% subsequent actions.
 
 (global variable (current actor $))
@@ -5839,11 +5950,11 @@
 		%% We were unable to parse the action.
 
 		%% Occasionally people like to separate actions by
-		%% commas or 'AND', but this is problematic. We can
+		%% commas or ‘AND’, but this is problematic. We can
 		%% only deal with it as a last resort, because in order
 		%% to parse the part after the separator, we need to
 		%% have the right scope, and therefore we first have to
-		%% execute what's to the left of the separator.
+		%% execute what’s to the left of the separator.
 
 		(if)
 			*(split $ActualWords by [, and]
@@ -5872,18 +5983,18 @@
 (parse partial action $Words)
 	%% The multi-query inside the if-condition is unnecessary
 	%% (if-conditions are only evaluated once), but the compiler is able to
-	%% opmitize predicates better if they're consistently queried in the
+	%% opmitize predicates better if they’re consistently queried in the
 	%% same mode.
 
 	(now) (allowing parse errors)
 	(if) *(understand $Words as $BadAction) (then)
 		(if) ([all] is one of $BadAction) (then)
 			(div @meta) {
-				\( The word "all" is not allowed in that context. Please be more specific. \)
+				\( The word “all” is not allowed in that context. Please be more specific. \)
 			}
 		(elseif) ([,] is one of $BadAction) (then)
 			(div @meta) {
-				\( You're not allowed to use multiple objects in that
+				\( You’re not allowed to use multiple objects in that
 				context. Please do it step by step. \)
 			}
 		(else)
@@ -5894,7 +6005,7 @@
 			}
 		(endif)
 	(else)
-		(div @meta) { \( I'm sorry, I didn't understand what you wanted to do. \) }
+		(div @meta) { \( I’m sorry, I didn’t understand what you wanted to do. \) }
 	(endif)
 	(stop)
 
@@ -6007,7 +6118,7 @@
 	(recover implicit action $Template $Player into $Result)
 
 (disambiguate by object name $Words $Template $ObjList $Result)
-	%% Since the player was given an explicit list of '(the full $)'
+	%% Since the player was given an explicit list of ‘(the full $)’
 	%% descriptions, we have to match against those, in addition to the
 	%% normal dict rules.
 
@@ -6018,7 +6129,7 @@
 			~(relation $Obj)
 			(words $Words sufficiently specify $Obj)
 		(from words)
-			(the full single $Obj)
+			(the full $Obj)
 		(matching all of $Words)
 		(recover implicit action $Template $Obj into $A)
 	(into $Candidates)
@@ -6137,6 +6248,9 @@
 %% Asking a yes/no question:
 
 (yesno)
+	(if) (library links enabled) (then)
+		(link) yes (space) / (space) (link) no
+	(endif)
 	(space) (prompt and input $Words)
 	(if) ($Words = [yes]) (or) ($Words = [y]) (then)
 	(elseif) ($Words = [no]) (or) ($Words = [n]) (then)
@@ -6209,12 +6323,12 @@
 	(into $NextGen)
 	(elaborate paths from $NextGen)
 
-%% Rooms have no locations, so '($ has relation $)' is unused for rooms.
+%% Rooms have no locations, so ‘($ has relation $)’ is unused for rooms.
 %% We can repurpose it for path finding, to save RAM:
 
 @(last hop before $A is $B) ($A has relation $B)
 
-%% Reconstruct the full path from the 'last hop' links:
+%% Reconstruct the full path from the ‘last hop’ links:
 
 (build path from $Start to $End $SoFar $Path)
 	(last hop before $End is $Last)
@@ -6537,9 +6651,12 @@
 (amusing enabled)		(fail)
 (amusing)			(fail)
 (library links enabled)		(fail)
-(default actions enabled)	(fail)
+(default actions apply to rooms)	(fail)
 (heads $)			(fail)
 (room $)			(fail)
+
+%% Effectively the same
+(default actions enabled)	(default actions apply to rooms)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fatal runtime errors
@@ -6547,12 +6664,13 @@
 (error $Code entry point)
 	(roman)
 	(div @meta) {
-		\( Technical trouble:
+		Technical trouble \( code $Code \):
 		(report fatal error $Code)
-		Attempting to recover with UNDO. \)
+		(display memory statistics)
+		Attempting to recover with UNDO.
 	}
 	(if) (undo) (or) (then)
-		(div @meta) { Undo failed! }
+		(div @meta) { Undo failed! This problem is unrecoverable. }
 	(endif)
 
 (report fatal error 1)	Heap space exhausted.

@@ -1,0 +1,25 @@
+%% This gives us an easy way to enable or disable certain behavior
+(in debugger)
+
+%% These are the equivalent of platform/ for building
+(style class @fullstatus)
+	height: 1em;
+
+(italic correction)
+
+(style class @meta)
+	font-style: italic;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @tutorial)
+	font-style: italic;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @title)
+	font-weight: bold;
+	margin-top: 1em;
+
+(style class @roomheader)
+	margin-top: 1em;

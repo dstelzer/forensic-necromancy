@@ -1,0 +1,350 @@
+(extension version) Suggestion Bars v0.1 by Daniel Stelzer.
+
+(style class @linkbar)
+	border: 1px solid rgb\(128, 128, 128\);
+	background-color: rgba\(128, 128, 128, 0.33\);
+	padding: 0.125em;
+	padding-left: 0.67em;
+	border-radius: 12px;
+	margin-top: 1em;
+
+(style class @barpar)
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	padding-left: 2em; %% Indent of all lines
+	text-indent: -2em; %% Indent of first line (so in other words, indent all following lines by 2em)
+
+(bullet) (space 1) • (space 1) %% Change this to a hyphen if you don’t like the fancy bullet
+
+(them-or-yourself (current player $)) yourself
+(them-or-yourself $Obj) (them $Obj)
+
+(library links enabled)
+(default actions enabled)
+(global variable (current focus $))
+(after [examine/take $Obj])
+	(now) (current focus $Obj)
+(late on every tick)
+	(current focus $Obj)
+	~($Obj is in scope)
+	(now) ~(current focus $)
+
+%% We also want to examine unexamined things when taking them
+@($Obj is unexamined) ~($Obj is examined)
+(after [examine $Obj])
+	(now) ($Obj is examined)
+(after [take $Obj])
+	($Obj is unexamined)
+	(par) You take a moment to examine (them-or-yourself $Obj): (par)
+	(try [examine $Obj])
+	(tick)
+
+%% Link a list of objects with commas in between
+(link list $List)
+	(listing $List {(vlink $_)} @, @the 0)
+
+(link bar) %% If suggestions are turned off, do nothing
+	~(suggestions enabled)
+
+(link bar) %% Bar of directions
+	(implicit action is $)
+	(implicit action wants direction)
+	(current room $Room)
+	(collect $Dir)
+		*(direction $Dir)
+		(from $Room go $Dir to $Next)
+		{ (room $Next) (or) (door $Next) }
+	(into $Raw)
+	(remove duplicates $Raw $List) %% Shouldn’t happen but just in case
+	(if) (interpreter supports inline status bar) (then)
+		(inline status bar @linkbar) (link list $List)
+	(else)
+		(div @linkbar) (link list $List)
+	(endif)
+
+(link bar) %% Bar of objects
+	(implicit action is $)
+	(current room $Room)
+	(collect $Obj)
+		*($Obj has ancestor $Room)
+		(player can see $Obj)
+		~(current player $Obj) %% We’ll add this explicitly later
+	(into $Raw)
+	(remove duplicates $Raw $List) %% Also shouldn’t happen but just in case
+	(current player $Player) %% Put at the beginning instead of somewhere in the middle
+	(if) (interpreter supports inline status bar) (then)
+		(inline status bar @linkbar) (link list [$Player | $List])
+	(else)
+		(div @linkbar) (link list [$Player | $List])
+	(endif)
+
+(link bar) %% Bar of actions
+	(if) (interpreter supports inline status bar) (then)
+		(inline status bar @linkbar) {
+			(exhaust) *(link bar paragraph)
+		}
+	(else)
+		(div @linkbar) {
+			(exhaust) *(link bar paragraph)
+		}
+	(endif)
+
+(link bar paragraph) %% You, and intransitive actions
+	(div @barpar) {
+		(span @bold) (vlink [me] {You})
+		(exhaust) *(intransitive action) %% Put a bullet before each one
+	}
+
+(held $Obj)
+	(current player $Player)
+	*($Obj is #heldby $Player)
+
+(something held)
+	*(held $Obj)
+	~($Obj = #tools)
+
+(intransitive action)
+	(something held)
+	(bullet) ({inventory})
+
+(intransitive action)
+	(bullet) ({wait})
+
+(intransitive action)
+	(dreaming)
+	(bullet) ({wake up})
+
+(intransitive action)
+	~(any vignette is unvisited)
+	(bullet) ({finish})
+
+(any vignette is unvisited)
+	*(vignette $Room)
+	($Room is unvisited)
+
+(link bar paragraph) %% Current focus, and transitive actions
+	(current focus $Focus)
+	~{ (current player $Focus) ~(suggest transitive actions for player) }
+	%% It looks odd to have an empty “Yourself” line right under “You”
+	(div @barpar) {
+		(span @bold) { (uppercase) (vlink $Focus) }
+		(exhaust) *(transitive action $Focus) %% Likewise for bullets
+	}
+
+(suggest transitive actions for player) (fail) %% TODO: are there any?
+
+(held $Obj)
+	(current player $Player)
+	($Obj is #heldby $Player)
+(worn $Obj)
+	(current player $Player)
+	($Obj is #wornby $Player)
+
+%% Not actions per se, but this is the easiest way to implement them
+(transitive action (held $))
+	\( held \)
+(transitive action (worn $))
+	\( worn \)
+
+(transitive action (item $Obj))
+	~(held $Obj)
+	(bullet) (vlink {take (link name $Obj)} {take (them-or-yourself $Obj)})
+
+(transitive action (item $Obj))
+	(held $Obj)
+	(bullet) (vlink {drop (link name $Obj)} {drop (them-or-yourself $Obj)})
+
+(transitive action (item $Obj))
+	(held $Obj)
+	(current room $Room)
+	*($New has ancestor $Room)
+	(supporter $New)
+	(bullet) (vlink {put (link name $Obj) onto} {put (them-or-yourself $Obj) on something})
+
+(transitive action (item $Obj))
+	(held $Obj)
+	(current room $Room)
+	*($New has ancestor $Room)
+	(container $New)
+	(bullet) (vlink {put (link name $Obj) into} {put (them-or-yourself $Obj) in something})
+
+(transitive action (edible $Obj))
+	(bullet) (vlink {eat (link name $Obj)} {eat (them-or-yourself $Obj)})
+
+(transitive action (potable $Obj))
+	(bullet) (vlink {drink from (link name $Obj)} {drink from (them-or-yourself $Obj)})
+
+(transitive action (wearable $Obj))
+	~(worn $Obj)
+	(bullet) (vlink {wear (link name $Obj)} {wear (them-or-yourself $Obj)})
+
+(transitive action (wearable $Obj))
+	(worn $Obj)
+	(bullet) (vlink {remove (link name $Obj)} {remove (them-or-yourself $Obj)})
+
+%% #rope is only when untied
+(transitive action #rope)
+	(bullet) (vlink {tie (link name $Obj)} {tie (them-or-yourself $Obj)})
+
+%% (rope door $) is only when tied
+(transitive action (rope door $Obj))
+	(bullet) (vlink {untie (link name $Obj)} {untie (them-or-yourself $Obj)})
+
+(transitive action (liquid container $Obj))
+	(held $Obj)
+	(at most once) {
+		*($Source is in scope)
+		(liquid source $Source)
+	}
+	(bullet) (vlink {fill (link name $Obj)} {fill (them-or-yourself $Obj)})
+
+(transitive action (liquid container $Obj))
+	($Obj is filled with $)
+	(bullet) (vlink {empty (link name $Obj)} {empty (them-or-yourself $Obj)})
+
+(transitive action (liquid container $Obj))
+	($Obj is filled with $)
+	(bullet) (vlink {pour (link name $Obj) on} {pour (them-or-yourself $Obj) on something})
+
+(transitive action #lamp)
+	(#lamp is filled with #oil)
+	~(fire source #lamp)
+	(at most once) {
+		*($Source is in scope)
+		(fire source $Source)
+	}
+	(bullet) (vlink {light (link name #lamp)} {light it})
+
+(transitive action (fire source $Obj))
+	(bullet) (vlink {douse (link name $Obj)} {douse (them $Obj)})
+
+(transitive action (openable $Obj))
+	($Obj is open)
+	(bullet) (vlink {close (link name $Obj)} {close (them-or-yourself $Obj)})
+
+(transitive action (openable $Obj))
+	($Obj is closed)
+	(bullet) (vlink {open (link name $Obj)} {open (them-or-yourself $Obj)})
+
+(transitive action (lockable $Obj))
+	($Obj is unlocked)
+	(bullet) (vlink {lock (link name $Obj)} {lock (them-or-yourself $Obj)})
+
+(transitive action (lockable $Obj))
+	($Obj is locked)
+	(bullet) (vlink {unlock (link name $Obj)} {unlock (them-or-yourself $Obj)})
+
+(suggest pushing $) (fail) %% For things like buttons
+(transitive action $Obj)
+	(at most once) { (pushable $Obj) (or) (suggest pushing $Obj) }
+	(bullet) (vlink {push (link name $Obj)} {push (them-or-yourself $Obj)})
+
+(transitive action $Obj)
+	(at most once) { (rope door $Obj) (or) (actor supporter $Obj) }
+	~{ (current player $Player) ($Player has ancestor $Obj) }
+	(bullet) (vlink {climb (link name $Obj)} {climb (them-or-yourself $Obj)})
+
+(transitive action (door $Obj))
+	(at most once) { (door $Obj) (or) (actor container $Obj) }
+	~(rope door $Obj) %% Ropes are climbed, not entered
+	~{ (current player $Player) ($Player has ancestor $Obj) }
+	(bullet) (vlink {enter (link name $Obj)} {enter (them-or-yourself $Obj)})
+
+(transitive action (animate $Obj))
+	~(current player $Obj)
+	(bullet) (vlink {talk to (link name $Obj)} {talk to (them-or-yourself $Obj)})
+
+(transitive action $Obj)
+	($Obj divines to $)
+	(bullet) (vlink {divine (link name $Obj)} {divine (them-or-yourself $Obj)})
+
+(link bar paragraph) %% Room, and navigation
+	(current room $Room)
+	(div @barpar) {
+		(span @bold) (vlink [look] {(room header $Room)})
+		(if) (current player $Player) ($Player is $Rel $Parent) ~(room $Parent) (then)
+			\( (name $Rel) (vlink $Parent) \)
+			(bullet)
+			(if) ($Rel = #on) (then)
+				({stand up})
+			(else)
+				({get out})
+			(endif)
+		(endif)
+		(exhaust) {
+			*(direction $Dir)
+			(from $Room go $Dir to $Next)
+			{ (room $Next) (or) (door $Next) }
+			(bullet) ($Dir)
+		}
+	}
+
+%% We also need to give the player a way to enable and disable the suggestion bar
+%% For this game in particular, we start with it always enabled, even on Z-machine
+(suggestions enabled)
+(understand command [suggestions on])
+(perform [suggestions on])
+	(div @meta) { Suggestions will now be shown before each prompt
+	(if) ~(examined something) (then) \( once you’ve examined something \) (endif)
+	. }
+	(now) (suggestions enabled)
+(understand command [suggestions off])
+(perform [suggestions off])
+	(div @meta) { Suggestions will no longer be shown before the prompt. }
+	(now) ~(suggestions enabled)
+
+(option paragraph)
+	(if) (suggestions enabled) (then)
+		Suggestions will be shown before each prompt
+		(if) ~(examined something) (then) \( once you’ve examined something \) (endif)
+		. Use (command link {SUGGESTIONS OFF}) to change this.
+	(else)
+		Suggestions will not be shown before the prompt. Use (command link {SUGGESTIONS ON}) to change this.
+	(endif)
+
+%% And to allow PUT X ONTO and PUT X INTO to work, we need new actions
+(grammar [put [held] on something] for [put $ #on])
+(grammar [put [held] onto] for [put $ #on])
+(perform [put $Obj #on])
+	Onto what?
+	(asking for object in [put $Obj #on []])
+(grammar [put [held] in something] for [put $ #on])
+(grammar [put [held] into] for [put $ #in])
+(perform [put $Obj #in])
+	Into what?
+	(asking for object in [put $Obj #in []])
+
+%% And extend DRINK a little; don’t know why this isn’t standard already
+(grammar [drink/sip from [object]] for [drink $])
+
+%% Likewise we’re using old-fashioned lighting for this game
+(grammar [light/burn/ignite [object]] for [light $])
+(grammar [douse [object]] for [douse $])
+(grammar [put out [object]] for [douse $])
+(grammar [put [object] out] for [douse $])
+
+(prevent [light (fire source $Obj)])
+	(The $Obj) (is $Obj) already alight.
+
+(prevent [light $Obj])
+	~{
+		*($Source is in scope)
+		(fire source $Source)
+	}
+	You have no source of fire.
+
+(prevent [light $Obj])
+	~(item $Obj)
+	If (the $Obj) actually did catch fire, it might end very badly for you!
+
+(perform [light $Obj])
+	(The $Obj) refuse(s $Obj) to ignite.
+	(tick) (stop)
+
+(prevent [douse $Obj])
+	~(fire source $Obj)
+	(The $Obj) (is $Obj) not burning.
+
+(perform [douse $Obj])
+	You have no way to douse the flames.
+	(tick) (stop)

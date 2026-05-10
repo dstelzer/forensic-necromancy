@@ -1,0 +1,24 @@
+%% Change this if C64 ever supports (status bar $ with height $)
+(style class @fullstatus)
+	height: 6em;
+(style class @fulldream)
+	height: 6em;
+
+(italic correction) (space 1)
+
+(style class @meta)
+	font-style: italic;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @tutorial)
+	font-style: italic;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @title)
+	font-weight: bold;
+	margin-top: 1em;
+
+(style class @roomheader)
+	margin-top: 1em;

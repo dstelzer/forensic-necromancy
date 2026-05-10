@@ -178,7 +178,7 @@ All the people mentioned in this story are real. The murderer of Siin-ahhe-eriba
 
 For a long time, our only information came from the Bible (2 Kings 19:36-37):
 
-*So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-utzur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.*
+*So Sennacherib \[Siin-ahhe-eriba\] king of Assyria departed, and went and returned, and dwelt at Nineveh. And it came to pass, as he was worshipping in the house of Nisroch \[???\] his god, that Adrammelech \[Urad-Mullissi\] and Sharezer \[???-sharru-utzur\] his sons smote him with the sword: and they escaped into the land of Armenia. And Esarhaddon \[Asshur-ahu-iddina\] his son reigned in his stead.*
 
 This seems to have been the official explanation, and in 1979, Simo Parpola found more evidence to support it: a clay tablet called SAA 18 100\. While it’s damaged, the surviving text is quite suggestive:
 
@@ -186,23 +186,23 @@ This seems to have been the official explanation, and in 1979, Simo Parpola foun
 
 Parpola argued (“The Murderer of Sennacherib”) that Urad-Mullissi was indeed guilty. In his interpretation, Urad-Mullissi came up with a scheme to take back his birthright by force: when Asshur-ahu-iddina was sent out of Nineveh for his own safety, Urad-Mullissi murdered his father and tried to seize the throne. But the people refused to accept him, and Asshur-ahu-iddina returned with an army, sending Urad-Mullissi fleeing to Armenia. This accords well with the biblical evidence, and was widely accepted for several decades.
 
-In 2020, though, Knapp reopened the question (“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”). Parpola had framed his paper as a legal argument, so Knapp responded with a defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself\!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace (rather than to protect him). If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina catch him flat-footed with an entire army? And perhaps most damningly, Asshur-ahu-iddina’s own writings never actually accuse his brothers of the murder, only of slandering him to their father. *Cui bono*: what if the murderer was the one person who benefitted the most?
+In 2020, though, Andrew Knapp reopened the question (“The Murderer of Sennacherib, yet Again: The Case Against Esarhaddon”). Parpola had framed his paper as a legal argument, so Knapp responded with a defense of Urad-Mullissi, trying to create reasonable doubt. Other documents from Asshur-ahu-iddina’s reign—including some written by the man himself\!—suggest that his brothers had successfully turned their father against him, getting him exiled in disgrace (rather than to protect him). If Urad-Mullissi had planned the assassination, how did Asshur-ahu-iddina manage to muster an entire army and still catch him flat-footed? And perhaps most damningly, Asshur-ahu-iddina’s own writings never actually accuse his brothers of the murder, only of slandering him to their father. *Cui bono*: what if the murderer was the one person who benefitted the most?
 
-Then in 2021 came another breakthrough. Dalley and Siddall (“A Conspiracy to Murder Sennacherib?”) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written *before* the regicide, as Urad-Mullissi collected evidence that his brother was trying to frame him, to present to his father.
+Then in 2021 came another breakthrough. Stephanie Dalley and Luis Siddall (“A Conspiracy to Murder Sennacherib?”) presented a new translation and analysis of the letter, based on new fragments of the tablet discovered after Parpola’s original paper. “Prior to the murder”, in their interpretation, should actually be “at the first meeting”, and Urad-Mullissi did not “execute” the brothers but “dismissed” them. In other words, the author isn’t writing after the regicide to tell Asshur-ahu-iddina that two of his court officials are treasonous—instead, this document was written *before* the regicide. Urad-Mullissi was collecting evidence that his brother was trying to frame him, so he could present a strong case to his father.
 
-Their arguments make quite a lot of sense to me. Other documents show that Tzillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale (“The Story of Ahiqar”) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner, and Tzillaya held onto his post despite being embroiled in at least TODO NUMBER separate scandals. Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved?
+Their arguments make quite a lot of sense to me. Other documents show that Tzillaya and Nabuu-shumu-ishkun remained in Asshur-ahu-iddina’s cabinet well into his reign—in fact, one folk tale (“The Story of Ahiqar”; see the edition by Conybeare, Harris, and Smith) gives Nabuu-shumu-ishkun as the name of Asshur-ahu-iddina’s favorite executioner, and Tzillaya held onto his post despite being embroiled in multiple scandals (see Reynolds, “The Babylonian Correspondence of Esarhaddon”). Why would a famously-paranoid king keep his father’s officials around unless he was certain they were loyal to him? And why would Urad-Mullissi plot treason in the heart of Babylonia of all places—a region where he was hated, but his younger brother was loved?
 
 As such, I think the version of events shown in this game is most likely: that Asshur-ahu-iddina tried to frame his brother for conspiracy, failed, and fled Nineveh to avoid his father’s retribution. Before the king could reinstate Urad-Mullissi as crown prince, Asshur-ahu-iddina’s loyalists (perhaps including his mother) had the king assassinated, and while the court was still reeling from the news, Asshur-ahu-iddina’s forces marched on Nineveh. Urad-Mullissi fled to Armenia as the new king began to eliminate his brothers and other male relatives, and Asshur-ahu-iddina spent his reign in a state of constant paranoia, purging his own administrators and any males he considered insufficiently loyal. After the regicide, he could never fully trust another man.
 
-(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation. It’s equally possible they returned, handsomely rewarded, to Babylon.)
+(The fate of the Babylonian goldsmiths, on the other hand, is entirely my own speculation. It’s equally possible they returned home handsomely rewarded to live out the rest of their days in luxury.)
 
-If you’re interested in reading more, all of these papers should be available online with some searching; if not, send me an email, and I’ll gladly share my copies. You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” (different inflections) or “Warad” or “Arad” (different dialects) or some combination of those; each author tends to pick the form they prefer. But I’ve simplified and glossed over many details here—please check the sources if you’re interested\!
+If you’re interested in reading more, most of these papers are available online with some searching; you can also send me an email, and I’ll gladly share my copies. You’ll likely find some variation in the names: the first half of Urad-Mullissi’s name, for example, is definitely the Akkadian word for “servant”, but the cuneiform doesn’t tell us exactly how it was pronounced. So you might also find “Urdu” or “Urda” (different inflections) or “Warad” or “Arad” (different dialects) or some combination of those; each author tends to pick the form they prefer. But I’ve simplified and glossed over many details here—please check the sources if you’re interested\!
 
 # Encyclopedia Entries
 
 ## **Babylon**
 
-At one time, the capital of the Babylonian Empire; in the time of Nineveh, though, it was a vassal state of the Neo-Assyrians. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+At one time, the capital of the Babylonian Empire; in the time of Nineveh, though, it was a vassal state of the Neo-Assyrians. Even so, it remained a famous center of art, culture, and religion that never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 
 ## **Nineveh**
 
@@ -214,7 +214,7 @@ An Iron Age state that was briefly the largest and most powerful empire the worl
 
 ## **Siin-ahhe-eriba**
 
-King of the Neo-Assyrian Empire from 705 to 681 BCE, best known for renovating the capital at Nineveh, and for destroying the city of Babylon after rebels there killed his eldest son. His name means “Siin has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
+Ruler of the Neo-Assyrian Empire from 705 to 681 BCE. Best known for renovating the capital at Nineveh, and for destroying the city of Babylon after rebels there killed his eldest son. His name means “Siin has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
 
 ## **Urad-Mullissi**
 
@@ -222,7 +222,7 @@ A son of Siin-ahhe-eriba. He was the obvious choice for crown prince, as the eld
 
 ## **Asshur-ahu-iddina**
 
-King of the Neo-Assyrian Empire from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of Siin-ahhe-eriba by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “Asshur has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
+Ruler of the Neo-Assyrian Empire from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of Siin-ahhe-eriba by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “Asshur has given a brother” (not a very heir-ish name!), and is transcribed in Hebrew as “Esarhaddon”.
 
 ## **Gods**
 

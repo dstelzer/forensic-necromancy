@@ -99,15 +99,9 @@
 %% It wouldn’t be hard to write a wrapper around this to draw a map of all layers; use this code as a template to calculate the min and max Z-values, then draw a map of each of those layers
 %% It just hasn’t been done here since a 3D map can get out of hand very quickly
 
-%% For the sake of looking good on Z-machine, we also add a hacky little adjustment to this to center it manually; on Å-machine, we can trust the interpreter to handle this for us
-
-@(draw map of layer $Z)
-	(draw map of layer $Z with centering [])
-@(draw centered map of layer $Z)
-	(draw map of layer $Z with centering 1)
 (global variable (map margin 0)) %% It’s more efficient to store this in a global than to recalculate it throughout the rendering
 
-(draw map of layer $Z with centering $C)
+(draw map of layer $Z)
 	(collect $Room)
 		*(usable room $Room at [$ $ $Z])
 	(into $Rooms)
@@ -140,7 +134,7 @@
 		($XMaxNew = $XMax)
 	(endif)
 	
-	(if) ~($C = []) ~(interpreter handles centering) (then)
+	(if) ~(interpreter supports text alignment) (then)
 		($XMaxNew minus $XMinNew into $dXNew)
 		(delta-x $dXNew means $Margin margin) %% Falls back to 0 if this can’t be calculated for any reason
 		(now) (map margin $Margin)
@@ -256,7 +250,7 @@
 			(if) (current room $Room) (then)
 				look
 			(else)
-				go to (the linking $Room)
+				go to (link name $Room)
 			(endif)
 		(into $Command)
 		(if) (use hyperlinks in map) (then)
@@ -276,13 +270,9 @@
 %% This is one you probably want to override in your own game: it controls what character is drawn in the middle of each room, by default an @ for the player and a space for anything else
 %% But look at the Labyrinthine Library of Xleksixnrewix for an example of a different way to do it, where enemies, traps, and rooms an enemy has passed through are all drawn differently
 
-(full room glyph $Room) %% For regression testing we want different characters
-	($Room has puzzle $ usable)
-	(in debugger)
-	(span @puzzle) { \[ (no space) (room glyph $Room) (no space) \] (no space) }
 (full room glyph $Room)
 	($Room has puzzle $ usable)
-	(span @puzzle) { \( (no space) (room glyph $Room) (no space) \) (no space) }
+	(span @puzzle) { \[ (no space) (room glyph $Room) (no space) \] (no space) }
 (full room glyph $Room)
 	\( (no space) (room glyph $Room) (no space) \) (no space)
 
@@ -294,6 +284,10 @@
 
 (room glyph (current room $))
 	\@
+
+(room glyph $Room)
+	($Room has puzzle $ usable)
+	?
 
 (room glyph $) %% Default: a single space
 	(space 1)
@@ -423,4 +417,98 @@
 		($Tmp3 minus 1 into $Lines)
 	(else)
 		($Tmp3 = $Lines)
+	(endif)
+
+(map of current layer needs $N lines)
+	(current room $Room)
+	($Room has coordinates [$ $ $Z])
+	(map of layer $Z needs $N lines)
+
+%% The actual status bar implementation usually needs to be handled by the game itself, because there may be other things that belong in the status bar too
+%% But we can implement a MAP command here at least
+
+(define resource @mapfont)
+	CartographyMono-Medium.woff2,
+	font-family: "Cartography",
+	font-weight: "normal"
+
+(startup)
+	(if) (interpreter can embed @mapfont) (then)
+		(embed resource @mapfont) %% Embed into the HTML
+	(endif)
+
+(style class @map)
+	font-family: Cartography, monospace;
+	text-align: center;
+	margin-top: 0.25em; %% Will be ignored except on web
+	margin-bottom: 0.25em;
+
+(style class @mapholder)
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(automap internal)
+	(current room $Room)
+	($Room has coordinates [$ $ $Z])
+	(div @map) (draw map of layer $Z)
+
+%% Backtrack to recover memory after drawing
+(automap)
+	(automap internal) (fail) (or)
+
+(understand command [map])
+(unlikely [exits]) %% Make sure [map] doesn’t disambiguate
+(perform [map])
+	(div @mapholder) (automap)
+
+(startup)
+	(if) (interpreter supports status bar) (then)
+		%% Normal terp with a status bar
+		(now) (map enabled)
+	(elseif) (in debugger) (then)
+		%% Debugger with inline status but not top status
+		(now) (map enabled)
+	(else)
+		%% Basic terp with no status support
+		(now) ~(map enabled)
+	(endif)
+
+%% Call this in your (redraw status bar) rules
+(interface (draw automap outside of status bar if applicable))
+(draw automap outside of status bar if applicable)
+	~(map enabled)
+	%% Do nothing
+(draw automap outside of status bar if applicable)
+	(interpreter supports status bar)
+	%% Do nothing
+(draw automap outside of status bar if applicable)
+	(div @mapholder) (automap)
+
+(understand command [map on])
+(perform [map on])
+	(div @meta) { A map will be shown
+		(if) (interpreter supports status bar) (then)
+			at the top of the screen
+		(else)
+			before each prompt
+		(endif)
+		.
+	}
+	(now) (map enabled)
+(understand command [map off])
+(perform [map off])
+	(div @meta) { The map will no longer be shown automatically. You can still view it with the (command link {MAP}) command. }
+	(now) ~(map enabled)
+
+(option paragraph)
+	(if) (map enabled) (then)
+		The map will be shown
+		(if) (interpreter supports status bar) (then)
+			at the top of the screen
+		(else)
+			before each prompt
+		(endif)
+		. Use (command link {MAP OFF}) to change this.
+	(else)
+		The map will not be shown unless requested with the (command link {MAP}) command. Use (command link {MAP ON}) to change this.
 	(endif)

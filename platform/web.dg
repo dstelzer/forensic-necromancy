@@ -1,0 +1,40 @@
+(style class @fullstatus)
+	height: auto;
+
+(style class @fulldream)
+	height: auto;
+	%% TODO - color change here
+
+(italic correction)
+
+(backend-specific options tutorial) You can find some other options in the ≡ menu at the top right corner of the page.
+
+(style class @meta)
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-family: sans-serif;
+
+(style class @tutorial)
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-family: sans-serif;
+
+(style class @title)
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: 1em;
+	margin-bottom: .5em;
+
+(style class @roomheader)
+	margin-top: .5em;
+	font-size: 1.2em;
+
+(style class @gameover)
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
