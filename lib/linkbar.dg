@@ -1,4 +1,4 @@
-(extension version) Suggestion Bars v0.1 by Daniel Stelzer.
+(draconic extension version $Closure) ($Closure = {Suggestion Bars 1.0})
 
 (style class @linkbar)
 	border: 1px solid rgb\(128, 128, 128\);
@@ -40,6 +40,7 @@
 	(tick)
 
 %% Link a list of objects with commas in between
+(interface (link list $<List))
 (link list $List)
 	(listing $List {(vlink $_)} @, @the 0)
 
@@ -184,7 +185,7 @@
 
 %% #rope is only when untied
 (transitive action #rope)
-	(bullet) (vlink {tie (link name $Obj)} {tie (them-or-yourself $Obj)})
+	(bullet) (vlink {tie (link name #rope)} {tie (them #rope)})
 
 %% (rope door $) is only when tied
 (transitive action (rope door $Obj))
@@ -326,7 +327,7 @@
 (prevent [light (fire source $Obj)])
 	(The $Obj) (is $Obj) already alight.
 
-(prevent [light $Obj])
+(prevent [light $])
 	~{
 		*($Source is in scope)
 		(fire source $Source)
@@ -345,6 +346,6 @@
 	~(fire source $Obj)
 	(The $Obj) (is $Obj) not burning.
 
-(perform [douse $Obj])
+(perform [douse $])
 	You have no way to douse the flames.
 	(tick) (stop)

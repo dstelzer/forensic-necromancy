@@ -5,3 +5,4 @@ out
 .lsp 
 .clj-kondo/cache
 secrets/*.dg
+vvv.log

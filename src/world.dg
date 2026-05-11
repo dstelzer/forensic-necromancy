@@ -2,14 +2,6 @@
 %%%%%%%%%                          Introduction                         %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-(story title) Forensic Necromancy: A Murder in Nineveh
-(story author) Daniel M. Stelzer
-(story ifid) 185CEA3F-ED51-498B-92D7-C1A62F2D431C
-(story noun) A Historical Mystery
-(story release 1)
-(story blurb)
-	The theory holds up, and the lab data is promising. But if you want to be the first PhD in Forensic Necromancy, you need results the world can’t ignore. Which is why you’re now creeping through Nineveh in the dead of night, searching for human remains in situ. What millennia-old secrets are waiting to be unearthed? And most importantly—will they be enough to impress a thesis committee?
-
 %% Required by TALJ rules
 (content warnings)
 	(div @meta) {
@@ -47,7 +39,7 @@
 	(now) (tutorial is active)
 	(div @meta) { Tutorial messages will now be shown at various points. }
 (give the tutorial) ~(tutorial is active)
-(options paragraph)
+(option paragraph)
 	(if) (tutorial is active) (then)
 		Tutorial messages will appear at various points. Use (command link {TUTORIAL OFF}) to change this.
 	(else)
@@ -113,10 +105,11 @@
 	~(taught inventory)
 	(current focus $Obj)
 	(item $Obj)
+	(fully bound $Obj) %% Compiler objections
 	(div @tutorial) {
 		When you see a small object, like (the $Obj), you can pick it up and take it with you. Try to (command link {take (the $Obj)}).
 	}
-	(now) (hinted items)
+	(now) (taught items)
 
 (give the tutorial)
 	~(taught interaction)
@@ -207,7 +200,7 @@
 
 (prevent [take *]) %% Needs to handle both TAKE COMPASS and TAKE PILLS
 	You’ve got them all close at hand, ready to use when the moment comes.
-	(if) (current room #dig/#looseearth/#deeppit) (then)
+	(if) (current room $Room) ($Room is one of [#dig #looseearth #deeppit]) (then)
 		All you have to do now is (link) {divine the bones} .
 	(endif)
 
@@ -215,13 +208,13 @@
 (room *)
 (name *) camp
 (your *)
-(room heading *) Your camp
+(room header *) Your camp
 (look *)
 	The main field crew keeps their equipment off to the (#south), but you’ve made an unobtrusive little camp here
 	(if) (#backpack is pristine) (then)
 		: your (#bike) locked to a piece of machinery, your (#backpack) looped over the handlebars.
 	(else)
-		, with your (#bike) locked to a convenient piece of (zlink {machinery}) .
+		, with your (#bike) locked to a convenient piece of ({machinery}) .
 	(endif)
 
 (from * go #south to #realcamp) ~(real camp explained)
@@ -277,8 +270,8 @@
 (descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 at night. Passing out from dehydration won’t get your thesis finished.
 
 (instead of [open/empty *]) (try [drink *])
-(instead of [fill * | $]) There’s nothing else around to fill it from. Better make it last.
-(narrate drinking *) You take a judiciously-measured drink. Compared to the air around you, it’s still nice and cold.
+(prevent [fill * | $]) There’s nothing else around to fill it from. Better make it last.
+(perform [drink *]) You take a judiciously-measured drink. Compared to the air around you, it’s still nice and cold.
 
 %% Book and rope are also in backpack: see systems.dg
 
@@ -287,7 +280,7 @@
 (dict *) origin
 (heads *) above
 (room *)
-(look *) From this upper rim you can see the whole excavation spread out below you, marked out with (zlink {string}) into a chessboard of squares. A (zlink {metal post}) marks the origin point of the whole thing.
+(look *) From this upper rim you can see the whole excavation spread out below you, marked out with ({string}) into a chessboard of squares. A ({metal post}) marks the origin point of the whole thing.
 
 (from * go #south to #realcamp) ~(real camp explained)
 (from * go #north to #nabiyunus)
@@ -502,18 +495,22 @@
 	~(lower rope connected)
 	ERROR: You should never be able to trap yourself in the tunnel. Please report how you did this!
 
-%% These two exits disappear once you try either
-(from * go #northwest to #tunnel2) ~(tunnel darkness refused)
-(from * go #southeast to #tunnel2) ~(tunnel darkness refused)
+(from * go #northwest to #tunnel2)
+(from * go #southeast to #tunnel2)
 
-(prevent [leave * #northwest/#southeast])
+#tunnel2
+(room *)
+(name *) Tunnel 2
+(look *) You should never be here. Go northwest to get back to the main game.
+(never accessible *)
+(from * go #northwest to #tunnel)
+(prevent entering *)
 	Only this little section has been rigged up with lights, and who knows what damage you might do stumbling around in the dark? Whatever you need,
 	(if) (#m-unfinished is unvisited) (then)
 		you’ll have to hope it’s right here.
 	(else)
 		it should be right here.
 	(endif)
-	(now) (tunnel darkness refused)
 
 #lighting
 (name *) electric lights
@@ -558,7 +555,7 @@
 	All around, other memories have forced their way in like tree roots cracking through a sidewalk. To the south, the walkway runs headlong into the front of a mud-brick house, its (vlink {door})
 	(if) (#door is open) (then)
 		standing open
-	(elseif) (#door is openable) (then)
+	(elseif) (#door is unlocked) (then)
 		loosely closed
 	(else)
 		firmly barred from the other side
@@ -586,7 +583,7 @@
 (from * go #down to #west)
 (from * go #west through #light to #n-workshop) ~(statue is turned)
 (from * go #west to #n-workshop) (statue is turned)
-(from * go #south through #door to #n-home)
+(from * go #south through #door to #n-house)
 
 (from * go #northwest to #n-execution)
 
@@ -607,7 +604,7 @@
 	The stout man looks back at his tablet. “There will be no trial. The sentence is final, by order of Prince Urad-Mullissi.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?”
 	
 	%% A few topics are mentioned
-	(unlock #t-babylonia)
+	(unlock #t-babylon)
 	(unlock #t-siin-ahhe-eriba)
 	(unlock #t-urad-mullissi)
 
@@ -791,7 +788,7 @@
 	He shushes you, and you go quiet as the messenger continues. “In one month’s time, all the lords of Babylonia will assemble at the Great Palace in Nineveh to renew your oaths of fealty. May His Maj—” (par)
 	That’s when a vegetable hits him across the face. “Heir or no heir, he’s no true king until he’s crowned by Marduk!” The messenger tries to get back to his feet, but the whole audience is shouting now. “Send soldiers if you want! What’ll they do that they haven’t done already?” “Make him remember what happened to the last crown prince who set foot in Babylon!” (par)
 	“Come on!” Sharhiya grabs you by the shoulder, and the pair of you turn and run. There’s no sign of the messenger now behind the crowd of angry Babylonians.
-	(unlock #t-babylonia)
+	(unlock #t-babylon)
 	(unlock #t-gods)
 	(unlock #t-siin-ahhe-eriba)
 	(unlock #t-urad-mullissi)
@@ -841,7 +838,7 @@
 
 #bucket
 (name *)
-	(if) (* is pristine) (then) dropped (end if)
+	(if) (* is pristine) (then) dropped (endif)
 	bucket
 (item *)
 (* is #in #n-announcement)
@@ -888,11 +885,11 @@
 (intangible *)
 ~(action [enter *] requires * to be touched) %% You don’t have to touch it to enter it
 (when * blocks passage)
-	~(current room #workshop) %% One-way door
+	~(current room #n-workshop) %% One-way door
 	~(worn #blindfold)
 	You squint your eyes and try to move through the light, but it’s like pushing against a strong wind: it burns in your eyes, physically forcing you back. Eventually you’re forced to retreat, tears streaming down your face.
 (when * blocks passage)
-	(current room #workshop)
+	(current room #n-workshop)
 	(current player $Player)
 	~(#blindfold has ancestor $Player)
 	It wouldn’t be hard to move through the light in this direction, but if you left the blindfold behind, how would you ever get back?
@@ -972,6 +969,21 @@
 
 (from * go #northeast to #n-workshop)
 
+#lamp
+(name *) oil lamp
+(item *)
+(liquid container *)
+(* is #in #n-argument)
+(descr *)
+	It’s shaped like a clay bowl with a little spout at one end.
+	(if) (* is filled with $Liquid) (then)
+		The bowl is currently filled with (name $Liquid)
+		(if) (fire source *) (then)
+			, and a small but steady flame shines from the end of the spout
+		(endif)
+		.
+	(endif)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                       Dreams of Sharhiya                      %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1047,7 +1059,7 @@
 	(unlock #t-urad-mullissi)
 	
 	(select) %% Apply blindfold the first time
-		(now) (#blindfold is #wornby #player)
+		(now) (#blindfold is #wornby #p-memory)
 	(or)
 	(stopping)
 
@@ -1322,9 +1334,9 @@
 	Now, you just have to write it...
 	(game over {The End})
 
-(final question option)
+(game over option)
 	see the real HISTORY behind this game
-(parse final question option [history])
+(parse game over [history])
 	(history)
 	(pause)
 

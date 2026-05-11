@@ -1,4 +1,4 @@
-(extension version) Versatile Linking v0.1 by Daniel Stelzer.
+(draconic extension version $Closure) ($Closure = {Versatile Linking 1.0})
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 
@@ -51,6 +51,9 @@
 
 (style class @link) %% A link to an object or room, which we want to highlight on Z-machine and in the transcript, as well as on Å-machine (where it’ll be formatted as a proper link no matter what we do)
 	color: \#c95c03; %% This color should be fairly visible in both dark and light color schemes; if it doesn’t work for someone, they can use brackets
+
+(interface (color link $<Closure))
+(interface (color link $<Link $<Closure))
 
 %% BRACKETS setting will replace the color with [brackets]
 (color link $Closure)
@@ -108,6 +111,9 @@
 %% Closures are lists starting with numbers - this may hit some false positives, but will *not* get false positives on lists of objects, which is what matters here
 (closure [(number $) | $])
 
+%% (interface ($<What))
+%% (interface ($<Words $<What))
+
 ((current player $Player))	(color link [me] {(name $Player)})
 ((object $Object))			(color link {(name $Object)})
 ((closure $Closure))		(color link $Closure)
@@ -120,6 +126,9 @@
 
 %% Third, the versatile (vlink $) and (vlink $ $) implementation
 
+(interface (vlink $<What))
+(interface (vlink $<Link $<What))
+
 (vlink (closure $Closure))		(color link $Closure)
 (vlink (list $Words))			(vlink {(print words $Words)})
 (vlink (object $Object))		(vlink {(link name $Object)} {(the $Object)})
@@ -127,6 +136,8 @@
 (vlink (closure $Closure) $Any)		(collect words) (query $Closure) (into $Words)
 									(word-vlink $Words $Any)
 (vlink $Words $Any)					(word-vlink $Words $Any)
+
+(interface (word-vlink $<Words $<What))
 
 %% Using a separate predicate here ensures that a $Words list starting with a number doesn’t cause an infinite loop
 (word-vlink $Words (closure $Closure))	(color link $Words $Closure)
@@ -136,12 +147,16 @@
 %% Fourth, (link name $) to deal with personal pronouns in (vlink $Object)
 %% While (the $) is how something should be shown to the player, (link name $) is how it should be typed in a command: X ME, not X YOURSELF
 
+(interface (link name $<Obj))
+
 (link name (current player $))		me
 (link name (your $Your))			my (name $Your)
 (link name $Object)					(the $Object)
 
-%% Finally, (command link $) is like (zlink $) but in a fixed-pitch font
+%% Finally, (command link $) is like (color link $) but in a fixed-pitch font
 %% To avoid a weird bug with spans inside closures, we have to put the closure inside a span instead - this predicate makes sure it doesn’t happen the wrong way around
+
+(interface (command link $<Closure))
 
 (style class @command)
 	font-family: monospace;

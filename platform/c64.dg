@@ -4,6 +4,7 @@
 (style class @fulldream)
 	height: 6em;
 
+(interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) (space 1)
 
 (style class @meta)

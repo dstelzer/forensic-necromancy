@@ -1,8 +1,7 @@
 %% (1, 1) should be the top left corner of each map, to avoid going into the negatives
 %% Z = 0 for real world, Z = 1 for dream world
 
-(extension version)
-	Automap version 1.1 by Daniel Stelzer.
+(draconic extension version $Closure) ($Closure = {Automap 1.2})
 
 %% Shortcuts not needed for this game
 

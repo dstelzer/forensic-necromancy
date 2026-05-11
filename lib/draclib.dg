@@ -1,0 +1,7 @@
+(extension version)
+	(collect $Closure)
+		*(draconic extension version $Closure)
+	(into $List)
+	Draconis extensions \(
+	(listing $List {(query $_)} @and @the 0) %% And-listing
+	\)

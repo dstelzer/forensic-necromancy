@@ -5,6 +5,7 @@
 	height: auto;
 	%% TODO - color change here
 
+(interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction)
 
 (backend-specific options tutorial) You can find some other options in the ≡ menu at the top right corner of the page.

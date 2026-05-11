@@ -4,7 +4,10 @@
 %% These are the equivalent of platform/ for building
 (style class @fullstatus)
 	height: 1em;
+(style class @fulldream)
+	height: 1em;
 
+(interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction)
 
 (style class @meta)

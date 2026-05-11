@@ -15,7 +15,7 @@
 	~(interpreter supports status bar)
 	%% Don’t even try
 (top status bar)
-	(if) (map enabled) (cartography enabled) (then) %% Status bar map
+	(if) (map enabled) (then) %% Status bar map
 		(map of current layer needs $N lines)
 		($N plus 1 into $Np1)
 		(if) (dreaming) (then) %% Change the color of the status bar if possible to signal that something is different (see platform/ for detail)
@@ -81,15 +81,16 @@
 		(bullet) (link) restore
 		(bullet) (link resource @hints) hints
 		(bullet) (link) about
+		(bullet) (link) think
 	}
-%% For this game, this will always be exactly 37 characters long
+%% For this game, this will always be exactly 45 characters long
 (meta verbs)
 	(interpreter supports text alignment)
 	(meta verbs with margin 0)
 (meta verbs)
 	~(interpreter supports text alignment)
 	(current div width $Width)
-	($Width minus 37 into $DoubleMargin)
+	($Width minus 45 into $DoubleMargin)
 	($DoubleMargin divided by 2 into $Margin)
 	(meta verbs with margin $Margin)
 
@@ -103,14 +104,14 @@
 	text-align: center;
 
 (pause)
-	(if) (interpreter supports links) (then) %% Links only provide line input, not character input, so we need to use (get input $) for this
+	(if) (interpreter supports links) (then) %% Another link could be clicked during this process, so we have to be ready for this
 		*(repeat forever)
 		(if) (interpreter supports inline status bar) (then) %% An inline status bar will disappear on the next turn, so it’s ideal
 			(inline status bar @pause) {
 				(link []) { \[\[Continue\]\] }
 			}
 		(else) %% Otherwise, try to make it look okay in the transcript
-			(div @pause) { (link) { \* \* \* } }
+			(div @pause) { (link []) { \* \* \* } }
 		(endif)
 		(if) (in debugger) (then) (line) > (endif) %% Skein requires this
 		(get input $Words) %% Just wait for a link to be clicked, then continue
@@ -119,6 +120,13 @@
 			(fail)
 		(endif)
 	(else) %% No links, so we can do a standard “wait for any key” (which is the standard way to handle this on Z-machine)
+		(div @pause) {
+			(select)
+				\* \* \* \[ Press any key to continue. \] \* \* \*
+			(or)
+				\* \* \*
+			(stopping)
+		}
 		(any key)
 		(par)
 	(endif)

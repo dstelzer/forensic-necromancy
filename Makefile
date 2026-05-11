@@ -2,6 +2,10 @@ SOURCES=$(shell dgt sources)
 
 build: web itch.zip vanisher.z5
 
+vvv.log: $(SOURCES) platform/z5.dg
+	dialogc -t z5 platform/z5.dg $(SOURCES) -vvv -o tmp.z5 >vvv.log 2>&1
+	rm tmp.z5
+
 vanisher.web.aastory: $(SOURCES) platform/web.dg
 	dialogc -t aa platform/web.dg $(SOURCES) -vv -o vanisher.web.aastory 2>&1 | tee build.web
 

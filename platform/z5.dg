@@ -5,6 +5,7 @@
 	height: 2em;
 	%% TODO - change colors here
 
+(interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) (space 1)
 
 (style class @meta)

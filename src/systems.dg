@@ -84,7 +84,7 @@
 (prevent [tell (animate $) to | $]) (when dreaming)
 (prevent [give/show $ to (animate $)]) (when dreaming)
 (prevent $Action)
-	*($Action requires $Obj to be touched)
+	*(action $Action requires $Obj to be touched)
 	(animate $Obj)
 	(when dreaming)
 
@@ -142,7 +142,7 @@
 	With the wheels unlocked, it won’t make a good anchor. And for dragging it around, the handle is easier without a rope.
 
 (perform [tie * to #cart])
-	(current room #deep)
+	(current room #deeppit)
 	You check the locks on the wheels, loop the rope around underneath, double-check the locks on the wheels, and toss the end down into the pit. Then triple-check the locks on the wheels, just to be sure.
 	(now) (* is nowhere)
 	(now) (lower rope connected)
@@ -270,8 +270,8 @@
 
 %% Now we need to override stdlib a bit to make (un)locking not need a key
 
-(prevent [lock/unlock * with $Obj])
-	This isn’t the sort of lock that needs a key—just (link) {push the little lever} by the wheels.
+(prevent [lock/unlock * with $])
+	This isn’t the sort of lock that needs a key—just ({push the little lever}) by the wheels.
 
 (perform [lock *])
 	You flip the lever and lock the wheels in place. Now it would take well more than your strength to move it—it should easily hold your weight.
@@ -389,9 +389,11 @@
 
 %% Now for the actual contents!
 
-(style class @topic)
+(style class @topic) %% TODO: Z-machine
 	text-decoration: underline;
 	text-decoration-style: dotted;
+
+(supposed to be nowhere *(topic $))
 
 #t-babylon
 (name *) Babylon
@@ -426,6 +428,7 @@
 (name *) Siin-ahhe-eriba
 (dict *) siin ahhe eriba sennacherib
 (heads *) eriba
+(proper *)
 (topic *)
 (dictionary entry for *)
 	King of the (span @topic) {Neo-Assyrian Empire} from 705 to 681 BCE, best known for renovating the capital at Nineveh, and for destroying the city of (span @topic) Babylon after rebels there killed his eldest son. His name means “(no space) (span @topic) Siin has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
@@ -438,6 +441,7 @@
 (name *) Urad-Mullissi
 (dict *) urad mullissi adrammelech
 (heads *) urad
+(proper *)
 (topic *)
 (dictionary entry for *)
 	A son of (span @topic) Siin-ahhe-eriba . He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared Asshur-ahu-iddina his heir instead. His name means “servant of (span @topic) Mullissu (no space)”, and is transcribed \( somewhat mangled \) in Hebrew as “Adrammelech”.
@@ -449,6 +453,7 @@
 (name *) Asshur-ahu-iddina
 (dict *) asshur ahu iddina esarhaddon
 (heads *) iddina
+(proper *)
 (topic *)
 (dictionary entry for *)
 	King of the (span @topic) {Neo-Assyrian Empire} from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of (span @topic) Siin-ahhe-eriba by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(no space) (span @topic) Asshur has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
@@ -460,6 +465,7 @@
 (name *) gods and goddesses
 (dict *) god goddess siin mullissu mullissi asshur nabuu anshar marduk
 (heads *) siin mullissu mullissi asshur %% Since these also appear in names
+(plural *)
 (topic *)
 (dictionary entry for *)
 	The many gods of the (span @topic) {Neo-Assyrian Empire} included:
@@ -493,7 +499,7 @@
 		(name $Liquid)
 	(into $Name)
 	(append $Name [-filled] $Tmp)
-	(join $Tmp into $Compound)
+	(join words $Tmp into $Compound)
 	$Compound
 (liquid source $Container)
 	*(liquid container $Container)
@@ -557,7 +563,7 @@
 	*($Source has ancestor $Room)
 	(liquid source $Source)
 	\( from (the $Source) \) (line)
-	(try [fill $Obj with $Source)
+	(try [fill $Obj with $Source])
 
 (perform [fill $Obj]) %% Couldn’t find a source
 	You don’t see any liquid around to fill (the $Obj) with.
@@ -638,8 +644,20 @@
 	(endif)
 	(par) (try [look])
 
-(narrate failing to leave (vignette $Room) $Dir)
+(narrate failing to leave (vignette $Room) $)
 	Each memory only captures a brief moment in time: what the person saw, heard, and felt in those scant few seconds. Everything beyond that is lost in a dark haze.
 	(if) *(from $Room go $Alt to $Next) (room $Next) (then) %% Should always be true
 		(par) If you want to go back to the memory palace, there’s a tear in the haze to the ($Alt), like a hole crudely ripped in a cloth backdrop.
+	(else)
+		ERROR: There’s no way to leave. Report this please!
 	(endif)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                              Meta                             %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(grammar [about/credit/credits] for [about])
+(command [about])
+
+(perform [about])
+	(div @meta) (story credits)

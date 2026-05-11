@@ -1,0 +1,177 @@
+(draconic extension version $Closure) ($Closure = {Puzzle Prompts 1.0})
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PUZZLE POINTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(interface ($<Child requires $>Parent))
+
+($Child depends on $Parent)
+	*($Child requires $Parent)
+($Child depends on $Parent)
+	*($Child requires $Intermediate)
+	($Intermediate depends on $Parent)
+
+($Puzzle is missing dependencies)
+	*($Puzzle depends on $Other)
+	~(solved $Other)
+
+@(solvable $Puzzle)
+	~($Puzzle is missing dependencies)
+
+(explorable $Room)
+	($Room is visited)
+	~(shortcut $Room)
+	*(from $Room go $ to explore room $Other)
+	(if) ($Other shortcuts to $Next) (then)
+		%% Already assigned $Next
+	(else)
+		($Other = $Next)
+	(endif)
+	~(never accessible $Next) %% Don’t suggest exploring rooms that can never be accessed
+	($Next is unvisited)
+
+(from $Room go $Dir to explore room $Other)
+	*(from $Room go $Dir to $Other)
+	(room $Other)
+(from $Room go $Dir to explore room $Other)
+	*(from $Room go $Dir to $Door)
+	(door $Door)
+	~{ (puzzle $Door) ~(solved $Door) } %% Don’t suggest exploring through an unsolved puzzle door, since that’ll be listed separately as a puzzle
+	(from $Room through $Door to $Other)
+
+(nav link $Room)
+	(collect words)
+		go to (link name $Room)
+	(into $Command)
+	(link $Command) (the $Room)
+
+(puzzle description $Obj)
+	(if) (current room $Obj) (then)
+		this location
+	(elseif) (room $Obj) (then)
+		(nav link $Obj)
+	(elseif) ($Obj is in room $Room) ~(current room $Room) (then)
+		(the $Obj) in (nav link $Room)
+	(elseif) ($Obj is in room $) (then) %% Right at hand
+		(link name $Obj) right here
+	(else) %% Nowhere - unlikely to happen but shouldn’t crash regardless
+		(link name $Obj)
+	(endif)
+
+(puzzle list $List)
+	(listing $List {(puzzle description $_)} @or @the 0)
+(bare puzzle list $List)
+	(listing $List {(the linked $_)} @or @the 0)
+
+(semicolon list []) ERROR: Nothing in the list!
+(semicolon list [$Single])
+	(query $Single) .
+%% (semicolon list [$First $Second]) %% Had special code to use a semicolon for exactly two items, but I think it looks better with bullets for anything more than one
+%%	(query $First) ; or (query $Second) .
+(semicolon list $List)
+	(semicolon list internal $List)
+
+(semicolon list internal [])
+(semicolon list internal [$Head|$Rest])
+	(div @listitem) { (bullet) (uppercase) (query $Head) }
+	(semicolon list internal $Rest)
+
+(grammar [think/nudge] for [think])
+(command [think])
+(perform [think])
+	You pause for a moment and think through your options.
+	(nudge)
+	(now) (nudge used)
+
+(nudge)
+	(collect $Puzzle) %% Examined puzzles that can currently be solved
+		*(puzzle $Puzzle)
+		~(solved $Puzzle)
+		(solvable $Puzzle)
+		($Puzzle is in room $)
+		($Puzzle is examined)
+	(into $Puzzles)
+	(collect $Examine) %% Unexamined puzzles in this location
+		(nudged in this room)
+		(current room $This)
+		*($Examine has ancestor $This)
+		(puzzle $Examine)
+		(solvable $Examine)
+		~($Examine is examined)
+	(into $ExamineHere)
+	(collect $Search) %% Unexamined puzzles in visited rooms (previously didn’t require solvable, but trying that to see if it helps make the nudge system more intuitive)
+		*(puzzle $Puzzle)
+		~(solved $Puzzle)
+		(solvable $Puzzle)
+		($Puzzle is unexamined)
+		($Puzzle is in room $Search)
+		~{ (nudged in this room) (current room $Search) } %% For the above
+		($Search is visited)
+	(into $Searches)
+	(remove duplicates $Searches $SearchesFiltered)
+	(collect $Room) %% Visited rooms adjacent to unvisited rooms
+		{ *(room $Room) (or) (current room $Room) } %% Ensure current room is always the last
+		(explorable $Room)
+	(into $Rooms)
+	(remove duplicates $Rooms $RoomsFiltered) %% Because (remove duplicates $ $) keeps the *last* duplicate, not the first
+	
+	(collect $Clause)
+		(nonempty $Puzzles) ($Clause = {do something about (puzzle list $Puzzles)})
+	(or)
+		(nonempty $ExamineHere) ($Clause = {examine (bare puzzle list $ExamineHere) in this location})
+	(or)
+		(nonempty $SearchesFiltered) ($Clause = {examine things in (puzzle list $SearchesFiltered)})
+	(or)
+		(nonempty $Rooms) ($Clause = {explore other exits from (puzzle list $RoomsFiltered)})
+	(into $Clauses)
+	
+	(if) (empty $Clauses) (then)
+		Right now, no particular problems currently stand out.
+	(else)
+		Right now, you could (semicolon list $Clauses) %% No period; (semicolon list $) adds that
+	(endif)
+	
+	(now) (nudged in this room)
+
+%% The (nudged in this room) flag is reset when moving
+(after [leave $ $])
+	(now) ~(nudged in this room)
+
+@($Obj is unexamined)	~($Obj is examined)
+(after [examine $Obj])	(now) ($Obj is examined)
+
+%% A “null puzzle” that can never be solved - use this to make dependencies on parts of the game state that aren’t puzzles
+%% For example, you can make a puzzle require #impossible unless ten rooms are visited
+%% If you do that, though, remember to make the ($ requires $) rule turn off once solved, because otherwise all following puzzles will have an impossible dependency!
+#impossible
+%%(puzzle *)
+(solved *) (fail)
+(supposed to be nowhere *)
+(* is missing dependencies) %% Never suggest it
+
+(interface (list solved puzzles))
+(list solved puzzles)
+	(collect $Puzzle)
+		*(puzzle $Puzzle)
+		(solved $Puzzle)
+	(into $List)
+	(the-listing $List)
+
+%% Start with pointers always on by default
+(pointers enabled)
+(option paragraph)
+	(if) (pointers enabled) (then)
+		Solvable puzzles are highlighted on the map. Use (command link {POINTERS OFF}) to change this.
+	(else)
+		Solvable puzzles are not currently highlighted on the map. Use (command link {POINTERS ON}) to change this.
+	(endif)
+	Either way, you can (command link {THINK}) to get a list of solvable puzzles at any time.
+(understand command [pointers on])
+(perform [pointers on])
+	(div @meta) { Solvable puzzles will now be highlighted on the map. You can still get a list with the (command link {THINK}) command. }
+	(now) (pointers enabled)
+(understand command [pointers off])
+(perform [pointers off])
+	(div @meta) { Solvable puzzles will no longer be highlighted on the map. You can still get a list with the (command link {THINK}) command. }
+	(now) ~(pointers enabled)
