@@ -62,7 +62,7 @@
 (puzzle list $List)
 	(listing $List {(puzzle description $_)} @or @the 0)
 (bare puzzle list $List)
-	(listing $List {(the linked $_)} @or @the 0)
+	(listing $List {(link name $_)} @or @the 0)
 
 (semicolon list []) ERROR: Nothing in the list!
 (semicolon list [$Single])

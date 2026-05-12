@@ -4,6 +4,9 @@
 (draconic extension version $Closure) ($Closure = {Automap 1.2})
 
 %% Shortcuts not needed for this game
+@(shortcut $Room)
+	*($Room shortcuts to $)
+($ shortcuts to $) (fail)
 
 %% First, we need to assign coordinates to all rooms
 %% There are two ways to do this
@@ -271,8 +274,16 @@
 
 (full room glyph $Room)
 	($Room has puzzle $ usable)
-	(span @puzzle) { \[ (no space) (room glyph $Room) (no space) \] (no space) }
+	(span @puzzle) (bracket glyph $Room)
 (full room glyph $Room)
+	(bracket glyph $Room)
+
+(bracket glyph (vignette $Room)) %% Vignettes get special brackets
+	\[ (no space) (room glyph $Room) (no space) \] (no space)
+(bracket glyph $Room) %% Mark puzzles in debugger because no styling
+	($Room has puzzle $ usable)
+	\{ (no space) (room glyph $Room) (no space) \} (no space)
+(bracket glyph $Room)
 	\( (no space) (room glyph $Room) (no space) \) (no space)
 
 ($Room has puzzle $Obj usable)

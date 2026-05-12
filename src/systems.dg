@@ -28,6 +28,7 @@
 (perform [divine])
 	Divine what?
 	(asking for object in [divine []])
+~(action [divine $Obj] requires $Obj to be touched)
 
 (prevent [divine $])
 	(dreaming)
@@ -157,12 +158,30 @@
 
 (name (rope door $)) nylon rope
 (uncountable *(rope door $))
+(supposed to be nowhere *(rope door $))
 (door *(rope door $))
 (descr (rope door $)) Strong and well-tied to support your weight. You should be able to climb up and down it without difficulty.
 (item *(rope door $)) %% Though they can’t be taken
 
 %% Since it’s the obvious verb
 (instead of [climb (rope door $Obj)]) (try [enter $Obj])
+
+(narrate leaving $Room $Dir)
+	(from $Room go $Dir to $Rope)
+	(rope door $Rope)
+	(if) ($Dir = #down) (or) (from $Room go #down to $Dir) (then)
+		(select)
+			You grab hold of the rope and start to descend. It ends up being more of an undignified scramble than the graceful slide you were envisioning, but you arrive at the bottom more-or-less intact.
+		(or)
+			You grab hold of the rope and make your way down.
+		(stopping)
+	(else)
+		(select)
+			You grab hold of the rope with both hands, brace your feet against the side of the pit, and make your way up.
+		(or)
+			You grab hold of the rope and make your way up.
+		(stopping)
+	(endif)
 
 %% Don’t allow doing normal rope things with it
 (prevent [take (rope door $)])
@@ -485,142 +504,18 @@
 %% And at the end:
 (*(topic $) is locked) %% Lock all topics unless otherwise specified
 
-%% Filling and emptying liquid containers
-
-%% Alias; this property is unused for nonrooms
-@($Obj is filled with $Liquid) ($Obj has coordinates $Liquid)
-(dict (liquid container $Obj))
-	%% First, add “water filled”
-	($Obj is filled with $Liquid)
-	*(dict $Liquid)
-	filled
-	%% Then, add “water-filled”
-	(collect words)
-		(name $Liquid)
-	(into $Name)
-	(append $Name [-filled] $Tmp)
-	(join words $Tmp into $Compound)
-	$Compound
-(liquid source $Container)
-	*(liquid container $Container)
-	($Container is filled with $)
-
-%% We also want to list the liquids that liquid containers are full of
-(name (liquid container $Obj))
-	~($Obj is filled with $)
-	empty (real name $Obj)
-(name (liquid container $Obj))
-	($Obj is filled with $Liquid)
-	(name $Liquid) (no space) -filled
-
-%% And get the articles right!
-(an (liquid container $Obj))
-	~($Obj is filled with $) (just)
-(an (liquid container $Obj))
-	($Obj is filled with $Liquid)
-	(just) (an $Liquid)
-
-(after [examine (liquid container $Obj)])
-	($Obj is filled with $Liquid)
-	(par) (It $Obj) (is $Obj) currently full of (name $Liquid) .
-
-(potable (liquid container $Obj))
-	($Obj is filled with $Liquid)
-	(potable $Liquid)
-
-%% Two liquids in this game
-#water
-(name *) water
-(potable *)
-#oil
-(name *) oil
-
-%% In case people try the other way around
-(instead of [put (liquid source $Liquid) #in $Obj])
-	(try [fill $Obj with $Liquid])
-
-(grammar [fill [single] with/from [single]] for [fill $ with $])
-(grammar [fill [single]] for [fill $])
-
-(before [fill $Obj | $])
-	~(held $Obj)
-	(first try [take $Obj])
-
-(prevent [fill $Obj | $])
-	~(liquid container $Obj)
-	(The $Obj) (is $Obj) not designed to hold liquids.
-
-(prevent [fill $Obj | $])
-	($Obj is filled with $Liquid)
-	(The $Obj) (is $Obj) already full of (name $Liquid). You would need to (vlink {empty (the $Obj)} {empty (them $Obj)}) first.
-
-(prevent [fill $Obj with $Source])
-	~(liquid source $Source)
-	(The $Obj) (is $Obj) only designed to hold liquids, which (the $Source) (is $Source) not.
-
-(instead of [fill $Obj])
-	(current room $Room)
-	*($Source has ancestor $Room)
-	(liquid source $Source)
-	\( from (the $Source) \) (line)
-	(try [fill $Obj with $Source])
-
-(perform [fill $Obj]) %% Couldn’t find a source
-	You don’t see any liquid around to fill (the $Obj) with.
-
-(perform [fill $Obj with $Source])
-	(liquid container $Source)
-	($Source is filled with $Liquid)
-	You pour some (name $Liquid) from (the $Source) into (the $Obj).
-	(now) ($Obj is filled with $Liquid)
-
-(perform [fill $Obj with $Source])
-	($Source is filled with $Liquid)
-	You scoop up some (name $Liquid) in (the $Obj).
-	(now) ($Obj is filled with $Liquid)
-
-(grammar [empty [single]] for [empty $])
-
-(before [empty $Obj])
-	~(held $Obj)
-	(first try [take $Obj])
-
-(prevent [empty $Obj])
-	~(container $Obj)
-	~(liquid container $Obj)
-	(The $Obj) (is $Obj) not a container.
-
-(prevent [empty $Obj])
-	~($ is #in $Obj)
-	~($Obj is filled with $)
-	(The $Obj) (is $Obj) already empty.
-
-(perform [empty (container $Obj)])
-	(current player $Player)
-	($Player is $Rel $Parent)
-	(collect $Item)
-		*($Item is #in $Obj)
-		(item $Item) %% Don’t move non-items
-	(into $List)
-	You dump (the $List) out of (the $Obj).
-	(exhaust) {
-		*($Item is one of $List)
-		(now) ($Item is $Rel $Parent)
-	}
-
-(perform [empty (liquid container $Obj)])
-	($Obj is filled with $Liquid)
-	You find an unobtrusive spot to dump (the $Liquid) out of (the $Obj).
-	(now) ~($Obj is filled with $)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                           Vignettes                           %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (room *(vignette $))
 
-(narrate entering (vignette $Room))
+(narrate leaving $Room $Dir)
+	(from $Room go $Dir to $Next)
+	(vignette $Next)
 	You move toward the traces of motion, and the dream shifts... (par)
+
+(narrate entering (vignette $Room))
 	(div @vignette) {
 		(now) (currently italic)
 		(narrate vignette for $Room)

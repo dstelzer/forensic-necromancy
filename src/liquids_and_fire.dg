@@ -1,0 +1,339 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                         Liquid Sources                        %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(liquid source $) (fail) %% Supply of liquid: this is the object that’s on-stage
+
+%% Alias; this property is unused for nonrooms
+@($Obj is filled with $Liquid) ($Obj has coordinates $Liquid)
+
+(potable (liquid source $Obj))
+	($Obj is filled with $Liquid)
+	(potable $Liquid)
+
+(dict (liquid source $Obj))
+	($Obj is filled with $Liquid)
+	*(dict $Liquid)
+
+(after [examine (liquid source $Obj)])
+	($Obj is filled with $Liquid)
+	(par) (It $Obj) (is $Obj)
+	(if) (liquid container $Obj) (then) %% Able to change
+		currently
+	(endif)
+	full of (name $Liquid) .
+
+%% Two liquids in this game - implemented as off-stage objects
+
+#water
+(name *) water
+(potable *)
+(liquid *)
+
+#oil
+(name *) oil
+(liquid *)
+
+(supposed to be nowhere *(liquid $))
+(uncountable *(liquid $))
+
+%% Now, the liquid containers the player can affect
+
+(liquid container $) (fail) %% Something that can be filled with liquid or emptied again
+
+%% Acts as a liquid source when filled (we assume an infinite supply)
+(liquid source $Container)
+	*(liquid container $Container)
+	($Container is filled with $)
+
+%% Add the liquid or “empty” to the name
+(tagged name (liquid container $Obj))
+	~($Obj is filled with $)
+	empty (name $Obj)
+(tagged name (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	(name $Liquid) (no space) -filled (name $Obj)
+
+%% And get the articles right!
+(an (liquid container $Obj))
+	~($Obj is filled with $) (just)
+(an (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	(just) (an $Liquid)
+
+%% And since (no space) doesn’t actually join dictionary words in the underlying representation, we need to do a bit of dictionary hacking
+(dict (liquid container $Obj))
+	($Obj is filled with $Liquid)
+	%% “water-filled”
+	(collect words)
+		(name $Liquid)
+	(into $Name)
+	(last $Name $Last) %% Only the last word gets a hyphen
+	(append $Last [-filled] $Tmp)
+	(join words $Tmp into $Compound)
+	$Compound
+
+%% Little list utility
+(last [$Last] $Last)
+(last [$|$Rest] $Last) (last $Rest $Last)
+
+(liquid source $Source is visible)
+	*($Source is in scope)
+	(liquid source $Source)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                         Liquid Actions                        %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% FILL obj WITH obj
+
+(grammar [fill [single] with/from [single]] for [fill $ with $])
+(grammar [fill [single]] for [fill $])
+
+%% Redirect standard actions
+(instead of [put (liquid source $Liquid) #in $Obj])
+	(try [fill $Obj with $Liquid])
+
+(instead of [take $Source])
+	(liquid source $Source)
+	($Source is filled with $Liquid)
+	~(item $Source)
+	*($Obj is in scope)
+	(liquid container $Obj)
+	~($Obj is filled with $)
+	\( filling (the $Obj) with (name $Liquid) from (the $Source) \) (line)
+	(try [fill $Obj with $Source])
+
+(prevent [take $Source])
+	(liquid source $Source)
+	($Source is filled with $Liquid)
+	~(item $Source)
+	\( (the $Liquid) from (the $Source) \) (line)
+	You would need an appropriate container.
+
+%% And redirect *to* standard actions
+(instead of [fill $Dest with ~(liquid source $Source)])
+	(try [put $Source #in $Dest])
+
+(before [fill $Obj | $])
+	(item $Obj)
+	(ensure $Obj is held)
+
+(prevent [fill $Obj | $])
+	~(liquid container $Obj)
+	(The $Obj) (is $Obj) not designed to hold liquids.
+
+(prevent [fill $Obj | $])
+	($Obj is filled with $Liquid)
+	(The $Obj) (is $Obj) already full of (name $Liquid). You would need to ({empty (link name $Obj)} {empty (them $Obj)}) first.
+
+(prevent [fill $Obj with $Source])
+	~(liquid source $Source)
+	(The $Obj) (is $Obj) only designed to hold liquids, which (the $Source) (is $Source) not.
+
+(perform [fill $Obj])
+	(collect $Source)
+		*(liquid source $Source is visible)
+	(into $List)
+	(if) (empty $List) (then)
+		There are no sources of liquid at hand. (tick) (stop)
+	(elseif) ($List = [$Single]) (then)
+		\( from (the $Single) \) (line)
+		(try [fill $Obj with $Single])
+	(else)
+		With what?
+		(asking for object in [fill $Obj with []])
+	(endif)
+
+(perform [fill $Obj with $Source]) %% If the source is a container
+	(liquid container $Source)
+	($Source is filled with $Liquid)
+	You pour some (name $Liquid) from (the $Source) into (the $Obj). There’s still plenty left in the (name $Source), too.
+	%% Not using (the $Source) in that message because we don’t want “liquid-filled” in front of it - assuming containers won’t be proper-named
+	(now) ($Obj is filled with $Liquid)
+
+(perform [fill $Obj with $Source]) %% Not a container
+	($Source is filled with $Liquid)
+	You scoop up some (name $Liquid) in (the $Obj).
+	(now) ($Obj is filled with $Liquid)
+
+%% EMPTY obj
+%% This one works on normal containers as well as liquid containers
+
+(grammar [empty/dump [held]] for [empty $])
+(grammar [empty/dump [held] out] for [empty $])
+(grammar [empty/dump out [held]] for [empty $])
+
+(before [empty $Obj])
+	(ensure $Obj is held)
+
+(prevent [empty $Obj])
+	~(container $Obj)
+	~(liquid container $Obj)
+	(The $Obj) (is $Obj) not a container.
+
+(prevent [empty $Obj])
+	~($ is #in $Obj)
+	~($Obj is filled with $)
+	(The $Obj) (is $Obj) already empty.
+
+(perform [empty (container $Obj)])
+	(current player $Player)
+	($Player is $Rel $Parent)
+	(collect $Item)
+		*($Item is #in $Obj)
+		(item $Item) %% Don’t move non-items
+	(into $List)
+	You dump (the $List) out of (the $Obj).
+	(exhaust) {
+		*($Item is one of $List)
+		(now) ($Item is $Rel $Parent)
+	}
+
+(perform [empty (liquid container $Obj)])
+	($Obj is filled with $Liquid)
+	You find an unobtrusive spot to dump (the $Liquid) out of (the $Obj).
+	(now) ~($Obj is filled with $)
+
+%% POUR obj INTO obj
+
+(grammar [pour [held] on/onto/in/into [single]] for [pour $ into $])
+(grammar [pour out [held] on/onto/in/into [single]] for [pour $ into $])
+
+(grammar [pour [held] on/onto/in/into/out] for [pour $ into])
+(grammar [pour out [held]] for [pour $ into])
+(grammar [pour [held] on/onto/in/into something] for [pour $ into])
+(perform [pour $Obj into])
+	On what? Or did you just want to ({empty (link name $Obj)} {empty (them $Obj)})?
+	(asking for object in [pour $Obj into []])
+
+(instead of [pour $Obj into (room $)]) %% POUR X ON THE GROUND
+	(try [empty $Obj])
+
+(before [pour $Obj | $])
+	(ensure $Obj is held)
+
+(prevent [pour $Obj into $])
+	~{ (liquid container $Obj) ($Obj is filled with $) }
+	There is no liquid in (the $Obj) to pour out.
+
+(prevent [pour $Source into $Target])
+	(liquid container $Target)
+	($Source is filled with $First)
+	($Target is filled with $Second)
+	~($First = $Second)
+	(The $First) from the (name $Source) would mix with (the $Second) from the (name $Target), and that would just be a mess!
+
+(perform [pour $Obj into $Target])
+	(liquid source $Target)
+	($Obj is filled with $Liquid)
+	You pour (the $Liquid) out of the (name $Obj), letting it join the rest in the (name $Target).
+	(now) ~($Obj is filled with $)
+
+(perform [pour $Obj into $Target])
+	(liquid container $Target)
+	($Obj is filled with $Liquid)
+	%% Target must be empty at this point
+	You pour all (the $Liquid) into the (name $Target), leaving the (name $Obj) empty.
+	(now) ($Target is filled with $Liquid)
+	(now) ~($Obj is filled with $)
+
+%% Apart from containers, it might be useful to pour liquids on fires
+(perform [pour $Obj into (fire source $Target)])
+	($Obj is filled with #water)
+	You pour the water onto (the $Target), and (it $Target) grow(s $Target) measurably cooler—but the fire doesn’t go away. The property of burning-ness just becomes somehow disconnected from the actual heat.
+	(now) ~($Obj is filled with $)
+
+(perform [pour $Obj into (fire source $Target)])
+	($Obj is filled with #oil)
+	Dumping oil on a fire seems like a very bad idea. You’re likely to end up with burning oil everywhere and no way to control it.
+	(tick) (stop)
+
+(perform [pour $Obj into $Target])
+	($Obj is filled with $Liquid)
+	That would just make a mess of (the $Target). (It $Target isn’t) designed to hold (name $Liquid).
+
+(It $Obj isn’t) %% Quick little addition
+	(uppercase) (it $Obj is) (no space) n’t
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                          Fire Sources                         %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(fire source $) (fail) %% Something that is currently on fire
+
+(fire source $Source is visible)
+	*($Source is in scope)
+	(fire source $Source)
+
+%% Fire is our only portable light source
+($Ancestor contains a fire source)
+	*($Obj has ancestor $Ancestor)
+	(fire source $Obj)
+
+(sufficient light in $Room)
+	($Room contains a fire source)
+(sufficient light in $)
+	(current player $Player)
+	($Player contains a fire source)
+
+(sufficient light)
+	(current room $Room)
+	(sufficient light in $Room)
+
+%% Don’t touch things that are on fire!
+(prevent $Action)
+	*(action $Action requires $Obj to be touched)
+	(fire source $Obj)
+	~(item $Obj) %% Items are the exception; they’re presumably designed to be held
+	You reach toward (the $Obj), but you can feel the heat coming off (them $Obj), even frozen in memory. Touching (them $Obj) would end poorly.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                          Fire Actions                         %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% LIGHT obj
+
+(grammar [light/burn/ignite [held]] for [burn $])
+
+(prevent [burn (fire source $Obj)])
+	(The $Obj) (is $Obj) already alight.
+
+(prevent [burn ~(item $Obj)])
+	If (the $Obj) ignited, it might end very badly for you!
+
+(prevent [burn $])
+	~(fire source $ is visible)
+	You have no source of fire.
+
+(perform [burn $Obj])
+	(The $Obj) steadfastly refuse(s $Obj) to ignite.
+	(tick) (stop)
+
+%% Redirect other common actions to burning
+
+(instead of [put $Obj $ (fire source $)])
+	\( igniting (the $Obj) \) (line)
+	(try [burn $Obj])
+
+(instead of [put (fire source $) $ $Obj])
+	\( igniting (the $Obj) \) (line)
+	(try [burn $Obj])
+
+%% DOUSE obj
+
+(grammar [douse [held]] for [douse $])
+(grammar [put [held] out] for [douse $])
+(grammar [put out [held]] for [douse $])
+
+(prevent [douse ~(fire source $Obj)])
+	But (the $Obj) (is $Obj) not burning.
+
+(perform [douse $Obj])
+	(if) *(liquid source $Source is visible) ($Source is filled with #water) (then)
+		\( pouring (the $Source) on (the $Obj) \) (line)
+		(try [pour $Source into $Obj])
+	(else)
+		You have no supply of water.
+		(tick) (stop)
+	(endif)

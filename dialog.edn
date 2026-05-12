@@ -1,16 +1,16 @@
 {
 	:name   "A Murder in Nineveh: Submitted in partial fulfillment of the requirements for the degree of Doctor of Philosophy in Forensic Necromancy"
 	:format [:zblorb :aastory]
-;	:build
-;		{:zblorb
-;			{:options ["--cover"     "cover.jpg"
-;					   "--cover-alt" "Stained glass showing the Great Deluge from the Bible"]
-;			}
-;		}
+	:build
+		{:zblorb
+			{:options ["--cover"     "cover.jpg"
+					   "--cover-alt" "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."]
+			}
+		}
 	:sources
 		{
 		:main
-			["src/meta.dg" "secrets" "src/world.dg" "src/systems.dg" "src/interface.dg"]
+			["src/meta.dg" "secrets" "src/world.dg" "src/systems.dg" "src/liquids_and_fire.dg" "src/interface.dg"]
 		:debug
 			["lib/dialog/debug"]
 		:library

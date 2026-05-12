@@ -18,8 +18,8 @@
 
 (intro)
 	(content warnings)
-	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or have nothing to show for it all. (par)
-	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But if you want to be the first PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
+	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it. (par)
+	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But if you want to be the first ever PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
 	Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
 	(banner)
 	(try [look])
@@ -47,11 +47,26 @@
 	(endif)
 
 (give the tutorial)
+	~(taught suggestions)
+	(suggestions enabled)
+	(current focus $)
+	(div @tutorial) {
+		After you examine something, the bar at the bottom of the screen will suggest some actions you might do with it.
+	}
+	(now) (taught suggestions)
+
+(give the tutorial)
 	~(taught secondary objects)
 	(current focus $Focus)
 	($Focus has secondary objects) %% Things that mention nouns in their description
 	(div @tutorial) {
-		
+		Sometimes an object will only be mentioned in the description of another object. But you can still
+		(if) (interpreter supports links) (then)
+			click
+		(else)
+			interact with
+		(endif)
+		them, just like nouns in the main description.
 	}
 	(now) (taught secondary objects)
 
@@ -67,7 +82,7 @@
 	~(taught spear)
 	(current focus #spear)
 	(div @tutorial) {
-		You can’t change the past, but all of this is happening inside your head: if you pick things up and move them from one memory to another, they’ll act the way your brain expects.
+		You can’t change the past, but all of this is happening inside your head. If you pick things up and move them from one memory to another, they’ll act the way your brain expects.
 	}
 	(now) (taught spear)
 
@@ -76,11 +91,15 @@
 	(#camp is unvisited) %% These are the two rooms adjacent to the start
 	(#abovedig is unvisited)
 	(div @tutorial) {
-		Most text adventures are played by
+		This game is played by
 		(if) (interpreter supports links) (then)
 			clicking links or
 		(endif)
-		typing in commands. To move around, for example, type a compass direction: (command link {southwest}) \( (command link {sw}) \) or (command link {south}) \( (command link {s}) \) .
+		typing in commands. To move around, for example,
+		(if) (interpreter supports links) (then)
+			click or
+		(endif)
+		type a compass direction: (command link {southwest}) \( (command link {sw}) \) or (command link {south}) \( (command link {s}) \) .
 	}
 	(now) (taught moving)
 
@@ -89,14 +108,15 @@
 	(current room $Room)
 	*($Obj has ancestor $Room)
 	~(current player $Obj)
+	~(held $Obj)
 	(div @tutorial) {
 		(color link [links] {Highlighted}) words indicate things you can interact with.
 		(if) (interpreter supports links) (then)
-			Click the words
+			Click or type
 		(else)
-			Type these words
+			Type
 		(endif)
-		to examine them.
+		these words to examine them.
 	}
 	(now) (taught examining)
 
@@ -105,7 +125,6 @@
 	~(taught inventory)
 	(current focus $Obj)
 	(item $Obj)
-	(fully bound $Obj) %% Compiler objections
 	(div @tutorial) {
 		When you see a small object, like (the $Obj), you can pick it up and take it with you. Try to (command link {take (the $Obj)}).
 	}
@@ -136,7 +155,11 @@
 	*($Obj is #heldby #p-real)
 	~($Obj = #tools)
 	(div @tutorial) {
-		Quite a lot of text adventure puzzles involve finding objects and moving them around. To see what you’re currently holding, (command link {take inventory}) \( or (command link {i}) for short \) .
+		A lot of text adventures involve finding objects and moving them around. To see what you’re currently holding, (command link {take inventory})
+		(if) ~(interpreter supports links) (then)
+			\( or (command link {i}) for short \)
+		(endif)
+		.
 	}
 	(now) (taught inventory)
 
@@ -163,6 +186,8 @@
 	}
 	(now) (taught map)
 
+(give the tutorial) %% Don’t fail
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                     The Real World : Above                    %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,7 +198,7 @@
 (name *) Tell Nabi Yunus
 (proper *)
 (look *)
-	No hiking through the desert for you: the dig site is right in the heart of Mosul, Iraq, the mound known as Prophet Jonah’s Hill. There’s supposed to be a very nice bakery across the street, but it wasn’t open at 2:00 AM; you had to make do with a box of cookies from the supermarket on the way over. (par)
+	No hiking through the Iraqi desert for you: the dig site is right in the heart of Mosul, the mound known as Prophet Jonah’s Hill. There’s supposed to be a very nice bakery across the street, but it wasn’t open at 2 in the morning; you had to make do with a box of cookies from the supermarket on the way over. (par)
 	But you made it.
 	(if) (#dig is unvisited) (then)
 		They say the field crew came across more bones today, and that’s exactly what you need.
@@ -228,8 +253,13 @@
 (* is #in #camp)
 (descr *) It’s faster than walking, and more reliable than a cab in the early hours of the morning.
 (on-seat *)
+(lockable *)
+~(openable *)
+(* is locked)
 
 (prevent [enter/climb/unlock/open/untie * | $]) (bike refusal)
+
+(grammar [ride [single]] for [climb $]) %% In case
 
 #machinery
 (name *) piece of machinery
@@ -267,7 +297,7 @@
 (item *)
 (* is #in #backpack)
 (potable *)
-(descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 at night. Passing out from dehydration won’t get your thesis finished.
+(descr *) Even if you’re not trekking through the desert, the temperature in Mosul is well over 30 degrees at night. Passing out from dehydration won’t get your thesis finished.
 
 (instead of [open/empty *]) (try [drink *])
 (prevent [fill * | $]) There’s nothing else around to fill it from. Better make it last.
@@ -311,6 +341,7 @@
 (name *) official camp
 (room *)
 (look *) You should never be here! Please report this bug!
+(never accessible *)
 
 (prevent entering *)
 	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the archaeologists, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things at 2:00 in the morning when you don’t have to explain what a forensic necromancer is or why you need silence to meditate over the bones.
@@ -555,8 +586,6 @@
 	All around, other memories have forced their way in like tree roots cracking through a sidewalk. To the south, the walkway runs headlong into the front of a mud-brick house, its (vlink {door})
 	(if) (#door is open) (then)
 		standing open
-	(elseif) (#door is unlocked) (then)
-		loosely closed
 	(else)
 		firmly barred from the other side
 	(endif)
@@ -619,7 +648,7 @@
 		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
 	(endif)
 
-(from * go #south to #n-ziqqurat)
+(from * go #southeast to #n-ziqqurat)
 
 (instead of [leave * #east])
 	\( going over to the crumpled figure \)
@@ -667,7 +696,7 @@
 (dict *) crumpled figure fallen shape corpse body brother
 (* is #in #n-execution)
 (descr *)
-	(if) (#lamp is in room #n-execution) (fire source #lamp) (then)
+	(if) (sufficient light) (then)
 		The lamplight lets you make out a bit more detail. Enough to be quite certain he’s dead.
 	(else)
 		The torchlight \( thankfully \) isn’t bright enough to make out much detail. But you can make out the Babylonian tunic, and the unnatural position.
@@ -683,7 +712,7 @@
 (male *)
 (* is #in #n-execution)
 (descr *)
-	(#lamp is in room #n-execution) (fire source #lamp)
+	(sufficient light)
 	You can see him better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there.
 	(now) (northern connection unlocked)
 (descr *)
@@ -855,8 +884,8 @@
 
 (* attracts #light) %% Keep the light here even when it’s not a door
 
-(from * go #east through #light to #n-ziqqurat) ~(statue is pushed)
-(from * go #east to #n-ziqqurat) (statue is pushed)
+(from * go #east through #light to #n-ziqqurat) ~(statue is turned)
+(from * go #east to #n-ziqqurat) (statue is turned)
 (from * go #southwest to #n-argument)
 
 #tools
@@ -908,7 +937,7 @@
 
 (appearance *)
 	A towering (vlink {statue}) dominates the room, light blazing from its gold-plated skin.
-	(if) ~(statue is pushed) (then)
+	(if) ~(statue is turned) (then)
 		Its fiery gaze is fixed on the door to the east.
 	(else)
 		The work platform has been rotated so it now faces the north wall.
@@ -916,7 +945,7 @@
 
 (descr *)
 	It stands tall and imperious, at least double your height, its skin plated with finely-hammered gold and silver, its hair and beard set with lapis lazuli. It must represent one of the gods, probably Marduk; a fiery glow radiates from its face, filling
-	(if) (statue is pushed) (then)
+	(if) (statue is turned) (then)
 		the north side of the room
 	(else)
 		the eastern passage
@@ -935,9 +964,9 @@
 (instead of [push/pull/turn #statue | $])
 	(try [push *])
 (perform [push/pull/turn * | $])
-	(if) ~(statue is pushed) (then)
+	(if) ~(statue is turned) (then)
 		Squinting against the glare, you take hold of the platform—(no space) (emph {not}) touching the statue itself—and give it a mighty heave. It shakes and rocks, tilting dangerously to one side for a moment...but then it starts to turn. Marduk’s gaze burns a fiery trail across the wall until it’s aimed safely away from the doors.
-		(now) (statue is pushed)
+		(now) (statue is turned)
 	(else)
 		You adjust the position of the statue a bit, making sure the gaze doesn’t linger too long on any one spot.
 	(endif)
@@ -962,7 +991,7 @@
 (dict *) backroom
 (look *)
 	This room is suggested more than seen, the moonlight through the (vlink {window}) tracing the outlines in shades of black.
-	(if) (#lamp is in room *) (fire source #lamp) (then)
+	(if) (sufficient light) (then)
 		Even the lamplight goes soft and silvery in the memory.
 	(endif)
 	Is it a workshop, a kitchen, a storage space? All you can see clearly is (vlink {your brother}), eyes fixed intently on the (vlink {table}).
@@ -970,7 +999,8 @@
 (from * go #northeast to #n-workshop)
 
 #lamp
-(name *) oil lamp
+(name *) lamp
+(dict *) lantern light wick clay bowl spout yellow flame
 (item *)
 (liquid container *)
 (* is #in #n-argument)
@@ -982,7 +1012,37 @@
 			, and a small but steady flame shines from the end of the spout
 		(endif)
 		.
+	(else)
+		A cloth wick runs from the spout to the bottom of the bowl.
 	(endif)
+
+%% Avoid shenanigans once it’s lit
+(fire source *) (lamp lit)
+(prevent [pour/empty * | $])
+	(lamp lit)
+	Tipping the lamp over while it’s still burning is a good way to get hot oil all over your hands.
+(instead of [fill $Obj with *])
+	(lamp lit)
+	(try [pour * into $Obj])
+(prevent [douse *])
+	(lamp lit)
+	After all the trouble it took to get this lit? Better not.
+(instead of [pour $ into *])
+	(lamp lit)
+	(try [douse *])
+
+(perform [light *])
+	~(* is filled with #oil)
+	(fire source $Source is visible)
+	You hold the lamp against (the $Source) for a moment, but the wick just chars. It needs to be filled with oil to burn properly.
+	(tick) (stop)
+(perform [light *])
+	(fire source $Source is visible)
+	You hold the lamp against (the $Source) for a moment, making sure there’s enough oil on the wick, and when you pull it away it’s shining with a small but steady yellow flame.
+	(now) (lamp lit)
+
+(prevent [switch * | $])
+	It’s not the kind of lamp that you switch. It’s the ancient sort that you fill with oil and ignite.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                       Dreams of Sharhiya                      %%%%%%%%%
@@ -1021,7 +1081,7 @@
 	no-longer-hot coals
 (name *)
 	hot coals
-(dict *) no longer hot coal %% For simplicity
+(dict *) no longer hot coal charred black gravel %% For simplicity
 (plural *)
 (door *)
 (descr *)
@@ -1034,11 +1094,25 @@
 	(coals cooled)
 	What would be the use? They’d just stain everything black.
 
-(when * blocks passage)
+(prevent [leave #s-palace #southeast]) %% So it comes before the rule that prevents touching fire sources
 	~(coals cooled)
 	Even frozen in time, the coals are still hot enough to burn right through your shoes.
 
-%% TODO pour water on them to cool them
+%% Avoid alternate solution
+(perform [pour #lamp into *])
+	(#lamp is filled with #water)
+	You upend the lamp and pour the water over the coals, but there’s just not enough of it to make a meaningful difference.
+	(now) ~(#lamp is filled with $)
+
+(perform [pour $Source into *])
+	($Source is filled with #water)
+	(if) ~(coals cooled) (then)
+		You tilt the (name $Source) and start pouring out water over the coals. There’s a (emph {hiss}), but no flash of steam—just a sudden clarity as the frozen air above the coals stops looking warped and twisted.
+	(else)
+		You dump a bit more water on the coals for good measure.
+	(endif)
+	(now) ~($Source is filled with $)
+	(now) (coals cooled)
 
 %% Vignette 1, automatically unlocked
 #s-audience
@@ -1087,6 +1161,7 @@
 (item *)
 (wearable *)
 (descr *) Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover his face.
+(supposed to be nowhere *)
 
 (prevent [look])
 	(worn *)
@@ -1326,6 +1401,9 @@
 	(endif)
 	memories to explore!
 (perform [finish])
+	(the end)
+
+(the end)
 	There you have it: everything you might need for your thesis. You
 	(if) (dreaming) (then)
 		hyperventilate yourself back to the physical world

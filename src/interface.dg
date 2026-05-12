@@ -45,7 +45,7 @@
 
 (redraw status bar)
 	(top status bar)
-	(give the tutorial) %% intro.dg
+	(give the tutorial) %% world.dg
 	(draw automap outside of status bar if applicable) %% automap.dg
 	(link bar) %% linkbar.dg
 	%% If we did neither of the above, show the exits separately
@@ -159,6 +159,7 @@
 	(in debugger)
 	(exhaust) {
 		*(object $Obj)
+		~($Obj is #partof $) %% This will get reported on the parent already
 		~($Obj is in room $)
 		~(supposed to be nowhere $Obj)
 		~(attracted to any room $Obj)

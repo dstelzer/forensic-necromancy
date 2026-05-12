@@ -6,3 +6,4 @@ out
 .clj-kondo/cache
 secrets/*.dg
 vvv.log
+*.xcf

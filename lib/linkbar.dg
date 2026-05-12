@@ -158,15 +158,21 @@
 (transitive action (item $Obj))
 	(held $Obj)
 	(current room $Room)
-	*($New has ancestor $Room)
-	(supporter $New)
+	(at most once) {
+		*($New has ancestor $Room)
+		(supporter $New)
+		~($Obj = $New)
+	}
 	(bullet) (vlink {put (link name $Obj) onto} {put (them-or-yourself $Obj) on something})
 
 (transitive action (item $Obj))
 	(held $Obj)
 	(current room $Room)
-	*($New has ancestor $Room)
-	(container $New)
+	(at most once) {
+		*($New has ancestor $Room)
+		(container $New)
+		~($Obj = $New)
+	}
 	(bullet) (vlink {put (link name $Obj) into} {put (them-or-yourself $Obj) in something})
 
 (transitive action (edible $Obj))
@@ -191,12 +197,15 @@
 (transitive action (rope door $Obj))
 	(bullet) (vlink {untie (link name $Obj)} {untie (them-or-yourself $Obj)})
 
+%% Suggest TAKE WATER if a source of water is not an item
+(transitive action (liquid source $Obj))
+	~(item $Obj)
+	($Obj is filled with $Liquid)
+	(bullet) (vlink {take (link name $Liquid)} {take (the $Liquid)})
+
 (transitive action (liquid container $Obj))
 	(held $Obj)
-	(at most once) {
-		*($Source is in scope)
-		(liquid source $Source)
-	}
+	(liquid source $ is visible)
 	(bullet) (vlink {fill (link name $Obj)} {fill (them-or-yourself $Obj)})
 
 (transitive action (liquid container $Obj))
@@ -210,10 +219,7 @@
 (transitive action #lamp)
 	(#lamp is filled with #oil)
 	~(fire source #lamp)
-	(at most once) {
-		*($Source is in scope)
-		(fire source $Source)
-	}
+	(fire source $ is visible)
 	(bullet) (vlink {light (link name #lamp)} {light it})
 
 (transitive action (fire source $Obj))
@@ -243,7 +249,13 @@
 (transitive action $Obj)
 	(at most once) { (rope door $Obj) (or) (actor supporter $Obj) }
 	~{ (current player $Player) ($Player has ancestor $Obj) }
+	~($Obj = #bike)
 	(bullet) (vlink {climb (link name $Obj)} {climb (them-or-yourself $Obj)})
+
+%% This one deserves a better verb
+(transitive action #bike)
+	(bullet) (vlink {ride (link name #bike)} {ride (them-or-yourself #bike)})
+(grammar [ride [single]] for [climb $])
 
 (transitive action (door $Obj))
 	(at most once) { (door $Obj) (or) (actor container $Obj) }
@@ -279,6 +291,9 @@
 			(bullet) ($Dir)
 		}
 	}
+
+(after [examine $])
+	(now) (examined something)
 
 %% We also need to give the player a way to enable and disable the suggestion bar
 %% For this game in particular, we start with it always enabled, even on Z-machine
@@ -317,35 +332,3 @@
 
 %% And extend DRINK a little; don’t know why this isn’t standard already
 (grammar [drink/sip from [object]] for [drink $])
-
-%% Likewise we’re using old-fashioned lighting for this game
-(grammar [light/burn/ignite [object]] for [light $])
-(grammar [douse [object]] for [douse $])
-(grammar [put out [object]] for [douse $])
-(grammar [put [object] out] for [douse $])
-
-(prevent [light (fire source $Obj)])
-	(The $Obj) (is $Obj) already alight.
-
-(prevent [light $])
-	~{
-		*($Source is in scope)
-		(fire source $Source)
-	}
-	You have no source of fire.
-
-(prevent [light $Obj])
-	~(item $Obj)
-	If (the $Obj) actually did catch fire, it might end very badly for you!
-
-(perform [light $Obj])
-	(The $Obj) refuse(s $Obj) to ignite.
-	(tick) (stop)
-
-(prevent [douse $Obj])
-	~(fire source $Obj)
-	(The $Obj) (is $Obj) not burning.
-
-(perform [douse $])
-	You have no way to douse the flames.
-	(tick) (stop)
