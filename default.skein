@@ -119,6 +119,8 @@ This metal post marks the datum: the origin of the archaeologists’ coordinate
 system. It’s anchored very securely into the ground—if it moved even a few
 centimeters, after all, every single measurement would need to be redone.
 
+[0m[4mIf this interface isn’t working for you, you can adjust it in the [0m[4m[50m<OPTIONS>[0m[4m.
+[0m
 [0m[50m                                      ( ) 
                                      / |  
                                      -(@)-
@@ -175,8 +177,8 @@ The main field crew keeps their equipment off to the <south>, but you’ve made 
 unobtrusive little camp here: your <bicycle> locked to a piece of machinery,
 your <backpack> looped over the handlebars.
 
-[0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m, and any
-puzzles you’re currently able to solve with a [0m[4m[50m![0m[4m. Click any room to go there.
+[0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m. Click any
+room to go there.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -198,6 +200,10 @@ guest of the archaeologists, and besides, it’s not like you’re going to be
 of the morning, when you don’t have to explain what a forensic necromancer is,
 or why you need silence to meditate over the bones.
 
+[0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you
+can currently make progress on. You can also use [0m[4m[50m<POINTERS ON>[0m[4m to see them
+marked on your map.
+[0m
 [0m[50m                                        ( ) 
                                        / |  
                                     (@)-( )-

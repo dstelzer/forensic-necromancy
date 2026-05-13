@@ -195,6 +195,27 @@
 	}
 	(now) (taught puzzles)
 
+(give the tutorial)
+	~(taught nudges)
+	{ (movement has been prevented) (or) (#dig is visited) }
+	(div @tutorial) {
+		If you’re ever not sure where to go, (command link {NUDGE}) will tell you what obstacles you can currently make progress on.
+		(if) (pointers enabled) (then)
+			You’ll also see them as (space) (span @command) ! signs on the map.
+		(elseif) (map enabled) (then)
+			You can also use (command link {POINTERS ON}) to see them marked on your map.
+		(endif)
+	}
+	(now) (taught nudges)
+
+(give the tutorial)
+	~(taught options)
+	(examined something)
+	(div @tutorial) {
+		If this interface isn’t working for you, you can adjust it in the (command link {OPTIONS}).
+	}
+	(now) (taught options)
+
 (give the tutorial) %% Don’t fail
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

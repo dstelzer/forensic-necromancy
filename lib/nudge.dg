@@ -158,8 +158,8 @@
 	(into $List)
 	(the-listing $List)
 
-%% Start with pointers always on by default
-(pointers enabled)
+%% This game starts with pointers off
+~(pointers enabled)
 (option paragraph)
 	(if) (pointers enabled) (then)
 		Solvable puzzles are highlighted on the map. Use (command link {POINTERS OFF}) to change this.
