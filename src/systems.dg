@@ -37,6 +37,9 @@
 	(current player $Obj)
 	You are, fortunately, still in the realm of “human” rather than “human remains”.
 (prevent [divine $Obj])
+	(animate $Obj)
+	While these humans are surely long-dead, a memory unfortunately doesn’t count as their “remains” for the purposes of divining.
+(prevent [divine $Obj])
 	~($Obj divines to $)
 	(The $Obj) (doesn’t $Obj) seem to be the remains of a human in situ; that’s what you need for proper forensic necromancy.
 
@@ -205,8 +208,8 @@
 #rope-u
 (rope door *)
 
-(appearance * #in #abovedig) Your (vlink {rope}) is tied to the post, offering an easy climb down to the east.
-(appearance * #in #dig) Your (vlink {rope}) trails down from the origin marker, offering an easy climb up to the west.
+(appearance * #in #abovedig) Your ({rope}) is tied to the post, offering an easy climb down to the east.
+(appearance * #in #dig) Your ({rope}) trails down from the origin marker, offering an easy climb up to the west.
 
 (prevent [untie * | $])
 	~(current room #abovedig)
@@ -219,17 +222,19 @@
 (perform [untie * | $])
 	You undo your hitch and pull the rope back into a loose coil.
 	(now) ~(upper rope connected)
+	(now) (* is nowhere)
 	(current player $Player)
 	(now) (#rope is #heldby $Player)
 	(update environment around player)
+	(if) (current focus *) (then) (now) (current focus #rope) (endif)
 	(notice #rope)
 
 %% Lower rope, tied to the cart
 #rope-d
 (rope door *)
 
-%% (appearance * #in #deeppit) Your (vlink {rope}) is tied to the cart, offering a route down into the chamber below. %% Moved to cart appearance
-(appearance * #in #tunnel) Your (vlink {rope}) is anchored to the cart up above, giving you a way to climb back out.
+%% (appearance * #in #deeppit) Your ({rope}) is tied to the cart, offering a route down into the chamber below. %% Moved to cart appearance
+(appearance * #in #tunnel) Your ({rope}) is anchored to the cart up above, giving you a way to climb back out.
 
 (prevent [untie * | $])
 	~(current room #deeppit)
@@ -242,9 +247,11 @@
 (perform [untie * | $])
 	You undo your hitch and pull the rope back into a loose coil.
 	(now) ~(lower rope connected)
+	(now) (* is nowhere)
 	(current player $Player)
 	(now) (#rope is #heldby $Player)
 	(update environment around player)
+	(if) (current focus *) (then) (now) (current focus #rope) (endif)
 	(notice #rope)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -270,7 +277,7 @@
 		are unlocked to make it easy to push around.
 	(endif)
 (appearance *)
-	A (vlink {wheeled equipment cart})
+	A ({wheeled equipment cart})
 	(if) (* is locked) (then)
 		is securely parked
 	(else)
@@ -278,7 +285,7 @@
 	(endif)
 	off to one side.
 	(if) (lower rope connected) (then)
-		A (vlink {rope}) is tied around it, offering a route down into the chamber below.
+		A ({rope}) is tied around it, offering a route down into the chamber below.
 	(endif)
 
 (before [climb *])
@@ -355,7 +362,7 @@
 			(div @tutorial) {
 				To look one up,
 				(if) (interpreter supports links) (then)
-					click on the TODO STYLING words
+					click on the underlined words
 				(else)
 					try (span @command) { LOOK UP \[ topic \] IN DICTIONARY }, or just (span @command) { LOOK UP \[ topic \] }
 				(endif)

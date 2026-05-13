@@ -15,13 +15,19 @@
 	($Obj is filled with $Liquid)
 	*(dict $Liquid)
 
-(after [examine (liquid source $Obj)])
+%% Generally inappropriate for sources
+%%
+%% (after [examine (liquid source $Obj)])
+%%	($Obj is filled with $Liquid)
+%%	(par) (It $Obj) (is $Obj)
+%%	(if) (liquid container $Obj) (then) %% Able to change
+%%		currently
+%%	(endif)
+%%	full of (name $Liquid) .
+
+(after [examine (liquid container $Obj)])
 	($Obj is filled with $Liquid)
-	(par) (It $Obj) (is $Obj)
-	(if) (liquid container $Obj) (then) %% Able to change
-		currently
-	(endif)
-	full of (name $Liquid) .
+	(par) (It $Obj) (is $Obj) currently full of (name $Liquid) .
 
 %% Two liquids in this game - implemented as off-stage objects
 
@@ -33,6 +39,7 @@
 #oil
 (name *) oil
 (liquid *)
+(an *)
 
 (supposed to be nowhere *(liquid $))
 (uncountable *(liquid $))
@@ -46,7 +53,13 @@
 	(else)
 		You scoop up some water in your hands.
 	(endif)
-	It tastes like ordinary, slightly-dirty water, but you don’t feel refreshed in the slightest.
+	It tastes like ordinary,
+	(if) ($Obj = #cons-pool) (then)
+		very pure
+	(else)
+		slightly-dirty
+	(endif)
+	water, but you don’t feel refreshed in the slightest.
 
 %% Since we’re drinking containers rather than fluids, we should also adjust the message
 (describe action [drink $Obj])
@@ -108,6 +121,9 @@
 (grammar [fill [single] with/from [single]] for [fill $ with $])
 (grammar [fill [single]] for [fill $])
 
+(describe action [fill $Dest with $Source])
+	fill (the full $Dest) from (the full $Source)
+
 %% Redirect standard actions
 (instead of [put (liquid source $Liquid) #in $Obj])
 	(try [fill $Obj with $Liquid])
@@ -116,11 +132,20 @@
 	(liquid source $Source)
 	($Source is filled with $Liquid)
 	~(item $Source)
-	*($Obj is in scope)
-	(liquid container $Obj)
-	~($Obj is filled with $)
-	\( filling (the $Obj) with (name $Liquid) from (the $Source) \) (line)
-	(try [fill $Obj with $Source])
+	(collect $Obj)
+		*($Obj is in scope)
+		(liquid container $Obj)
+		~($Obj is filled with $)
+	(into $List)
+	(if) (empty $List) (then)
+		(fail)
+	(elseif) ($List = [$Single]) (then)
+		\( filling (the $Single) with (name $Liquid) from (the $Source) \) (line)
+		(try [fill $Single with $Source])
+	(else)
+		What do you want to put (the $Liquid) in?
+		(asking for object in [fill [] with $Source])
+	(endif)
 
 (prevent [take $Source])
 	(liquid source $Source)
@@ -210,7 +235,7 @@
 
 (perform [empty (liquid container $Obj)])
 	($Obj is filled with $Liquid)
-	You find an unobtrusive spot to dump (the $Liquid) out of (the $Obj).
+	You find an unobtrusive spot to dump (the $Liquid) out of the (name $Obj).
 	(now) ~($Obj is filled with $)
 
 %% POUR obj INTO obj
@@ -293,6 +318,7 @@
 %% We only have one portable light source
 ($Ancestor contains the lamp)
 	(#lamp has ancestor $Ancestor)
+	(fire source #lamp)
 
 (sufficient light in $Room)
 	($Room contains the lamp)

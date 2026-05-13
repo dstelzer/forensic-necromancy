@@ -32,14 +32,14 @@
 %% If you pass (vlink $) a list of words starting with a number, it will interpret it as a closure instead of a list of words.
 %% So avoid that!
 %%
-%% ($Player)				= (color link [me] {(name $Player)})
-%% ($Object)				= (color link {(name $Object)}) **not** (vlink $Object)!
+%% ($Player)				= (color link [me] {(tagged name $Player)})
+%% ($Object)				= (color link {(tagged name $Object)}) **not** (vlink $Object)!
 %% ($Closure)				= (color link $Closure)
 %% 
-%% ($Object $Closure)		= (vlink {(name $Object)} $Closure)
+%% ($Object $Closure)		= (vlink {(tagged name $Object)} $Closure)
 %% 
 %% (link name $Player)		= me
-%% (link name $Your)		= my (name $Your)
+%% (link name $Your)		= my (tagged name $Your)
 %% (link name $Object)		= (the $Object)
 %% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,15 +114,15 @@
 %% (interface ($<What))
 %% (interface ($<Words $<What))
 
-((current player $Player))	(color link [me] {(name $Player)})
-((object $Object))			(color link {(name $Object)})
+((current player $Player))	(color link [me] {(tagged name $Player)})
+((object $Object))			(color link {(tagged name $Object)})
 ((closure $Closure))		(color link $Closure)
 
-((object $Object) (closure $Closure))	(vlink {(name $Object)} $Closure)
+((object $Object) (closure $Closure))	(vlink {(tagged name $Object)} $Closure)
 
 %% We also make this an alias for ($) and ($ $)
-(maybe link $Object)			(color link {(name $Object)})
-(maybe link $Object $Closure)	(vlink {(name $Object)} {(query $Closure $Object)})
+(maybe link $Object)			(color link {(tagged name $Object)})
+(maybe link $Object $Closure)	(vlink {(tagged name $Object)} {(query $Closure $Object)})
 
 %% Third, the versatile (vlink $) and (vlink $ $) implementation
 
@@ -150,7 +150,7 @@
 (interface (link name $<Obj))
 
 (link name (current player $))		me
-(link name (your $Your))			my (name $Your)
+(link name (your $Your))			my (tagged name $Your)
 (link name $Object)					(the $Object)
 
 %% Finally, (command link $) is like (color link $) but in a fixed-pitch font

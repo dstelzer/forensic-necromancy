@@ -339,11 +339,21 @@
 (from * go #east to #dig) ~(upper rope connected) %% Prevented
 (from * go #down to #east)
 
+(instead of [jump])
+	(current room *)
+	\( off the edge \) (line)
+	(try [go #down])
+
 (prevent [leave * #east])
 	~(upper rope connected)
 	~{ (#cart is #in #dig) (#cart is locked) }
 	This ledge is about three meters above the dig site—farther than you’re willing to jump. You’ll need some way to climb down.
 	(now) (movement has been prevented)
+
+(narrate leaving * #east)
+	(#cart is #in #dig)
+	(#cart is locked)
+	With the cart under the ledge, there’s barely any drop at all. You hop down onto the cart, then onto the ground.
 
 #post
 (name *) survey post
@@ -400,11 +410,31 @@
 (from * go #west to #abovedig) ~(upper rope connected) %% Prevented
 (from * go #up to #west)
 
-(before [leave * #west])
+%% The following is an *incredibly* hacky way to avoid the (recursively leave non-vehicles) check that happens (before $) going anywhere
+%% We circumvent those (before $) checks altogether when redirecting to another action
+%% THIS IS A BAD IDEA! DO NOT IMITATE THIS IN YOUR OWN CODE!
+
+(try [go #west/#up])
+	(current room *)
+	(maybe jump from cart)
+(try [leave * #west/#up])
+	(current room *)
+	(maybe jump from cart)
+
+%% Try using the cart if it’s available
+(maybe jump from cart)
 	(#cart is #in *)
+	(if) ~{ (current player $Player) ($Player is #on #cart) } (then)
+		(first try [climb #cart])
+	(endif)
+	(try [jump])
+
+(perform [jump])
+	(current room *)
 	(current player $Player)
-	~($Player is #on #cart)
-	(first try [enter #cart])
+	($Player is #on #cart)
+	Standing on the cart, you have just enough height to plant your arms firmly on top of the bank. One little \( or maybe moderate \) leap and you’re hauling yourself up.
+	(move player to #in #abovedig)
 
 (prevent [leave * #west])
 	~(upper rope connected)
@@ -434,9 +464,9 @@
 	(endif)
 (appearance *)
 	(if) (#n-ziqqurat is unvisited) (then)
-		According to the dig reports, these are the coordinates where human remains were found earlier today. With any luck, there should be some (vlink {bone fragments}) left to find.
+		According to the dig reports, these are the coordinates where human remains were found earlier today. With any luck, there should be some ({bone fragments}) left to find.
 	(else)
-		You can just barely make out some (vlink {bone fragments}) in the moonlight.
+		You can just barely make out some ({bone fragments}) in the moonlight.
 	(endif)
 
 (narrate divining *)
@@ -472,7 +502,7 @@
 		But they’re certainly Sharhiya’s.
 	(endif)
 (appearance *)
-	The (vlink {latest finds}) have been carefully sorted and labelled in trays off to one side
+	The ({latest finds}) have been carefully sorted and labelled in trays off to one side
 	(if) (#s-palace is visited) (then)
 		(no space) —including the bones of Sharhiya of Babylon
 	(endif)
@@ -492,7 +522,8 @@
 (name *) deep pit
 (dict *) n10e10 n10 e10
 (room *)
-(look *) N10E10 is only half a square: a five-by-ten rectangle angled sharply downward until it intersects some kind of underground (vlink {cavity}). The other half of the square is nothing but a yawning pit, extending under the ground to the north.
+(* has coordinates [3 2 1])
+(look *) N10E10 is only half a square: a five-by-ten rectangle angled sharply downward until it intersects some kind of underground ({cavity}). The other half of the square is nothing but a yawning pit, extending under the ground to the north.
 
 (from * go #south to #dig)
 (from * go #southeast to #looseearth)
@@ -509,7 +540,7 @@
 (dict *) hole cavity dark deep
 (* is #in #deeppit)
 (actor container *)
-(descr *) It doesn’t look like it was dug by the archaeologists—it doesn’t follow the grid, and there’s a good meter and a half of solid dirt above it. And the (vlink {electrical wires}) are clearly improvised.
+(descr *) It doesn’t look like it was dug by the archaeologists—it doesn’t follow the grid, and there’s a good meter and a half of solid dirt above it. And the ({electrical wires}) are clearly improvised.
 
 (perform [enter *])
 	(try [go #down])
@@ -555,8 +586,8 @@
 	~(lower rope connected)
 	ERROR: You should never be able to trap yourself in the tunnel. Please report how you did this!
 
-(from * go #northwest to #tunnel2)
-(from * go #southeast to #tunnel2)
+(from * go #northwest to #tunnel2) ~(warned about tunnel)
+(from * go #southeast to #tunnel2) ~(warned about tunnel)
 
 #tunnel2
 (room *)
@@ -571,6 +602,7 @@
 	(else)
 		it should be right here.
 	(endif)
+	(now) (warned about tunnel)
 
 #lighting
 (name *) electric lights
@@ -578,7 +610,7 @@
 (plural *)
 (* is #in #tunnel)
 (descr *) Small but bright, and judiciously placed to light up this entire section.
-(appearance *) Small (*) flicked on when you got close, bathing the tunnel in an actinic blue. The proper excavation here has only just started, but (vlink {white fragments}) shine in one of the walls.
+(appearance *) Small (*) flicked on when you got close, bathing the tunnel in an actinic blue. The proper excavation here has only just started, but ({white fragments}) shine in one of the walls.
 
 #bones-m
 (bones *)
@@ -591,6 +623,13 @@
 	(else)
 		: the bones of the unfortunate high priest.
 	(endif)
+
+(narrate divining *)
+	(select)
+		There’s no awkward balancing this time. The hardest part is contorting yourself into a more-or-less comfortable sitting position, so you can rest your head against one wall with the bone fragments at eye level on the other. Then the mirror, the tablet, and the meditation, linking one more memory into the palace...
+	(or)
+		You contort yourself back into a sitting position and focus on the bones one more time.
+	(stopping)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Dreams of Nabuu-ahu-eresh                   %%%%%%%%%
@@ -612,7 +651,7 @@
 	
 	You’re standing on a wide platform halfway up a tower of towers: one massive pillar stacked on another, on another, on another. The top vanishes into the mists above and the ground is nothing but a distant blur. You’re left on the walkway in between, canted at a steeper angle than is really comfortable. (par)
 	
-	All around, other memories have forced their way in like tree roots cracking through a sidewalk. To the south, the walkway runs headlong into the front of a mud-brick house, its (vlink {door})
+	All around, other memories have forced their way in like tree roots cracking through a sidewalk. To the south, the walkway runs headlong into the front of a mud-brick house, its ({door})
 	(if) (#door is open) (then)
 		standing open
 	(else)
@@ -620,7 +659,7 @@
 	(endif)
 	; west, the steps down barely make it a meter before
 	(if) ~(statue is turned) (then)
-		they’re lost in a (vlink {blinding light})
+		they’re lost in a ({blinding light})
 	(else)
 		turning into a trampled hallway
 	(endif)
@@ -628,7 +667,7 @@
 		; east, a balcony cuts straight through the side of the ziggurat
 	(endif)
 	(if) (#m-unfinished is visited) (then)
-		; and some new (vlink {construction}) intrudes from the north
+		; and some new construction intrudes from the north
 	(endif)
 	.
 	
@@ -678,7 +717,7 @@
 	(or)
 	(stopping)
 	on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
-	The (vlink {wiry man}) waves the torch eastward with an awful smirk, letting you see the (vlink {crumpled figure}) lying there. The (vlink {other man}) is mostly lost in the shadows.
+	The ({wiry man}) waves the torch eastward with an awful smirk, letting you see the ({crumpled figure}) lying there. The ({other man}) is mostly lost in the shadows.
 	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
 		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
 	(endif)
@@ -699,7 +738,7 @@
 (* is #in #n-execution)
 
 (appearance * #in #n-execution)
-	The dropped (vlink {spear}) lies just out of arm’s reach.
+	The dropped ({spear}) lies just out of arm’s reach.
 
 (descr *)
 	(if) (* is #in #n-execution) (then)
@@ -715,7 +754,7 @@
 (dict *) shawl fringe gold
 (male *)
 (* is #in #n-execution)
-(descr *) Both of the men have fine clothes, richly-dyed and well-fringed, in a way you wouldn’t expect in a dungeon—but this one at least also has strong muscles and callouses on his hands. His (vlink {torch}) is held high, pointing to the east.
+(descr *) Both of the men have fine clothes, richly-dyed and well-fringed, in a way you wouldn’t expect in a dungeon—but this one at least also has strong muscles and callouses on his hands. His ({torch}) is held high, pointing to the east.
 (* has secondary objects)
 
 #torch
@@ -748,17 +787,17 @@
 (* is #in #n-execution)
 (descr *)
 	(sufficient light)
-	You can see the man better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there.
+	You can see the man better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there. What would be north of here?
 	(now) (northern connection unlocked)
 (descr *)
-	The stout man’s form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now.
+	The stout man’s form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now. \( You make a mental note to come back to this later. \)
 
 %% Puzzle room blocking Vignette 2
 #n-house
 (name *) house
 (dict *) entrance hall passage
 (room *)
-(look *) Or perhaps “entrance hall” would be a better term. The room isn’t large, but the floor is nicely-smoothed clay, the walls painted with abstract (vlink {designs}) in red and blue. By Iron Age standards, whoever lived here must have been distinctly well off. The passage to the west is indistinct, but has a feeling of motion in its haziness.
+(look *) Or perhaps “entrance hall” would be a better term. The room isn’t large, but the floor is nicely-smoothed clay, the walls painted with abstract ({designs}) in red and blue. By Iron Age standards, whoever lived here must have been distinctly well off. The passage to the west is indistinct, but has a feeling of motion in its haziness.
 
 (from * go #north through #door to #n-ziqqurat)
 (from * go #west to #n-announcement)
@@ -788,7 +827,7 @@
 (descr *)
 	The door of the house is made of thick, sturdy wood mounted in the mud-brick walls.
 	(if) (* is closed) (then)
-		It’s firmly closed, but the (vlink {crack}) where it meets the wall is wide enough to see through.
+		It’s firmly closed, but the ({crack}) where it meets the wall is wide enough to see through.
 	(else)
 		It’s now hanging open.
 	(endif)
@@ -831,7 +870,7 @@
 (descr *)
 	The crack is about three centimeters wide. Through it you can see a heavy bar of wood on the other side, holding the door closed.
 	(if) (#spear is #partof *) (then)
-		(par) A (vlink {spear}) is wedged under the bar.
+		(par) A ({spear}) is wedged under the bar.
 	(endif)
 (* has secondary objects) (#spear is #partof *)
 
@@ -884,7 +923,7 @@
 
 (name *) marketplace
 (look *)
-	This plaza must once have been magnificent. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered reliefs, and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par) All around you, the (vlink {crowd}) is frozen like a sea of nameless, faceless statues.
+	This plaza must once have been magnificent. The soot-blackened ({buildings}) soar high, the walls are covered in shattered reliefs, and the ({grand fountain}) shows the remains of some kind of sculpture. (par) All around you, the ({crowd}) is frozen like a sea of nameless, faceless statues.
 
 (from * go #east to #n-house)
 
@@ -910,7 +949,7 @@
 (dict *) messenger man assyrian babylonian babylonians
 (descr *)
 	You have to move around a bit to see the messenger, but he stands out: his dress and his dialect are both Assyrian, while everyone else here is distinctly Babylonian. Fortunately you’re proficient in both. \( A necromancy degree involves quite a lot of dead languages. \) (par)
-	The only other individual you can make out is your (vlink {brother}), caught mid-run with both feet off the ground. The rest are remembered only as a sort of indistinct blur.
+	The only other individual you can make out is your ({brother}), caught mid-run with both feet off the ground. The rest are remembered only as a sort of indistinct blur.
 (* has secondary objects)
 
 #ann-sharhiya
@@ -941,7 +980,7 @@
 (room *)
 (name *) workshop
 (dict *) work shop
-(look *) This room is not small: the ceiling is high and the floor wide. But the heat and the smoke make it feel tight all the same, and you’re hemmed in on all sides by (vlink {tools and equipment}). The scent of hot metal stings in your nose.
+(look *) This room is not small: the ceiling is high and the floor wide. But the heat and the smoke make it feel tight all the same, and you’re hemmed in on all sides by ({tools and equipment}). The scent of hot metal stings in your nose.
 
 (* attracts #light) %% Keep the light here even when it’s not a door
 
@@ -969,11 +1008,12 @@
 
 #metals
 (name *) pieces of silver and gold
-(heads *) pieces
+(heads *) pieces wire sheet sheets
 (plural *)
+(item *)
 (* is #partof #equipment)
-(descr *) TODO
-%% TODO: can you take it or not?
+(descr *) Some flat sheets, some wires, some misshapen bits that need to be hammered out again. All beautifully shiny in the light of the forge.
+(prevent [take *]) In the real world this metal would be worth a fortune—or at least what counts as a fortune to a PhD student. In the memory, though, it’s just heavy and useless.
 
 %% The puzzle itself
 #light
@@ -1012,7 +1052,7 @@
 (* has secondary objects)
 
 (appearance *)
-	A towering (vlink {statue}) dominates the room, light blazing from its gold-plated skin.
+	A towering ({statue}) dominates the room, light blazing from its gold-plated skin.
 	(if) ~(statue is turned) (then)
 		Its fiery gaze is fixed on the door to the east.
 	(else)
@@ -1027,7 +1067,7 @@
 		the eastern passage
 	(endif)
 	with light. (par)
-	It’s only once your eyes adjust that you can see the more mundane side: the wooden scaffolding around it, the movable (vlink {work platform}) underneath. This god seems to be under construction.
+	It’s only once your eyes adjust that you can see the more mundane side: the wooden scaffolding around it, the movable ({work platform}) underneath. This god seems to be under construction.
 	(unlock #t-gods)
 
 #st-platform
@@ -1066,20 +1106,55 @@
 (name *) back room
 (dict *) backroom
 (look *)
-	This room is suggested more than seen, the moonlight through the (vlink {window}) tracing the outlines in shades of black.
+	This room is suggested more than seen, the moonlight through the ({window}) tracing the outlines in shades of black.
 	(if) (sufficient light) (then)
 		Even the lamplight goes soft and silvery in the memory.
 	(endif)
-	Is it a workshop, a kitchen, a storage space? All you can see clearly is (vlink {your brother}), eyes fixed intently on the (vlink {table}).
+	Is it a workshop, a kitchen, a storage space? All you can see clearly is ({your brother}), eyes fixed intently on the ({table}).
 
 (from * go #northeast to #n-workshop)
 
+#back-window
+(name *) window
+(* is #in #n-argument)
+(descr *)
+	No glass in this period, just a hole in the wall that can be opened in good weather
+	(if) (* is open) (then)
+		\( like right now \)
+	(endif)
+	and closed in bad
+	(if) (* is closed) (then)
+		\( like right now \)
+	(endif)
+	.
+(openable *)
+(* is open)
+(narrate closing *) You close the shutters, but the moonlight doesn’t change. It’s too strong a part of the memory to change.
+(narrate opening *) You open the shutters, but the moonlight stays exactly the same.
+
+#back-table
+(name *) table
+(* is #in #n-argument)
+(supporter *)
+(descr *) 
+	Solid and well-polished wood. These brothers weren’t royalty, but they certainly had money.
+	(collect $Item)
+		*($Item is #on *)
+	(into $List)
+	(if) (nonempty $List) (then)
+		(par) (A $List) (is $List) sitting on top .
+	(endif)
+
 #lamp
 (name *) lamp
-(dict *) lantern light wick clay bowl spout yellow flame
+(dict *) lantern wick clay bowl spout yellow flame burning
+(tagged name *)
+	(lamp lit)
+	burning lamp
+~(an *) (lamp lit)
 (item *)
 (liquid container *)
-(* is #in #n-argument)
+(* is #on #back-table)
 (descr *)
 	It’s shaped like a clay bowl with a little spout at one end.
 	(if) (* is filled with $Liquid) (then)
@@ -1089,7 +1164,7 @@
 		(endif)
 		.
 	(else)
-		A cloth wick runs from the spout to the bottom of the bowl.
+		A cloth wick runs from the spout to the bottom of the bowl, where not a drop of oil is left.
 	(endif)
 
 %% Avoid shenanigans once it’s lit
@@ -1107,12 +1182,15 @@
 	(lamp lit)
 	(try [douse *])
 
-(perform [light *])
+(perform [burn*])
 	~(* is filled with #oil)
 	(fire source $Source is visible)
 	You hold the lamp against (the $Source) for a moment, but the wick just chars. It needs to be filled with oil to burn properly.
+	(if) (* is filled with #water) (then)
+		\( The water definitely isn’t helping, either. \)
+	(endif)
 	(tick) (stop)
-(perform [light *])
+(perform [burn *])
 	(fire source $Source is visible)
 	You hold the lamp against (the $Source) for a moment, making sure there’s enough oil on the wick, and when you pull it away it’s shining with a small but steady yellow flame.
 	(now) (lamp lit)
@@ -1269,7 +1347,8 @@
 (name *) ruined temple
 (room *)
 (look *)
-	At first glance, this building looks like any of the others the archaeologists have found. But the ({bricks and rubble}) covering the floor are recent, and the gaps in the walls and ceiling are deliberate—this is the work of soldiers, not just the ravages of time. At least it’s not actively on fire. The flickering light in the sanctum to the east looks more like carefully-controlled torches than arson.
+	At first glance, this building looks like any of the others the archaeologists have found. But the ({bricks and rubble}) covering the floor are recent, and the gaps in the walls and ceiling are deliberate—this is the work of soldiers, not just the ravages of time.
+	(par) At least it’s not actively on fire. The flickering light in the sanctum to the east looks more like carefully-controlled torches than arson, and the spilled coals to the northwest are an intrusion on the dream.
 
 (from * go #northwest through #coals to #s-palace)
 (from * go #east to #s-conspiracy)
@@ -1290,10 +1369,10 @@
 	You grab your brother’s wrist and pull him down next to you, putting a finger over your lips. “Shh! Listen.” He doesn’t understand, but he complies. You squat together behind the massive pithos. (par)
 	A moment later you see them: two men carrying torches, moving toward the pool at the center of the room. One hands his torch to the other and kneels to rinse his hands in the water; then his companion does the same. (par)
 	“...absolutely sure of the report.” That has to be the high priest; you would recognize his voice anywhere. “Urad-Mullissi might have accepted someone else as crown prince, but a son of a secondary wife? It’s insult on top of insult.” (par)
-	“And he’s really going to...” (par)
+	“And he’s really going to try...” (par)
 	The high priest nods. “It’s the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. It will mean civil war. Chaos.” (par)
 	“Then what will we do to prevent it?” (par)
-	“Prevent it?” The high priest shakes his head. “No. Civil war can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing on his kingship. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.” (par)
+	“Prevent it?” The high priest shakes his head. “No. Civil war can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing to him. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.” (par)
 	The two figures turn and start to move away, and you can’t make out what they say next. But the high priest’s last words come in a sharp whisper: “No. Tell no one, on pain of death.”
 
 (protagonist description for *)
@@ -1301,6 +1380,8 @@
 
 (name *) moonlit courtyard
 (look *) The edges of the memory are blurry, but this must be somewhere in the Temple of Marduk: the floor is an intricate mosaic, hundreds of twisting paths all leading to the ({pool}) in the center. ({Your brother}) is crouched behind a large ({pithos}), watching the ({shadowy figures}) on the opposite side.
+
+(from * go #west to #s-temple)
 
 #cons-pool
 (name *) deep pool
@@ -1320,7 +1401,7 @@
 (descr *) Finally you can get a good look at the protagonist from the first few memories: a tall man with an anxious sort of face. His clothes match yours.
 
 #cons-pithos
-(name *) pithos
+(name *) pithos of oil
 (dict *) large clay jar
 (* is #in #s-conspiracy)
 (liquid source *)
@@ -1337,11 +1418,20 @@
 (descr *)
 	One of them remains hazy, even when you move closer, but the other resolves into a lean, round-shouldered form: the high priest of Marduk. His hair has gone wispy and gray with age, but his voice never falters.
 
+#cons-torches
+(name *) vaguely-defined torches
+(dict *) vaguely defined vague light
+(plural *)
+(item *)
+(* is #heldby #cons-figures)
+(descr *) They’re just barely visible at the edge of the dream, a hazy glow without an actual flame.
+(when * is out of reach) Your hand passes right through. They’re not remembered clearly enough to have any real existence.
+
 %% Puzzle room blocking Vignette 3
 #s-throneroom
 (name *) cramped passage
 (room *)
-(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky darkness coats every surface, flowing back into place as soon as your lamp moves past. Off to the east, though, you can make out a flicker of movement.
+(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky darkness coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
 
 (from * go #west to #s-palace)
 (from * go #northeast to #s-revelation)
@@ -1349,6 +1439,9 @@
 (prevent entering *)
 	~(sufficient light in *)
 	You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further.
+
+(narrate leaving #s-palace #east) You take a deep breath and step into the darkness. It flows away from your lamp like some kind of viscous fluid, leaving a small patch of visibility around you.
+(narrate leaving * #west) You step back into the light.
 
 %% Vignette 3
 #s-revelation
@@ -1361,7 +1454,7 @@
 	“Now, Sharhiya of Babylon, this is very important. I need you to tell me exactly what you heard, and who you heard it from. Tzillaya, please get this verbatim.” The stout man nods and pulls out a new stylus. Then all three of them look at you expectantly while you stammer and grasp for the words. (par)
 	Eventually, Urad-Mullissi sighs and stands up from the throne. “I swear to Asshur that you will not be punished for anything you speak of today. Nabiya, Tzillaya, make sure he’s properly compensated, with a little extra for lodgings until he returns to Babylon. But I need to know every detail, exactly as you remember it. (par)
 	“You see,” he steps toward you, and you have to fight the urge to back away, “my brother has been planning something, he and his mother. He doesn’t know how to quit while he’s ahead. Father’s gotten suspicious. And now he’s overplayed his hand—now, I have proof that he’s trying to frame me for treason. This testimony should be enough to get him exiled, or worse.” (par)
-	The prince sees your flinch, and stops moving closer. “So I would consider it a great favor if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.” (par)
+	The prince sees your flinch, and stops moving closer. “So I would consider it a great favor, to me and to my father, if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.” (par)
 	So you think back, and start to recount your story...
 
 (protagonist description for *)
@@ -1370,6 +1463,8 @@
 (name *) audience chamber
 (look *)
 	This room must be designed specifically to make you feel small as you stand before the ({throne}). It’s enormous even by modern standards; to an ancient Assyrian, this must have been the largest space they’d ever seen. With ({Urad-Mullissi}) and ({the two officials}) standing around you, though, the effect makes them seem just as tiny.
+
+(from * go #southwest to #s-throneroom)
 
 #rev-throne
 (name *) royal throne
@@ -1381,6 +1476,7 @@
 
 #rev-urad
 (name *) Urad-Mullissi
+(dict *) urad mullissi
 (proper *)
 (male *)
 (dict *) prince man
@@ -1389,6 +1485,7 @@
 
 #rev-officials
 (name *) two officials
+(dict *) Nabiya Tzillaya
 (singleton *)
 (plural *) %% Weird combination of traits on these guys
 (male *)
@@ -1409,17 +1506,21 @@
 (name *) half-finished building
 (dict *) construction site
 (room *)
+(* has coordinates [3 2 2])
 (look *) Or perhaps “construction site”? This area is an odd mixture of old and new: ({surveying lines}) are laid out over crumbling walls, piles of new ({bricks}) carted in to join to the old. Two real passages cut through the maze of chest-high and waist-high walls, one leading north, the other south.
 
 (from * go #south to #n-ziqqurat)
 (from * go #north to #m-epilogue)
+
+(narrate leaving * #south)
+	The new memory transitions smoothly into the old ones, one more hole in the borders of the ziggurat. It’s starting to look like swiss cheese around the edges.
 
 #cons-lines
 (name *) surveying lines
 (dict *) survey line walls wall cord cords rope ropes peg pegs
 (plural *)
 (* is #in #m-unfinished)
-(descr *) These surveying lines don’t look too different from the cords the modern archaeologists used to lay out their grid. Even thousands of years later, the best way to make a straight line is still to stretch a rope between a couple pegs. Instead of a regular grid, though, these ones seem to be tracing the original walls, making sure the new ones follow exactly the same outline.
+(descr *) These surveying lines don’t look too different from the cords the modern archaeologists used to lay out their grid. Even thousands of years later, the best way to make a straight line is still to stretch a rope between a couple of pegs. Instead of a regular grid, though, these ones seem to be tracing the original walls, making sure the new ones follow exactly the same outline.
 
 #cons-bricks
 (name *) piles of bricks
@@ -1478,6 +1579,7 @@
 		(div @meta) {
 			You’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type (command link {FINISH}) to wrap things up.
 		}
+		(now) (finish command unlocked)
 	(or)
 	(stopping)
 
@@ -1506,10 +1608,9 @@
 	(game over {The End})
 
 (game over option)
-	see the real HISTORY behind this game
+	see the real (link) HISTORY behind this game
 (parse game over [history])
 	(history)
-	(pause)
 
 (history)
 	(if) (interpreter supports links) (then) %% Web terp with links
