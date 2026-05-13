@@ -201,7 +201,7 @@
 	(div @tutorial) {
 		If you’re ever not sure where to go, (command link {NUDGE}) will tell you what obstacles you can currently make progress on.
 		(if) (pointers enabled) (then)
-			You’ll also see them as (space) (span @command) ! signs on the map.
+			You’ll also see them as (space) (span @command) ? signs on the map.
 		(elseif) (map enabled) (then)
 			You can also use (command link {POINTERS ON}) to see them marked on your map.
 		(endif)
@@ -232,8 +232,10 @@
 	But you made it.
 	(if) (#dig is unvisited) (then)
 		They say the field crew came across more bones today, and that’s exactly what you need.
-	(else)
+	(elseif) ~(finish command unlocked) (then)
 		You found the human remains you’re looking for; now all you need is enough data to cap off your thesis.
+	(else)
+		You’ve found all the data you’re looking for. Now you can finish up whenever you’re ready.
 	(endif)
 
 (from * go #south to #abovedig)
@@ -299,7 +301,13 @@
 
 (prevent [unlock/open/untie * | $]) (bike refusal)
 
-(bike refusal) You’re not ready to leave yet, and you’re also not ready to bring a bike any closer to a delicate archaeological site.
+(bike refusal)
+	You’re not ready to leave yet, and you’re also not ready to bring a bike any closer to a delicate archaeological site.
+	(if) (finish command unlocked) (then)
+		(div @meta) {
+			If you (emph {are}) ready to leave, use the (command link {FINISH}) command to end the game.
+		}
+	(endif)
 
 #backpack
 (name *) backpack
@@ -332,6 +340,11 @@
 	(else)
 		(par) The backpack is closed.
 	(endif)
+
+(after [open *])
+	(now) (backpack opened)
+(puzzle *)
+(solved *) (backpack opened)
 
 #waterbottle %% Not useful, but shows that you can’t carry things into dreams
 (name *) water bottle
@@ -490,6 +503,9 @@
 		You can just barely make out some ({bone fragments}) in the moonlight.
 	(endif)
 
+(puzzle *)
+(solved *) (#n-ziqqurat is visited)
+
 (narrate divining *)
 	%% Always the first bones you divine, probably also the first bones you return to
 	(select)
@@ -550,6 +566,9 @@
 		But they’re certainly Sharhiya’s.
 	(endif)
 
+(puzzle *)
+(solved *) (#s-palace is visited)
+
 (narrate divining *)
 	(select)
 		You have to try a couple positions before you find one that works: you need a clear view of the bones, but if you’re too vertical, you might fall over when the visions set in. Eventually you settle down on the wall between the grid squares and pull out your mirror and tablets. (par)
@@ -583,6 +602,11 @@
 (* is #in #deeppit)
 (actor container *)
 (descr *) It doesn’t look like it was dug by the archaeologists—it doesn’t follow the grid, and there’s a good meter and a half of solid dirt above it. And the ({electrical wires}) are clearly improvised.
+
+(puzzle *)
+(* requires #cart)
+(solved *)
+	(lower rope connected) (or) (#tunnel is visited)
 
 (perform [enter *])
 	(try [go #down])
@@ -779,6 +803,9 @@
 (item *)
 (* is #in #n-execution)
 
+(puzzle *)
+(solved *) (* is handled)
+
 (appearance * #in #n-execution)
 	The dropped ({spear}) lies just out of arm’s reach.
 
@@ -822,6 +849,9 @@
 		(now) (eastern connection unlocked)
 	(endif)
 
+(puzzle *)
+(solved *) (eastern connection unlocked)
+
 #exec-tzillaya
 (name *) stout man
 (dict *) other tablets
@@ -833,6 +863,10 @@
 	(now) (northern connection unlocked)
 (descr *)
 	The stout man’s form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now. \( You make a mental note to come back to this later. \)
+
+(puzzle *)
+(* requires #lamp)
+(solved *) (northern connection unlocked)
 
 %% Puzzle room blocking Vignette 2
 #n-house
@@ -874,6 +908,10 @@
 		It’s now hanging open.
 	(endif)
 (* has secondary objects) (* is closed) %% The crack goes away after that
+
+(puzzle *)
+(* requires #spear)
+(solved *) (* is open)
 
 (prevent [open *])
 	(* is closed)
@@ -1017,6 +1055,9 @@
 	(* is pristine)
 	You scoop up the bucket by its handle.
 
+(puzzle *)
+(solved *) (* is handled)
+
 %% Puzzle room blocking Vignette 3
 #n-workshop
 (room *)
@@ -1078,6 +1119,10 @@
 	(endif)
 (descr *) It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam shining through dust. From the side you can clearly see its path traced out in fiery gold.
 
+(puzzle *)
+(* requires #blindfold)
+(solved *) (#n-workshop is visited)
+
 (narrate leaving #n-ziqqurat #west)
 	~(statue is turned)
 	You turn your face toward the heat and walk straight forward. The air gets hotter and brighter until you can see a faint glow around the edges of the blindfold...and then just like that, it recedes.
@@ -1092,6 +1137,9 @@
 (suggest pushing *)
 (* is #in #n-workshop)
 (* has secondary objects)
+
+(puzzle *)
+(solved *) (statue is turned)
 
 (appearance *)
 	A towering ({statue}) dominates the room, light blazing from its gold-plated skin.
@@ -1209,6 +1257,10 @@
 		A cloth wick runs from the spout to the bottom of the bowl, where not a drop of oil is left.
 	(endif)
 
+(puzzle *)
+(* requires #cons-pithos)
+(solved *) (lamp lit)
+
 %% Avoid shenanigans once it’s lit
 (fire source *) (lamp lit)
 (prevent [pour/empty * | $])
@@ -1224,7 +1276,7 @@
 	(lamp lit)
 	(try [douse *])
 
-(perform [burn*])
+(perform [burn *])
 	~(* is filled with #oil)
 	(fire source $Source is visible)
 	You hold the lamp against (the $Source) for a moment, but the wick just chars. It needs to be filled with oil to burn properly.
@@ -1297,6 +1349,10 @@
 	(coals cooled)
 	What would be the use? They’d just stain everything black.
 
+(puzzle *)
+(* requires #bucket)
+(solved *) (coals cooled)
+
 (action [leave #s-palace #southeast] requires * to be touched) %% Ensure it can’t be bypassed
 
 %% Avoid alternate solution
@@ -1354,7 +1410,7 @@
 (* is #in #s-audience)
 (intangible *)
 (descr *)
-	Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Is that the voice of the ex-crown-prince, Urad-Mullissi himself?
+	Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Definitely not the voice of an elderly man.
 
 #blindfold
 (name *) blindfold
@@ -1363,6 +1419,9 @@
 (wearable *)
 (descr *) Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover his face.
 (supposed to be nowhere *)
+
+(puzzle *)
+(solved *) (* is handled)
 
 (prevent [look])
 	(worn *)
@@ -1450,6 +1509,10 @@
 (* is filled with #oil)
 (descr *)
 	A huge jar, about the size of a person. This one is filled with a sweet-smelling oil. For anointing, maybe?
+
+(puzzle *)
+(* requires #impossible) ~(#lamp is handled)
+(solved *) (#lamp is filled with #oil)
 
 #cons-figures
 (name *) shadowy figures

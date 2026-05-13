@@ -5,8 +5,6 @@ label: START
 --------------------------------------------------------------------------------
 [1m[36mDialog Interactive Debugger (dgdebug) version 1c/01-dev.[0m[36m
 Type @help at the game prompt for a brief introduction.
-[0m[1m[36mWarning:[0m[36m lib/automap.dg, line 286: Possible typo: A query is made to '(puzzle
-$)', but there is no matching rule or interface definition.
 [0m
 
 [0m[4m[0m[1m[4mContent warning:[0m[4m This game includes significant (but non-graphic) discussion of
@@ -177,8 +175,8 @@ The main field crew keeps their equipment off to the <south>, but you’ve made 
 unobtrusive little camp here: your <bicycle> locked to a piece of machinery,
 your <backpack> looped over the handlebars.
 
-[0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m. Click any
-room to go there.
+[0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m, and any
+puzzles you’re currently able to solve with a [0m[4m[50m![0m[4m. Click any room to go there.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -201,8 +199,7 @@ of the morning, when you don’t have to explain what a forensic necromancer is,
 or why you need silence to meditate over the bones.
 
 [0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you
-can currently make progress on. You can also use [0m[4m[50m<POINTERS ON>[0m[4m to see them
-marked on your map.
+can currently make progress on. You’ll also see them as [0m[4m[50m![0m[4m signs on the map.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -312,6 +309,8 @@ command: open it
 You open your backpack, revealing a <water bottle>, some <nylon rope>, and a <
 [0m[4mPocket Encyclopedia of the Neo-Assyrian World[0m>.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[4mSometimes an object will only be mentioned in the description of another object.
 But you can still click them, just like nouns in the main description.
 [0m
@@ -326,7 +325,7 @@ backpack] close it>
 [0m[1m<[look] Your camp>[0m • <east> • <northeast>
 --------------------------------------------------------------------------------
 id: 1778630448650
-parent-id: 1778630448649
+parent-id: 1778715244260
 command: water
 --------------------------------------------------------------------------------
 > water
@@ -334,9 +333,6 @@ Even if you’re not trekking through the desert, the temperature in Mosul is we
 over 30 degrees at night. Passing out from dehydration won’t get your thesis
 finished.
 
-[0m[4mA lot of text adventures involve finding objects and moving them around. To see
-what you’re currently holding, [0m[4m[50m<take inventory>[0m[4m.
-[0m
 [0m[50m                                        ( ) 
                                        / |  
                                     (@)-( )-
@@ -418,6 +414,8 @@ dictionary] [0m[1mNineveh[0m> and <[look up neo-assyrian empire in the dictio
 Neo-Assyrian Empire[0m>, among others.
 
 [0m[4mTo look one up, click on the underlined words.
+[0m
+[0m[4m(Your <score> has gone up by one point.)
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -616,6 +614,8 @@ You tie a quick hitch around the survey post, then give the rope a couple of
 experimental tugs. Seems strong enough to hold your weight. The other end trails
 down into the excavation below.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                        ( ) 
                                        / |  
                                     ( )-(@)-
@@ -802,6 +802,8 @@ The whole tableau is frozen like a fly in amber. The dust swirls around your
 feet with every step, but the moment you’re past, it hangs motionless in the
 air. The only flicker of movement is along the walkway to the northwest.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                     \    
                                      -(@) 
                                        |  
@@ -1076,6 +1078,8 @@ The <wiry man> waves the torch eastward with an awful smirk, letting you see the
 
 The dropped <spear> lies just out of arm’s reach.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [@]     
                                        \    
                                        -( ) 
@@ -1229,9 +1233,11 @@ command: take it
 > take it
 You take the iron-tipped spear.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [@]     
                                        \    
-                                       -( ) 
+                                       -(?) 
                                          |  
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1250,9 +1256,11 @@ can make out the Babylonian tunic, and the unnatural position.
 If this is where “you” died, and the bodies weren’t moved post mortem...then the
 brother’s bones should be about ten meters to the east, back in the present day.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [@]     
                                        \    
-                                       -( ) 
+                                       -(?) 
                                          |  
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1273,7 +1281,7 @@ brother’s bones should be about ten meters to the east, back in the present da
 
 [0m[50m                                    [@]     
                                        \    
-                                       -( ) 
+                                       -(?) 
                                          |  
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1294,7 +1302,7 @@ If you want to go back to the memory palace, there’s a tear in the haze to the
 
 [0m[50m                                    [@]     
                                        \    
-                                       -( ) 
+                                       -(?) 
                                          |  
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1478,9 +1486,11 @@ decorated, while the one to the east is too dark to see. Southeast, a passage
 has intersected a brazier and spilled <hot coals> across the floor; west, an
 outdoor balcony juts in a meter above the floor.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1496,7 +1506,7 @@ palace.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1513,7 +1523,7 @@ air.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1531,7 +1541,7 @@ frozen in memory. Touching them would end poorly.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1548,7 +1558,7 @@ You have no supply of water.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1566,7 +1576,7 @@ frozen in memory. Touching them would end poorly.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1585,7 +1595,7 @@ light before it can tighten any further.
 
 [0m[50m                                  [ ]         
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1603,7 +1613,7 @@ bruised, more than a little dishevelled.
 
 [0m[50m                                    [@]     
                                        \    
-                                       -( ) 
+                                       -(?) 
                                          |  
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1664,9 +1674,11 @@ You pull yourself out of the memory with a [0m[4msnap[0m, and everything goes
 ?????
 You can’t see anything with the <blindfold> on.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1682,7 +1694,7 @@ his face.
 
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1702,9 +1714,11 @@ Even without the blindfold, there’s nothing to see. All Sharhiya remembers is
 darkness. You have to guess that you entered from the south, and <that voice>
 came from the north.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1717,12 +1731,12 @@ parent-id: 1778640301004
 command: that voice
 --------------------------------------------------------------------------------
 > that voice
-Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Is
-that the voice of the ex-crown-prince, Urad-Mullissi himself?
+Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation.
+Definitely not the voice of an elderly man.
 
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1738,7 +1752,7 @@ You put on the blindfold.
 
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1754,7 +1768,7 @@ You have an <iron-tipped spear>. You’re wearing a <blindfold>.
 
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1773,7 +1787,7 @@ nice and sturdy.
 
 [0m[50m                                  [ ]     [@] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1803,7 +1817,7 @@ outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-(@)-
+                                     -(?)-(@)-
                                        |     \
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
@@ -1888,6 +1902,8 @@ weight against it, you feel something start to give—and then in a sudden burst
 of motion the bar is thrown free! The spear clatters to the ground as the door
 swings open.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
                                      -(@)-( )-
@@ -1916,7 +1932,7 @@ The <door bolt> has landed off to one side.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                      -(@)     
 [0m
@@ -1932,7 +1948,7 @@ It sits heavily on the ground. No more use for it now.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                      -(@)     
 [0m
@@ -1951,7 +1967,7 @@ mud brick.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                      -(@)     
 [0m
@@ -2022,9 +2038,11 @@ All around you, the <crowd> is frozen like a sea of nameless, faceless statues.
 Your (well, “your”) bucket has fallen next to the fountain, abandoned in your
 haste.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2047,7 +2065,7 @@ indistinct blur.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2066,7 +2084,7 @@ is easy to see.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2084,7 +2102,7 @@ and less dishevelled here than at the execution. Daily about-town sort of wear.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2101,7 +2119,7 @@ really changed in the past two thousand years.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-( )-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2116,9 +2134,11 @@ command: take it
 > take it
 You scoop up the bucket by its handle.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-(?)-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2137,7 +2157,7 @@ You scoop up some water in the empty bucket.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-(?)-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2168,7 +2188,7 @@ dirty water, but you don’t feel refreshed in the slightest.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-(?)-
                                        |     \
                                   [@]-( )     
 [0m
@@ -2195,7 +2215,7 @@ its haziness.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -( )-( )-
+                                     -(?)-(?)-
                                        |     \
                                   [ ]-(@)     
 [0m
@@ -2230,7 +2250,7 @@ You see an <iron-tipped spear> here.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -(@)-( )-
+                                     -(@)-(?)-
                                        |     \
                                   [ ]-( )     
 [0m
@@ -2250,7 +2270,7 @@ You take the iron-tipped spear.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -(@)-( )-
+                                     -(@)-(?)-
                                        |     \
                                   [ ]-( )     
 [0m
@@ -2269,7 +2289,7 @@ water...or much of anything, really.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -(@)-( )-
+                                     -(@)-(?)-
                                        |     \
                                   [ ]-( )     
 [0m
@@ -2287,7 +2307,7 @@ You put on the blindfold.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                     -(@)-( )-
+                                     -(@)-(?)-
                                        |     \
                                   [ ]-( )     
 [0m
@@ -2308,9 +2328,11 @@ blindfold...and then just like that, it recedes.
 ?????
 You can’t see anything with the <blindfold> on.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2336,7 +2358,7 @@ Its fiery gaze is fixed on the door to the east.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2357,7 +2379,7 @@ and pieces of <gold and silver> shine in the light.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2377,7 +2399,7 @@ memory, making the air look like an obscure-glass window.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2405,7 +2427,7 @@ again. All beautifully shiny in the light of the forge.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2430,7 +2452,7 @@ seems to be under construction.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2449,7 +2471,7 @@ every side of their work.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2467,9 +2489,11 @@ statue itself—and give it a mighty heave. It shakes and rocks, tilting
 dangerously to one side for a moment...but then it starts to turn. Marduk’s gaze
 burns a fiery trail across the wall until it’s aimed safely away from the doors.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
-                                  (@)-( )-( )-
+                                  (@)-( )-(?)-
                                  /     |     \
                                   [ ]-( )     
 [0m
@@ -2527,9 +2551,11 @@ tracing the outlines in shades of black. Is it a workshop, a kitchen, a storage
 space? All you can see clearly is <your brother>, eyes fixed intently on the
 <table>.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2546,7 +2572,7 @@ weather (like right now) and closed in bad.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2564,7 +2590,7 @@ of the memory to change.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2582,7 +2608,7 @@ weather and closed in bad (like right now).
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2599,7 +2625,7 @@ You open the shutters, but the moonlight stays exactly the same.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2619,7 +2645,7 @@ An <empty lamp> is sitting on top.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2637,7 +2663,7 @@ from the spout to the bottom of the bowl, where not a drop of oil is left.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2654,7 +2680,7 @@ You take the empty lamp off the table.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-( )-( )-
+                                    ( )-( )-(?)-
                                    /     |     \
                                 [@] [ ]-( )     
 [0m
@@ -2681,7 +2707,7 @@ The work platform has been rotated so it now faces the north wall.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    (@)-( )-( )-
+                                    (@)-( )-(?)-
                                    /     |     \
                                 [ ] [ ]-( )     
 [0m
@@ -2706,7 +2732,7 @@ seems to be under construction.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    (@)-( )-( )-
+                                    (@)-( )-(?)-
                                    /     |     \
                                 [ ] [ ]-( )     
 [0m
@@ -2725,7 +2751,7 @@ too long on any one spot.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    (@)-( )-( )-
+                                    (@)-( )-(?)-
                                    /     |     \
                                 [ ] [ ]-( )     
 [0m
@@ -2756,7 +2782,7 @@ amber, with you in the middle of it all.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
-                                    ( )-(@)-( )-
+                                    ( )-(@)-(?)-
                                    /     |     \
                                 [ ] [ ]-( )     
 [0m
@@ -2820,6 +2846,8 @@ You tilt the bucket and start pouring out water over the coals. There’s a [0m
 but no flash of steam—just a sudden clarity as the frozen air above the coals
 stops looking warped and twisted.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
                                     ( )-( )-(@)-
@@ -2931,6 +2959,8 @@ Marduk: the floor is an intricate mosaic, hundreds of twisting paths all leading
 to the <pool> in the center. <Your brother> is crouched behind a large <pithos>,
 watching the <shadowy figures> on the opposite side.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                [ ]     [ ]         
                                    \     |          
                                 ( )-( )-( )-        
@@ -3150,7 +3180,7 @@ coals to the northwest are an intrusion on the dream.
                                    \     |          
                                 ( )-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     (@)-[ ] 
+                            [ ] [ ]-( )     (@)-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Ruined temple>[0m • <east> • <northwest>
@@ -3178,7 +3208,7 @@ west, an outdoor balcony juts in a meter above the floor.
                                    \     |          
                                 ( )-( )-(@)-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
@@ -3207,7 +3237,7 @@ amber, with you in the middle of it all.
                                    \     |          
                                 ( )-(@)-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
@@ -3231,7 +3261,7 @@ The work platform has been rotated so it now faces the north wall.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3248,7 +3278,7 @@ needs to be filled with oil to burn properly.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3266,7 +3296,7 @@ still plenty left in the bucket, too.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3284,7 +3314,7 @@ helping, either.)
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3300,7 +3330,7 @@ You pour the water out of the lamp, letting it join the rest in the bucket.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3318,7 +3348,7 @@ from the actual heat.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3337,7 +3367,7 @@ command: undo
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3353,7 +3383,7 @@ You find an unobtrusive spot to dump the water out of the bucket.
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
@@ -3382,7 +3412,7 @@ amber, with you in the middle of it all.
                                    \     |          
                                 ( )-(@)-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
@@ -3410,7 +3440,7 @@ west, an outdoor balcony juts in a meter above the floor.
                                    \     |          
                                 ( )-( )-(@)-        
                                /     |     \        
-                            [ ] [ ]-( )     ( )-[ ] 
+                            [ ] [ ]-( )     ( )-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
@@ -3436,7 +3466,7 @@ coals to the northwest are an intrusion on the dream.
                                    \     |          
                                 ( )-( )-( )-        
                                /     |     \        
-                            [ ] [ ]-( )     (@)-[ ] 
+                            [ ] [ ]-( )     (@)-[?] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[look] Ruined temple>[0m • <east> • <northwest>
@@ -3576,6 +3606,8 @@ command: bucket
 You pour some oil from the oil-filled bucket into the empty lamp. There’s still
 plenty left in the bucket, too.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                [ ]     [ ]         
                                    \     |          
                                 ( )-( )-( )-        
@@ -3717,7 +3749,9 @@ You hold the lamp against the forge for a moment, making sure there’s enough o
 on the wick, and when you pull it away it’s shining with a small but steady
 yellow flame.
 
-[0m[50m                                [ ]     [ ]         
+[0m[4m(Your <score> has gone up by one point.)
+[0m
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
@@ -3734,7 +3768,7 @@ command: i
 You have a <burning lamp>, a <blindfold>, an <iron-tipped spear>, and an <oil-
 filled bucket>.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
@@ -3751,7 +3785,7 @@ command: empty lamp
 Tipping the lamp over while it’s still burning is a good way to get hot oil all
 over your hands.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
@@ -3768,7 +3802,7 @@ command: pour lamp on forge
 Tipping the lamp over while it’s still burning is a good way to get hot oil all
 over your hands.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
@@ -3785,7 +3819,7 @@ command: pour bucket on forge
 Dumping oil on a fire seems like a very bad idea. You’re likely to end up with
 burning oil everywhere and no way to control it.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 (@)-( )-( )-        
                                /     |     \        
@@ -3814,7 +3848,7 @@ meter before turning into a trampled hallway; east, a balcony cuts straight
 through the side of the ziggurat. The whole tableau is frozen like a fly in
 amber, with you in the middle of it all.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 ( )-(@)-( )-        
                                /     |     \        
@@ -3842,7 +3876,7 @@ decorated, while the one to the east is too dark to see. Southeast, a passage
 has intersected a brazier and spilled <no-longer-hot coals> across the floor;
 west, an outdoor balcony juts in a meter above the floor.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |          
                                 ( )-( )-(@)-        
                                /     |     \        
@@ -3866,7 +3900,7 @@ are. Pieces of memory fit together at odd angles and thick, sticky darkness
 coats every surface, flowing back into place as soon as your lamp moves past.
 Off to the northeast, though, you can make out a flicker of movement.
 
-[0m[50m                                [ ]     [ ]         
+[0m[50m                                [?]     [ ]         
                                    \     |     /    
                                 ( )-( )-( )-(@)     
                                /     |     \        
@@ -3936,7 +3970,9 @@ Assyrian, this must have been the largest space they’d ever seen. With <Urad-
 Mullissi> and <the two officials> standing around you, though, the effect makes
 them seem just as tiny.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -3954,7 +3990,7 @@ Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man.
 Tall and broad, with dark, perpetually-angry eyes and an intricate beard that
 hides his mouth from view.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -3972,7 +4008,7 @@ command: throne
 All the patterns in the walls and ceiling and floor converge on a single point,
 a huge structure richly decorated in metals and lapis lazuli.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -3989,7 +4025,7 @@ command: climb it
 > climb it
 You take your place on the throne.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -4007,7 +4043,7 @@ command: stand
 > stand
 You get off the royal throne.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -4027,7 +4063,7 @@ standing a short distance apart, trying not to get in his way. The stout one is
 whispering something to the wiry one, but your narrator must have been too
 distracted (or just too far away) to hear it.
 
-[0m[50m                                [ ]     [ ]     [@] 
+[0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
                                /     |     \        
@@ -4052,7 +4088,7 @@ are. Pieces of memory fit together at odd angles and thick, sticky darkness
 coats every surface, flowing back into place as soon as your lamp moves past.
 Off to the northeast, though, you can make out a flicker of movement.
 
-[0m[50m                                [ ]     [ ]     [ ] 
+[0m[50m                                [?]     [ ]     [ ] 
                                    \     |     /    
                                 ( )-( )-( )-(@)     
                                /     |     \        
@@ -4080,7 +4116,7 @@ decorated, while the one to the east is too dark to see. Southeast, a passage
 has intersected a brazier and spilled <no-longer-hot coals> across the floor;
 west, an outdoor balcony juts in a meter above the floor.
 
-[0m[50m                                [ ]     [ ]     [ ] 
+[0m[50m                                [?]     [ ]     [ ] 
                                    \     |     /    
                                 ( )-( )-(@)-( )     
                                /     |     \        
@@ -4109,7 +4145,7 @@ meter before turning into a trampled hallway; east, a balcony cuts straight
 through the side of the ziggurat. The whole tableau is frozen like a fly in
 amber, with you in the middle of it all.
 
-[0m[50m                                [ ]     [ ]     [ ] 
+[0m[50m                                [?]     [ ]     [ ] 
                                    \     |     /    
                                 ( )-(@)-( )-( )     
                                /     |     \        
@@ -4193,6 +4229,8 @@ tablets—toward some kind of passage to the north. But “you” didn’t see a
 than that; this memory can’t tell you what might have been there. What would be
 north of here?
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                [@]     [ ]     [ ] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
@@ -4258,7 +4296,7 @@ north.
 
 [0m[50m                                    ( )         
                                    / |   |      
-                                ( )-( )-(@)-( ) 
+                                ( )-( )-(@)-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[look] Excavation>[0m • <north> • <east> • <west>
@@ -4278,7 +4316,7 @@ square is nothing but a yawning pit, extending under the ground to the north.
 [0m[50m                                         |      
                                     ( ) (@)     
                                    / |   | \    
-                                ( )-( )-( )-( ) 
+                                ( )-( )-( )-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[look] Deep pit>[0m • <north> • <south> • <southeast>
@@ -4295,7 +4333,7 @@ grid, and there’s a good meter and a half of solid dirt above it. And the
 [0m[50m                                         |      
                                     ( ) (@)     
                                    / |   | \    
-                                ( )-( )-( )-( ) 
+                                ( )-( )-( )-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[the opening in the ground] The opening in the ground>[0m
@@ -4312,7 +4350,7 @@ lights set up down there?
 [0m[50m                                         |      
                                     ( ) (@)     
                                    / |   | \    
-                                ( )-( )-( )-( ) 
+                                ( )-( )-( )-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[the electrical wires] The electrical wires>[0m
@@ -4329,7 +4367,7 @@ deep—farther than you’re willing to drop without something to hold onto.
 [0m[50m                                         |      
                                     ( ) (@)     
                                    / |   | \    
-                                ( )-( )-( )-( ) 
+                                ( )-( )-( )-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[the electrical wires] The electrical wires>[0m
@@ -4355,7 +4393,7 @@ You can just barely make out some <bone fragments> in the moonlight.
 [0m[50m                                         |      
                                     ( ) ( )     
                                    / |   | \    
-                                ( )-( )-(@)-( ) 
+                                ( )-( )-(@)-(?) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[look] Excavation>[0m • <north> • <east> • <west>
@@ -4487,7 +4525,7 @@ up.
 [0m[50m                                         |      
                                     ( ) ( )     
                                    / |   | \    
-                                ( )-(@)-( )-( ) 
+                                ( )-(@)-(?)-( ) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
@@ -4499,8 +4537,10 @@ command: untie rope
 > untie rope
 You undo your hitch and pull the rope back into a loose coil.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                         |      
-                                    ( ) ( )     
+                                    ( ) (?)     
                                    / |   | \    
                                 ( )-(@)-( )-( ) 
 [0m
@@ -4515,7 +4555,7 @@ command: take it
 You’re already holding the nylon rope.
 
 [0m[50m                                         |      
-                                    ( ) ( )     
+                                    ( ) (?)     
                                    / |   | \    
                                 ( )-(@)-( )-( ) 
 [0m
@@ -4540,7 +4580,7 @@ A <wheeled equipment cart> is securely parked off to one side.
 You can just barely make out some <bone fragments> in the moonlight.
 
 [0m[50m                                         |      
-                                    ( ) ( )     
+                                    ( ) (?)     
                                    / |   | \    
                                 ( )-( )-(@)-( ) 
 [0m
@@ -4584,7 +4624,7 @@ A <wheeled equipment cart> is securely parked off to one side.
 You can just barely make out some <bone fragments> in the moonlight.
 
 [0m[50m                                         |      
-                                    ( ) ( )     
+                                    ( ) (?)     
                                    / |   | \    
                                 ( )-( )-(@)-( ) 
 [0m
@@ -4658,6 +4698,8 @@ You check the locks on the wheels, loop the rope around underneath, double-check
 the locks on the wheels, and toss the end down into the pit. Then triple-check
 the locks on the wheels, just to be sure.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                         |      
                                     ( ) (@)     
                                    / |   | \    
@@ -4987,6 +5029,8 @@ memory; without it, you can’t see any trace of an entrance or exit.
 The only other occupant is <a frail man> in resplendent clothes, his face
 contorted with rage.
 
+[0m[4m(Your <score> has gone up by one point.)
+[0m
 [0m[50m                                    [@]             
                                      |              
                                 [ ] ( ) [ ]     [ ] 
@@ -5098,6 +5142,8 @@ Now, you just have to write it...
 
 [0m[1m     *** The End ***     
 [0m
+Game over. You scored 25 points out of 25.
+
 [0m[4mWould you like to:
      <UNDO> the last move,
      <RESTORE> a saved position,
@@ -5139,3 +5185,25 @@ bones they are. Could they belong to the Sharhiya from the memories?
 [0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
 them>
 [0m[1m<[look] Loose earth>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778715244260
+parent-id: 1778630448649
+command: score
+--------------------------------------------------------------------------------
+> score
+
+[0m[4mYou currently have 1 point out of a maximum of 25.
+[0m[50m[===                                                                          ]
+[0m
+[0m[4mA lot of text adventures involve finding objects and moving them around. To see
+what you’re currently holding, [0m[4m[50m<take inventory>[0m[4m.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[put my
+backpack onto] put it on something> • <[wear my backpack] wear it> • <[close my
+backpack] close it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>

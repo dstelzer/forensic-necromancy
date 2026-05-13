@@ -118,6 +118,10 @@
 (descr *) Light enough to carry around; strong enough to hold your weight.
 (item *)
 
+(puzzle *)
+(solved *)
+	(upper rope connected) (or) (#dig is visited)
+
 (prevent [tie * to *]) You’ve got a decent amount of practice tying ropes around things, but just making a loop is less useful.
 (instead of [tie $Obj to *])
 	~($Obj = *) %% Don’t recurse forever!
@@ -288,6 +292,12 @@
 		A ({rope}) is tied around it, offering a route down into the chamber below.
 	(endif)
 
+(puzzle *)
+(solved *) %% Rope has been untied
+	~(upper rope connected) (#dig is visited)
+(solved *) %% Make sure it stays solved after use
+	(#tunnel is visited)
+
 (before [climb *])
 	(* is unlocked)
 	(first try [lock *])
@@ -379,6 +389,9 @@
 		(stopping)
 	(endif)
 (instead of [read *]) (try [examine *])
+
+(puzzle *)
+(solved *) (* is examined)
 
 %% List bare names, bolding ones that haven’t been read yet
 (topic-listing $List)

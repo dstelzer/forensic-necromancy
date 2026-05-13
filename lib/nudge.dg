@@ -158,8 +158,8 @@
 	(into $List)
 	(the-listing $List)
 
-%% This game starts with pointers off
-~(pointers enabled)
+%% This game starts with pointers off except in the Skein
+(pointers enabled) (in debugger)
 (option paragraph)
 	(if) (pointers enabled) (then)
 		Solvable puzzles are highlighted on the map. Use (command link {POINTERS OFF}) to change this.

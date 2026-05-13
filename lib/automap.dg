@@ -275,6 +275,7 @@
 (full room glyph (vignette $Room)) %% Vignettes always get special brackets
 	\[ (no space) (room glyph $Room) (no space) \] (no space)
 (full room glyph $Room) %% Mark puzzles in debugger because no styling
+	(fail) %% Disabled experimentally
 	(in debugger)
 	($Room has puzzle $ usable)
 	\{ (no space) (room glyph $Room) (no space) \} (no space)
@@ -292,6 +293,7 @@
 
 (room glyph $Room)
 	($Room has puzzle $ usable)
+	(pointers enabled)
 	?
 
 (room glyph $) %% Default: a single space

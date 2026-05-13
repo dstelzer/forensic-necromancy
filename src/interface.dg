@@ -166,6 +166,69 @@
 		(endif)
 	}
 
+%% Score system: puzzles and vignettes
+%% Without editing stdlib we have to work around this a bit :(
+
+(new current score $N)
+	(accumulate 1)
+		{ *(puzzle $Obj) (solved $Obj) }
+		(or)
+		{ *(vignette $Room) ($Room is visited) }
+	(into $N)
+
+(maximum score $N)
+	(accumulate 1)
+		*(puzzle $)
+		(or)
+		*(vignette $)
+	(into $N)
+
+(early on every tick) %% We can’t make (current score $) not a global :(
+	(new current score $N)
+	(now) (current score $N)
+
+(scoring enabled)
+
+%% Duplicating a bunch of stdlib code to avoid editing stdlib itself
+%% But I want to add links
+
+(report score change)
+	(reported score is $Reported)
+	(current score $Score)
+	(if) ($Score < $Reported) (then)
+		($Reported minus $Score into $Diff)
+		(div @meta) {
+			\( Your ({score}) has gone down by (spell out $Diff)
+			point (if) ~(1 = $Diff) (then) (no space) s (endif)
+			. \)
+		}
+		(par)
+		(now) (reported score is $Score)
+	(elseif) ($Score > $Reported) (then)
+		($Score minus $Reported into $Diff)
+		(div @meta) {
+			\( Your ({score}) has gone up by (spell out $Diff)
+			point (if) ~(1 = $Diff) (then) (no space) s (endif)
+			. \)
+		}
+		(par)
+		(now) (reported score is $Score)
+	(endif)
+
+%% This one we edit to add a progress bar
+(perform [score])
+	(scoring enabled)
+	(current score $Score)
+	(div @meta) {
+		You currently have $Score
+		(if) ($Score = 1) (then) point (else) points (endif)
+		(if) (maximum score $Max) (then)
+			out of a maximum of $Max
+		(endif)
+		. (line)
+		(progress bar $Score of $Max)
+	}
+
 %% And finally, a check I include in every game (though not for final release)
 
 (startup)
