@@ -1409,16 +1409,15 @@ parent-id: 1778640300988
 command: latest finds
 --------------------------------------------------------------------------------
 > latest finds
-Just a few white fragments among the artifacts—it’s hard to even tell which
-bones they are. Could they belong to the Sharhiya from the memories?
+A <broken tablet>, a <hunk of metal>...and a handful of <white fragments> off to
+the side.
 
 [0m[50m                                    ( )         
                                    / |          
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
-[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
-them>
+[0m[1m<[the latest finds] The latest finds>[0m • <[take the latest finds] take them>
 [0m[1m<[look] Loose earth>[0m • <west>
 --------------------------------------------------------------------------------
 id: 1778640300990
@@ -1435,12 +1434,11 @@ contaminating something in the process.
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait>
-[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
-them>
+[0m[1m<[the latest finds] The latest finds>[0m • <[take the latest finds] take them>
 [0m[1m<[look] Loose earth>[0m • <west>
 --------------------------------------------------------------------------------
 id: 1778640300991
-parent-id: 1778640300990
+parent-id: 1778712896270
 command: divine them
 --------------------------------------------------------------------------------
 > divine them
@@ -4800,9 +4798,9 @@ palace...
 --------------------------------------------------------------------------------
 id: 1778709670926
 parent-id: 1778703929094
-command: 
+command:  
 --------------------------------------------------------------------------------
-> 
+>  
 
 [0m[1mHalf-finished building[0m
 Or perhaps “construction site”? This area is an odd mixture of old and new:
@@ -4967,9 +4965,9 @@ once I’m rid of you...then, then, that’s when I’ll finally be safe!”
 --------------------------------------------------------------------------------
 id: 1778709670932
 parent-id: 1778709670931
-command: 
+command:  
 --------------------------------------------------------------------------------
-> 
+>  
 You pull yourself out of the memory with a [0m[4msnap[0m, and everything goes still.
 
 [0m[1mHidden chamber[0m
@@ -5047,9 +5045,9 @@ You pause, close your eyes, and start to hyperventilate, until...
 --------------------------------------------------------------------------------
 id: 1778709670936
 parent-id: 1778709670935
-command: 
+command:  
 --------------------------------------------------------------------------------
-> 
+>  
 
 [0m[1mLooters’ tunnel[0m
 The archaeologists are working through the site layer by layer, but looters are
@@ -5118,3 +5116,20 @@ long!)
      <QUIT> the program,
      or <RESTART> from the beginning?
 [0m
+--------------------------------------------------------------------------------
+id: 1778712896270
+parent-id: 1778640300990
+command: bones
+--------------------------------------------------------------------------------
+> bones
+Just a few white fragments among the artifacts—it’s hard to even tell which
+bones they are. Could they belong to the Sharhiya from the memories?
+
+[0m[50m                                    ( )         
+                                   / |          
+                                ( )-( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
+them>
+[0m[1m<[look] Loose earth>[0m • <west>

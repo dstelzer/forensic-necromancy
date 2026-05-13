@@ -489,10 +489,37 @@
 (from * go #west to #dig)
 (from * go #northwest to #deeppit) (#deeppit is visited) %% Cleaner to only show the north-south connection on the map until it’s been explored, but after that it’s fine to allow NW-SE movement also
 
+#finds
+(name *) latest finds
+(dict *) artifact artifacts find
+(plural *)
+(item *)
+(* is #in #looseearth)
+(descr *) A ({broken tablet}), a ({hunk of metal})...and a handful of ({white fragments}) off to the side.
+(when * is out of reach) Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
+(appearance *)
+	The ({latest finds}) have been carefully sorted and labelled in trays off to one side
+	(if) (#s-palace is visited) (then)
+		(no space) —including the bones of Sharhiya of Babylon
+	(endif)
+	.
+
+#tablet
+(name *) broken tablet
+(dict *) clay
+(* is #partof #finds)
+(descr *) About the size of your thumbnail, with a few cuneiform signs visible on the top face. (span @bold) Namzaqu : something about a “key”?
+
+#hunk
+(name *) hunk of metal
+(dict *) iron
+(* is #partof #finds)
+(descr *) Probably iron, in this time period, but in this state all you can do is guess.
+
 #bones-s
 (bones *)
-(dict *) of sharhiya sharhiya’s sharhiya's artifact artifacts latest finds
-(* is #in #looseearth)
+(dict *) of sharhiya sharhiya’s sharhiya's
+(* is #partof #finds)
 (* divines to #s-palace)
 (descr *)
 	Just a few white fragments among the artifacts—it’s hard to even tell which bones they are.
@@ -501,12 +528,6 @@
 	(else)
 		But they’re certainly Sharhiya’s.
 	(endif)
-(appearance *)
-	The ({latest finds}) have been carefully sorted and labelled in trays off to one side
-	(if) (#s-palace is visited) (then)
-		(no space) —including the bones of Sharhiya of Babylon
-	(endif)
-	.
 
 (narrate divining *)
 	(select)
