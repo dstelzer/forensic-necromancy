@@ -261,6 +261,7 @@
 (pushable *) %% (* is unlocked)
 (actor supporter *) %% (* is locked)
 (lockable *)
+~(openable *)
 (descr *)
 	The archaeologists must use this to move their heavy equipment between the pits. Currently it’s loaded with heavy plastic crates, big enough to stand on, and the wheels
 	(if) (* is locked) (then)
@@ -352,7 +353,13 @@
 		
 		(select)
 			(div @tutorial) {
-				To look one up, try (span @command) { LOOK UP \[ topic \] IN DICTIONARY }, or just (span @command) { LOOK UP \[ topic \] } .
+				To look one up,
+				(if) (interpreter supports links) (then)
+					click on the TODO STYLING words
+				(else)
+					try (span @command) { LOOK UP \[ topic \] IN DICTIONARY }, or just (span @command) { LOOK UP \[ topic \] }
+				(endif)
+				.
 			}
 		(or)
 		(stopping)
@@ -383,6 +390,7 @@
 (unlock $Topic) (now) ($Topic is unlocked)
 
 (grammar [look up [topic]] for [consult about $])
+~(action [consult about $Obj] requires $Obj to be present)
 (perform [consult about $Topic])
 	(if) (player can see #dictionary) (then)
 		\( in the pocket encyclopedia \) (line)
@@ -402,6 +410,7 @@
 		(span @bold) { (name $Topic) : }
 		(dictionary entry for $Topic)
 	}
+	(now) ($Topic is visited)
 (perform [consult #dictionary about $])
 	You flip through the encyclopedia, but don’t see an entry for that.
 	(div @tutorial) { (link) { Read the dictionary } to see what entries it contains. }
@@ -514,6 +523,11 @@
 	(from $Room go $Dir to $Next)
 	(vignette $Next)
 	You move toward the traces of motion, and the dream shifts... (par)
+
+(style class @vignette)
+	font-style: italic;
+	margin-left: 2em;
+	margin-right: 2em;
 
 (narrate entering (vignette $Room))
 	(div @vignette) {

@@ -37,6 +37,24 @@
 (supposed to be nowhere *(liquid $))
 (uncountable *(liquid $))
 
+%% Since water can be drunk, it needs messages
+
+(perform [drink $Obj])
+	(dreaming)
+	(if) (item $Obj) (then)
+		You take a sip from (the $Obj).
+	(else)
+		You scoop up some water in your hands.
+	(endif)
+	It tastes like ordinary, slightly-dirty water, but you don’t feel refreshed in the slightest.
+
+%% Since we’re drinking containers rather than fluids, we should also adjust the message
+(describe action [drink $Obj])
+	drink from (the full $Obj)
+
+%% I don’t know why this line isn’t standard already
+(grammar [drink/sip from [object]] for [drink $])
+
 %% Now, the liquid containers the player can affect
 
 (liquid container $) (fail) %% Something that can be filled with liquid or emptied again
@@ -207,6 +225,8 @@
 	On what? Or did you just want to ({empty (link name $Obj)} {empty (them $Obj)})?
 	(asking for object in [pour $Obj into []])
 
+~(action [pour $ into $Obj] requires $Obj to be touched) %% It’s okay if it’s hot
+
 (instead of [pour $Obj into (room $)]) %% POUR X ON THE GROUND
 	(try [empty $Obj])
 
@@ -251,7 +271,11 @@
 
 (perform [pour $Obj into $Target])
 	($Obj is filled with $Liquid)
-	That would just make a mess of (the $Target). (It $Target isn’t) designed to hold (name $Liquid).
+	That would just make a mess of (the $Target). (It $Target isn’t) designed to hold (name $Liquid)
+	(if) ~(container $Target) (then)
+		...or much of anything, really
+	(endif)
+	.
 
 (It $Obj isn’t) %% Quick little addition
 	(uppercase) (it $Obj is) (no space) n’t
@@ -266,16 +290,15 @@
 	*($Source is in scope)
 	(fire source $Source)
 
-%% Fire is our only portable light source
-($Ancestor contains a fire source)
-	*($Obj has ancestor $Ancestor)
-	(fire source $Obj)
+%% We only have one portable light source
+($Ancestor contains the lamp)
+	(#lamp has ancestor $Ancestor)
 
 (sufficient light in $Room)
-	($Room contains a fire source)
+	($Room contains the lamp)
 (sufficient light in $)
 	(current player $Player)
-	($Player contains a fire source)
+	($Player contains the lamp)
 
 (sufficient light)
 	(current room $Room)
@@ -325,6 +348,8 @@
 (grammar [douse [held]] for [douse $])
 (grammar [put [held] out] for [douse $])
 (grammar [put out [held]] for [douse $])
+
+~(action [douse $Obj] requires $Obj to be touched) %% It’s okay if it’s hot
 
 (prevent [douse ~(fire source $Obj)])
 	But (the $Obj) (is $Obj) not burning.

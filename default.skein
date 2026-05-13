@@ -1,0 +1,2389 @@
+seed: 7820
+--------------------------------------------------------------------------------
+id: 0
+label: START
+--------------------------------------------------------------------------------
+[1m[36mDialog Interactive Debugger (dgdebug) version 1c/01-dev.[0m[36m
+Type @help at the game prompt for a brief introduction.
+[0m[1m[36mWarning:[0m[36m lib/automap.dg, line 286: Possible typo: A query is made to '(puzzle
+$)', but there is no matching rule or interface definition.
+[0m
+
+[0m[4m[0m[1m[4mContent warning:[0m[4m This game includes significant (but non-graphic) discussion of
+murder and capital punishment, mentions of historical (first millennium BCE)
+ableism, and minor depiction of psychedelics used for ritual purposes. The
+author considers it “PG” rated: not unsuitable for children, but parental
+guidance is suggested.
+
+Click below or press ENTER to continue.
+[0m
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778630448636
+parent-id: 0
+command:  
+--------------------------------------------------------------------------------
+>  
+Six years of work, countless hours in the library and the lab, hunched over your
+laptop, poring over old manuscripts or departmental paperwork...and now it’s
+almost over. Your advisor has given you a deadline, and you need to defend your
+thesis by the end of the year, or leave with nothing to show for it.
+
+Your data is promising. The experimental results are fantastic, the p-values are
+significant, and you’ve gotten a couple publications out of the process. But if
+you want to be the first ever PhD in Forensic Necromancy, you need more than lab
+results. You need something the world can’t ignore.
+
+Which means you need human remains in situ, and the older the better. The last
+of your advisor’s grant funding got you to Nineveh just after midnight. The rest
+is up to you.
+
+[0m[1mA Murder in Nineveh
+[0mSubmitted in partial fulfillment of the requirements for the degree of Doctor of
+Philosophy in
+[0m[1mForensic Necromancy
+[0m
+A Historical Mystery by Daniel M. Stelzer.
+Release 0. Serial number DEBUG.
+Dialog Interactive Debugger (dgdebug) version 1c/01-dev. Library version 1.2.0.
+Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0,
+Puzzle Prompts 1.0, and Versatile Linking 1.0.
+
+[0m[1mTell Nabi Yunus[0m
+No hiking through the Iraqi desert for you: the dig site is right in the heart
+of Mosul, the mound known as Prophet Jonah’s Hill. There’s supposed to be a very
+nice bakery across the street, but it wasn’t open at 2 in the morning; you had
+to make do with a box of cookies from the supermarket on the way over.
+
+But you made it. They say the field crew came across more bones today, and
+that’s exactly what you need.
+
+[0m[4mThis game is played by clicking links or typing in commands. To move around, for
+example, click or type a compass direction: [0m[4m[50m<southwest>[0m[4m ([0m[4m[50m<sw>[0m[4m) or [0m[4m[50m<south>[0m[4m ([0m[4m[50m<s>[0m[4m).
+[0m
+[0m[50m                                      (@) 
+                                     / |  
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[look] Tell Nabi Yunus>[0m • <south> • <southwest>
+--------------------------------------------------------------------------------
+id: 1778630448637
+parent-id: 1778630448636
+command: s
+--------------------------------------------------------------------------------
+> s
+You walk south.
+
+[0m[1mAbove the dig site[0m
+From this upper rim you can see the whole excavation spread out below you,
+marked out with <string> into a chessboard of squares. A <metal post> marks the
+origin point of the whole thing.
+
+[0m[4m<[links] Highlighted> words indicate things you can interact with. Click or type
+these words to examine them.
+[0m
+[0m[50m                                      ( ) 
+                                     / |  
+                                     -(@)-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448638
+parent-id: 1778630448637
+command: string
+--------------------------------------------------------------------------------
+> string
+Nails are set into the ground every ten meters, north and south and east and
+west (and in some cases up and down). A grid of strings between them divides the
+whole site into squares.
+
+[0m[4mAfter you examine something, the bar at the bottom of the screen will suggest
+some actions you might do with it.
+[0m
+[0m[50m                                      ( ) 
+                                     / |  
+                                     -(@)-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[the grid of string] The grid of string>[0m • <[push the grid of string] push it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448639
+parent-id: 1778630448638
+command: metal post
+--------------------------------------------------------------------------------
+> metal post
+This metal post marks the datum: the origin of the archaeologists’ coordinate
+system. It’s anchored very securely into the ground—if it moved even a few
+centimeters, after all, every single measurement would need to be redone.
+
+[0m[50m                                      ( ) 
+                                     / |  
+                                     -(@)-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[the survey post] The survey post>[0m • <[push the survey post] push it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448640
+parent-id: 1778630448639
+command: push string
+--------------------------------------------------------------------------------
+> push string
+The strings aren’t very strong, but the datum post is solid—you yank on it with
+all your strength and it doesn’t budge.
+
+[0m[50m                                      ( ) 
+                                     / |  
+                                     -(@)-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[the survey post] The survey post>[0m • <[push the survey post] push it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448641
+parent-id: 1778630448640
+command: e
+--------------------------------------------------------------------------------
+> e
+This ledge is about three meters above the dig site—farther than you’re willing
+to jump. You’ll need some way to climb down.
+
+[0m[4mYou can try all sorts of actions in this game, but that doesn’t mean they’ll
+always be effective or useful. When something doesn’t work, pay attention to the
+reason why: it might suggest a different approach.
+[0m
+[0m[50m                                      ( ) 
+                                     / |  
+                                     -(@)-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[the survey post] The survey post>[0m • <[push the survey post] push it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448642
+parent-id: 1778630448641
+command: w
+--------------------------------------------------------------------------------
+> w
+You walk west.
+
+[0m[1mYour camp[0m
+The main field crew keeps their equipment off to the <south>, but you’ve made an
+unobtrusive little camp here: your <bicycle> locked to a piece of machinery,
+your <backpack> looped over the handlebars.
+
+[0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m, and any
+puzzles you’re currently able to solve with a [0m[4m[50m![0m[4m. Click any room to go there.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+                                     |      
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[look] Your camp>[0m • <south> • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448643
+parent-id: 1778630448642
+command: s
+--------------------------------------------------------------------------------
+> s
+Better not. It’s not like you’re a looter, or you’re not supposed to be here, or
+something like that...you have all the right paperwork, you’re officially a
+guest of the archaeologists, and besides, it’s not like you’re going to be 
+[0m[4mtaking[0m anything. It’s just so much easier to do these things in the early hours
+of the morning, when you don’t have to explain what a forensic necromancer is,
+or why you need silence to meditate over the bones.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448644
+parent-id: 1778630448643
+command: look
+--------------------------------------------------------------------------------
+> look
+
+[0m[1mYour camp[0m
+The main field crew keeps their equipment off to the <south>, but you’ve made an
+unobtrusive little camp here: your <bicycle> locked to a piece of machinery,
+your <backpack> looped over the handlebars.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448645
+parent-id: 1778630448644
+command: bicycle
+--------------------------------------------------------------------------------
+> bicycle
+It’s faster than walking, and more reliable than a cab in the early hours of the
+morning.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[my bicycle] Your bicycle>[0m • <[unlock my bicycle] unlock it> • <[ride my
+bicycle] ride it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448646
+parent-id: 1778630448645
+command: ride it
+--------------------------------------------------------------------------------
+> ride it
+You’re not ready to leave yet, and you’re also not ready to bring a bike any
+closer to a delicate archaeological site.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[my bicycle] Your bicycle>[0m • <[unlock my bicycle] unlock it> • <[ride my
+bicycle] ride it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448647
+parent-id: 1778630448646
+command: backpack
+--------------------------------------------------------------------------------
+> backpack
+Very large and very sturdy, and currently zipped up tight.
+
+[0m[4mWhen you see a small object, like your backpack, you can pick it up and take it
+with you.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <wait>
+[0m[1m<[my backpack] Your backpack>[0m • <[take my backpack] take it> • <[wear my
+backpack] wear it> • <[open my backpack] open it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448648
+parent-id: 1778630448647
+command: take it
+--------------------------------------------------------------------------------
+> take it
+You take your backpack off your bicycle.
+
+[0m[4mAfter you examine something, the bar above the command prompt suggests some
+possible commands you could try. If something is closed, for example, you might
+open it; if something is wearable, you might put it on. But you can always
+ignore it and type your own commands instead.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[put my
+backpack onto] put it on something> • <[wear my backpack] wear it> • <[open my
+backpack] open it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448649
+parent-id: 1778630448648
+command: open it
+--------------------------------------------------------------------------------
+> open it
+You open your backpack, revealing a <water bottle>, some <nylon rope>, and a <
+[0m[4mPocket Encyclopedia of the Neo-Assyrian World[0m>.
+
+[0m[4mSometimes an object will only be mentioned in the description of another object.
+But you can still click them, just like nouns in the main description.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[put my
+backpack onto] put it on something> • <[wear my backpack] wear it> • <[close my
+backpack] close it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448650
+parent-id: 1778630448649
+command: water
+--------------------------------------------------------------------------------
+> water
+Even if you’re not trekking through the desert, the temperature in Mosul is well
+over 30 degrees at night. Passing out from dehydration won’t get your thesis
+finished.
+
+[0m[4mA lot of text adventures involve finding objects and moving them around. To see
+what you’re currently holding, [0m[4m[50m<take inventory>[0m[4m.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the water bottle] The water bottle>[0m • <[take the water bottle] take
+it> • <[drink from the water bottle] drink from it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448651
+parent-id: 1778630448650
+command: inventory
+--------------------------------------------------------------------------------
+> inventory
+You have your <backpack> and your <various tools>.
+
+A <water bottle>, some <nylon rope>, and a <[0m[4mPocket Encyclopedia of the Neo-
+Assyrian World[0m> are in the backpack.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the water bottle] The water bottle>[0m • <[take the water bottle] take
+it> • <[drink from the water bottle] drink from it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448652
+parent-id: 1778630448651
+command: tools
+--------------------------------------------------------------------------------
+> tools
+The tools of a forensic necromancer’s trade: a mirror, a packet of entheogens,
+and a keychain with a little ball compass. Everything you need to divine
+memories of the past.
+
+Well, maybe the compass isn’t strictly necessary. But archaeologists lay
+everything out by compass directions, so that one helps you find those memories
+in the first place.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my various tools] Your various tools>[0m (held) • <[drop my various tools] drop
+them> • <[put my various tools onto] put them on something> • <[put my various
+tools into] put them in something>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448653
+parent-id: 1778630448652
+command: rope
+--------------------------------------------------------------------------------
+> rope
+Light enough to carry around; strong enough to hold your weight.
+
+[0m[4mExamining things will often suggest what you might do with them. The rope, for
+example, is meant to be climbed. But where would that be useful?
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[tie the
+nylon rope] tie it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448654
+parent-id: 1778630448653
+command: encyclopedia
+--------------------------------------------------------------------------------
+> encyclopedia
+When it comes to looking up obscure names and terms, you can’t beat the
+reliability of a paper book. This one has entries on <[look up nineveh in the
+dictionary] [0m[1mNineveh[0m> and <[look up neo-assyrian empire in the dictionary] [0m[1mthe
+Neo-Assyrian Empire[0m>, among others.
+
+[0m[4mTo look one up, click on the TODO STYLING words.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448655
+parent-id: 1778630448654
+command: look up nineveh
+--------------------------------------------------------------------------------
+> look up nineveh
+(in the pocket encyclopedia)
+
+[0m[4m[0m[1m[4mNineveh:[0m[4m The main capital of the Neo-Assyrian Empire. For all its military
+strength, it never quite managed to supplant Babylon as the artistic and
+cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448657
+parent-id: 1778630448655
+command: dictionary
+--------------------------------------------------------------------------------
+> dictionary
+When it comes to looking up obscure names and terms, you can’t beat the
+reliability of a paper book. This one has entries on <[look up babylon in the
+dictionary] [0m[1mBabylon[0m>, <[look up nineveh in the dictionary] Nineveh>, and <[look
+up neo-assyrian empire in the dictionary] [0m[1mthe Neo-Assyrian Empire[0m>, among
+others.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448659
+parent-id: 1778630448657
+command: look up empire
+--------------------------------------------------------------------------------
+> look up empire
+(in the pocket encyclopedia)
+
+[0m[4m[0m[1m[4mNeo-Assyrian Empire:[0m[4m An Iron Age state that was briefly the largest and most
+powerful empire the world had ever seen, before it came to a sudden and violent
+end around 600 BCE. Many later empires were inspired by the Neo-Assyrians’
+brutality and their goal of complete world domination.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448660
+parent-id: 1778630448659
+command: look up babylon
+--------------------------------------------------------------------------------
+> look up babylon
+(in the pocket encyclopedia)
+
+[0m[4m[0m[1m[4mBabylon:[0m[4m At one time, the capital of the Babylonian Empire; in the time of 
+Nineveh, though, it was a vassal state of the Neo-Assyrians. Even so, it
+remained a famous center of art, culture, and religion, and never fully accepted
+Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1778630448661
+parent-id: 1778630448660
+command: e
+--------------------------------------------------------------------------------
+> e
+You walk east.
+
+[0m[1mAbove the dig site[0m
+From this upper rim you can see the whole excavation spread out below you,
+marked out with <string> into a chessboard of squares. A <metal post> marks the
+origin point of the whole thing.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448662
+parent-id: 1778630448661
+command: i
+--------------------------------------------------------------------------------
+> i
+You have your <backpack> and your <various tools>.
+
+A <water bottle>, some <nylon rope>, and a <[0m[4mPocket Encyclopedia of the Neo-
+Assyrian World[0m> are in the backpack.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of
+the Neo-Assyrian World[0m[1m>[0m • <[take the pocket encyclopedia of the neo-assyrian
+world] take it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448663
+parent-id: 1778630448662
+command: backpack
+--------------------------------------------------------------------------------
+> backpack
+Very large and very sturdy. A <water bottle>, some <nylon rope>, and a <[0m[4mPocket
+Encyclopedia of the Neo-Assyrian World[0m> are packed inside.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[wear my
+backpack] wear it> • <[close my backpack] close it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448664
+parent-id: 1778630448663
+command: rope
+--------------------------------------------------------------------------------
+> rope
+Light enough to carry around; strong enough to hold your weight.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[tie the
+nylon rope] tie it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448665
+parent-id: 1778630448664
+command: tie it
+--------------------------------------------------------------------------------
+> tie it
+To what?
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+<[me] yourself>, <[the grid of string] the grid of string>, <[my backpack] your
+backpack>, <[the water bottle] the water bottle>, <[the nylon rope] the nylon
+rope>, <[the pocket encyclopedia of the neo-assyrian world] the [0m[4mPocket
+Encyclopedia of the Neo-Assyrian World[0m>, <[my various tools] your various
+tools>, <[the survey post] the survey post>
+--------------------------------------------------------------------------------
+id: 1778630448666
+parent-id: 1778630448665
+command: survey post
+--------------------------------------------------------------------------------
+> survey post
+You tie a quick hitch around the survey post, then give the rope a couple of
+experimental tugs. Seems strong enough to hold your weight. The other end trails
+down into the excavation below.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448667
+parent-id: 1778630448666
+command: rope
+--------------------------------------------------------------------------------
+> rope
+Strong and well-tied to support your weight. You should be able to climb up and
+down it without difficulty.
+
+[0m[50m                                        ( ) 
+                                       / |  
+                                    ( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[untie
+the nylon rope] untie it> • <[climb the nylon rope] climb it>
+[0m[1m<[look] Above the dig site>[0m • <north> • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778630448668
+parent-id: 1778630448667
+command: climb it
+--------------------------------------------------------------------------------
+> climb it
+You grab hold of the rope and start to descend. It ends up being more of an
+undignified scramble than the graceful slide you were envisioning, but you
+arrive at the bottom more-or-less intact.
+
+[0m[1mExcavation[0m
+Or as the archaeologists call it, 0N10E: zero meters north and ten meters east
+of the datum. This square has been excavated more than its neighbors, sinking it
+a few meters into the earth.
+
+Your <rope> trails down from the origin marker, offering an easy climb up to the
+west.
+
+According to the dig reports, these are the coordinates where human remains were
+found earlier today. With any luck, there should be some <bone fragments> left
+to find.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[untie
+the nylon rope] untie it> • <[climb the nylon rope] climb it>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778630448669
+parent-id: 1778630448668
+command: take rope
+--------------------------------------------------------------------------------
+> take rope
+You would need to <untie the rope> before taking it.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[untie
+the nylon rope] untie it> • <[climb the nylon rope] climb it>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778630448670
+parent-id: 1778630448669
+command: untie rope
+--------------------------------------------------------------------------------
+> untie rope
+The rope is anchored to the post above the dig site. You’d need to <[go to above
+the dig site] go there> to untie it.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[untie
+the nylon rope] untie it> • <[climb the nylon rope] climb it>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778630448671
+parent-id: 1778630448670
+command: look
+--------------------------------------------------------------------------------
+> look
+
+[0m[1mExcavation[0m
+Or as the archaeologists call it, 0N10E: zero meters north and ten meters east
+of the datum. This square has been excavated more than its neighbors, sinking it
+a few meters into the earth.
+
+Your <rope> trails down from the origin marker, offering an easy climb up to the
+west.
+
+According to the dig reports, these are the coordinates where human remains were
+found earlier today. With any luck, there should be some <bone fragments> left
+to find.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the nylon rope] The nylon rope>[0m • <[take the nylon rope] take it> • <[untie
+the nylon rope] untie it> • <[climb the nylon rope] climb it>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778630448672
+parent-id: 1778630448671
+command: bone fragments
+--------------------------------------------------------------------------------
+> bone fragments
+There’s not much, just a few white glints in the moonlight...or is it just your
+imagination? There’s only one way to be sure: put your skills to the test and
+<[divine the bones] divine them>.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
+them>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778630448673
+parent-id: 1778630448672
+command: divine them
+--------------------------------------------------------------------------------
+> divine them
+This is it. You sit down and get as comfortable as you can, making sure the
+bones are clearly in your field of view. The mirror goes in front of your left
+eye, adjusted until the images overlap: one eye seeing the bones, the other
+reflected back at itself. The entheogen tablet under your tongue, where it
+starts to dissolve. Now, to meditate.
+
+The idea of a memory palace goes back to the ancient Greeks: anchoring your
+memories by laying them out in an imaginary space. Forensic necromancy is the
+same. You just do it for someone else’s memories instead. Drawing them from the
+bones, guiding them, giving them shape. Until lines start to shine in your mind,
+and colors, and...
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778630448674
+parent-id: 1778630448673
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[1mZiggurat[0m
+Everything is a haze. Colors muted, sounds muffled. But you can make out one
+line, and then another, and another—something solid, something [0m[4mreal[0m. You try to
+focus your mind on it, and a shape begins to emerge. The fog recedes in a great
+rush and a ringing silence fills your ears.
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778630448675
+parent-id: 1778630448674
+command:  
+--------------------------------------------------------------------------------
+>  
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> firmly barred from the other side; west, the steps
+down barely make it a meter before they’re lost in a <blinding light>.
+
+The whole tableau is frozen like a fly in amber. The dust swirls around your
+feet with every step, but the moment you’re past, it hangs motionless in the
+air. The only flicker of movement is along the walkway to the northwest.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778630448676
+parent-id: 1778630448675
+command: wake up
+--------------------------------------------------------------------------------
+> wake up
+Returning to the real world is a bit like waking up from a lucid dream. Your
+method isn’t the most dignified, but it is highly reliable—all you have to do is
+hyperventilate. If your physical body mirrors it, even a little, it’ll shock you
+awake.
+
+So you pause, close your eyes, and start to force as much air out of your lungs
+as you can in fast, sharp breaths. Soon your head starts to swim, and...
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778630448677
+parent-id: 1778630448676
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[1mExcavation[0m
+Or as the archaeologists call it, 0N10E: zero meters north and ten meters east
+of the datum. This square has been excavated more than its neighbors, sinking it
+a few meters into the earth.
+
+Your <rope> trails down from the origin marker, offering an easy climb up to the
+west.
+
+You can just barely make out some <bone fragments> in the moonlight.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@) 
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[look] Excavation>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778640300958
+parent-id: 1778630448677
+command: divine bones
+--------------------------------------------------------------------------------
+> divine bones
+The second time is always easier than the first. You know the shape of the
+memory palace already, and you can use it to guide yourself back. Pull out the
+mirror, slip another tablet under your tongue, and imagine the outlines of the
+ziggurat, overlaid on the site...
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778640300959
+parent-id: 1778640300958
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[1mZiggurat[0m
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> firmly barred from the other side; west, the steps
+down barely make it a meter before they’re lost in a <blinding light>.
+
+The whole tableau is frozen like a fly in amber. The dust swirls around your
+feet with every step, but the moment you’re past, it hangs motionless in the
+air. The only flicker of movement is along the walkway to the northwest.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300960
+parent-id: 1778640300959
+command: s
+--------------------------------------------------------------------------------
+> s
+(first attempting to open the front door to the south)
+You give the door a tug, but it doesn’t move. It’s probably not locked—key locks
+had been invented at this point, but weren’t common yet—but a solid bar across
+the back of the door blocks passage just the same.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300961
+parent-id: 1778640300960
+command: g
+--------------------------------------------------------------------------------
+> g
+(first attempting to open the front door to the south)
+You give the door a tug, but it doesn’t move. It’s probably not locked, but a
+solid bar across the back of the door blocks passage just the same.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300962
+parent-id: 1778640300961
+command: door
+--------------------------------------------------------------------------------
+> door
+The door of the house is made of thick, sturdy wood mounted in the mud-brick
+walls. It’s firmly closed, but the <crack> where it meets the wall is wide
+enough to see through.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the front door] The front door>[0m • <[open the front door] open it> • <[enter
+the front door] enter it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300963
+parent-id: 1778640300962
+command: crack
+--------------------------------------------------------------------------------
+> crack
+The crack is about three centimeters wide. Through it you can see a heavy bar of
+wood on the other side, holding the door closed.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the wide crack] The wide crack>[0m
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300965
+parent-id: 1778640300963
+command: look
+--------------------------------------------------------------------------------
+> look
+
+[0m[1mZiggurat[0m
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> firmly barred from the other side; west, the steps
+down barely make it a meter before they’re lost in a <blinding light>.
+
+The whole tableau is frozen like a fly in amber. The dust swirls around your
+feet with every step, but the moment you’re past, it hangs motionless in the
+air. The only flicker of movement is along the walkway to the northwest.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the wide crack] The wide crack>[0m
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300966
+parent-id: 1778640300965
+command: w
+--------------------------------------------------------------------------------
+> w
+You squint your eyes and try to move through the light, but it’s like pushing
+against a strong wind: it burns in your eyes, physically forcing you back.
+Eventually you’re forced to retreat, tears streaming down your face.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the wide crack] The wide crack>[0m
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300967
+parent-id: 1778640300966
+command: light
+--------------------------------------------------------------------------------
+> light
+It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam
+shining through dust. From the side you can clearly see its path traced out in
+fiery gold.
+
+[0m[50m                                     \    
+                                     -(@) 
+                                       |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the blinding light] The blinding light>[0m • <[enter the blinding light] enter
+it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300968
+parent-id: 1778640300967
+command: nw
+--------------------------------------------------------------------------------
+> nw
+You move toward the traces of motion, and the dream shifts...
+
+[0m[4m“On your knees!” You drop down, too scared to resist. Two men in gold-fringed
+shawls circle around until they’re side by side in front of you. The wiry one
+keeps his speartip in your face while the stout one pulls out a tablet.
+
+“Nabuu-ahu-eresh of Babylon, goldsmith of the Temple. For your crimes against
+His Majesty, Siin-ahhe-eriba, King of the World, King of Assyria, King of the
+Four Quarters, for your treason and your role in the conspiracy to his murder,
+you are hereby sentenced to death by impalement.”
+
+Your breath catches in your throat. “T-treason? Conspiracy? I don’t—what is
+this—I don’t know what you’re—”
+
+Your protests are cut off by a warning jab of the spear. You try one more time
+to force out the words. “I’m innocent! I swear by all the gods! The
+conspiracy—that wasn’t—my brother and me, we knew about it, but we made a
+report, he went to Nineveh to tell the palace! He can confirm what I’m saying,
+we’ll both swear to it in court! Sharhiya of Babylon, he’s a goldsmith too,
+he’s—”
+
+The wiry man spits and tosses his spear down in disgust. “Your brother? Oh, he’s
+told us [0mplenty[0m[4m.” He grabs the torch from the wall and holds it up, letting you
+see the fallen, crumpled shape lying in the shadows. [0mNo...[0m[4m
+
+The stout man looks back at his tablet. “There will be no trial. The sentence is
+final, by order of Prince Urad-Mullissi.” He turns and strides off into the
+darkness, while the wiry one looks down at you with a sneer. “Any final words?”
+[0m
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778640300969
+parent-id: 1778640300968
+command:  
+--------------------------------------------------------------------------------
+>  
+You jerk yourself free of the memory, and everything freezes again. Now you have
+the freedom to look around the tableau; you can’t change the past, but you can
+search and poke and prod to your heart’s content. A gap to the south leads back
+to the memory palace.
+
+[0m[1mDungeon[0m
+You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is
+darkness outside the little circle of light.
+
+The <wiry man> waves the torch eastward with an awful smirk, letting you see the
+<crumpled figure> lying there. The <other man> is mostly lost in the shadows.
+
+The dropped <spear> lies just out of arm’s reach.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300970
+parent-id: 1778640300969
+command: wiry
+--------------------------------------------------------------------------------
+> wiry
+Both of the men have fine clothes, richly-dyed and well-fringed, in a way you
+wouldn’t expect in a dungeon—but this one at least also has strong muscles and
+callouses on his hands. His <torch> is held high, pointing to the east.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the wiry man] The wiry man>[0m • <[talk to the wiry man] talk to him>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300971
+parent-id: 1778640300970
+command: torch
+--------------------------------------------------------------------------------
+> torch
+The fire looks quite odd, frozen in place, but it still casts enough light to
+see by.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the torch] The torch>[0m • <[take the torch] take it> • <[douse the torch] douse
+it>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300972
+parent-id: 1778640300971
+command: take torch
+--------------------------------------------------------------------------------
+> take torch
+The wiry man is frozen like a statue, and his hand won’t release the torch.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the torch] The torch>[0m • <[take the torch] take it> • <[douse the torch] douse
+it>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300973
+parent-id: 1778640300972
+command: other
+--------------------------------------------------------------------------------
+> other
+The stout man’s form is hazy and hard to make out, just at the edge of your
+vision. “You”—that is, the person whose memories you’re exploring—must have seen 
+[0m[4msomething[0m, but the darkness is keeping it hidden from you now.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the stout man] The stout man>[0m • <[talk to the stout man] talk to him>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300974
+parent-id: 1778640300973
+command: tablets
+--------------------------------------------------------------------------------
+> tablets
+The stout man’s form is hazy and hard to make out, just at the edge of your
+vision. “You”—that is, the person whose memories you’re exploring—must have seen 
+[0m[4msomething[0m, but the darkness is keeping it hidden from you now.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the stout man] The stout man>[0m • <[talk to the stout man] talk to him>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300975
+parent-id: 1778640300974
+command: talk to him
+--------------------------------------------------------------------------------
+> talk to him
+Humans in memories are tricky things. The psychic impressions only record what
+actually happened; everything else is happening inside your head, as your brain
+fills in how things [0m[4mought[0m to work.
+
+But people are harder to predict than spears and doors. If you do much of
+anything beyond looking at them, they get hazy and indistinct. You’re hoping to
+find a way to fix this, eventually.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the stout man] The stout man>[0m • <[talk to the stout man] talk to him>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300976
+parent-id: 1778640300975
+command: spear
+--------------------------------------------------------------------------------
+> spear
+Even if the prisoner couldn’t reach it two thousand years ago, you have no such
+restrictions—you stand up and walk over to the spear while the scene stays
+frozen like a diorama around you. One and a half meters of well-polished wood,
+with a sharp iron point mounted on the end. It’s lighter than you’d expected,
+but feels nice and sturdy.
+
+[0m[4mYou can’t change the past, but all of this is happening inside your head. If you
+pick things up and move them from one memory to another, they’ll act the way
+your brain expects.
+[0m
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m • <[take the iron-tipped spear]
+take it>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300977
+parent-id: 1778640300976
+command: take it
+--------------------------------------------------------------------------------
+> take it
+You take the iron-tipped spear.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300980
+parent-id: 1778640300977
+command: figure
+--------------------------------------------------------------------------------
+> figure
+The torchlight (thankfully) isn’t bright enough to make out much detail. But you
+can make out the Babylonian tunic, and the unnatural position.
+
+If this is where “you” died, and the bodies weren’t moved post mortem...then the
+brother’s bones should be about ten meters to the east, back in the present day.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the cadaver] The cadaver>[0m
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300981
+parent-id: 1778640300999
+command: e
+--------------------------------------------------------------------------------
+> e
+(going over to the crumpled figure)
+The torchlight (thankfully) isn’t bright enough to make out much detail. But you
+can make out the Babylonian tunic, and the unnatural position.
+
+If this is where “you” died, and the bodies weren’t moved post mortem...then the
+brother’s bones should be about ten meters to the east, back in the present day.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the cadaver] The cadaver>[0m
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300983
+parent-id: 1778640300981
+command: w
+--------------------------------------------------------------------------------
+> w
+Each memory only captures a brief moment in time: what the person saw, heard,
+and felt in those scant few seconds. Everything beyond that is lost in a dark
+haze.
+
+If you want to go back to the memory palace, there’s a tear in the haze to the
+<southeast>, like a hole crudely ripped in a cloth backdrop.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the cadaver] The cadaver>[0m
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300984
+parent-id: 1778640300983
+command: se
+--------------------------------------------------------------------------------
+> se
+You walk southeast.
+
+[0m[1mZiggurat[0m
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> firmly barred from the other side; west, the steps
+down barely make it a meter before they’re lost in a <blinding light>. The whole
+tableau is frozen like a fly in amber, with you in the middle of it all.
+
+[0m[50m                                    [ ]     
+                                       \    
+                                       -(@) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Ziggurat>[0m • <south> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778640300985
+parent-id: 1778640300984
+command: hyperventilate
+--------------------------------------------------------------------------------
+> hyperventilate
+Your method worked last time, so it should work again. So you pause, close your
+eyes, and start to force as much air out of your lungs as you can in fast, sharp
+breaths. Soon your head starts to swim, and...
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778640300986
+parent-id: 1778640300985
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[1mExcavation[0m
+Or as the archaeologists call it, 0N10E: zero meters north and ten meters east
+of the datum. This square has been excavated more than its neighbors, sinking it
+a few meters into the earth.
+
+Your <rope> trails down from the origin marker, offering an easy climb up to the
+west.
+
+You can just barely make out some <bone fragments> in the moonlight.
+
+It’s hard to keep your bearings between the real world and a memory, but those
+other remains should be somewhere to the <east>. Hopefully some of them are
+still there.
+
+[0m[50m                                      ( )     
+                                     / |      
+                                  ( )-( )-(@)-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[look] Excavation>[0m • <east> • <west>
+--------------------------------------------------------------------------------
+id: 1778640300987
+parent-id: 1778640300986
+command: e
+--------------------------------------------------------------------------------
+> e
+You walk east.
+
+[0m[1mLoose earth[0m
+The square at 0N20E has been less thoroughly excavated than 0N10E, and the earth
+is softer here: the archaeologists have been working their way through it,
+breaking up each layer and sifting through the dirt for artifacts.
+
+The <latest finds> have been carefully sorted and labelled in trays off to one
+side.
+
+A <wheeled equipment cart> is securely parked off to one side.
+
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[look] Loose earth>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778640300988
+parent-id: 1778640300987
+command: cart
+--------------------------------------------------------------------------------
+> cart
+The archaeologists must use this to move their heavy equipment between the pits.
+Currently it’s loaded with heavy plastic crates, big enough to stand on, and the
+wheels are locked to keep it from rolling around.
+
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the equipment cart] The equipment cart>[0m • <[unlock the equipment cart] unlock
+it> • <[push the equipment cart] push it> • <[climb the equipment cart] climb
+it>
+[0m[1m<[look] Loose earth>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778640300989
+parent-id: 1778640300988
+command: latest finds
+--------------------------------------------------------------------------------
+> latest finds
+Just a few white fragments among the artifacts—it’s hard to even tell which
+bones they are. Could they belong to the Sharhiya from the memories?
+
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
+them>
+[0m[1m<[look] Loose earth>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778640300990
+parent-id: 1778640300989
+command: take them
+--------------------------------------------------------------------------------
+> take them
+Probably best not to touch the artifacts. Even if you’re an official guest of
+the dig team, you’re not a trained archaeologist, and there’s always the risk of
+contaminating something in the process.
+
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[the bone fragments] The bone fragments>[0m • <[divine the bone fragments] divine
+them>
+[0m[1m<[look] Loose earth>[0m • <west>
+--------------------------------------------------------------------------------
+id: 1778640300991
+parent-id: 1778640300990
+command: divine them
+--------------------------------------------------------------------------------
+> divine them
+You have to try a couple positions before you find one that works: you need a
+clear view of the bones, but if you’re too vertical, you might fall over when
+the visions set in. Eventually you settle down on the wall between the grid
+squares and pull out your mirror and tablets.
+
+This one is easier than the first. You already have some memories from the same
+time and place; you hold your focus on those, using them as an anchor for the
+new visions. Soon the outlines start to take form...
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778640300992
+parent-id: 1778640300991
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[1mRoyal palace[0m
+The architecture here looks Assyrian—it must be Nineveh, the same place your
+body is in the real world. But the <lamassu> are taller than a three-story
+building, the ceilings so high they're lost in the clouds. This is Nineveh as
+remembered by its enemies, majestic and imposing, larger than life.
+
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways,
+hallways slicing through walls. The doorway to the north is grand and richly
+decorated, while the one to the east is too dark to see. Southeast, a passage
+has intersected a brazier and spilled <hot coals> across the floor; west, an
+outdoor balcony juts in a meter above the floor.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300993
+parent-id: 1778640300992
+command: lamassu
+--------------------------------------------------------------------------------
+> lamassu
+Massive statues of winged lions with human heads, standing guard over the royal
+palace.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the lamassu] The lamassu>[0m
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300994
+parent-id: 1778640300993
+command: coals
+--------------------------------------------------------------------------------
+> coals
+The heat waves coming off them are frozen in space, like a lens floating in the
+air.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the hot coals] The hot coals>[0m • <[douse the hot coals] douse them> • <[cross
+the hot coals] cross them>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300995
+parent-id: 1778640300994
+command: se
+--------------------------------------------------------------------------------
+> se
+You reach toward the hot coals, but you can feel the heat coming off them, even
+frozen in memory. Touching them would end poorly.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the hot coals] The hot coals>[0m • <[douse the hot coals] douse them> • <[cross
+the hot coals] cross them>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300996
+parent-id: 1778640300995
+command: douse them
+--------------------------------------------------------------------------------
+> douse them
+You have no supply of water.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the hot coals] The hot coals>[0m • <[douse the hot coals] douse them> • <[cross
+the hot coals] cross them>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300997
+parent-id: 1778640300996
+command: cross them
+--------------------------------------------------------------------------------
+> cross them
+You reach toward the hot coals, but you can feel the heat coming off them, even
+frozen in memory. Touching them would end poorly.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the hot coals] The hot coals>[0m • <[douse the hot coals] douse them> • <[cross
+the hot coals] cross them>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300998
+parent-id: 1778640300997
+command: e
+--------------------------------------------------------------------------------
+> e
+You take a few steps into the darkness, but suddenly it closes in around you,
+thick on your skin and suffocating in your mouth! You stumble back toward the
+light before it can tighten any further.
+
+[0m[50m                                  [ ]         
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the hot coals] The hot coals>[0m • <[douse the hot coals] douse them> • <[cross
+the hot coals] cross them>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640300999
+parent-id: 1778640300980
+command: x me
+--------------------------------------------------------------------------------
+> x me
+In this memory, you seem to be a tall man in a Babylonian tunic, a little
+bruised, more than a little dishevelled.
+
+[0m[50m                                    [@]     
+                                       \    
+                                       -( ) 
+                                         |  
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Dungeon>[0m • <southeast>
+--------------------------------------------------------------------------------
+id: 1778640301000
+parent-id: 1778640300998
+command: n
+--------------------------------------------------------------------------------
+> n
+You move toward the traces of motion, and the dream shifts...
+
+[0m[4m“And what is your business with His Majesty, ‘Sharhiya of Babylon’?” The wiry
+man looks you up and down with obvious distaste, and you try not to flinch. You
+wore your best clothes for this, but there’s a vast gap between your best
+clothes and royal gold.
+
+“I have important information for the King. About a threat to his royal
+personage. I sent a letter—”
+
+The stout man flips his tablet over and clears his throat. “He’s right. It’s
+recorded here. We’re to take him to the throne room immediately.”
+
+The wiry man sighs and gestures toward you. “Fine. But first, your cloak. Give
+it here. No Babylonian can look at the unveiled face of royalty.”
+
+You grit your teeth and comply. Another indignity as he takes your cloak, folds
+it over, and ties it around your head as a blindfold. Maybe your brother was
+right; maybe you never should have come here. But you can hear the grand door
+being pushed open, and you’re pulled forward by the arm.
+
+“Sharhiya of Babylon.” The stout man’s voice rings out with surprising power.
+“You stand before the Great King, Siin-ahhe-eriba, Mighty King, King of the
+World, King of Assyria, King of the Four Quarters...” You tune out the litany
+and rehearse your speech, waiting for him to finish. “...your appeal is granted.
+Speak with your own voice.”
+
+“Your Majesty.” You lick your lips. They’ve suddenly gone dry. “Your oldest son,
+Urad-Mullissi...he’s...he’s not happy about being passed over as crown prince.
+He’s planning to murder you and seize the throne.”
+
+The silence stretches on and on. Finally, a new voice speaks, young and strong.
+Not the voice you’d expected from an elderly king.
+
+“So the reports were right. And if I hadn’t intervened, you would have told my
+father. I should thank the gods that I got to you first.”
+[0m
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778640301001
+parent-id: 1778640301000
+command:  
+--------------------------------------------------------------------------------
+>  
+You pull yourself out of the memory with a [0m[4msnap[0m, and everything goes still.
+
+?????
+You can’t see anything with the <blindfold> on.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778640301003
+parent-id: 1778640301001
+command: blindfold
+--------------------------------------------------------------------------------
+> blindfold
+Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover
+his face.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the blindfold] The blindfold>[0m (worn) • <[take the blindfold] take
+it> • <[remove the blindfold] remove it>
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778640301004
+parent-id: 1778640301003
+command: remove it
+--------------------------------------------------------------------------------
+> remove it
+You tug the blindfold off and blink a few times until your eyes adjust.
+
+[0m[1mDarkness[0m
+Even without the blindfold, there’s nothing to see. All Sharhiya remembers is
+darkness. You have to guess that you entered from the south, and <that voice>
+came from the north.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the blindfold] The blindfold>[0m (held) • <[drop the blindfold] drop it> • <[wear
+the blindfold] wear it>
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778646225154
+parent-id: 1778640301004
+command: that voice
+--------------------------------------------------------------------------------
+> that voice
+Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Is
+that the voice of the ex-crown-prince, Urad-Mullissi himself?
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the unknown voice] The unknown voice>[0m
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778646225156
+parent-id: 1778646225154
+command: wear blindfold
+--------------------------------------------------------------------------------
+> wear blindfold
+You put on the blindfold.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the unknown voice] The unknown voice>[0m
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778646225157
+parent-id: 1778646225156
+command: i
+--------------------------------------------------------------------------------
+> i
+You have an <iron-tipped spear>. You’re wearing a <blindfold>.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the unknown voice] The unknown voice>[0m
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778646225158
+parent-id: 1778646225157
+command: x spear
+--------------------------------------------------------------------------------
+> x spear
+The blindfold hides your surroundings, but somehow you can perceive the iron-
+tipped spear just fine. One and a half meters of well-polished wood, with a
+sharp iron point mounted on the end. It’s lighter than you’d expected, but feels
+nice and sturdy.
+
+[0m[50m                                  [ ]     [@] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Darkness>[0m • <south>
+--------------------------------------------------------------------------------
+id: 1778646225159
+parent-id: 1778646225158
+command: s
+--------------------------------------------------------------------------------
+> s
+(taking off the blindfold, so you can see where you’re going)
+You walk south.
+
+[0m[1mRoyal palace[0m
+The architecture here looks Assyrian—it must be Nineveh, the same place your
+body is in the real world. But the <lamassu> are taller than a three-story
+building, the ceilings so high they're lost in the clouds. This is Nineveh as
+remembered by its enemies, majestic and imposing, larger than life.
+
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways,
+hallways slicing through walls. The doorway to the north is grand and richly
+decorated, while the one to the east is too dark to see. Southeast, a passage
+has intersected a brazier and spilled <hot coals> across the floor; west, an
+outdoor balcony juts in a meter above the floor.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-(@)-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Royal palace>[0m • <north> • <east> • <west> • <southeast>
+--------------------------------------------------------------------------------
+id: 1778646225160
+parent-id: 1778646225159
+command: w
+--------------------------------------------------------------------------------
+> w
+The transition from Sharhiya’s memory to Nabuu-ahu-eresh’s is seamless...well,
+as [0m[4mseamless[0m as the rest of the intrusions jutting into the ziggurat. The two
+memory palaces are holding each other together now, making both of them more
+stable.
+
+[0m[1mZiggurat[0m
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> firmly barred from the other side; west, the steps
+down barely make it a meter before they’re lost in a <blinding light>; east, a
+balcony cuts straight through the side of the ziggurat. The whole tableau is
+frozen like a fly in amber, with you in the middle of it all.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it> • <[put the iron-tipped spear into] put it in something>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225161
+parent-id: 1778646225160
+command: put the spear into
+--------------------------------------------------------------------------------
+> put the spear into
+Into what?
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+[0m
+<[me] yourself>, <[the front door] the front door>, <[the wide crack] the wide
+crack>, <[the blinding light] the blinding light>, <[the blindfold] the
+blindfold>, <[the iron-tipped spear] the iron-tipped spear>
+--------------------------------------------------------------------------------
+id: 1778646225162
+parent-id: 1778646225161
+command: crack
+--------------------------------------------------------------------------------
+> crack
+You push the spear through the crack, wedging it under the bar.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m • <[take the iron-tipped spear]
+take it> • <[push the iron-tipped spear] push it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225163
+parent-id: 1778646225162
+command: push it
+--------------------------------------------------------------------------------
+> push it
+You give the spear a mighty shove...and nothing happens. Another shove, still
+nothing. The bar is quite firmly wedged in place. But when you set your full
+weight against it, you feel something start to give—and then in a sudden burst
+of motion the bar is thrown free! The spear clatters to the ground as the door
+swings open.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m • <[take the iron-tipped spear]
+take it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225164
+parent-id: 1778646225163
+command: s
+--------------------------------------------------------------------------------
+> s
+You walk south through the front door.
+
+[0m[1mHouse[0m
+Or perhaps “entrance hall” would be a better term. The room isn’t large, but the
+floor is nicely-smoothed clay, the walls painted with abstract <designs> in red
+and blue. By Iron Age standards, whoever lived here must have been distinctly
+well off. The passage to the west is indistinct, but has a feeling of motion in
+its haziness.
+
+The <door bolt> has landed off to one side.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                     -(@)     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] House>[0m • <north> • <west>
+--------------------------------------------------------------------------------
+id: 1778646225165
+parent-id: 1778646225164
+command: bolt
+--------------------------------------------------------------------------------
+> bolt
+It sits heavily on the ground. No more use for it now.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                     -(@)     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the bar] The bar>[0m
+[0m[1m<[look] House>[0m • <north> • <west>
+--------------------------------------------------------------------------------
+id: 1778646225166
+parent-id: 1778646225165
+command: designs
+--------------------------------------------------------------------------------
+> designs
+The walls and floor have been covered with a thin layer of fine white clay, with
+geometric motifs painted on top once it dried. It looks much nicer than plain
+mud brick.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                     -(@)     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the walls and floor] The walls and floor>[0m
+[0m[1m<[look] House>[0m • <north> • <west>
+--------------------------------------------------------------------------------
+id: 1778646225167
+parent-id: 1778646225166
+command: w
+--------------------------------------------------------------------------------
+> w
+You move toward the traces of motion, and the dream shifts...
+
+[0m[4m“Attention, citizens of Babylon!” A new voice cuts through the mid-morning
+chatter. You set down your bucket with a sigh, and give your brother a nudge. A
+stranger has stepped up on the edge of the fountain to bellow to the crowd.
+
+“His Majesty Siin-ahhe-eriba, Great King, Mighty King, King of the World, King
+of Assyria, King of the Four Quarters, the capable shepherd, favorite of the
+Great Gods, guardian of truth, he who loves justice, renders assistance, offers
+aid to the weak, and strives after good deeds, the Perfect Man, the virile
+warrior, foremost of all rulers, the bridle that tames the rebellious, the one
+who strikes his enemies with lightning—”
+
+He cuts off abruptly, glancing around. The tone of the crowd has become
+decidedly hostile. He swallows, clears his throat, and starts again. “His
+Majesty, in his wisdom, has selected an heir. After his passing, he will not be
+succeeded by his eldest son, Urad-Mullissi, but by his chosen crown prince,
+Asshur-ahu-iddina.”
+
+[0mThat[0m[4m gets the crowd’s attention. Sharhiya stands up, squinting at the messenger.
+“Asshur-ahu-iddina? He’s not even a son of the queen, is he?”
+
+You shake your head. “No. Just a concubine. And he’s [0myoung[0m[4m, too. But they say
+his mother is a clever one. Maybe he takes after her.”
+
+He shushes you, and you go quiet as the messenger continues. “In one month’s
+time, all the lords of Babylonia will assemble at the Great Palace in Nineveh to
+renew your oaths of fealty. May His Maj—”
+
+That’s when a vegetable hits him across the face. “Heir or no heir, he’s no true
+king until he’s crowned by Marduk!” The messenger tries to get back to his feet,
+but the whole audience is shouting now. “Send soldiers if you want! What’ll they
+do that they haven’t done already?” “Make him remember what happened to the last
+crown prince who set foot in Babylon!”
+
+“Come on!” Sharhiya grabs you by the shoulder, and the pair of you turn and run.
+There’s no sign of the messenger now behind the crowd of angry Babylonians.
+[0m
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
+id: 1778646225168
+parent-id: 1778646225167
+command: 
+--------------------------------------------------------------------------------
+> 
+You snap yourself out of the memory and take a look around.
+
+[0m[1mMarketplace[0m
+This plaza must once have been magnificent. The soot-blackened <buildings> soar
+high, the walls are covered in shattered reliefs, and the <grand fountain> shows
+the remains of some kind of sculpture.
+
+All around you, the <crowd> is frozen like a sea of nameless, faceless statues.
+
+Your (well, “your”) bucket has fallen next to the fountain, abandoned in your
+haste.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225169
+parent-id: 1778646225168
+command: crowd
+--------------------------------------------------------------------------------
+> crowd
+You have to move around a bit to see the messenger, but he stands out: his dress
+and his dialect are both Assyrian, while everyone else here is distinctly
+Babylonian. Fortunately you’re proficient in both. (A necromancy degree involves
+quite a lot of dead languages.)
+
+The only other individual you can make out is your <brother>, caught mid-run
+with both feet off the ground. The rest are remembered only as a sort of
+indistinct blur.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the crowd of people] The crowd of people>[0m • <[talk to the crowd of people]
+talk to them>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225170
+parent-id: 1778646225169
+command: brother
+--------------------------------------------------------------------------------
+> brother
+Noticeably shorter than you, and just a bit rounder, but the family resemblance
+is easy to see.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[my brother] Your brother>[0m • <[talk to my brother] talk to him>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225171
+parent-id: 1778646225170
+command: x me
+--------------------------------------------------------------------------------
+> x me
+You’re the same tall man in a Babylonian tunic, though your clothes are simpler
+and less dishevelled here than at the execution. Daily about-town sort of wear.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225172
+parent-id: 1778646225171
+command: bucket
+--------------------------------------------------------------------------------
+> bucket
+It’s made of leather instead of plastic, but the best way to carry water hasn’t
+really changed in the past two thousand years.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the dropped bucket] The dropped bucket>[0m • <[take the dropped bucket] take it>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225173
+parent-id: 1778646225172
+command: take it
+--------------------------------------------------------------------------------
+> take it
+You scoop up the bucket by its handle.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the empty bucket] The empty bucket>[0m (held) • <[drop the empty bucket] drop
+it> • <[fill the empty bucket] fill it>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225174
+parent-id: 1778646225173
+command: fill it
+--------------------------------------------------------------------------------
+> fill it
+(from the grand fountain)
+You scoop up some water in the empty bucket.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the water -filled bucket] The water-filled bucket>[0m (held) • <[drop the water -
+filled bucket] drop it> • <[drink from the water -filled bucket] drink from
+it> • <[fill the water -filled bucket] fill it> • <[empty the water -filled
+bucket] empty it> • <[pour the water -filled bucket on] pour it on something>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225175
+parent-id: 1778646225174
+command: drink water
+--------------------------------------------------------------------------------
+> drink water
+
+[0m[4mDid you want to drink from <[grand fountain] the grand fountain> or <[bucket]
+the water-filled bucket>?
+[0m
+--------------------------------------------------------------------------------
+id: 1778646225176
+parent-id: 1778646225175
+command: bucket
+--------------------------------------------------------------------------------
+> bucket
+You take a sip from the water-filled bucket. It tastes like ordinary, slightly-
+dirty water, but you don’t feel refreshed in the slightest.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [@]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the water -filled bucket] The water-filled bucket>[0m (held) • <[drop the water -
+filled bucket] drop it> • <[drink from the water -filled bucket] drink from
+it> • <[fill the water -filled bucket] fill it> • <[empty the water -filled
+bucket] empty it> • <[pour the water -filled bucket on] pour it on something>
+[0m[1m<[look] Marketplace>[0m • <east>
+--------------------------------------------------------------------------------
+id: 1778646225179
+parent-id: 1778646225176
+command: e
+--------------------------------------------------------------------------------
+> e
+You walk east.
+
+[0m[1mHouse[0m
+Or perhaps “entrance hall” would be a better term. The room isn’t large, but the
+floor is nicely-smoothed clay, the walls painted with abstract <designs> in red
+and blue. By Iron Age standards, whoever lived here must have been distinctly
+well off. The passage to the west is indistinct, but has a feeling of motion in
+its haziness.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -( )-( )-
+                                       |     \
+                                  [ ]-(@)     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the water -filled bucket] The water-filled bucket>[0m (held) • <[drop the water -
+filled bucket] drop it> • <[drink from the water -filled bucket] drink from
+it> • <[fill the water -filled bucket] fill it> • <[empty the water -filled
+bucket] empty it> • <[pour the water -filled bucket on] pour it on something>
+[0m[1m<[look] House>[0m • <north> • <west>
+--------------------------------------------------------------------------------
+id: 1778646225180
+parent-id: 1778646225179
+command: n
+--------------------------------------------------------------------------------
+> n
+You walk north through the front door.
+
+[0m[1mZiggurat[0m
+You’re standing on a wide platform halfway up a tower of towers: one massive
+pillar stacked on another, on another, on another. The top vanishes into the
+mists above and the ground is nothing but a distant blur. You’re left on the
+walkway in between, canted at a steeper angle than is really comfortable.
+
+All around, other memories have forced their way in like tree roots cracking
+through a sidewalk. To the south, the walkway runs headlong into the front of a
+mud-brick house, its <door> standing open; west, the steps down barely make it a
+meter before they’re lost in a <blinding light>; east, a balcony cuts straight
+through the side of the ziggurat. The whole tableau is frozen like a fly in
+amber, with you in the middle of it all.
+
+You see an <iron-tipped spear> here.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the water -filled bucket] The water-filled bucket>[0m (held) • <[drop the water -
+filled bucket] drop it> • <[drink from the water -filled bucket] drink from
+it> • <[fill the water -filled bucket] fill it> • <[empty the water -filled
+bucket] empty it> • <[pour the water -filled bucket on] pour it on something>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225181
+parent-id: 1778646225180
+command: take spear
+--------------------------------------------------------------------------------
+> take spear
+You take the iron-tipped spear.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225182
+parent-id: 1778646225181
+command: pour water on spear
+--------------------------------------------------------------------------------
+> pour water on spear
+That would just make a mess of the iron-tipped spear. It isn’t designed to hold
+water...or much of anything, really.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225183
+parent-id: 1778646225182
+command: wear blindfold
+--------------------------------------------------------------------------------
+> wear blindfold
+You put on the blindfold.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                     -(@)-( )-
+                                       |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Ziggurat>[0m • <south> • <east> • <west> • <northwest>
+--------------------------------------------------------------------------------
+id: 1778646225184
+parent-id: 1778646225183
+command: w
+--------------------------------------------------------------------------------
+> w
+You turn your face toward the heat and walk straight forward. The air gets
+hotter and brighter until you can see a faint glow around the edges of the
+blindfold...and then just like that, it recedes.
+
+?????
+You can’t see anything with the <blindfold> on.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                  (@)-( )-( )-
+                                 /     |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Workshop>[0m • <east> • <southwest>
+--------------------------------------------------------------------------------
+id: 1778646225185
+parent-id: 1778646225184
+command: take off blindfold
+--------------------------------------------------------------------------------
+> take off blindfold
+You tug the blindfold off and blink a few times until your eyes adjust.
+
+[0m[1mWorkshop[0m
+This room is not small: the ceiling is high and the floor wide. But the heat and
+the smoke make it feel tight all the same, and you’re hemmed in on all sides by
+<tools and equipment>. The scent of hot metal stings in your nose.
+
+A towering <statue> dominates the room, light blazing from its gold-plated skin.
+Its fiery gaze is fixed on the door to the east.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                  (@)-( )-( )-
+                                 /     |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the iron-tipped spear] The iron-tipped spear>[0m (held) • <[drop the iron-tipped
+spear] drop it>
+[0m[1m<[look] Workshop>[0m • <east> • <southwest>
+--------------------------------------------------------------------------------
+id: 1778646225186
+parent-id: 1778646225185
+command: tools
+--------------------------------------------------------------------------------
+> tools
+Crucibles, anvils, hammers, all sorts of tools you don’t even know the names of,
+blurring and merging into a sort of formless collective every time you take your
+eyes off them. The <forge> is big enough to stay mostly in one place, at least,
+and pieces of <gold and silver> shine in the light.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                  (@)-( )-( )-
+                                 /     |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the tools and equipment] The tools and equipment>[0m • <[take the tools and
+equipment] take them>
+[0m[1m<[look] Workshop>[0m • <east> • <southwest>
+--------------------------------------------------------------------------------
+id: 1778646225187
+parent-id: 1778646225186
+command: forge
+--------------------------------------------------------------------------------
+> forge
+It’s about the size of a microwave, probably better for fine detail work than
+large-scale blacksmithing. The heat waves from the hot coals are frozen in
+memory, making the air look like an obscure-glass window.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                  (@)-( )-( )-
+                                 /     |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the forge] The forge>[0m • <[douse the forge] douse it>
+[0m[1m<[look] Workshop>[0m • <east> • <southwest>
+--------------------------------------------------------------------------------
+id: 1778646225188
+parent-id: 1778646225187
+command: gold
+--------------------------------------------------------------------------------
+> gold
+It stands tall and imperious, at least double your height, its skin plated with
+finely-hammered gold and silver, its hair and beard set with lapis lazuli. It
+must represent one of the gods, probably Marduk; a fiery glow radiates from its
+face, filling the eastern passage with light.
+
+It’s only once your eyes adjust that you can see the more mundane side: the
+wooden scaffolding around it, the movable <work platform> underneath. This god
+seems to be under construction.
+
+[0m[50m                                  [ ]     [ ] 
+                                     \     |  
+                                  (@)-( )-( )-
+                                 /     |     \
+                                  [ ]-( )     
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
+[0m[1m<[the statue of marduk] The statue of Marduk>[0m • <[push the statue of marduk]
+push it>
+[0m[1m<[look] Workshop>[0m • <east> • <southwest>

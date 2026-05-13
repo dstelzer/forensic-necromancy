@@ -272,21 +272,16 @@
 %% This is one you probably want to override in your own game: it controls what character is drawn in the middle of each room, by default an @ for the player and a space for anything else
 %% But look at the Labyrinthine Library of Xleksixnrewix for an example of a different way to do it, where enemies, traps, and rooms an enemy has passed through are all drawn differently
 
-(full room glyph $Room)
-	($Room has puzzle $ usable)
-	(span @puzzle) (bracket glyph $Room)
-(full room glyph $Room)
-	(bracket glyph $Room)
-
-(bracket glyph (vignette $Room)) %% Vignettes get special brackets
+(full room glyph (vignette $Room)) %% Vignettes always get special brackets
 	\[ (no space) (room glyph $Room) (no space) \] (no space)
-(bracket glyph $Room) %% Mark puzzles in debugger because no styling
+(full room glyph $Room) %% Mark puzzles in debugger because no styling
+	(in debugger)
 	($Room has puzzle $ usable)
 	\{ (no space) (room glyph $Room) (no space) \} (no space)
-(bracket glyph $Room)
+(full room glyph $Room) %% Everything else gets parens
 	\( (no space) (room glyph $Room) (no space) \) (no space)
 
-($Room has puzzle $Obj usable)
+($Room has puzzle $Obj usable) %% See nudge.dg for the main implementation of this
 	*($Obj has ancestor $Room)
 	(puzzle $Obj)
 	~(solved $Obj)

@@ -261,7 +261,12 @@
 	(at most once) { (door $Obj) (or) (actor container $Obj) }
 	~(rope door $Obj) %% Ropes are climbed, not entered
 	~{ (current player $Player) ($Player has ancestor $Obj) }
+	~($Obj = #coals)
 	(bullet) (vlink {enter (link name $Obj)} {enter (them-or-yourself $Obj)})
+
+%% Likewise
+(transitive action #coals)
+	(bullet) (vlink {cross (link name #coals)} {cross (them-or-yourself #coals)})
 
 (transitive action (animate $Obj))
 	~(current player $Obj)
@@ -329,6 +334,3 @@
 (perform [put $Obj #in])
 	Into what?
 	(asking for object in [put $Obj #in []])
-
-%% And extend DRINK a little; don’t know why this isn’t standard already
-(grammar [drink/sip from [object]] for [drink $])

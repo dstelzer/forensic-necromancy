@@ -2,11 +2,11 @@
 %%%%%%%%%                          Introduction                         %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Required by TALJ rules
+%% TODO: do I want this?
 (content warnings)
 	(div @meta) {
 		(span @bold) { Content warning: }
-		This game includes significant \( but non-graphic \) discussion of murder and capital punishment, and minor depiction of psychedelics used for ritual purposes. The author considers it “PG” rated. (par)
+		This game includes significant \( but non-graphic \) discussion of murder and capital punishment, mentions of historical \( first millennium BCE \) ableism, and minor depiction of psychedelics used for ritual purposes. The author considers it “PG” rated: not unsuitable for children, but parental guidance is suggested. (par)
 		(if) (interpreter supports links) (then)
 			Click below or press ENTER to continue.
 		(else)
@@ -126,7 +126,7 @@
 	(current focus $Obj)
 	(item $Obj)
 	(div @tutorial) {
-		When you see a small object, like (the $Obj), you can pick it up and take it with you. Try to (command link {take (the $Obj)}).
+		When you see a small object, like (the $Obj), you can pick it up and take it with you.
 	}
 	(now) (taught items)
 
@@ -135,7 +135,7 @@
 	(current focus #backpack)
 	(suggestions enabled)
 	(div @tutorial) {
-		The bar above the command prompt suggests some possible commands you could try.
+		After you examine something, the bar above the command prompt suggests some possible commands you could try.
 		(if) (#backpack is open) (then)
 			If something is open, for example, you might close it;
 		(else)
@@ -185,6 +185,15 @@
 		(endif)
 	}
 	(now) (taught map)
+
+(give the tutorial)
+	~(taught puzzles)
+	(movement has been prevented) %% Tried to go down the pit
+	(#dig is unvisited)
+	(div @tutorial) {
+		You can try all sorts of actions in this game, but that doesn’t mean they’ll always be effective or useful. When something doesn’t work, pay attention to the reason why: it might suggest a different approach.
+	}
+	(now) (taught puzzles)
 
 (give the tutorial) %% Don’t fail
 
@@ -292,6 +301,17 @@
 
 (appearance $ #in *) %% Let the description handle the appearances
 
+(after [inventory])
+	(held *)
+	(if) (* is open) (then)
+		(collect $Item)
+			*($Item is #in *)
+		(into $List)
+		(par) (A $List) (is $List) in the backpack.
+	(else)
+		(par) The backpack is closed.
+	(endif)
+
 #waterbottle %% Not useful, but shows that you can’t carry things into dreams
 (name *) water bottle
 (item *)
@@ -312,7 +332,7 @@
 (room *)
 (look *) From this upper rim you can see the whole excavation spread out below you, marked out with ({string}) into a chessboard of squares. A ({metal post}) marks the origin point of the whole thing.
 
-(from * go #south to #realcamp) ~(real camp explained)
+%% (from * go #south to #realcamp) ~(real camp explained)
 (from * go #north to #nabiyunus)
 (from * go #west to #camp)
 (from * go #east through #rope-u to #dig) (upper rope connected)
@@ -323,19 +343,25 @@
 	~(upper rope connected)
 	~{ (#cart is #in #dig) (#cart is locked) }
 	This ledge is about three meters above the dig site—farther than you’re willing to jump. You’ll need some way to climb down.
+	(now) (movement has been prevented)
 
 #post
 (name *) survey post
 (dict *) metal datum
+(suggest pushing *)
 (* is #in #abovedig)
 (descr *) This metal post marks the datum: the origin of the archaeologists’ coordinate system. It’s anchored very securely into the ground—if it moved even a few centimeters, after all, every single measurement would need to be redone.
 
 #grid
 (name *) grid of string
 (dict *) strings square squares nail nails
+(suggest pushing *)
 (descr *) Nails are set into the ground every ten meters, north and south and east and west \( and in some cases up and down \). A grid of strings between them divides the whole site into squares.
 
 (#abovedig/#dig/#looseearth/#deeppit attracts *)
+
+(perform [push/pull #post/#grid])
+	The strings aren’t very strong, but the datum post is solid—you yank on it with all your strength and it doesn’t budge.
 
 #realcamp
 (name *) official camp
@@ -344,7 +370,7 @@
 (never accessible *)
 
 (prevent entering *)
-	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the archaeologists, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things at 2:00 in the morning when you don’t have to explain what a forensic necromancer is or why you need silence to meditate over the bones.
+	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the archaeologists, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things in the early hours of the morning, when you don’t have to explain what a forensic necromancer is, or why you need silence to meditate over the bones.
 	(now) (real camp explained) %% Remove the map connection
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -358,8 +384,11 @@
 (room *)
 (look *)
 	Or as the archaeologists call it, 0N10E: zero meters north and ten meters east of the datum. This square has been excavated more than its neighbors, sinking it a few meters into the earth.
+
+(after [look]) %% Move to the very bottom of the room description
+	(current room *)
 	(if) (eastern connection unlocked) (#looseearth is unvisited) (then)
-		(par) It’s hard to keep your bearings between the real world and a memory, but those other remains should be somewhere to the east. Hopefully some of them are still there.
+		(par) It’s hard to keep your bearings between the real world and a memory, but those other remains should be somewhere to the ({east}). Hopefully some of them are still there.
 	(endif)
 	(if) (northern connection unlocked) (#deeppit is unvisited) (then)
 		(par) If those other bones were to the east, then the secret passage should be...due north.
@@ -414,7 +443,7 @@
 	%% Always the first bones you divine, probably also the first bones you return to
 	(select)
 		This is it. You sit down and get as comfortable as you can, making sure the bones are clearly in your field of view. The mirror goes in front of your left eye, adjusted until the images overlap: one eye seeing the bones, the other reflected back at itself. The entheogen tablet under your tongue, where it starts to dissolve. Now, to meditate. (par)
-		The idea of a memory palace goes back to the ancient Greeks: anchoring your memories by laying them out in an imaginary space. Forensic necromancy is the same; you just do it for someone else’s memories instead. Drawing them from the bones, guiding them, giving them shape. Until lines start to shine in your mind, and colors, and...
+		The idea of a memory palace goes back to the ancient Greeks: anchoring your memories by laying them out in an imaginary space. Forensic necromancy is the same. You just do it for someone else’s memories instead. Drawing them from the bones, guiding them, giving them shape. Until lines start to shine in your mind, and colors, and...
 	(or)
 		The second time is always easier than the first. You know the shape of the memory palace already, and you can use it to guide yourself back. Pull out the mirror, slip another tablet under your tongue, and imagine the outlines of the ziggurat, overlaid on the site...
 	(or)
@@ -596,7 +625,7 @@
 		turning into a trampled hallway
 	(endif)
 	(if) (#s-palace is visited) (then)
-		; east, a balcony leads straight through the side of the ziggurat
+		; east, a balcony cuts straight through the side of the ziggurat
 	(endif)
 	(if) (#m-unfinished is visited) (then)
 		; and some new (vlink {construction}) intrudes from the north
@@ -604,9 +633,9 @@
 	.
 	
 	(if) (#n-execution is unvisited) (then)
-		(par) The whole tableau is frozen, unmoving, like a fly trapped in amber. The dust swirls around your feet with every step, but the moment you’re past, it hangs motionless in the air. The only flicker of movement is along the walkway to the northwest.
+		(par) The whole tableau is frozen like a fly in amber. The dust swirls around your feet with every step, but the moment you’re past, it hangs motionless in the air. The only flicker of movement is along the walkway to the northwest.
 	(else)
-		The whole tableau is frozen, unmoving, like a fly trapped in amber.
+		The whole tableau is frozen like a fly in amber, with you in the middle of it all.
 	(endif)
 
 (from * go #down to #west)
@@ -642,7 +671,13 @@
 
 (name *) dungeon
 (look *)
-	You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
+	You’re kneeling
+	(select)
+	(or)
+	\( suddenly back to kneeling again? \)
+	(or)
+	(stopping)
+	on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
 	The (vlink {wiry man}) waves the torch eastward with an awful smirk, letting you see the (vlink {crumpled figure}) lying there. The (vlink {other man}) is mostly lost in the shadows.
 	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
 		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
@@ -651,10 +686,10 @@
 (from * go #southeast to #n-ziqqurat)
 
 (instead of [leave * #east])
-	\( going over to the crumpled figure \)
+	\( going over to the crumpled figure \) (line)
 	(try [examine #exec-sharhiya])
 (instead of [leave * #north])
-	\( going over to the stout man \)
+	\( going over to the stout man \) (line)
 	(try [examine #exec-tzillaya])
 
 #spear
@@ -708,15 +743,15 @@
 
 #exec-tzillaya
 (name *) stout man
-(dict *) other
+(dict *) other tablets
 (male *)
 (* is #in #n-execution)
 (descr *)
 	(sufficient light)
-	You can see him better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there.
+	You can see the man better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there.
 	(now) (northern connection unlocked)
 (descr *)
-	His form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now.
+	The stout man’s form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now.
 
 %% Puzzle room blocking Vignette 2
 #n-house
@@ -734,9 +769,20 @@
 (* is #in #n-house)
 (descr *) The walls and floor have been covered with a thin layer of fine white clay, with geometric motifs painted on top once it dried. It looks much nicer than plain mud brick.
 
+#bar %% In case someone tries to X BAR after opening the door
+(name *) bar
+(dict *) bolt wood door
+(heads *) bolt bar
+(* is #in #n-house)
+(descr *) It sits heavily on the ground. No more use for it now.
+(appearance *)
+	(* is unexamined)
+	The ({door bolt}) has landed off to one side.
+
 #door %% The blocking puzzle itself
 (name *) front door
 (dict *) wooden wood
+(heads *) door
 (door *)
 (openable *)
 (descr *)
@@ -747,6 +793,16 @@
 		It’s now hanging open.
 	(endif)
 (* has secondary objects) (* is closed) %% The crack goes away after that
+
+(prevent [open *])
+	(* is closed)
+	You give the door a tug, but it doesn’t move. It’s probably not locked
+	(select)
+		(no space) —key locks had been invented at this point, but weren’t common yet— (no space)
+	(or)
+		,
+	(stopping)
+	but a solid bar across the back of the door blocks passage just the same.
 
 (prevent [close/lock *])
 	(if) (* is open) (then)
@@ -799,7 +855,7 @@
 
 (perform [push/pull/turn #spear])
 	(#spear is #partof *)
-	You give the spear a mighty shove...and nothing happens. Another shove, still nothing. The bar is quite firmly wedged in place. But when you set your full weight against it, you feel something start to give—and then with an almighty (emph {CRASH}) the bar is forced aside! The spear clatters to the ground as the door swings open.
+	You give the spear a mighty shove...and nothing happens. Another shove, still nothing. The bar is quite firmly wedged in place. But when you set your full weight against it, you feel something start to give—and then in a sudden burst of motion the bar is thrown free! The spear clatters to the ground as the door swings open.
 	(now) (* is nowhere)
 	(now) (#spear is #in #n-ziqqurat)
 	(now) (#door is open)
@@ -828,7 +884,7 @@
 
 (name *) marketplace
 (look *)
-	This plaza must have been magnificent, at one point. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered reliefs, and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par) All around you, the (vlink {crowd}) is frozen like a sea of nameless, faceless statues.
+	This plaza must once have been magnificent. The soot-blackened (vlink {buildings}) soar high, the walls are covered in shattered reliefs, and the (vlink {grand fountain}) shows the remains of some kind of sculpture. (par) All around you, the (vlink {crowd}) is frozen like a sea of nameless, faceless statues.
 
 (from * go #east to #n-house)
 
@@ -866,14 +922,19 @@
 (descr *) Noticeably shorter than you, and just a bit rounder, but the family resemblance is easy to see.
 
 #bucket
-(name *)
-	(if) (* is pristine) (then) dropped (endif)
-	bucket
+(name *) bucket
+(tagged name *)
+	(* is pristine)
+	dropped (name *)
+~(an *) (* is pristine) %% Because it’s also “empty”
 (item *)
 (* is #in #n-announcement)
 (descr *) It’s made of leather instead of plastic, but the best way to carry water hasn’t really changed in the past two thousand years.
 (liquid container *)
 (initial appearance *) Your \( well, “your” \) bucket has fallen next to the fountain, abandoned in your haste.
+(narrate taking *)
+	(* is pristine)
+	You scoop up the bucket by its handle.
 
 %% Puzzle room blocking Vignette 3
 #n-workshop
@@ -888,12 +949,12 @@
 (from * go #east to #n-ziqqurat) (statue is turned)
 (from * go #southwest to #n-argument)
 
-#tools
+#equipment
 (name *) tools and equipment
 (plural *)
 (dict *) tool crucibles crucible anvils anvil hammers hammer
 (* is #in #n-workshop)
-(descr *) Crucibles, anvils, hammers, all sorts of tools you don’t even know the names of, blurring and merging into a sort of formless collective every time you take your eyes off them. The (vlink {forge}) is big enough to stay mostly in one place, at least, and pieces of (vlink {gold and silver}) shine in the light.
+(descr *) Crucibles, anvils, hammers, all sorts of tools you don’t even know the names of, blurring and merging into a sort of formless collective every time you take your eyes off them. The ({forge}) is big enough to stay mostly in one place, at least, and pieces of ({gold and silver}) shine in the light.
 (* has secondary objects)
 (item *) %% Not really
 (prevent [take *]) %% But it gives some lore on how memories work
@@ -902,9 +963,17 @@
 #forge
 (name *) forge
 (dict *) coal coals hot heat wave waves
-(* is #partof #tools)
+(* is #partof #equipment)
 (descr *) It’s about the size of a microwave, probably better for fine detail work than large-scale blacksmithing. The heat waves from the hot coals are frozen in memory, making the air look like an obscure-glass window.
 (fire source *)
+
+#metals
+(name *) pieces of silver and gold
+(heads *) pieces
+(plural *)
+(* is #partof #equipment)
+(descr *) TODO
+%% TODO: can you take it or not?
 
 %% The puzzle itself
 #light
@@ -926,6 +995,13 @@
 		Better (link [take the blindfold]) {take it with you}.
 	(endif)
 (descr *) It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam shining through dust. From the side you can clearly see its path traced out in fiery gold.
+
+(narrate leaving #n-ziqqurat #west)
+	~(statue is turned)
+	You turn your face toward the heat and walk straight forward. The air gets hotter and brighter until you can see a faint glow around the edges of the blindfold...and then just like that, it recedes.
+(narrate leaving #n-workshop #east)
+	~(statue is turned)
+	You feel the heat of the statue’s gaze on your back as you hurry east.
 
 #statue
 (name *) statue of Marduk
@@ -1051,6 +1127,7 @@
 %% Where the divination first places you
 #s-palace
 (room *)
+(* has coordinates [4 3 2])
 (name *) royal palace
 (look *)
 	The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the ({lamassu}) are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life. (par)
@@ -1067,6 +1144,12 @@
 (from * go #southeast through #coals to #s-temple)
 
 (from * go #west to #n-ziqqurat) %% Connection to other dreams
+(narrate leaving * #west)
+	(select)
+		The transition from Sharhiya’s memory to Nabuu-ahu-eresh’s is seamless...well, as (emph {seamless}) as the rest of the intrusions jutting into the ziggurat. The two memory palaces are holding each other together now, making both of them more stable. (par)
+	(or)
+		(fail)
+	(stopping)
 
 #lamassu
 (name *) lamassu
@@ -1094,9 +1177,7 @@
 	(coals cooled)
 	What would be the use? They’d just stain everything black.
 
-(prevent [leave #s-palace #southeast]) %% So it comes before the rule that prevents touching fire sources
-	~(coals cooled)
-	Even frozen in time, the coals are still hot enough to burn right through your shoes.
+(action [leave #s-palace #southeast] requires * to be touched) %% Ensure it can’t be bypassed
 
 %% Avoid alternate solution
 (perform [pour #lamp into *])
@@ -1153,7 +1234,7 @@
 (* is #in #s-audience)
 (intangible *)
 (descr *)
-	Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. So that is the voice of ex-crown-prince Urad-Mullissi.
+	Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Is that the voice of the ex-crown-prince, Urad-Mullissi himself?
 
 #blindfold
 (name *) blindfold
@@ -1168,11 +1249,20 @@
 	(div @roomheader) {?????}
 	You can’t see anything with the ({blindfold}) on.
 
+(before [examine $Obj]) %% Explain why other actions aren’t blocked: dream logic!
+	(worn *)
+	~($Obj = *)
+	The blindfold hides your surroundings, but somehow you can perceive (the $Obj) just fine.
+
 (before [leave $Room $Dir])
 	(worn *)
 	~{ ($Room = #n-ziqqurat) ($Dir = #west) } %% Exception: the one place it’s needed for a puzzle
 	\( taking off the blindfold, so you can see where you’re going \) (line)
-	(try [remove *])
+	(current player $Player)
+	(now) (* is #heldby $Player) %% Don’t bother with the [remove $] action
+
+(narrate removing *) You tug the blindfold off and blink a few times until your eyes adjust.
+(after [remove *]) (try [look])
 
 %% Puzzle room blocking Vignette 2
 #s-temple
@@ -1251,11 +1341,14 @@
 #s-throneroom
 (name *) cramped passage
 (room *)
-(inherently dark *)
 (look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky darkness coats every surface, flowing back into place as soon as your lamp moves past. Off to the east, though, you can make out a flicker of movement.
 
 (from * go #west to #s-palace)
 (from * go #northeast to #s-revelation)
+
+(prevent entering *)
+	~(sufficient light in *)
+	You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further.
 
 %% Vignette 3
 #s-revelation
