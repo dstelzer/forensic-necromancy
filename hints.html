@@ -1,1 +1,303 @@
-Coming soon!
+<!-- Automatically generated -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Forensic Necromancy InvisiClues</title>
+	<style>
+html {
+	background: white;
+	color: black;
+}
+
+@media (prefers-color-scheme: dark) { /* Dark mode support! */
+	html {
+		background: black;
+		color: white;
+	}
+	.clue::selection{
+		background-color:white;
+		color:black;
+	}
+}
+
+h1{
+	text-align:center;
+}
+
+h2, h3, h4, h5, h6{
+	display: inline;
+	font-size: inherit;
+	margin: inherit;
+	font-weight: inherit;
+}
+
+/*p{
+	text-align:center;
+}*/
+ol li{
+	font-size:large; /* formerly x-large */
+	font-weight:bold;
+	/*text-decoration:underline;*/
+}
+li ol li{
+	font-size:large;
+	font-weight:normal; /* formerly bold */
+	text-decoration:none;
+}
+li ol li ol li{
+	font-size:large;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+.outer{
+	background-color:#CCC;
+	font-size:medium;
+	font-weight:normal;
+	text-decoration:none;
+	color:#CCC;
+}
+
+.clue{
+/*	background-color:#CCC;
+	color:#CCC;	*/
+/*	visibility:hidden;	*/
+}
+
+.outer:hover .clue{
+	visibility:visible;
+	background-color:#666;
+}
+
+.clue2{
+	background-color:#333;
+	visibility:visible;
+}
+
+.clue::selection{
+	background-color:black;
+	color:white;
+}
+
+</style><script language="javascript">
+function showhide(id){
+	console.log("Show/hide "+id);
+	var obj = document.getElementById('x'+id);
+	var child = obj.getElementsByTagName('span')[0];
+	if(child.className == "clue"){
+		console.log("\tShowing");
+		child.className = "clue2";
+	}else{
+		console.log("\tHiding");
+		child.className = "clue";
+	}
+}
+
+function expandcollapse(id){
+	console.log("Expand/collapse "+id);
+	var obj = document.getElementById('x'+id);
+	while(obj.localName != 'li') obj = obj.parentElement;
+	var child = obj.getElementsByTagName('ol')[0];
+	if(!child) return;
+	if(child.style.display == "block"){
+		console.log("\tCollapsing");
+		child.style.display = "none";
+	}else{
+		console.log("\tExpanding");
+		child.style.display = "block";
+	}
+}
+
+function startup(){
+	var list = document.getElementsByTagName('ol');
+	var obj;
+	for(var i=0; i<list.length; i++){
+		obj = list[i];
+		if(obj.parentElement.nodeName.toLowerCase() == "li")
+			obj.style.display = "none";
+	}
+}
+
+</script>
+</head>
+<body onload="startup()">
+<h1>InvisiClues for <i>Forensic Necromancy: A Murder in Nineveh</i> by Daniel M. Stelzer</h1>
+<p>Click a section heading to show or hide its contents. To show a clue after opening a question, hover your mouse over the gray box. The text should appear on top of it. You can also highlight the boxes or click them to reveal the hints.</p>
+<span></span>
+<ol>
+<li> <h2> <span class="parent" role="link" id="x0" onclick="expandcollapse(0);">General</span> </h2><ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x1" onclick="expandcollapse(1);">What’s going on here?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x2" onclick="showhide(2);"> <span class="clue">You’re a grad student trying to gather data for your thesis.</span> </span></li>
+<li> <span class="outer" id="x3" onclick="showhide(3);"> <span class="clue">But your unconventional research methods require human remains in situ.</span> </span></li>
+<li> <span class="outer" id="x4" onclick="showhide(4);"> <span class="clue">So you’re poking around an archaeological dig looking for some.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x5" onclick="expandcollapse(5);">What should I be doing?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x6" onclick="showhide(6);"> <span class="clue">When in doubt, try to fill out the map!</span> </span></li>
+<li> <span class="outer" id="x7" onclick="showhide(7);"> <span class="clue">The NUDGE command will point you toward what you can do at any given moment.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x8" onclick="expandcollapse(8);">How does this “memory palace” work?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x9" onclick="showhide(9);"> <span class="clue">You’re effectively in a dream constructed from the memories of long-dead Assyrians.</span> </span></li>
+<li> <span class="outer" id="x10" onclick="showhide(10);"> <span class="clue">Things in the dream work the way your mind expects them to, which means you can pick up objects and mess around with them.</span> </span></li>
+<li> <span class="outer" id="x11" onclick="showhide(11);"> <span class="clue">You can’t carry anything from the real world to the dream or back again.</span> </span></li>
+<li> <span class="outer" id="x12" onclick="showhide(12);"> <span class="clue">Use what you can find in the dream to solve problems in the dream, and see what you can learn.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x13" onclick="expandcollapse(13);">What are these “cutscenes” about?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x14" onclick="showhide(14);"> <span class="clue">Those are flashbacks to moments in these long-dead Assyrians’ lives.</span> </span></li>
+<li> <span class="outer" id="x15" onclick="showhide(15);"> <span class="clue">They’re what you’re here to research.</span> </span></li>
+<li> <span class="outer" id="x16" onclick="showhide(16);"> <span class="clue">The overall goal of the game is to piece together the story behind them.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x17" onclick="expandcollapse(17);">Should I be taking notes?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x18" onclick="showhide(18);"> <span class="clue">If you want. But nothing important is missable: you can always go back and view earlier memories again.</span> </span></li>
+<li> <span class="outer" id="x19" onclick="showhide(19);"> <span class="clue">The game doesn’t quiz you on the story, so piecing it together is entirely for your own satisfaction.</span> </span></ol></ol>
+</li>
+<li> <h2> <span class="parent" role="link" id="x20" onclick="expandcollapse(20);">What should I do in...</span> </h2><ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x21" onclick="expandcollapse(21);">...Tell Nabi Yunus, Your Camp, and Above the Dig Site?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x22" onclick="showhide(22);"> <span class="clue">This is the tutorial area.</span> </span></li>
+<li> <span class="outer" id="x23" onclick="showhide(23);"> <span class="clue">Get used to how the game works...</span> </span></li>
+<li> <span class="outer" id="x24" onclick="showhide(24);"> <span class="clue">...and figure out how to reach the dig itself.</span> </span></li>
+<li> <span class="outer" id="x25" onclick="showhide(25);"> <span class="clue">You’ll need a rope and something to anchor it to.</span> </span></li>
+<li> <span class="outer" id="x26" onclick="showhide(26);"> <span class="clue">Get the rope from your backpack and tie it to the datum.</span> </span></li>
+<li> <span class="outer" id="x27" onclick="showhide(27);"> <span class="clue">Now you can climb down.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x28" onclick="expandcollapse(28);">...the Excavation?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x29" onclick="showhide(29);"> <span class="clue">Look around for human remains.</span> </span></li>
+<li> <span class="outer" id="x30" onclick="showhide(30);"> <span class="clue">DIVINE THE BONES.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x31" onclick="expandcollapse(31);">...the Ziggurat and surrounding areas?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x32" onclick="showhide(32);"> <span class="clue">Get used to the surreal world of the memory palace.</span> </span></li>
+<li> <span class="outer" id="x33" onclick="showhide(33);"> <span class="clue">Explore, and if something blocks your path, try to work around it.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x34" onclick="expandcollapse(34);">...the Dungeon?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x35" onclick="showhide(35);"> <span class="clue">Get used to experiencing memories of the distant past.</span> </span></li>
+<li> <span class="outer" id="x36" onclick="showhide(36);"> <span class="clue">Then, look around.</span> </span></li>
+<li> <span class="outer" id="x37" onclick="showhide(37);"> <span class="clue">Examine yourself, examine your unfortunate brother, examine the two men.</span> </span></li>
+<li> <span class="outer" id="x38" onclick="showhide(38);"> <span class="clue">Grab the spear while you’re at it.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x39" onclick="expandcollapse(39);">...the Palace?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x40" onclick="showhide(40);"> <span class="clue">Second verse, same as the first: explore!</span> </span></ol></ol>
+</li>
+<li> <h2> <span class="parent" role="link" id="x41" onclick="expandcollapse(41);">How do I get past...</span> </h2><ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x42" onclick="expandcollapse(42);">...the cliff above the dig site?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x43" onclick="showhide(43);"> <span class="clue">You’ll need a rope and something to anchor it to.</span> </span></li>
+<li> <span class="outer" id="x44" onclick="showhide(44);"> <span class="clue">Get the rope from your backpack and tie it to the datum.</span> </span></li>
+<li> <span class="outer" id="x45" onclick="showhide(45);"> <span class="clue">Now you can climb down.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x46" onclick="expandcollapse(46);">...the barred door?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x47" onclick="showhide(47);"> <span class="clue">Examine the door.</span> </span></li>
+<li> <span class="outer" id="x48" onclick="showhide(48);"> <span class="clue">Examine the crack.</span> </span></li>
+<li> <span class="outer" id="x49" onclick="showhide(49);"> <span class="clue">You’ll need something sturdy to shove through that crack.</span> </span></li>
+<li> <span class="outer" id="x50" onclick="showhide(50);"> <span class="clue">Like the spear from the Dungeon.</span> </span></li>
+<li> <span class="outer" id="x51" onclick="showhide(51);"> <span class="clue">Put the spear in the crack, then push the spear.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x52" onclick="expandcollapse(52);">...the blazing light?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x53" onclick="showhide(53);"> <span class="clue">It’s too intense to walk into.</span> </span></li>
+<li> <span class="outer" id="x54" onclick="showhide(54);"> <span class="clue">You need something to protect your eyes.</span> </span></li>
+<li> <span class="outer" id="x55" onclick="showhide(55);"> <span class="clue">Like a blindfold.</span> </span></li>
+<li> <span class="outer" id="x56" onclick="showhide(56);"> <span class="clue">Wear the blindfold, then walk through it.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x57" onclick="expandcollapse(57);">...the hot coals?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x58" onclick="showhide(58);"> <span class="clue">Try walking across them.</span> </span></li>
+<li> <span class="outer" id="x59" onclick="showhide(59);"> <span class="clue">You need to cool them down.</span> </span></li>
+<li> <span class="outer" id="x60" onclick="showhide(60);"> <span class="clue">Pour water on them.</span> </span></li>
+<li> <span class="outer" id="x61" onclick="showhide(61);"> <span class="clue">Use the bucket from the Marketplace.</span> </span></li>
+<li> <span class="outer" id="x62" onclick="showhide(62);"> <span class="clue">You can fill it from the fountain also in the Marketplace.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x63" onclick="expandcollapse(63);">...the clinging darkness?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x64" onclick="showhide(64);"> <span class="clue">You need a source of light.</span> </span></li>
+<li> <span class="outer" id="x65" onclick="showhide(65);"> <span class="clue">Maybe the torches from the Dungeon?</span> </span></li>
+<li> <span class="outer" id="x66" onclick="showhide(66);"> <span class="clue">That won’t work: you need something not being held in a person’s hand.</span> </span></li>
+<li> <span class="outer" id="x67" onclick="showhide(67);"> <span class="clue">Like the lamp from the Back Room.</span> </span></li>
+<li> <span class="outer" id="x68" onclick="showhide(68);"> <span class="clue">You’ll need to fill it with oil.</span> </span></li>
+<li> <span class="outer" id="x69" onclick="showhide(69);"> <span class="clue">There’s oil in the Moonlit Courtyard.</span> </span></li>
+<li> <span class="outer" id="x70" onclick="showhide(70);"> <span class="clue">Then you need to light it.</span> </span></li>
+<li> <span class="outer" id="x71" onclick="showhide(71);"> <span class="clue">You can use the forge in the Workshop or the torch in the Dungeon.</span> </span></li>
+<li> <span class="outer" id="x72" onclick="showhide(72);"> <span class="clue">Now you can walk through the darkness unscathed.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x73" onclick="expandcollapse(73);">...the pit at N10E10?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x74" onclick="showhide(74);"> <span class="clue">How did you climb down something before?</span> </span></li>
+<li> <span class="outer" id="x75" onclick="showhide(75);"> <span class="clue">You need the rope.</span> </span></li>
+<li> <span class="outer" id="x76" onclick="showhide(76);"> <span class="clue">You can’t untie the rope from the bottom.</span> </span></li>
+<li> <span class="outer" id="x77" onclick="showhide(77);"> <span class="clue">You need a way to get to Above the Dig Site without using the rope.</span> </span></li>
+<li> <span class="outer" id="x78" onclick="showhide(78);"> <span class="clue">The cart at N0E20 is big enough to stand on.</span> </span></li>
+<li> <span class="outer" id="x79" onclick="showhide(79);"> <span class="clue">Push the cart to N0E10, then stand on it.</span> </span></li>
+<li> <span class="outer" id="x80" onclick="showhide(80);"> <span class="clue">Now you can go retrieve the rope.</span> </span></li>
+<li> <span class="outer" id="x81" onclick="showhide(81);"> <span class="clue">You still need something to tie the rope to, though.</span> </span></li>
+<li> <span class="outer" id="x82" onclick="showhide(82);"> <span class="clue">Push the cart to N10E10, then lock it there.</span> </span></li>
+<li> <span class="outer" id="x83" onclick="showhide(83);"> <span class="clue">Tie the rope to it, and climb down.</span> </span></ol></ol>
+</li>
+<li> <h2> <span class="parent" role="link" id="x84" onclick="expandcollapse(84);">What do I do with...</span> </h2><ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x85" onclick="expandcollapse(85);">...the rope?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x86" onclick="showhide(86);"> <span class="clue">It should hold your weight easily.</span> </span></li>
+<li> <span class="outer" id="x87" onclick="showhide(87);"> <span class="clue">You can climb it.</span> </span></li>
+<li> <span class="outer" id="x88" onclick="showhide(88);"> <span class="clue">Tie it to the datum at Above the Dig Site and climb down.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x89" onclick="expandcollapse(89);">...the spear?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x90" onclick="showhide(90);"> <span class="clue">You need it in the Ziggurat.</span> </span></li>
+<li> <span class="outer" id="x91" onclick="showhide(91);"> <span class="clue">Force open the barred door.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x92" onclick="expandcollapse(92);">...the bucket?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x93" onclick="showhide(93);"> <span class="clue">You need it in the Palace.</span> </span></li>
+<li> <span class="outer" id="x94" onclick="showhide(94);"> <span class="clue">Fill it with water.</span> </span></li>
+<li> <span class="outer" id="x95" onclick="showhide(95);"> <span class="clue">Pour water on the hot coals.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x96" onclick="expandcollapse(96);">...the blindfold?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x97" onclick="showhide(97);"> <span class="clue">You need it in the Ziggurat.</span> </span></li>
+<li> <span class="outer" id="x98" onclick="showhide(98);"> <span class="clue">Wear it to walk through the blinding light.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x99" onclick="expandcollapse(99);">...the lamp?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x100" onclick="showhide(100);"> <span class="clue">You need it in the Palace.</span> </span></li>
+<li> <span class="outer" id="x101" onclick="showhide(101);"> <span class="clue">First, you need to be in the Moonlit Courtyard.</span> </span></li>
+<li> <span class="outer" id="x102" onclick="showhide(102);"> <span class="clue">Fill it with oil from the pithos.</span> </span></li>
+<li> <span class="outer" id="x103" onclick="showhide(103);"> <span class="clue">Then find a fire source and light it.</span> </span></li>
+<li> <span class="outer" id="x104" onclick="showhide(104);"> <span class="clue">You can use the forge in the Workshop or the torch in the Dungeon.</span> </span></li>
+<li> <span class="outer" id="x105" onclick="showhide(105);"> <span class="clue">Now you can go through the clinging darkness.</span> </span></li>
+<li> <span class="outer" id="x106" onclick="showhide(106);"> <span class="clue">You can also use it in the Dungeon to see more details.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x107" onclick="expandcollapse(107);">...the statue of Marduk?</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x108" onclick="showhide(108);"> <span class="clue">Push it.</span> </span></ol></ol>
+</li>
+<li> <h2> <span class="parent" role="link" id="x109" onclick="expandcollapse(109);">I don’t know what to do or where to go!</span> </h2><ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x110" onclick="expandcollapse(110);">For most of the game...</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x111" onclick="showhide(111);"> <span class="clue">Try the NUDGE command. It should point you in the right direction.</span> </span></li>
+<li> <span class="outer" id="x112" onclick="showhide(112);"> <span class="clue">If you find yourself using NUDGE a lot, try POINTERS ON to mark them on the map.</span> </span></ol>
+</li>
+<li> <h3> <span class="parent" role="link" id="x113" onclick="expandcollapse(113);">At the very end...</span> </h3><ol>
+</li>
+<li> <span class="outer" id="x114" onclick="showhide(114);"> <span class="clue">NUDGE is still good for tying off loose ends.</span> </span></li>
+<li> <span class="outer" id="x115" onclick="showhide(115);"> <span class="clue">If NUDGE doesn’t point you to anything, then you’ve solved all the puzzles the game has to offer!</span> </span></li>
+<li> <span class="outer" id="x116" onclick="showhide(116);"> <span class="clue">Once you’re satisfied with your understanding of the story, type FINISH.</span> </span></ol></ol>
+</li>
+<li> <h2> <span class="parent" role="link" id="x117" onclick="expandcollapse(117);">What does [unfamiliar word] mean?</span> </h2><ol>
+</li>
+<li> <span class="outer" id="x118" onclick="showhide(118);"> <span class="clue">Check the pocket encyclopedia.</span> </span></li>
+<li> <span class="outer" id="x119" onclick="showhide(119);"> <span class="clue">You’ll find it in your backpack in the waking world.</span> </span></li></ol>
+</body>
+</html>

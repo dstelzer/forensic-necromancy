@@ -18,6 +18,7 @@
 
 (intro)
 	(content warnings)
+	(div @initial-spacer) (space)
 	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it. (par)
 	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But if you want to be the first ever PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
 	Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
@@ -213,8 +214,18 @@
 	(examined something)
 	(div @tutorial) {
 		If this interface isn’t working for you, you can adjust it in the (command link {OPTIONS}).
+		(backend-specific options tutorial)
 	}
 	(now) (taught options)
+(backend-specific options tutorial) %% Don’t fail
+
+(give the tutorial)
+	~(taught references)
+	(current room #n-announcement)
+	(div @tutorial) {
+		When you come across unfamiliar names and terms, you may want to look them up in the encyclopedia. Remember that you can move between the real world and the dream world at any time: all you have to do is ({wake up}).
+	}
+	(now) (taught references)
 
 (give the tutorial) %% Don’t fail
 
@@ -742,6 +753,8 @@
 	(else)
 		The whole tableau is frozen like a fly in amber, with you in the middle of it all.
 	(endif)
+	
+	(unlock #t-ziggurat) %% In case people don’t know the term
 
 (from * go #down to #west)
 (from * go #west through #light to #n-workshop) ~(statue is turned)

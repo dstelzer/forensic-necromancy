@@ -3,7 +3,7 @@
 
 (style class @fulldream)
 	height: 2em;
-	%% TODO - change colors here
+	text-decoration: none; %% Not reversed
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) (space 1)

@@ -17,28 +17,32 @@
 (top status bar)
 	(if) (map enabled) (then) %% Status bar map
 		(map of current layer needs $N lines)
-		($N plus 1 into $Np1)
+		($N plus 2 into $Np2)
 		(if) (dreaming) (then) %% Change the color of the status bar if possible to signal that something is different (see platform/ for detail)
-			(status bar @fulldream with height $Np1) {
+			(status bar @fulldream with height $Np2) {
 				(automap)
 				(meta verbs)
+				(story progress)
 			}
 		(else)
-			(status bar @fullstatus with height $Np1) {
+			(status bar @fullstatus with height $Np2) {
 				(automap)
 				(meta verbs)
+				(story progress)
 			}
 		(endif)
 	(else)
 		(if) (dreaming) (then)
-			(status bar @fulldream with height 2) {
+			(status bar @fulldream with height 3) {
 				(status headline) %% Default headline
 				(meta verbs)
+				(story progress)
 			}
 		(else)
-			(status bar @fullstatus with height 2) {
+			(status bar @fullstatus with height 3) {
 				(status headline) %% Default headline
 				(meta verbs)
+				(story progress)
 			}
 		(endif)
 	(endif)
@@ -79,20 +83,30 @@
 		(link) undo
 		(bullet) (link) save
 		(bullet) (link) restore
-		(bullet) (link resource @hints) hints
 		(bullet) (link) about
 		(bullet) (link) nudge
-		(bullet) (link) options
 	}
-%% For this game, this will always be exactly 55 characters long
+%% For this game, this will always be exactly 37 characters long
 (meta verbs)
 	~(interpreter supports text alignment)
 	(current div width $Width)
-	($Width minus 55 into $DoubleMargin)
+	($Width minus 37 into $DoubleMargin)
 	($DoubleMargin divided by 2 into $Margin)
 	(meta verbs with margin $Margin)
 (meta verbs) %% Fallback
 	(meta verbs with margin 0)
+
+%% And an experimental progress bar: TODO is it good?
+
+(style class @progress)
+	font-size: smaller;
+	width: 100\%;
+	margin-bottom: 0.5em;
+
+(story progress)
+	(current score $Score)
+	(maximum score $Max)
+	(div @progress) (progress bar $Score of $Max)
 
 %% For @meta and @tutorial see platform/
 
@@ -165,6 +179,15 @@
 			For hints, see the file (span @command) { hints.html } included in the download.
 		(endif)
 	}
+
+(after [nudge])
+	(par) If you’re really stuck on a puzzle, you can also check the
+	(if) (interpreter supports links) (then) %% If we have proper links, don’t make the player click an extra time
+		(span @link) { (link resource @hints) hints }
+	(else)
+		({hints})
+	(endif)
+	.
 
 %% Score system: puzzles and vignettes
 %% Without editing stdlib we have to work around this a bit :(

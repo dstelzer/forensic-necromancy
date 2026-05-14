@@ -353,6 +353,7 @@
 
 #dictionary
 (name *) (emph {Pocket Encyclopedia of the Neo-Assyrian World})
+(dict *) (just) Pocket Encyclopedia of the Neo-Assyrian World %% The closure in a (name $) causes problems on Z-machine, so we circumvent it
 (dict *) book dictionary neo assyrian encyclopaedia
 (heads *) encyclopedia
 (consultable *)
@@ -530,6 +531,20 @@
 	(unlock #t-empire)
 	(unlock #t-siin-ahhe-eriba)
 
+#t-ziggurat
+(name *) ziggurats
+(dict *) ziggurat
+(plural *)
+(topic *)
+(dictionary entry for *)
+	Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki \( “Temple of the Foundation of Heaven and Earth” \) in Babylon, which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
+	(if) (interpreter can embed @ziggurat) (then)
+		(par) (embed resource @ziggurat)
+		(par) \( Model from the Pergamon Museum in Berlin. \)
+	(endif)
+
+(define resource @ziggurat) etemenanki.jpg; A modern model of the Etemenanki.
+
 %% And at the end:
 (*(topic $) is locked) %% Lock all topics unless otherwise specified
 
@@ -548,6 +563,8 @@
 	font-style: italic;
 	margin-left: 2em;
 	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 
 (narrate entering (vignette $Room))
 	(div @vignette) {

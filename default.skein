@@ -199,7 +199,7 @@ of the morning, when you don’t have to explain what a forensic necromancer is,
 or why you need silence to meditate over the bones.
 
 [0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you
-can currently make progress on. You’ll also see them as [0m[4m[50m![0m[4m signs on the map.
+can currently make progress on. You’ll also see them as [0m[4m[50m?[0m[4m signs on the map.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -2039,6 +2039,10 @@ Your (well, “your”) bucket has fallen next to the fountain, abandoned in you
 haste.
 
 [0m[4m(Your <score> has gone up by one point.)
+[0m
+[0m[4mWhen you come across unfamiliar names and terms, you may want to look them up in
+the encyclopedia. Remember that you can move between the real world and the
+dream world at any time: all you have to do is <wake up>.
 [0m
 [0m[50m                                  [ ]     [ ] 
                                      \     |  

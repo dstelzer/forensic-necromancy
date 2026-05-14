@@ -40,29 +40,23 @@
 	~{ (puzzle $Door) ~(solved $Door) } %% Don’t suggest exploring through an unsolved puzzle door, since that’ll be listed separately as a puzzle
 	(from $Room through $Door to $Other)
 
-(nav link $Room)
-	(collect words)
-		go to (link name $Room)
-	(into $Command)
-	(link $Command) (the $Room)
-
 (puzzle description $Obj)
 	(if) (current room $Obj) (then)
 		this location
 	(elseif) (room $Obj) (then)
-		(nav link $Obj)
+		({go to (link name $Obj)} {(the $Obj)})
 	(elseif) ($Obj is in room $Room) ~(current room $Room) (then)
-		(the $Obj) in (nav link $Room)
+		(the $Obj) in ({go to (link name $Room)} {(the $Room)})
 	(elseif) ($Obj is in room $) (then) %% Right at hand
-		(link name $Obj) right here
+		($Obj) right here
 	(else) %% Nowhere - unlikely to happen but shouldn’t crash regardless
-		(link name $Obj)
+		($Obj)
 	(endif)
 
 (puzzle list $List)
 	(listing $List {(puzzle description $_)} @or @the 0)
 (bare puzzle list $List)
-	(listing $List {(link name $_)} @or @the 0)
+	(listing $List {($_)} @or @the 0)
 
 (semicolon list []) ERROR: Nothing in the list!
 (semicolon list [$Single])
@@ -77,12 +71,11 @@
 	(div @listitem) { (bullet) (uppercase) (query $Head) }
 	(semicolon list internal $Rest)
 
-(grammar [think/nudge] for [think])
-(command [think])
-(perform [think])
+(grammar [think/nudge] for [nudge])
+(command [nudge])
+(perform [nudge])
 	You pause for a moment and think through your options.
 	(nudge)
-	(now) (nudge used)
 
 (nudge)
 	(collect $Puzzle) %% Examined puzzles that can currently be solved

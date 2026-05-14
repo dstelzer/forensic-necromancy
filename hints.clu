@@ -1,0 +1,125 @@
+@TITLE Forensic Necromancy: A Murder in Nineveh
+@SHORT Forensic Necromancy
+@AUTHOR Daniel M. Stelzer
+@INTRO <span></span>
+
+# General
+	# What’s going on here?
+		You’re a grad student trying to gather data for your thesis.
+		But your unconventional research methods require human remains in situ.
+		So you’re poking around an archaeological dig looking for some.
+	# What should I be doing?
+		When in doubt, try to fill out the map!
+		The NUDGE command will point you toward what you can do at any given moment.
+	# How does this “memory palace” work?
+		You’re effectively in a dream constructed from the memories of long-dead Assyrians.
+		Things in the dream work the way your mind expects them to, which means you can pick up objects and mess around with them.
+		You can’t carry anything from the real world to the dream or back again.
+		Use what you can find in the dream to solve problems in the dream, and see what you can learn.
+	# What are these “cutscenes” about?
+		Those are flashbacks to moments in these long-dead Assyrians’ lives.
+		They’re what you’re here to research.
+		The overall goal of the game is to piece together the story behind them.
+	# Should I be taking notes?
+		If you want. But nothing important is missable: you can always go back and view earlier memories again.
+		The game doesn’t quiz you on the story, so piecing it together is entirely for your own satisfaction.
+# What should I do in...
+	# ...Tell Nabi Yunus, Your Camp, and Above the Dig Site?
+		This is the tutorial area.
+		Get used to how the game works...
+		...and figure out how to reach the dig itself.
+		You’ll need a rope and something to anchor it to.
+		Get the rope from your backpack and tie it to the datum.
+		Now you can climb down.
+	# ...the Excavation?
+		Look around for human remains.
+		DIVINE THE BONES.
+	# ...the Ziggurat and surrounding areas?
+		Get used to the surreal world of the memory palace.
+		Explore, and if something blocks your path, try to work around it.
+	# ...the Dungeon?
+		Get used to experiencing memories of the distant past.
+		Then, look around.
+		Examine yourself, examine your unfortunate brother, examine the two men.
+		Grab the spear while you’re at it.
+	# ...the Palace?
+		Second verse, same as the first: explore!
+# How do I get past...
+	# ...the cliff above the dig site?
+		You’ll need a rope and something to anchor it to.
+		Get the rope from your backpack and tie it to the datum.
+		Now you can climb down.
+	# ...the barred door?
+		Examine the door.
+		Examine the crack.
+		You’ll need something sturdy to shove through that crack.
+		Like the spear from the Dungeon.
+		Put the spear in the crack, then push the spear.
+	# ...the blazing light?
+		It’s too intense to walk into.
+		You need something to protect your eyes.
+		Like a blindfold.
+		Wear the blindfold, then walk through it.
+	# ...the hot coals?
+		Try walking across them.
+		You need to cool them down.
+		Pour water on them.
+		Use the bucket from the Marketplace.
+		You can fill it from the fountain also in the Marketplace.
+	# ...the clinging darkness?
+		You need a source of light.
+		Maybe the torches from the Dungeon?
+		That won’t work: you need something not being held in a person’s hand.
+		Like the lamp from the Back Room.
+		You’ll need to fill it with oil.
+		There’s oil in the Moonlit Courtyard.
+		Then you need to light it.
+		You can use the forge in the Workshop or the torch in the Dungeon.
+		Now you can walk through the darkness unscathed.
+	# ...the pit at N10E10?
+		How did you climb down something before?
+		You need the rope.
+		You can’t untie the rope from the bottom.
+		You need a way to get to Above the Dig Site without using the rope.
+		The cart at N0E20 is big enough to stand on.
+		Push the cart to N0E10, then stand on it.
+		Now you can go retrieve the rope.
+		You still need something to tie the rope to, though.
+		Push the cart to N10E10, then lock it there.
+		Tie the rope to it, and climb down.
+# What do I do with...
+	# ...the rope?
+		It should hold your weight easily.
+		You can climb it.
+		Tie it to the datum at Above the Dig Site and climb down.
+	# ...the spear?
+		You need it in the Ziggurat.
+		Force open the barred door.
+	# ...the bucket?
+		You need it in the Palace.
+		Fill it with water.
+		Pour water on the hot coals.
+	# ...the blindfold?
+		You need it in the Ziggurat.
+		Wear it to walk through the blinding light.
+	# ...the lamp?
+		You need it in the Palace.
+		First, you need to be in the Moonlit Courtyard.
+		Fill it with oil from the pithos.
+		Then find a fire source and light it.
+		You can use the forge in the Workshop or the torch in the Dungeon.
+		Now you can go through the clinging darkness.
+		You can also use it in the Dungeon to see more details.
+	# ...the statue of Marduk?
+		Push it.
+# I don’t know what to do or where to go!
+	# For most of the game...
+		Try the NUDGE command. It should point you in the right direction.
+		If you find yourself using NUDGE a lot, try POINTERS ON to mark them on the map.
+	# At the very end...
+		NUDGE is still good for tying off loose ends.
+		If NUDGE doesn’t point you to anything, then you’ve solved all the puzzles the game has to offer!
+		Once you’re satisfied with your understanding of the story, type FINISH.
+# What does [unfamiliar word] mean?
+	Check the pocket encyclopedia.
+	You’ll find it in your backpack in the waking world.
