@@ -1,9 +1,0 @@
-%% Currently just use the new-default web colors
-%% New color scheme goes here eventually
-
-(style class @body)
-	--accent-dark: \#c95c03;
-	--accent-light: \#fc8f36;
-
-(startup)
-	(body style @body)

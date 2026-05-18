@@ -64,7 +64,7 @@
 	~(dreaming)
 	You’ve gotten quite good at waking up on command, but right now you’re already awake.
 	(if) (#n-ziqqurat is visited) (then)
-		You’ll need to (span @bold) divine to get back into the memories.
+		You’ll need to (command link {divine}) to get back into the memories.
 	(endif)
 
 (perform [wake up])
@@ -121,6 +121,17 @@
 (puzzle *)
 (solved *)
 	(upper rope connected) (or) (#dig is visited)
+(bypass *)
+	You tie the rope to the datum.
+	(now) (upper rope connected)
+	(now) ~(lower rope connected)
+	(now) (#rope is nowhere)
+	(update environment around player)
+	(if) (#dig is unvisited) (then)
+		You climb down to the dig.
+		(move player to #in #dig)
+		(try [look])
+	(endif)
 
 (prevent [tie * to *]) You’ve got a decent amount of practice tying ropes around things, but just making a loop is less useful.
 (instead of [tie $Obj to *])
@@ -297,6 +308,12 @@
 	~(upper rope connected) (#dig is visited)
 (solved *) %% Make sure it stays solved after use
 	(#tunnel is visited)
+(bypass *)
+	You untie the rope from the datum.
+	(now) ~(upper rope connected)
+	(now) ~(lower rope connected)
+	(now) (#rope is #heldby #p-real)
+	(update environment around player)
 
 (before [climb *])
 	(* is unlocked)
@@ -353,8 +370,10 @@
 
 #dictionary
 (name *) (emph {Pocket Encyclopedia of the Neo-Assyrian World})
-(dict *) (just) Pocket Encyclopedia of the Neo-Assyrian World %% The closure in a (name $) causes problems on Z-machine, so we circumvent it
-(dict *) book dictionary neo assyrian encyclopaedia
+(dict *)
+	(just) %% The closure in a (name $) causes problems on Z-machine, so we circumvent it
+	Pocket Encyclopedia of the Neo-Assyrian World
+	book dictionary neo assyrian encyclopaedia
 (heads *) encyclopedia
 (consultable *)
 (item *)
@@ -371,33 +390,45 @@
 		
 		(select)
 			(div @tutorial) {
-				To look one up,
+				Topics will be added to the encyclopedia as you come across them in the game. To look one up,
 				(if) (interpreter supports links) (then)
 					click on the underlined words
 				(else)
-					try (span @command) { LOOK UP \[ topic \] IN DICTIONARY }, or just (span @command) { LOOK UP \[ topic \] }
+					try (span @command) { LOOK UP \[ topic \] IN ENCYCLOPEDIA }, or just (span @command) { LOOK UP \[ topic \] }
 				(endif)
-				.
+				. (par)
+				(explain lore book)
 			}
 		(or)
 		(stopping)
 	(else)
 		(select)
 			(div @tutorial) {
-				Once you’ve come across some obscure names and terms, examining the encyclopedia will list them all.
+				Topics will be added to the encyclopedia as you come across them in the game.
+				(explain lore book)
 			}
 		(or)
 		(stopping)
 	(endif)
 (instead of [read *]) (try [examine *])
 
+(explain lore book)
+	(explained lore)
+(explain lore book)
+	If you’re confused about any of the historical names and terms in the game, the encyclopedia will explain them. But nothing in here is critical to the game—you can ignore the book entirely if you want, or turn to Google instead.
+	(now) (explained lore)
+
 (puzzle *)
 (solved *) (* is examined)
+(bypass *)
+	You flip through the encyclopedia.
+	(now) (* is examined)
 
 %% List bare names, bolding ones that haven’t been read yet
 (topic-listing $List)
 	(listing $List {(topic-item $_)} @and [] 0)
 (topic-item $Topic)
+	(object $Topic)
 	(collect words)
 		look up (name $Topic) in the dictionary
 	(into $Words)
@@ -406,11 +437,23 @@
 	(else)
 		(link $Words) { (span @bold) { (span @topic) (the $Topic) } }
 	(endif)
+(topic-item $Topic)
+	(nonempty $Topic) %% Closure
+	(collect words)
+		look up (query $Topic) in the dictionary
+	(into $Words)
+	(if) ($Topic is visited) (then)
+		(link $Words) { (span @topic) (query $Topic) }
+	(else)
+		(link $Words) { (span @bold) { (span @topic) (query $Topic) } }
+	(endif)
 
 %% Convenience
 (unlock $Topic) (now) ($Topic is unlocked)
 
 (grammar [look up [topic]] for [consult about $])
+(grammar [consult about [topic]] for [consult about $])
+(describe action [consult about $Topic]) look up (describe topic $Topic)
 ~(action [consult about $Obj] requires $Obj to be present)
 (perform [consult about $Topic])
 	(if) (player can see #dictionary) (then)
@@ -418,6 +461,9 @@
 		(try [consult #dictionary about $Topic])
 	(else)
 		You don’t have any reference works on hand.
+		(if) (dreaming) (then)
+			Your pocket encyclopedia is back in the real world.
+		(endif)
 	(endif)
 
 (style class @dictionary)
@@ -438,7 +484,7 @@
 
 %% Now for the actual contents!
 
-(style class @topic) %% TODO: Z-machine
+(style class @topic) %% TODO: Z-machine?
 	text-decoration: underline;
 	text-decoration-style: dotted;
 
@@ -450,7 +496,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	At one time, the capital of the Babylonian Empire; in the time of (span @topic) Nineveh , though, it was a vassal state of the (span @topic) {Neo-Assyrians}. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+	At one time, the capital of the Babylonian Empire; in the time of (topic-item {Nineveh}), though, it was a vassal state of the (topic-item {Neo-Assyrians}). Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 	(unlock #t-nineveh)
 	(unlock #t-empire)
 
@@ -460,7 +506,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	The main capital of the (span @topic) {Neo-Assyrian Empire}. For all its military strength, it never quite managed to supplant (span @topic) Babylon as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+	The main capital of the (topic-item {Neo-Assyrian Empire}). For all its military strength, it never quite managed to supplant (topic-item {Babylon}) as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
 	(unlock #t-empire)
 	(unlock #t-babylon)
 
@@ -480,7 +526,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	King of the (span @topic) {Neo-Assyrian Empire} from 705 to 681 BCE, best known for renovating the capital at Nineveh, and for destroying the city of (span @topic) Babylon after rebels there killed his eldest son. His name means “(no space) (span @topic) Siin has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
+	King of the (topic-item {Neo-Assyrian Empire}) from 705 to 681 BCE, best known for renovating the capital at Nineveh, and for destroying the city of (topic-item {Babylon}) after rebels there killed his eldest son. His name means “(no space) (topic-item {Siin}) has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
 	(unlock #t-empire)
 	(unlock #t-babylon)
 	(unlock #t-nineveh)
@@ -493,7 +539,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	A son of (span @topic) Siin-ahhe-eriba . He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared Asshur-ahu-iddina his heir instead. His name means “servant of (span @topic) Mullissu (no space)”, and is transcribed \( somewhat mangled \) in Hebrew as “Adrammelech”.
+	A son of (topic-item {Siin-ahhe-eriba}). He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared Asshur-ahu-iddina his heir instead. His name means “servant of (topic-item {Mullissu}) (no space)”, and is transcribed \( somewhat mangled \) in Hebrew as “Adrammelech”.
 	(unlock #t-siin-ahhe-eriba)
 	(unlock #t-asshur-ahu-iddina)
 	(unlock #t-gods)
@@ -505,7 +551,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	King of the (span @topic) {Neo-Assyrian Empire} from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of (span @topic) Siin-ahhe-eriba by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(no space) (span @topic) Asshur has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
+	King of the (topic-item {Neo-Assyrian Empire}) from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of (topic-item {Siin-ahhe-eriba}) by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(no space) (topic-item {Asshur}) has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
 	(unlock #t-siin-ahhe-eriba)
 	(unlock #t-gods)
 	(unlock #t-empire)
@@ -517,11 +563,11 @@
 (plural *)
 (topic *)
 (dictionary entry for *)
-	The many gods of the (span @topic) {Neo-Assyrian Empire} included:
+	The many gods of the (topic-item {Neo-Assyrian Empire}) included:
 	(div @list) {
 		(div @listitem) { (bullet) Anshar, titan of the horizon and ancestor of the gods }
-		(div @listitem) { (bullet) Asshur, god of Assyria; (span @topic) {Siin-ahhe-eriba} claimed he was the same as Anshar }
-		(div @listitem) { (bullet) Marduk, god of kingship and (span @topic) {Babylonia} }
+		(div @listitem) { (bullet) Asshur, god of Assyria; (topic-item {Siin-ahhe-eriba}) claimed he was the same as Anshar }
+		(div @listitem) { (bullet) Marduk, god of kingship and (topic-item {Babylonia}) }
 		(div @listitem) { (bullet) Mullissu, goddess of love and destiny, wife of Asshur }
 		(div @listitem) { (bullet) Nabuu, god of writing and knowledge, vizier of Marduk }
 		(div @listitem) { (bullet) Siin, god of the moon, fertility, and dairy products }
@@ -537,11 +583,12 @@
 (plural *)
 (topic *)
 (dictionary entry for *)
-	Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki \( “Temple of the Foundation of Heaven and Earth” \) in Babylon, which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
+	Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki \( “Temple of the Foundation of Heaven and Earth” \) in (topic-item {Babylon}), which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
 	(if) (interpreter can embed @ziggurat) (then)
 		(par) (embed resource @ziggurat)
 		(par) \( Model from the Pergamon Museum in Berlin. \)
 	(endif)
+	(unlock #t-babylon)
 
 (define resource @ziggurat) etemenanki.jpg; A modern model of the Etemenanki.
 
@@ -555,7 +602,7 @@
 (room *(vignette $))
 
 (narrate leaving $Room $Dir)
-	(from $Room go $Dir to $Next)
+	(from $Room go $Dir to room $Next)
 	(vignette $Next)
 	You move toward the traces of motion, and the dream shifts... (par)
 
@@ -572,7 +619,7 @@
 		(narrate vignette for $Room)
 		(now) ~(currently italic)
 	}
-	(if) ($Room is unexamined) (then) %% We repurpose this flag for whether the vignette has been shown, because the ($ is visited) flag gets set too early
+	(if) ($Room is unexamined) (then) %% We repurpose this flag for whether the vignette has been shown, because the ($ is visited) flag gets set too early for our purposes
 		(pause)
 		(select)
 			You jerk yourself free of the memory, and everything freezes again.
@@ -582,7 +629,7 @@
 			You snap yourself out of the memory and take a look around.
 		(then at random)
 		(select) %% Little tutorial
-			Now you have the freedom to look around the tableau; you can’t change the past, but you can search and poke and prod to your heart’s content. A gap to the south leads back to the memory palace.
+			Now you have the freedom to look around the tableau; you can’t change the past, but you can search and poke and prod to your heart’s content. A gap to the southeast leads back to the memory palace.
 		(or)
 		(stopping)
 	(else)
@@ -599,7 +646,7 @@
 	(endif)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%                              Meta                             %%%%%%%%%
+%%%%%%%%%                            Actions                            %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (grammar [about/credit/credits] for [about])
@@ -607,3 +654,19 @@
 
 (perform [about])
 	(div @meta) (story credits)
+
+(grammar [dig] for itself)
+(grammar [dig hole] for [dig])
+(grammar [dig a hole] for [dig])
+(grammar [dig [single]] for [dig $])
+(grammar [dig in/up/with [single]] for [dig $])
+(describe action [dig]) dig a hole
+
+(perform [dig | $])
+	(dreaming)
+	The memory world feels very solid. You’re unlikely to make a dent in it.
+
+(perform [dig | $])
+	That’s the sort of thing you’d want to run past the dig team first.
+
+(grammar [lift/raise [single]] for [push $]) %% For LIFT SPEAR

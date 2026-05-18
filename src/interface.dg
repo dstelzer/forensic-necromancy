@@ -15,45 +15,81 @@
 	~(interpreter supports status bar)
 	%% Don’t even try
 (top status bar)
+	(if) (interpreter supports links) (then) %% Include meta verbs, which need an extra line
+		($Extra = 1)
+	(else)
+		($Extra = 0)
+	(endif)
 	(if) (map enabled) (then) %% Status bar map
 		(map of current layer needs $N lines)
 		($N plus 2 into $Np2)
+		($Np2 plus $Extra into $Total)
 		(if) (dreaming) (then) %% Change the color of the status bar if possible to signal that something is different (see platform/ for detail)
-			(status bar @fulldream with height $Np2) {
+			(status bar @fulldream with height $Total) {
 				(automap)
-				(meta verbs)
+				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
 		(else)
-			(status bar @fullstatus with height $Np2) {
+			(status bar @fullstatus with height $Total) {
 				(automap)
-				(meta verbs)
+				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
 		(endif)
 	(else)
+		(2 plus $Extra into $Total) %% Headline, progress
 		(if) (dreaming) (then)
-			(status bar @fulldream with height 3) {
-				(status headline) %% Default headline
-				(meta verbs)
+			(status bar @fulldream with height $Total) {
+				(top right)
+				(location headline) %% Default headline
+				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
 		(else)
-			(status bar @fullstatus with height 3) {
-				(status headline) %% Default headline
-				(meta verbs)
+			(status bar @fullstatus with height $Total) {
+				(top right)
+				(location headline) %% Default headline
+				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
 		(endif)
 	(endif)
 
+(style class @topright)
+	height: 1em;
+	float: right;
+	width: 7ch;
+
+(top right)
+	(div @topright) (top right reminder)
+
+(top right reminder)
+	(#n-ziqqurat is unvisited) %% No reminder until you’ve dreamed the first time
+(top right reminder)
+	(dreaming)
+	(space 1) Memory %% One letter shorter than “Present”
+(top right reminder)
+	Present
+
 (redraw status bar)
+	(set appropriate color scheme)
 	(top status bar)
 	(give the tutorial) %% world.dg
 	(draw automap outside of status bar if applicable) %% automap.dg
 	(link bar) %% linkbar.dg
 	%% If we did neither of the above, show the exits separately
 	(show exits if applicable)
+
+(set appropriate color scheme)
+	(dreaming)
+	(set memory world colors)
+(set appropriate color scheme)
+	(set real world colors)
+
+%% Color scheme only applies on Å-machine; do nothing on other platforms
+(set real world colors)
+(set memory world colors)
 
 %% And the exits bar if needed - exits aren’t given in room descriptions, so if there’s no map, and no suggestions bar, we add a fallback
 
@@ -72,6 +108,8 @@
 
 (style class @metabar)
 	width: 100\%;
+	%% Z-machine will assume 1em height which is what we want
+	%% Web will assume auto height which is also what we want
 	font-size: smaller;
 	text-align: center;
 	margin-top: 0.33em;
@@ -129,17 +167,18 @@
 		(endif)
 		(if) (in debugger) (then) (line) > (endif) %% Skein requires this
 		(get input $Words) %% Just wait for a link to be clicked, then continue
-		(if) *(understand $Words as $Action) (command $Action) (then) %% These can sometimes be produced by links in the menu, so we should acknowledge that and process them instead of proceeding with the game - but we explicitly don’t handle ambiguity here, we just go with the first possible interpretation
+		(if) *(understand $Words as $Action) (command $Action) (then) %% These can sometimes be produced by links in the status bar, so we should acknowledge that and process them instead of proceeding with the game - but we explicitly don’t handle ambiguity here, we just go with the first possible interpretation
 			(try $Action)
 			(fail)
 		(endif)
 	(else) %% No links, so we can do a standard “wait for any key” (which is the standard way to handle this on Z-machine)
 		(div @pause) {
-			(select)
-				\* \* \* \[ Press any key to continue. \] \* \* \*
-			(or)
+	%% Currently the “press any key...” comes from the content warnings so we don’t need to say it again
+	%%		(select)
+	%%			\* \* \* \[ Press any key to continue. \] \* \* \*
+	%%		(or)
 				\* \* \*
-			(stopping)
+	%%		(stopping)
 		}
 		(any key)
 		(par)
@@ -180,14 +219,18 @@
 		(endif)
 	}
 
-(after [nudge])
-	(par) If you’re really stuck on a puzzle, you can also check the
-	(if) (interpreter supports links) (then) %% If we have proper links, don’t make the player click an extra time
-		(span @link) { (link resource @hints) hints }
-	(else)
-		({hints})
-	(endif)
-	.
+(after [nudge]) %% Little tutorial
+	~(taught hints)
+	(div @tutorial) {
+		If you’re really stuck on a puzzle, you can also check the
+		(if) (interpreter supports links) (then) %% If we have proper links, don’t make the player click an extra time
+			(span @link) { (link resource @hints) hints }
+		(else)
+			({hints})
+		(endif)
+		.
+	}
+	(now) (taught hints)
 
 %% Score system: puzzles and vignettes
 %% Without editing stdlib we have to work around this a bit :(
@@ -206,7 +249,7 @@
 		*(vignette $)
 	(into $N)
 
-(early on every tick) %% We can’t make (current score $) not a global :(
+(early on every tick) %% We can’t make (current score $) not a global without editing the library :(
 	(new current score $N)
 	(now) (current score $N)
 
@@ -238,19 +281,97 @@
 		(now) (reported score is $Score)
 	(endif)
 
-%% This one we edit to add a progress bar
+%% This one we edit to add a progress bar and a hint at FULL SCORE
 (perform [score])
 	(scoring enabled)
 	(current score $Score)
 	(div @meta) {
-		You currently have $Score
+		You currently have (spell out $Score)
 		(if) ($Score = 1) (then) point (else) points (endif)
 		(if) (maximum score $Max) (then)
-			out of a maximum of $Max
+			out of a maximum of (spell out $Max)
 		(endif)
 		. (line)
 		(progress bar $Score of $Max)
+		Use (command link {FULL SCORE}) to see the details.
 	}
+
+%% And now something stdlib doesn’t do
+(understand command [full score])
+(grammar [full] for [full score])
+(perform [full score])
+	(current score 0)
+	(div @meta) { You haven’t scored any points yet. }
+(perform [full score])
+	(collect $Puzzle)
+		*(puzzle $Puzzle)
+		(solved $Puzzle)
+	(into $PList)
+	(length of $PList into $PNum)
+	(collect $Vignette)
+		*(vignette $Vignette)
+		($Vignette is visited)
+	(into $VList)
+	(length of $VList into $VNum)
+	(current score $Score)
+	(maximum score $Max)
+	(div @meta) {
+		You’ve solved (spell out $PNum) puzzle
+		(if) ~($PNum = 1) (then) (no space) s (endif)
+		\( (the-listing $PList) \)
+		(if) (nonempty $VList) (then) %% Can’t have empty PList and nonempty VList
+			and visited (spell out $VNum) memor (no space)
+			(if) ~($PNum = 1) (then) ies (else) y (endif)
+			\( (the-listing $VList) \)
+		(endif)
+		, giving you (spell out $Score) point
+		(if) ~($PNum = 1) (then) (no space) s (endif)
+		out of (spell out $Max) .
+	}
+
+(game over option)
+	review your (link) SCORE ,
+(parse game over [full/score])
+	(perform [full score])
+(parse game over [full score])
+	(perform [full score])
+
+%% A bit of extra guidance on overall goals
+(after [nudge])
+	~(any vignette is unvisited)
+	(par) Your overall goal is to put together a compelling narrative: something that will draw attention to your thesis.
+	Right now, that means
+	(if) (#n-execution is visited) (then)
+		finding as many memories as you can.
+	(elseif) (#bones-n is examined) (then)
+		using your necromantic skills to dig up some ancient memories.
+	(else)
+		getting into the dig site and finding some human remains.
+	(endif)
+
+%% Bypassing puzzles, for testing
+
+(understand [bypass | $Words] as [bypass $Obj])
+	(determine object $Obj)
+		*(puzzle $Obj)
+	(from words)
+		*(dict $Obj)
+	(matching all of $Words)
+~(refuse [bypass $])
+(prevent [bypass ~(puzzle $Obj)])
+	(The $Obj) (is $Obj) not a puzzle. How did you manage that?
+(prevent [bypass (solved $Obj)])
+	(The $Obj) puzzle (is $Obj) already solved.
+(perform [bypass $Obj])
+	(exhaust) {
+		*($Obj requires $Parent)
+		~(solved $Parent)
+		\( (the $Obj) requires (the $Parent), so doing that first \) (line)
+		(try [bypass $Parent])
+	}
+	(bypass $Obj)
+(unlikely [bypass $Obj]) %% Avoid disambiguation woes
+	~($Obj is in scope)
 
 %% And finally, a check I include in every game (though not for final release)
 
@@ -258,8 +379,8 @@
 	(in debugger)
 	(exhaust) {
 		*(object $Obj)
-		~($Obj is #partof $) %% This will get reported on the parent already
 		~($Obj is in room $)
+		~($Obj is #partof $) %% This will get reported on the parent already
 		~(supposed to be nowhere $Obj)
 		~(attracted to any room $Obj)
 		(log) { (span @bold) {Warning:} $Obj \( (the $Obj) \) is not in any room! }
@@ -268,10 +389,10 @@
 (supposed to be nowhere *(room $))
 (supposed to be nowhere *(direction $))
 (supposed to be nowhere *(relation $))
-(supposed to be nowhere #darkness)
+(supposed to be nowhere #darkness) %% Not actually used in this game
 
 (attracted to any room $Obj)
 	*(room $Room)
-	($Room attracts $Obj)
+	($Room attracts $Obj) %% Needs bound first param for optimizer
 
-(in debugger) (fail) %% Set in lib/dialog/debug/flag.dg
+(in debugger) (fail) %% Set in lib/dialog/debug/flag.dg so we can check it in various places

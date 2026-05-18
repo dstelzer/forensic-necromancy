@@ -3,13 +3,32 @@
 
 (style class @fulldream)
 	height: auto;
-%%	background-color: \#F2AE72;
-%%	color: \#704214;
-%%	--link: \#6B4F00;
-%%	--link-hover: \#B38600;
-%%	--progress-bottom: \#6B4F00;
-%%	--progress-top: \#B38600;
-	%% TODO COLORS
+
+%% Color scheme!
+%% Currently just Å-machine default for the real world
+(style class @normal)
+	--theme-darkest: \#000000;
+	--theme-dark: \#222222;
+	--theme-medium: \#888888;
+	--theme-light: \#cccccc;
+	--theme-lightest: \#eeeeee;
+	--accent-dark: \#c95c03;
+	--accent-light: \#fc8f36;
+
+%% Sepia tones
+(style class @memory) %% https://supercolorpalette.com/
+	--theme-darkest: \#190A01;
+	--theme-dark: \#6E4114;
+	--theme-medium: \#C57A32;
+	--theme-light: \#F9CAA4;
+	--theme-lightest: \#F9CAA4; %% same as -light
+	--accent-dark: \#c95c03;
+	--accent-light: \#fc8f36;
+
+(set real world colors)
+	(body style @normal)
+(set memory world colors)
+	(body style @memory)
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction)

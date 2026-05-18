@@ -14,7 +14,7 @@ vvv.log: $(SOURCES) platform/z5.dg
 	rm tmp.z5
 
 forensic.web.aastory: $(SOURCES) platform/web.dg hints.html history.html
-	dialogc -t aa platform/web.dg $(SOURCES) -vv -o forensic.web.aastory 2>&1 | tee build.web
+	dialogc -t aa platform/web.dg $(SOURCES) -vv -o forensic.web.aastory -H 1500 2>&1 | tee build.web
 
 web: forensic.web.aastory hints.html cover.jpg
 	rm -rf web
@@ -31,7 +31,7 @@ itch.zip: web
 	( cd web && zip -r ../itch.zip . )
 
 forensic.c64.aastory: $(SOURCES) platform/c64.dg
-	dialogc -t aa platform/c64.dg $(SOURCES) -vv -o forensic.c64.aastory 2>&1 | tee build.c64
+	dialogc -t aa platform/c64.dg $(SOURCES) -vv -o forensic.c64.aastory -H 1500 2>&1 | tee build.c64
 
 forensic.z5: $(SOURCES) platform/z5.dg
 	dialogc -t z5 platform/z5.dg $(SOURCES) -vv -o forensic.z5 -H 1500 2>&1 | tee build.z5
@@ -45,6 +45,11 @@ z5.zip: forensic.z5 hints.html history.html
 	cp cover.jpg z5/
 	rm -f z5.zip
 	( cd z5 && zip -r ../z5.zip . )
+
+# Uploaded as non-playable to Itch for download people
+web.zip: itch.zip
+	rm -rf web.zip
+	cp itch.zip web.zip
 
 PWD := $(shell pwd)
 hints.html: hints.clu

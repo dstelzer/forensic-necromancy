@@ -20,7 +20,7 @@
 	(content warnings)
 	(div @initial-spacer) (space)
 	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it. (par)
-	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But if you want to be the first ever PhD in Forensic Necromancy, you need more than lab results. You need something the world can’t ignore. (par)
+	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But numbers don’t convince people—stories do. If you want to be the first ever PhD in Forensic Necromancy, you need more than tables and graphs. You need a narrative, something new and exciting, that will grab public attention and make the academic establishment listen. (par)
 	Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
 	(banner)
 	(try [look])
@@ -46,6 +46,15 @@
 	(else)
 		Tutorial messages will not appear. Use (command link {TUTORIAL ON}) to change this.
 	(endif)
+
+(give the tutorial)
+	~(taught blocked exits)
+	(blocked exit removed)
+	(map enabled)
+	(div @tutorial) {
+		Map connections that will never become usable are removed from your map after you try them once.
+	}
+	(now) (taught blocked exits)
 
 (give the tutorial)
 	~(taught suggestions)
@@ -230,7 +239,7 @@
 (give the tutorial) %% Don’t fail
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%                     The Real World : Above                    %%%%%%%%%
+%%%%%%%%%                     The Real World: Above                     %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #nabiyunus
@@ -244,9 +253,9 @@
 	(if) (#dig is unvisited) (then)
 		They say the field crew came across more bones today, and that’s exactly what you need.
 	(elseif) ~(finish command unlocked) (then)
-		You found the human remains you’re looking for; now all you need is enough data to cap off your thesis.
+		You found the human remains you’re looking for; now all you need is a good enough story to cap off your thesis.
 	(else)
-		You’ve found all the data you’re looking for. Now you can finish up whenever you’re ready.
+		You’ve found the story you’re looking for. Now you can ({finish}) up whenever you’re ready.
 	(endif)
 
 (from * go #south to #abovedig)
@@ -254,7 +263,7 @@
 
 #tools
 (name *) various tools
-(dict *) tool ball compass mirror entheogen entheogens tablet tablets pill pills keychain packet
+(dict *) tool ball compass mirror entheogen entheogens pill pills keychain packet
 (plural *)
 (your *)
 (item *)
@@ -322,6 +331,7 @@
 
 #backpack
 (name *) backpack
+(dict *) back pack bag zip zipper
 (your *)
 (descr *)
 	Very large and very sturdy
@@ -356,6 +366,11 @@
 	(now) (backpack opened)
 (puzzle *)
 (solved *) (backpack opened)
+(bypass *)
+	You open the backpack.
+	(now) (* is open)
+	(now) (* is handled)
+	(now) (* is #heldby #p-real)
 
 #waterbottle %% Not useful, but shows that you can’t carry things into dreams
 (name *) water bottle
@@ -427,6 +442,9 @@
 (prevent entering *)
 	Better not. It’s not like you’re a looter, or you’re not supposed to be here, or something like that...you have all the right paperwork, you’re officially a guest of the archaeologists, and besides, it’s not like you’re going to be (emph {taking}) anything. It’s just so much easier to do these things in the early hours of the morning, when you don’t have to explain what a forensic necromancer is, or why you need silence to meditate over the bones.
 	(now) (real camp explained) %% Remove the map connection
+	(if) (map enabled) (then) %% Give a tutorial about the connection disappearing
+		(now) (blocked exit removed)
+	(endif)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                     The Real World : Below                    %%%%%%%%%
@@ -468,6 +486,7 @@
 
 %% Try using the cart if it’s available
 (maybe jump from cart)
+	\( using the cart \) (line)
 	(#cart is #in *)
 	(if) ~{ (current player $Player) ($Player is #on #cart) } (then)
 		(first try [climb #cart])
@@ -489,10 +508,12 @@
 
 %% There are many bones in this game
 (name (bones $)) bone fragments
-(dict (bones $)) bones fragment remains
+(dict (bones $)) bones fragment remains white
 (plural *(bones $))
 (clarify location of *(bones $))
-(when (bones $) is out of reach)
+(artifact *(bones $))
+
+(when (artifact $) is out of reach)
 	Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
 
 #bones-n
@@ -516,6 +537,10 @@
 
 (puzzle *)
 (solved *) (#n-ziqqurat is visited)
+(bypass *)
+	You dream yourself to the Ziggurat.
+	(now) (#p-memory is #in #n-ziqqurat)
+	(select player #p-memory)
 
 (narrate divining *)
 	%% Always the first bones you divine, probably also the first bones you return to
@@ -539,12 +564,12 @@
 
 #finds
 (name *) latest finds
-(dict *) artifact artifacts find
+(dict *) artifact artifacts find tray trays
 (plural *)
 (item *)
 (* is #in #looseearth)
 (descr *) A ({broken tablet}), a ({hunk of metal})...and a handful of ({white fragments}) off to the side.
-(when * is out of reach) Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
+(artifact *)
 (appearance *)
 	The ({latest finds}) have been carefully sorted and labelled in trays off to one side
 	(if) (#s-palace is visited) (then)
@@ -556,13 +581,19 @@
 (name *) broken tablet
 (dict *) clay
 (* is #partof #finds)
-(descr *) About the size of your thumbnail, with a few cuneiform signs visible on the top face. (span @bold) Namzaqu : something about a “key”?
+(descr *)
+	About the size of your thumbnail, with a few cuneiform signs visible on the top face.
+	(try [read *])
+(perform [read *])
+	(span @bold) Namzaqu : something about a “key”?
+(artifact *)
 
 #hunk
 (name *) hunk of metal
 (dict *) iron
 (* is #partof #finds)
-(descr *) Probably iron, in this time period, but in this state all you can do is guess.
+(descr *) Probably iron, in this time period, but in its current state state all you can do is guess.
+(artifact *)
 
 #bones-s
 (bones *)
@@ -579,6 +610,10 @@
 
 (puzzle *)
 (solved *) (#s-palace is visited)
+(bypass *)
+	You dream yourself to the Palace.
+	(now) (#p-memory is #in #s-palace)
+	(select player #p-memory)
 
 (narrate divining *)
 	(select)
@@ -618,6 +653,14 @@
 (* requires #cart)
 (solved *)
 	(lower rope connected) (or) (#tunnel is visited)
+(bypass *)
+	You move the cart to above the pit, lock it, and tie on the rope.
+	(now) (#cart is #in #deeppit)
+	(now) (#cart is locked)
+	(now) (lower rope connected)
+	(now) ~(upper rope connected)
+	(now) (#rope is nowhere)
+	(update environment around player)
 
 (perform [enter *])
 	(try [go #down])
@@ -680,6 +723,9 @@
 		it should be right here.
 	(endif)
 	(now) (warned about tunnel)
+	(if) (map enabled) (then) %% Give a tutorial about the connection disappearing
+		(now) (blocked exit removed)
+	(endif)
 
 #lighting
 (name *) electric lights
@@ -722,6 +768,7 @@
 (look *)
 	(select)
 		Everything is a haze. Colors muted, sounds muffled. But you can make out one line, and then another, and another—something solid, something (emph {real}). You try to focus your mind on it, and a shape begins to emerge. The fog recedes in a great rush and a ringing silence fills your ears.
+		(set memory world colors) %% Since the colors don’t get set automatically until the next status bar is printed, and we don’t want that yet
 		(pause)
 	(or)
 	(stopping)
@@ -792,13 +839,19 @@
 	You’re kneeling
 	(select)
 	(or)
-	\( suddenly back to kneeling again? \)
+		\( suddenly back to kneeling again? \)
+	(or)
+		\( again \)
 	(or)
 	(stopping)
 	on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light. (par)
-	The ({wiry man}) waves the torch eastward with an awful smirk, letting you see the ({crumpled figure}) lying there. The ({other man}) is mostly lost in the shadows.
-	(if) ~(#spear is #in *) (then) %% If the spear *is* here, the appearance rule will replace this paragraph
-		(par) The memory of the dropped spear is just a faint afterimage, now that you’ve moved it somewhere else.
+	The ({wiry man}) is pointing the torch eastward with an awful smirk, letting you see the ({crumpled figure}) lying there. The ({other man}) is mostly lost in the shadows.
+	(if) ~(#spear is #in *) (then) %% If the spear *is* here, its (appearance $) rule will replace this paragraph
+		(par) The memory of the dropped spear is just ({a faint afterimage}), now that you’ve moved it
+		(if) ~(#spear is in room *) (then)
+			somewhere else
+		(endif)
+		.
 	(endif)
 
 (from * go #southeast to #n-ziqqurat)
@@ -810,6 +863,16 @@
 	\( going over to the stout man \) (line)
 	(try [examine #exec-tzillaya])
 
+%% For better error messages
+#afterimage
+(name *) faint afterimage of a spear
+(dict *) outline
+(intangible *)
+(supposed to be nowhere *)
+(#n-execution attracts *) ~(#spear is #in #n-execution)
+(unlikely $Action) (* is one of $Action) %% Don’t disambiguate on X SPEAR
+(descr *) There’s an outline on the ground where the spear started out, but your mind understands that a spear is able to be moved, so it lets you pick it up and roam around the memories with it. It’s like a very limited sort of lucid dream.
+
 #spear
 (name *) iron-tipped spear
 (an *)
@@ -818,12 +881,16 @@
 
 (puzzle *)
 (solved *) (* is handled)
+(bypass *)
+	You take the spear.
+	(now) (* is handled)
+	(now) (* is #heldby #p-memory)
 
 (appearance * #in #n-execution)
 	The dropped ({spear}) lies just out of arm’s reach.
 
 (descr *)
-	(if) (* is #in #n-execution) (then)
+	(if) (* is pristine) (then)
 		Even if the prisoner couldn’t reach it two thousand years ago, you have no such restrictions—you stand up and walk over to the spear while the scene stays frozen like a diorama around you.
 	(endif)
 	One and a half meters of well-polished wood, with a sharp iron point mounted on the end. It’s lighter than you’d expected, but feels nice and sturdy.
@@ -836,7 +903,7 @@
 (dict *) shawl fringe gold
 (male *)
 (* is #in #n-execution)
-(descr *) Both of the men have fine clothes, richly-dyed and well-fringed, in a way you wouldn’t expect in a dungeon—but this one at least also has strong muscles and callouses on his hands. His ({torch}) is held high, pointing to the east.
+(descr *) Both of the standing men have fine clothes, richly-dyed and well-fringed, in a way you wouldn’t expect in a dungeon—but this one at least also has whipcord muscles and callouses on his hands. His ({torch}) is held high, pointing to the east.
 (* has secondary objects)
 
 #torch
@@ -849,13 +916,13 @@
 
 #exec-sharhiya
 (name *) cadaver
-(dict *) crumpled figure fallen shape corpse body brother
+(dict *) crumpled figure fallen shape corpse body brother my your
 (* is #in #n-execution)
 (descr *)
 	(if) (sufficient light) (then)
 		The lamplight lets you make out a bit more detail. Enough to be quite certain he’s dead.
 	(else)
-		The torchlight \( thankfully \) isn’t bright enough to make out much detail. But you can make out the Babylonian tunic, and the unnatural position.
+		The torchlight \( thankfully \) isn’t bright enough to make out much detail. But you can make out the Babylonian tunic, and the unnatural position of his body.
 	(endif)
 	(if) (#looseearth is unvisited) (then)
 		(par) If this is where “you” died, and the bodies weren’t moved post mortem...then the brother’s bones should be about ten meters to the east, back in the present day.
@@ -864,22 +931,28 @@
 
 (puzzle *)
 (solved *) (eastern connection unlocked)
+(bypass *)
+	You realize you can go east.
+	(now) (eastern connection unlocked)
 
 #exec-tzillaya
 (name *) stout man
-(dict *) other tablets
+(dict *) other tablet tablets sticky darkness thick fluid
 (male *)
 (* is #in #n-execution)
 (descr *)
 	(sufficient light)
-	You can see the man better in the lamplight, hurrying away with his tablets—toward some kind of passage to the north. But “you” didn’t see any more than that; this memory can’t tell you what might have been there. What would be north of here?
+	The sticky darkness flows away from your lamp, leaving the man’s form clear. He’s glancing back to make sure he wasn’t followed, clutching his tablets as he slips through a...door?...to the north. Where is he going?
 	(now) (northern connection unlocked)
 (descr *)
-	The stout man’s form is hazy and hard to make out, just at the edge of your vision. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), but the darkness is keeping it hidden from you now. \( You make a mental note to come back to this later. \)
+	You walk toward the stout man, but his form doesn’t get any clearer—there’s a sticky darkness spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But something must have gone wrong with the memory.
 
 (puzzle *)
 (* requires #lamp)
 (solved *) (northern connection unlocked)
+(bypass *)
+	You realize you can go north.
+	(now) (northern connection unlocked)
 
 %% Puzzle room blocking Vignette 2
 #n-house
@@ -925,6 +998,10 @@
 (puzzle *)
 (* requires #spear)
 (solved *) (* is open)
+(bypass *)
+	You use the spear to force the door open.
+	(now) (#spear is #in #n-ziqqurat)
+	(now) (* is open)
 
 (prevent [open *])
 	(* is closed)
@@ -1063,13 +1140,17 @@
 (* is #in #n-announcement)
 (descr *) It’s made of leather instead of plastic, but the best way to carry water hasn’t really changed in the past two thousand years.
 (liquid container *)
-(initial appearance *) Your \( well, “your” \) bucket has fallen next to the fountain, abandoned in your haste.
+(initial appearance *) Your \( well, “your” \) ({bucket}) has fallen next to the fountain, abandoned in your haste.
 (narrate taking *)
 	(* is pristine)
 	You scoop up the bucket by its handle.
 
 (puzzle *)
 (solved *) (* is handled)
+(bypass *)
+	You take the bucket.
+	(now) (* is handled)
+	(now) (* is #heldby #p-memory)
 
 %% Puzzle room blocking Vignette 3
 #n-workshop
@@ -1135,6 +1216,9 @@
 (puzzle *)
 (* requires #blindfold)
 (solved *) (#n-workshop is visited)
+(bypass *)
+	You go through the blinding light to the workshop.
+	(move player to #in #n-workshop)
 
 (narrate leaving #n-ziqqurat #west)
 	~(statue is turned)
@@ -1153,6 +1237,9 @@
 
 (puzzle *)
 (solved *) (statue is turned)
+(bypass *)
+	You turn the statue.
+	(now) (statue is turned)
 
 (appearance *)
 	A towering ({statue}) dominates the room, light blazing from its gold-plated skin.
@@ -1213,9 +1300,16 @@
 	(if) (sufficient light) (then)
 		Even the lamplight goes soft and silvery in the memory.
 	(endif)
-	Is it a workshop, a kitchen, a storage space? All you can see clearly is ({your brother}), eyes fixed intently on the ({table}).
+	Is it a workshop, a kitchen, a storage space? All you can see clearly is (vlink #back-sharhiya), eyes fixed intently on the ({table}).
 
 (from * go #northeast to #n-workshop)
+
+#back-sharhiya
+(name *) brother
+(your *)
+(male *)
+(* is #in #n-argument)
+(descr *) He has the same sort of clothes as you, and probably the same sort of beard, though he’s a bit shorter and a bit heavier. It’s hard to make out details in the dim half-remembered light, but the eager sincerity on his face is plain to see.
 
 #back-window
 (name *) window
@@ -1273,6 +1367,9 @@
 (puzzle *)
 (* requires #cons-pithos)
 (solved *) (lamp lit)
+(bypass *)
+	You light the lamp.
+	(now) (lamp lit)
 
 %% Avoid shenanigans once it’s lit
 (fire source *) (lamp lit)
@@ -1304,6 +1401,12 @@
 
 (prevent [switch * | $])
 	It’s not the kind of lamp that you switch. It’s the ancient sort that you fill with oil and ignite.
+
+(perform [feel/clean *])
+	You rub the lamp a few times, but alas, no jinn inside.
+	(if) (* is filled with $Liquid) (then)
+		Only (name $Liquid) .
+	(endif)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                       Dreams of Sharhiya                      %%%%%%%%%
@@ -1365,6 +1468,9 @@
 (puzzle *)
 (* requires #bucket)
 (solved *) (coals cooled)
+(bypass *)
+	You dump water on the coals.
+	(now) (coals cooled)
 
 (action [leave #s-palace #southeast] requires * to be touched) %% Ensure it can’t be bypassed
 
@@ -1435,6 +1541,10 @@
 
 (puzzle *)
 (solved *) (* is handled)
+(bypass *)
+	You take the blindfold.
+	(now) (* is handled)
+	(now) (* is #heldby #p-memory)
 
 (prevent [look])
 	(worn *)
@@ -1526,6 +1636,11 @@
 (puzzle *)
 (* requires #impossible) ~(#lamp is handled)
 (solved *) (#lamp is filled with #oil)
+(bypass *)
+	You take the lamp and fill it with oil.
+	(now) (#lamp is handled)
+	(now) (#lamp is #heldby #p-memory)
+	(now) (#lamp is filled with #oil)
 
 #cons-figures
 (name *) shadowy figures
@@ -1664,7 +1779,7 @@
 	“Your Majesty! Please! My loyalty has never been in question! I orchestrated that ‘conspiracy’ for you; without me, you wouldn’t—” (par)
 	It was the wrong thing to say. In a split second the king’s hands are on your throat, with far more strength than you would have expected from his frail body. “I. Need. (emph {No one}). I can trust. (emph {No one}). It was you...it was you, all along! And once I’m rid of you...then, then, that’s when I’ll finally be safe!”
 
-(protagonist description for *) Lean and round-shouldered, with wispy gray hair: this must be the High Priest of Marduk that the brothers reported to.
+(protagonist description for *) Lean and round-shouldered, with wispy gray hair: this must be the High Priest of Marduk that the brothers reported to. The king isn’t a strong man, but he easily overpowered you all the same.
 
 (name *) hidden chamber
 (look *)
@@ -1674,6 +1789,8 @@
 	(stopping)
 	A small, windowless room, tight and low-ceilinged, hidden somewhere behind the palace walls. The gap to the south looks like an intrusion from a different memory; without it, you can’t see any trace of an entrance or exit. (par)
 	The only other occupant is ({a frail man}) in resplendent clothes, his face contorted with rage.
+
+(from * go #south to #m-unfinished)
 
 #asshiya
 (name *) frail man
@@ -1719,14 +1836,14 @@
 (the end)
 	There you have it: everything you might need for your thesis. You
 	(if) (dreaming) (then)
-		hyperventilate yourself back to the physical world
+		hyperventilate yourself back to the physical world and
 	(endif)
-	and make your way out of the archaeological dig, back to your bike, back to the motel, and eventually, back to the university. You’ve witnessed things no human being has seen in millennia—the department will (emph {have}) to give you a doctorate for this! (par)
+	make your way out of the archaeological dig, back to your bike, back to the motel, and eventually, back to the university. You’ve witnessed things no human being has seen in millennia—the department will (emph {have}) to give you a doctorate for this! (par)
 	Now, you just have to write it...
 	(game over {The End})
 
 (game over option)
-	see the real (link) HISTORY behind this game
+	see the real (link) HISTORY behind this game,
 (parse game over [history])
 	(history)
 

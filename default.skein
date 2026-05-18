@@ -23,27 +23,31 @@ parent-id: 0
 command:  
 --------------------------------------------------------------------------------
 >  
+
+
 Six years of work, countless hours in the library and the lab, hunched over your
 laptop, poring over old manuscripts or departmental paperwork...and now it’s
 almost over. Your advisor has given you a deadline, and you need to defend your
 thesis by the end of the year, or leave with nothing to show for it.
 
 Your data is promising. The experimental results are fantastic, the p-values are
-significant, and you’ve gotten a couple publications out of the process. But if
-you want to be the first ever PhD in Forensic Necromancy, you need more than lab
-results. You need something the world can’t ignore.
+significant, and you’ve gotten a couple publications out of the process. But
+numbers don’t convince people—stories do. If you want to be the first ever PhD
+in Forensic Necromancy, you need more than tables and graphs. You need a
+narrative, something new and exciting, that will grab public attention and make
+the academic establishment listen.
 
 Which means you need human remains in situ, and the older the better. The last
 of your advisor’s grant funding got you to Nineveh just after midnight. The rest
 is up to you.
 
-[0m[1mA Murder in Nineveh
-[0mSubmitted in partial fulfillment of the requirements for the degree of Doctor of
-Philosophy in
-[0m[1mForensic Necromancy
+[0m[50m             [0m[7m[50m                  [0m[1m[7m[50mA MURDER IN NINEVEH[0m[7m[50m                 [0m[50m             
+             [0m[7m[50m Submitted in partial fulfillment of the requirements [0m[50m             
+             [0m[7m[50m       for the degree of Doctor of Philosophy in      [0m[50m             
+             [0m[7m[50m                  [0m[1m[7m[50mFORENSIC NECROMANCY[0m[7m[50m                 [0m[50m             
 [0m
-A Historical Mystery by Daniel M. Stelzer.
-Release 0. Serial number DEBUG.
+A historical mystery by Daniel M. Stelzer.
+Release 2. Serial number DEBUG.
 Dialog Interactive Debugger (dgdebug) version 1c/01-dev. Library version 1.2.0.
 Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0,
 Puzzle Prompts 1.0, and Versatile Linking 1.0.
@@ -198,8 +202,8 @@ guest of the archaeologists, and besides, it’s not like you’re going to be
 of the morning, when you don’t have to explain what a forensic necromancer is,
 or why you need silence to meditate over the bones.
 
-[0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you
-can currently make progress on. You’ll also see them as [0m[4m[50m?[0m[4m signs on the map.
+[0m[4mMap connections that will never become usable are removed from your map after
+you try them once.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -219,6 +223,9 @@ The main field crew keeps their equipment off to the <south>, but you’ve made 
 unobtrusive little camp here: your <bicycle> locked to a piece of machinery,
 your <backpack> looped over the handlebars.
 
+[0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you
+can currently make progress on. You’ll also see them as [0m[4m[50m?[0m[4m signs on the map.
+[0m
 [0m[50m                                        ( ) 
                                        / |  
                                     (@)-( )-
@@ -325,7 +332,7 @@ backpack] close it>
 [0m[1m<[look] Your camp>[0m • <east> • <northeast>
 --------------------------------------------------------------------------------
 id: 1778630448650
-parent-id: 1778715244260
+parent-id: 1779143864710
 command: water
 --------------------------------------------------------------------------------
 > water
@@ -413,7 +420,12 @@ reliability of a paper book. This one has entries on <[look up nineveh in the
 dictionary] [0m[1mNineveh[0m> and <[look up neo-assyrian empire in the dictionary] [0m[1mthe
 Neo-Assyrian Empire[0m>, among others.
 
-[0m[4mTo look one up, click on the underlined words.
+[0m[4mTopics will be added to the encyclopedia as you come across them in the game. To
+look one up, click on the underlined words.
+
+If you’re confused about any of the historical names and terms in the game, the
+encyclopedia will explain them. But nothing in here is critical to the game—you
+can ignore the book entirely if you want, or turn to Google instead.
 [0m
 [0m[4m(Your <score> has gone up by one point.)
 [0m
@@ -434,9 +446,11 @@ command: look up nineveh
 > look up nineveh
 (in the pocket encyclopedia)
 
-[0m[4m[0m[1m[4mNineveh:[0m[4m The main capital of the Neo-Assyrian Empire. For all its military
-strength, it never quite managed to supplant Babylon as the artistic and
-cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+[0m[4m[0m[1m[4mNineveh:[0m[4m The main capital of the <[look up neo-assyrian empire in the
+dictionary] [0m[1m[4mNeo-Assyrian Empire[0m[4m>. For all its military strength, it never quite
+managed to supplant <[look up babylon in the dictionary] [0m[1m[4mBabylon[0m[4m> as the
+artistic and cultural heart of Mesopotamia. In the modern day it’s known as
+Mosul, Iraq.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -498,8 +512,9 @@ command: look up babylon
 > look up babylon
 (in the pocket encyclopedia)
 
-[0m[4m[0m[1m[4mBabylon:[0m[4m At one time, the capital of the Babylonian Empire; in the time of 
-Nineveh, though, it was a vassal state of the Neo-Assyrians. Even so, it
+[0m[4m[0m[1m[4mBabylon:[0m[4m At one time, the capital of the Babylonian Empire; in the time of
+<[look up nineveh in the dictionary] [0m[1m[4mNineveh[0m[4m>, though, it was a vassal state of
+the <[look up neo-assyrians in the dictionary] [0m[1m[4mNeo-Assyrians[0m[4m>. Even so, it
 remained a famous center of art, culture, and religion, and never fully accepted
 Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 [0m
@@ -1066,15 +1081,16 @@ command:
 >  
 You jerk yourself free of the memory, and everything freezes again. Now you have
 the freedom to look around the tableau; you can’t change the past, but you can
-search and poke and prod to your heart’s content. A gap to the south leads back
-to the memory palace.
+search and poke and prod to your heart’s content. A gap to the southeast leads
+back to the memory palace.
 
 [0m[1mDungeon[0m
 You’re kneeling on hard-packed dirt under a low dirt ceiling. Everything else is
 darkness outside the little circle of light.
 
-The <wiry man> waves the torch eastward with an awful smirk, letting you see the
-<crumpled figure> lying there. The <other man> is mostly lost in the shadows.
+The <wiry man> is pointing the torch eastward with an awful smirk, letting you
+see the <crumpled figure> lying there. The <other man> is mostly lost in the
+shadows.
 
 The dropped <spear> lies just out of arm’s reach.
 
@@ -1093,9 +1109,10 @@ parent-id: 1778640300969
 command: wiry
 --------------------------------------------------------------------------------
 > wiry
-Both of the men have fine clothes, richly-dyed and well-fringed, in a way you
-wouldn’t expect in a dungeon—but this one at least also has strong muscles and
-callouses on his hands. His <torch> is held high, pointing to the east.
+Both of the standing men have fine clothes, richly-dyed and well-fringed, in a
+way you wouldn’t expect in a dungeon—but this one at least also has whipcord
+muscles and callouses on his hands. His <torch> is held high, pointing to the
+east.
 
 [0m[50m                                    [@]     
                                        \    
@@ -1146,10 +1163,11 @@ parent-id: 1778640300972
 command: other
 --------------------------------------------------------------------------------
 > other
-The stout man’s form is hazy and hard to make out, just at the edge of your
-vision. “You”—that is, the person whose memories you’re exploring—must have seen 
-[0m[4msomething[0m, but the darkness is keeping it hidden from you now. (You make a
-mental note to come back to this later.)
+You walk toward the stout man, but his form doesn’t get any clearer—there’s a
+sticky darkness spilling in through the edges of the memory, covering the
+details like a thick fluid. “You”—that is, the person whose memories you’re
+exploring—must have seen [0m[4msomething[0m, or else this man wouldn’t be here at all.
+But something must have gone wrong with the memory.
 
 [0m[50m                                    [@]     
                                        \    
@@ -1165,10 +1183,11 @@ parent-id: 1778640300973
 command: tablets
 --------------------------------------------------------------------------------
 > tablets
-The stout man’s form is hazy and hard to make out, just at the edge of your
-vision. “You”—that is, the person whose memories you’re exploring—must have seen 
-[0m[4msomething[0m, but the darkness is keeping it hidden from you now. (You make a
-mental note to come back to this later.)
+You walk toward the stout man, but his form doesn’t get any clearer—there’s a
+sticky darkness spilling in through the edges of the memory, covering the
+details like a thick fluid. “You”—that is, the person whose memories you’re
+exploring—must have seen [0m[4msomething[0m, or else this man wouldn’t be here at all.
+But something must have gone wrong with the memory.
 
 [0m[50m                                    [@]     
                                        \    
@@ -1251,7 +1270,7 @@ command: figure
 --------------------------------------------------------------------------------
 > figure
 The torchlight (thankfully) isn’t bright enough to make out much detail. But you
-can make out the Babylonian tunic, and the unnatural position.
+can make out the Babylonian tunic, and the unnatural position of his body.
 
 If this is where “you” died, and the bodies weren’t moved post mortem...then the
 brother’s bones should be about ten meters to the east, back in the present day.
@@ -1274,7 +1293,7 @@ command: e
 > e
 (going over to the crumpled figure)
 The torchlight (thankfully) isn’t bright enough to make out much detail. But you
-can make out the Babylonian tunic, and the unnatural position.
+can make out the Babylonian tunic, and the unnatural position of his body.
 
 If this is where “you” died, and the bodies weren’t moved post mortem...then the
 brother’s bones should be about ten meters to the east, back in the present day.
@@ -2035,7 +2054,7 @@ the remains of some kind of sculpture.
 
 All around you, the <crowd> is frozen like a sea of nameless, faceless statues.
 
-Your (well, “your”) bucket has fallen next to the fountain, abandoned in your
+Your (well, “your”) <bucket> has fallen next to the fountain, abandoned in your
 haste.
 
 [0m[4m(Your <score> has gone up by one point.)
@@ -2552,8 +2571,8 @@ You jerk yourself free of the memory, and everything freezes again.
 [0m[1mBack room[0m
 This room is suggested more than seen, the moonlight through the <window>
 tracing the outlines in shades of black. Is it a workshop, a kitchen, a storage
-space? All you can see clearly is <your brother>, eyes fixed intently on the
-<table>.
+space? All you can see clearly is <[my brother] your brother>, eyes fixed
+intently on the <table>.
 
 [0m[4m(Your <score> has gone up by one point.)
 [0m
@@ -3598,8 +3617,8 @@ command: oil
 --------------------------------------------------------------------------------
 > oil
 
-[0m[4mDid you want to fill the empty lamp from <[oil -filled bucket] the oil-filled
-bucket> or <[pithos of oil] the pithos of oil>?
+[0m[4mDid you want to fill the empty lamp from <[pithos of oil] the pithos of oil> or
+<[oil -filled bucket] the oil-filled bucket>?
 [0m
 --------------------------------------------------------------------------------
 id: 1778703286171
@@ -4207,11 +4226,12 @@ You’re kneeling (suddenly back to kneeling again?) on hard-packed dirt under a
 low dirt ceiling. Everything else is darkness outside the little circle of
 light.
 
-The <wiry man> waves the torch eastward with an awful smirk, letting you see the
-<crumpled figure> lying there. The <other man> is mostly lost in the shadows.
+The <wiry man> is pointing the torch eastward with an awful smirk, letting you
+see the <crumpled figure> lying there. The <other man> is mostly lost in the
+shadows.
 
-The memory of the dropped spear is just a faint afterimage, now that you’ve
-moved it somewhere else.
+The memory of the dropped spear is just <a faint afterimage>, now that you’ve
+moved it.
 
 [0m[50m                                [@]     [ ]     [ ] 
                                    \     |     /    
@@ -4228,10 +4248,9 @@ command: n
 --------------------------------------------------------------------------------
 > n
 (going over to the stout man)
-You can see the man better in the lamplight, hurrying away with his
-tablets—toward some kind of passage to the north. But “you” didn’t see any more
-than that; this memory can’t tell you what might have been there. What would be
-north of here?
+The sticky darkness flows away from your lamp, leaving the man’s form clear.
+He’s glancing back to make sure he wasn’t followed, clutching his tablets as he
+slips through a...door?...to the north. Where is he going?
 
 [0m[4m(Your <score> has gone up by one point.)
 [0m
@@ -4522,6 +4541,7 @@ parent-id: 1778703929077
 command: w
 --------------------------------------------------------------------------------
 > w
+(using the cart)
 Standing on the cart, you have just enough height to plant your arms firmly on
 top of the bank. One little (or maybe moderate) leap and you’re hauling yourself
 up.
@@ -5044,7 +5064,7 @@ contorted with rage.
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
-[0m[1m<[look] Hidden chamber>[0m
+[0m[1m<[look] Hidden chamber>[0m • <south>
 --------------------------------------------------------------------------------
 id: 1778709670933
 parent-id: 1778709670932
@@ -5066,7 +5086,7 @@ divine disfavor. Neither is a good look for a king.
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
 [0m[1m<[the frail man] The frail man>[0m • <[talk to the frail man] talk to him>
-[0m[1m<[look] Hidden chamber>[0m
+[0m[1m<[look] Hidden chamber>[0m • <south>
 --------------------------------------------------------------------------------
 id: 1778709670934
 parent-id: 1778709670933
@@ -5074,7 +5094,8 @@ command: x me
 --------------------------------------------------------------------------------
 > x me
 Lean and round-shouldered, with wispy gray hair: this must be the High Priest of
-Marduk that the brothers reported to.
+Marduk that the brothers reported to. The king isn’t a strong man, but he easily
+overpowered you all the same.
 
 [0m[50m                                    [@]             
                                      |              
@@ -5085,7 +5106,7 @@ Marduk that the brothers reported to.
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m<[me] You>[0m • <inventory> • <wait> • <wake up>
-[0m[1m<[look] Hidden chamber>[0m
+[0m[1m<[look] Hidden chamber>[0m • <south>
 --------------------------------------------------------------------------------
 id: 1778709670935
 parent-id: 1778709670934
@@ -5137,8 +5158,8 @@ parent-id: 1778709670936
 command: finish
 --------------------------------------------------------------------------------
 > finish
-There you have it: everything you might need for your thesis. You and make your
-way out of the archaeological dig, back to your bike, back to the motel, and
+There you have it: everything you might need for your thesis. You make your way
+out of the archaeological dig, back to your bike, back to the motel, and
 eventually, back to the university. You’ve witnessed things no human being has
 seen in millennia—the department will [0m[4mhave[0m to give you a doctorate for this!
 
@@ -5151,7 +5172,8 @@ Game over. You scored 25 points out of 25.
 [0m[4mWould you like to:
      <UNDO> the last move,
      <RESTORE> a saved position,
-     see the real <HISTORY> behind this game
+     see the real <HISTORY> behind this game,
+     review your <SCORE>,
      <QUIT> the program,
      or <RESTART> from the beginning?
 [0m
@@ -5168,7 +5190,8 @@ long!)
 [0m[4mWould you like to:
      <UNDO> the last move,
      <RESTORE> a saved position,
-     see the real <HISTORY> behind this game
+     see the real <HISTORY> behind this game,
+     review your <SCORE>,
      <QUIT> the program,
      or <RESTART> from the beginning?
 [0m
@@ -5196,11 +5219,30 @@ command: score
 --------------------------------------------------------------------------------
 > score
 
-[0m[4mYou currently have 1 point out of a maximum of 25.
+[0m[4mYou currently have one point out of a maximum of 25.
 [0m[50m[===                                                                          ]
+[0m[4mUse [0m[4m[50m<FULL SCORE>[0m[4m to see the details.
 [0m
 [0m[4mA lot of text adventures involve finding objects and moving them around. To see
 what you’re currently holding, [0m[4m[50m<take inventory>[0m[4m.
+[0m
+[0m[50m                                        ( ) 
+                                       / |  
+                                    (@)-( )-
+[0m
+[0m[1m<[me] You>[0m • <inventory> • <wait>
+[0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[put my
+backpack onto] put it on something> • <[wear my backpack] wear it> • <[close my
+backpack] close it>
+[0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1779143864710
+parent-id: 1778715244260
+command: full
+--------------------------------------------------------------------------------
+> full
+
+[0m[4mYou’ve solved one puzzle (your backpack), giving you one point out of 25.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
