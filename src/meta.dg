@@ -30,19 +30,21 @@
 
 (style class @title1)
 	font-size: 1.2em;
+	font-weight: bold;
 (style class @title2)
 	font-size: 0.75em;
 	font-weight: normal;
 (style class @title3)
 	font-size: 1.5em;
+	font-weight: bold;
+
 (style class @reverse)
 	text-decoration: reverse;
-(style class @title)
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
 (style class @bar)
 	font-family: monospace, monospace;
+
+%% @title: see platform/
+%% It has top and bottom margins always, plus center alignment and side margins on web
 
 (fancy title) %% Fancy Z-machine implementation
 	~(interpreter supports text alignment)
