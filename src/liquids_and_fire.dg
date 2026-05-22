@@ -100,7 +100,7 @@
 		(name $Liquid)
 	(into $Name)
 	(last $Name $Last) %% Only the last word gets a hyphen
-	(append $Last [-filled] $Tmp)
+	(append [$Last] [- filled] $Tmp)
 	(join words $Tmp into $Compound)
 	$Compound
 
@@ -206,6 +206,11 @@
 (grammar [empty/dump [held]] for [empty $])
 (grammar [empty/dump [held] out] for [empty $])
 (grammar [empty/dump out [held]] for [empty $])
+
+%% Ensure EMPTY BUCKET is interpreted as examining an empty bucket
+(unlikely [empty $Obj])
+	~(container $Obj)
+	~{ (liquid container $Obj) ($Obj is filled with $) }
 
 (before [empty $Obj])
 	(ensure $Obj is held)

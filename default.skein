@@ -7,23 +7,16 @@ label: START
 
 [0m[4m[0m[1m[4mContent warning:[0m[4m This game includes significant (but non-graphic) discussion of murder and capital punishment, mentions of historical (first millennium BCE) ableism, and minor depiction of psychedelics used for ritual purposes. The author considers it “PG” rated: not unsuitable for children, but parental guidance is suggested.
 
-Click below or press ENTER to continue.
+When you see this prompt, click below or press ENTER to continue.
 [0m
 <[] [[Continue]]>
 
 --------------------------------------------------------------------------------
-id: 1778630448636
-parent-id: 0
+id: 1
+parent-id: 1778630448636
 command:  
 --------------------------------------------------------------------------------
 >  
-
-
-Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it.
-
-Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But numbers don’t convince people—stories do. If you want to be the first ever PhD in Forensic Necromancy, you need more than tables and graphs. You need a narrative, something new and exciting, that will grab public attention and make the academic establishment listen.
-
-Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
 
 [0m[50m            [0m[7m[50m                  [0m[1m[7m[50mA MURDER IN NINEVEH[0m[7m[50m                 [0m[50m             
             [0m[7m[50m Submitted in partial fulfillment of the requirements [0m[50m             
@@ -47,8 +40,24 @@ But you made it. They say the field crew came across more bones today, and that�
 [0m[1m<[me] You>[0m • <wait>
 [0m[1m<[look] Tell Nabi Yunus>[0m • <south> • <southwest>
 --------------------------------------------------------------------------------
+id: 1778630448636
+parent-id: 0
+command:  
+--------------------------------------------------------------------------------
+>  
+
+
+Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it.
+
+Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But numbers don’t convince people—stories do. If you want to be the first ever PhD in Forensic Necromancy, you need more than tables and graphs. You need a narrative, something new and exciting, that will grab public attention and make the academic establishment listen.
+
+Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
+
+<[] [[Continue]]>
+
+--------------------------------------------------------------------------------
 id: 1778630448637
-parent-id: 1778630448636
+parent-id: 1
 command: s
 --------------------------------------------------------------------------------
 > s
@@ -140,7 +149,7 @@ command: w
 You walk west.
 
 [0m[1mYour camp[0m
-The main field crew keeps their equipment off to the <south>, but you’ve made an unobtrusive little camp here: your <bicycle> locked to a piece of machinery, your <backpack> looped over the handlebars.
+The main field crew keeps their equipment off to the south, but you’ve made an unobtrusive little camp here: your <bicycle> locked to a piece of machinery, your <backpack> looped over the handlebars.
 
 [0m[4mThe map above the command prompt marks your current location with a [0m[4m[50m@[0m[4m, and any puzzles you’re currently able to solve with a [0m[4m[50m![0m[4m. Click any room to go there.
 [0m
@@ -175,7 +184,7 @@ command: look
 > look
 
 [0m[1mYour camp[0m
-The main field crew keeps their equipment off to the <south>, but you’ve made an unobtrusive little camp here: your <bicycle> locked to a piece of machinery, your <backpack> looped over the handlebars.
+The main field crew keeps their equipment off to the south, but you’ve made an unobtrusive little camp here: your <bicycle> locked to a piece of machinery, your <backpack> looped over the handlebars.
 
 [0m[4mIf you’re ever not sure where to go, [0m[4m[50m<NUDGE>[0m[4m will tell you what obstacles you can currently make progress on. You’ll also see them as [0m[4m[50m?[0m[4m signs on the map.
 [0m
@@ -340,7 +349,7 @@ parent-id: 1778630448653
 command: encyclopedia
 --------------------------------------------------------------------------------
 > encyclopedia
-When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up nineveh in the dictionary] [0m[1mNineveh[0m> and <[look up neo-assyrian empire in the dictionary] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
+When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up nineveh in the encyclopedia] [0m[1mNineveh[0m> and <[look up the neo-assyrian empire in the encyclopedia] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
 
 [0m[4mTopics will be added to the encyclopedia as you come across them in the game. To look one up, click on the underlined words.
 
@@ -363,7 +372,7 @@ command: look up nineveh
 > look up nineveh
 (in the pocket encyclopedia)
 
-[0m[4m[0m[1m[4mNineveh:[0m[4m The main capital of the <[look up neo-assyrian empire in the dictionary] [0m[1m[4mNeo-Assyrian Empire[0m[4m>. For all its military strength, it never quite managed to supplant <[look up babylon in the dictionary] [0m[1m[4mBabylon[0m[4m> as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+[0m[4m[0m[1m[4mNineveh:[0m[4m The main capital of the <[look up the neo-assyrian empire in the encyclopedia] [0m[1m[4mNeo-Assyrian Empire[0m[4m>. For all its military strength, it never quite managed to supplant <[look up babylon in the encyclopedia] [0m[1m[4mBabylon[0m[4m> as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -378,7 +387,7 @@ parent-id: 1778630448655
 command: dictionary
 --------------------------------------------------------------------------------
 > dictionary
-When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up babylon in the dictionary] [0m[1mBabylon[0m>, <[look up nineveh in the dictionary] Nineveh>, and <[look up neo-assyrian empire in the dictionary] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
+When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up babylon in the encyclopedia] [0m[1mBabylon[0m>, <[look up nineveh in the encyclopedia] Nineveh>, and <[look up the neo-assyrian empire in the encyclopedia] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
 
 [0m[50m                                        ( ) 
                                        / |  
@@ -412,7 +421,7 @@ command: look up babylon
 > look up babylon
 (in the pocket encyclopedia)
 
-[0m[4m[0m[1m[4mBabylon:[0m[4m At one time, the capital of the Babylonian Empire; in the time of <[look up nineveh in the dictionary] [0m[1m[4mNineveh[0m[4m>, though, it was a vassal state of the <[look up neo-assyrians in the dictionary] [0m[1m[4mNeo-Assyrians[0m[4m>. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+[0m[4m[0m[1m[4mBabylon:[0m[4m At one time, the capital of the Babylonian Empire; in the time of <[look up nineveh in the encyclopedia] Nineveh>, though, it was a vassal state of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrians>. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -1993,15 +2002,6 @@ parent-id: 1778646225187
 command: gold
 --------------------------------------------------------------------------------
 > gold
-
-[0m[4mDid you want to examine <[pieces of silver and gold] the pieces of silver and gold> or <[statue of marduk] the statue of Marduk>?
-[0m
---------------------------------------------------------------------------------
-id: 1778695576191
-parent-id: 1778646225188
-command: pieces
---------------------------------------------------------------------------------
-> pieces
 Some flat sheets, some wires, some misshapen bits that need to be hammered out again. All beautifully shiny in the light of the forge.
 
 [0m[50m                                  [ ]     [ ] 
@@ -2015,7 +2015,7 @@ Some flat sheets, some wires, some misshapen bits that need to be hammered out a
 [0m[1m<[look] Workshop>[0m • <east> • <southwest>
 --------------------------------------------------------------------------------
 id: 1778695576192
-parent-id: 1778695576191
+parent-id: 1778646225188
 command: statue
 --------------------------------------------------------------------------------
 > statue
@@ -4259,7 +4259,7 @@ Your <rope> is anchored to the cart up above, giving you a way to climb back out
 
 Small <electric lights> flicked on when you got close, bathing the tunnel in an actinic blue. The proper excavation here has only just started, but <white fragments> shine in one of the walls.
 
-That should be the last one—you’ve explored every corner of these disjointed memories, and gathered more data than your advisor could have dreamed. Now all you have to do is put it together.
+That should be the last one—you’ve explored every corner of these disjointed memories, and you have a better story than your advisor could have ever dreamed. Now all you have to do is weave it together.
 
 [0m[4mYou’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type [0m[4m[50m<FINISH>[0m[4m to wrap things up.
 [0m
@@ -4288,6 +4288,7 @@ Game over. You scored 25 points out of 25.
 [0m[4mWould you like to:
      <UNDO> the last move,
      <RESTORE> a saved position,
+     display the whole <ENCYCLOPEDIA>,
      see the real <HISTORY> behind this game,
      review your <SCORE>,
      <QUIT> the program,
@@ -4305,6 +4306,7 @@ command: history
 [0m[4mWould you like to:
      <UNDO> the last move,
      <RESTORE> a saved position,
+     display the whole <ENCYCLOPEDIA>,
      see the real <HISTORY> behind this game,
      review your <SCORE>,
      <QUIT> the program,
@@ -4361,3 +4363,41 @@ command: full
 [0m[1m<[me] You>[0m • <inventory> • <wait>
 [0m[1m<[my backpack] Your backpack>[0m (held) • <[drop my backpack] drop it> • <[put my backpack onto] put it on something> • <[wear my backpack] wear it> • <[close my backpack] close it>
 [0m[1m<[look] Your camp>[0m • <east> • <northeast>
+--------------------------------------------------------------------------------
+id: 1779486866872
+parent-id: 1778709670938
+command: encyclopedia
+--------------------------------------------------------------------------------
+> encyclopedia
+[0m[1mBabylon:[0m At one time, the capital of the Babylonian Empire; in the time of <[look up nineveh in the encyclopedia] Nineveh>, though, it was a vassal state of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrians>. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+
+[0m[1mNineveh:[0m The main capital of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire>. For all its military strength, it never quite managed to supplant <[look up babylon in the encyclopedia] Babylon> as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+
+[0m[1mNeo-Assyrian Empire:[0m An Iron Age state that was briefly the largest and most powerful empire the world had ever seen, before it came to a sudden and violent end around 600 BCE. Many later empires were inspired by the Neo-Assyrians’ brutality and their goal of complete world domination.
+
+[0m[1mSiin-ahhe-eriba:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> from 705 to 681 BCE, best known for renovating the capital at <[look up nineveh in the encyclopedia] Nineveh>, and for destroying the city of <[look up babylon in the encyclopedia] Babylon> after rebels there killed his eldest son. His name means “<[look up the gods and goddesses in the encyclopedia] Siin> has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
+
+[0m[1mUrad-Mullissi:[0m A son of <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba>. He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared <[look up asshur-ahu-iddina in the encyclopedia] Asshur-ahu-iddina> his heir instead. His name means “servant of <[look up the gods and goddesses in the encyclopedia] Mullissu>”, and is transcribed (somewhat mangled) in Hebrew as “Adrammelech”.
+
+[0m[1mAsshur-ahu-iddina:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba> by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(the god) <[look up the gods and goddesses in the encyclopedia] Asshur> has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
+
+[0m[1mGods and goddesses:[0m The many gods of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> included:
+ • Anshar, titan of the horizon and ancestor of the gods
+ • Asshur, god of Assyria; <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba> claimed he was the same as Anshar
+ • Marduk, god of kingship and <[look up babylon in the encyclopedia] Babylonia>
+ • Mullissu, goddess of love and destiny, wife of Asshur
+ • Nabuu, god of writing and knowledge, vizier of Marduk
+ • Siin, god of the moon, fertility, and dairy products
+Most Assyrian and Babylonian names were full sentences, and including a god in your child’s name was a good way to ensure that god would favor them.
+
+[0m[1mZiggurats:[0m Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki (“Temple of the Foundation of Heaven and Earth”) in <[look up babylon in the encyclopedia] Babylon>, which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
+
+[0m[4mWould you like to:
+     <UNDO> the last move,
+     <RESTORE> a saved position,
+     display the whole <ENCYCLOPEDIA>,
+     see the real <HISTORY> behind this game,
+     review your <SCORE>,
+     <QUIT> the program,
+     or <RESTART> from the beginning?
+[0m

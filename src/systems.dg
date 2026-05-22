@@ -428,25 +428,24 @@
 (topic-listing $List)
 	(listing $List {(topic-item $_)} @and [] 0)
 (topic-item $Topic)
-	(object $Topic)
 	(collect words)
-		look up (name $Topic) in the dictionary
+		look up (the $Topic) in the encyclopedia
 	(into $Words)
 	(if) ($Topic is visited) (then)
 		(link $Words) { (span @topic) (the $Topic) }
 	(else)
 		(link $Words) { (span @bold) { (span @topic) (the $Topic) } }
 	(endif)
-(topic-item $Topic)
-	(nonempty $Topic) %% Closure
+(topic-item $Words $Obj)
 	(collect words)
-		look up (query $Topic) in the dictionary
-	(into $Words)
-	(if) ($Topic is visited) (then)
-		(link $Words) { (span @topic) (query $Topic) }
+		look up (the $Obj) in the encyclopedia
+	(into $Link)
+	(if) ($Obj is visited) (then)
+		(link $Link) { (span @topic) (query $Words) }
 	(else)
-		(link $Words) { (span @bold) { (span @topic) (query $Topic) } }
+		(link $Link) { (span @bold) { (span @topic) (query $Words) } }
 	(endif)
+	(unlock $Obj)
 
 %% Convenience
 (unlock $Topic) (now) ($Topic is unlocked)
@@ -496,9 +495,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	At one time, the capital of the Babylonian Empire; in the time of (topic-item {Nineveh}), though, it was a vassal state of the (topic-item {Neo-Assyrians}). Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
-	(unlock #t-nineveh)
-	(unlock #t-empire)
+	At one time, the capital of the Babylonian Empire; in the time of (topic-item {Nineveh} #t-nineveh), though, it was a vassal state of the (topic-item {Neo-Assyrians} #t-empire). Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 
 #t-nineveh
 (name *) Nineveh
@@ -506,9 +503,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	The main capital of the (topic-item {Neo-Assyrian Empire}). For all its military strength, it never quite managed to supplant (topic-item {Babylon}) as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
-	(unlock #t-empire)
-	(unlock #t-babylon)
+	The main capital of the (topic-item {Neo-Assyrian Empire} #t-empire). For all its military strength, it never quite managed to supplant (topic-item {Babylon} #t-babylon) as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
 
 #t-empire
 (name *) Neo-Assyrian Empire
@@ -526,11 +521,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	King of the (topic-item {Neo-Assyrian Empire}) from 705 to 681 BCE, best known for renovating the capital at Nineveh, and for destroying the city of (topic-item {Babylon}) after rebels there killed his eldest son. His name means “(no space) (topic-item {Siin}) has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
-	(unlock #t-empire)
-	(unlock #t-babylon)
-	(unlock #t-nineveh)
-	(unlock #t-gods)
+	King of the (topic-item {Neo-Assyrian Empire} #t-empire) from 705 to 681 BCE, best known for renovating the capital at (topic-item {Nineveh} #t-nineveh), and for destroying the city of (topic-item {Babylon} #t-babylon) after rebels there killed his eldest son. His name means “(no space) (topic-item {Siin} #t-gods) has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
 
 #t-urad-mullissi
 (name *) Urad-Mullissi
@@ -539,10 +530,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	A son of (topic-item {Siin-ahhe-eriba}). He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared Asshur-ahu-iddina his heir instead. His name means “servant of (topic-item {Mullissu}) (no space)”, and is transcribed \( somewhat mangled \) in Hebrew as “Adrammelech”.
-	(unlock #t-siin-ahhe-eriba)
-	(unlock #t-asshur-ahu-iddina)
-	(unlock #t-gods)
+	A son of (topic-item {Siin-ahhe-eriba} #t-siin-ahhe-eriba). He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared (topic-item {Asshur-ahu-iddina} #t-asshur-ahu-iddina) his heir instead. His name means “servant of (topic-item {Mullissu} #t-gods) (no space)”, and is transcribed \( somewhat mangled \) in Hebrew as “Adrammelech”.
 
 #t-asshur-ahu-iddina
 (name *) Asshur-ahu-iddina
@@ -551,10 +539,7 @@
 (proper *)
 (topic *)
 (dictionary entry for *)
-	King of the (topic-item {Neo-Assyrian Empire}) from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of (topic-item {Siin-ahhe-eriba}) by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(no space) (topic-item {Asshur}) has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
-	(unlock #t-siin-ahhe-eriba)
-	(unlock #t-gods)
-	(unlock #t-empire)
+	King of the (topic-item {Neo-Assyrian Empire} #t-empire) from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of (topic-item {Siin-ahhe-eriba} #t-siin-ahhe-eriba) by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(no space) \( the god \) (topic-item {Asshur} #t-gods) has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
 
 #t-gods
 (name *) gods and goddesses
@@ -563,19 +548,16 @@
 (plural *)
 (topic *)
 (dictionary entry for *)
-	The many gods of the (topic-item {Neo-Assyrian Empire}) included:
+	The many gods of the (topic-item {Neo-Assyrian Empire} #t-empire) included:
 	(div @list) {
 		(div @listitem) { (bullet) Anshar, titan of the horizon and ancestor of the gods }
-		(div @listitem) { (bullet) Asshur, god of Assyria; (topic-item {Siin-ahhe-eriba}) claimed he was the same as Anshar }
-		(div @listitem) { (bullet) Marduk, god of kingship and (topic-item {Babylonia}) }
+		(div @listitem) { (bullet) Asshur, god of Assyria; (topic-item {Siin-ahhe-eriba} #t-siin-ahhe-eriba) claimed he was the same as Anshar }
+		(div @listitem) { (bullet) Marduk, god of kingship and (topic-item {Babylonia} #t-babylon) }
 		(div @listitem) { (bullet) Mullissu, goddess of love and destiny, wife of Asshur }
 		(div @listitem) { (bullet) Nabuu, god of writing and knowledge, vizier of Marduk }
 		(div @listitem) { (bullet) Siin, god of the moon, fertility, and dairy products }
 	}
 	Most Assyrian and Babylonian names were full sentences, and including a god in your child’s name was a good way to ensure that god would favor them.
-	(unlock #t-babylon)
-	(unlock #t-empire)
-	(unlock #t-siin-ahhe-eriba)
 
 #t-ziggurat
 (name *) ziggurats
@@ -583,17 +565,29 @@
 (plural *)
 (topic *)
 (dictionary entry for *)
-	Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki \( “Temple of the Foundation of Heaven and Earth” \) in (topic-item {Babylon}), which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
+	Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki \( “Temple of the Foundation of Heaven and Earth” \) in (topic-item {Babylon} #t-babylon), which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
 	(if) (interpreter can embed @ziggurat) (then)
 		(par) (embed resource @ziggurat)
 		(par) \( Model from the Pergamon Museum in Berlin. \)
 	(endif)
-	(unlock #t-babylon)
 
 (define resource @ziggurat) etemenanki.jpg; A modern model of the Etemenanki.
 
 %% And at the end:
 (*(topic $) is locked) %% Lock all topics unless otherwise specified
+
+(display the whole dictionary) %% For the endgame
+	(exhaust) {
+		*(topic $Topic)
+		(now) ($Topic is unlocked)
+		(now) ($Topic is visited) %% Don’t display in bold
+	}
+	(exhaust) {
+		*(topic $Topic)
+		(span @bold) { (Name $Topic) : }
+		(dictionary entry for $Topic)
+		(par)
+	}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                           Vignettes                           %%%%%%%%%

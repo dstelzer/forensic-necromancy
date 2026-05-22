@@ -7,10 +7,11 @@
 	(div @meta) {
 		(span @bold) { Content warning: }
 		This game includes significant \( but non-graphic \) discussion of murder and capital punishment, mentions of historical \( first millennium BCE \) ableism, and minor depiction of psychedelics used for ritual purposes. The author considers it “PG” rated: not unsuitable for children, but parental guidance is suggested. (par)
+		When you see this prompt,
 		(if) (interpreter supports links) (then)
-			Click below or press ENTER to continue.
+			click below or press ENTER to continue.
 		(else)
-			Press any key to continue.
+			press any key to continue.
 		(endif)
 	}
 	(pause)
@@ -22,6 +23,7 @@
 	Six years of work, countless hours in the library and the lab, hunched over your laptop, poring over old manuscripts or departmental paperwork...and now it’s almost over. Your advisor has given you a deadline, and you need to defend your thesis by the end of the year, or leave with nothing to show for it. (par)
 	Your data is promising. The experimental results are fantastic, the p-values are significant, and you’ve gotten a couple publications out of the process. But numbers don’t convince people—stories do. If you want to be the first ever PhD in Forensic Necromancy, you need more than tables and graphs. You need a narrative, something new and exciting, that will grab public attention and make the academic establishment listen. (par)
 	Which means you need human remains in situ, and the older the better. The last of your advisor’s grant funding got you to Nineveh just after midnight. The rest is up to you.
+	(pause)
 	(banner)
 	(try [look])
 
@@ -130,13 +132,15 @@
 	}
 	(now) (taught examining)
 
+(after [take $]) (now) (taken something)
 (give the tutorial)
 	~(taught items)
-	~(taught inventory)
+	~(taken something)
 	(current focus $Obj)
 	(item $Obj)
+	~(held $Obj)
 	(div @tutorial) {
-		When you see a small object, like (the $Obj), you can pick it up and take it with you.
+		When you see a small object, like (the $Obj), you can pick (them $Obj) up and take (them $Obj) with you.
 	}
 	(now) (taught items)
 
@@ -162,8 +166,7 @@
 
 (give the tutorial)
 	~(taught inventory)
-	*($Obj is #heldby #p-real)
-	~($Obj = #tools)
+	(taken something)
 	(div @tutorial) {
 		A lot of text adventures involve finding objects and moving them around. To see what you’re currently holding, (command link {take inventory})
 		(if) ~(interpreter supports links) (then)
@@ -287,7 +290,7 @@
 (your *)
 (room header *) Your camp
 (look *)
-	The main field crew keeps their equipment off to the (#south), but you’ve made an unobtrusive little camp here
+	The main field crew keeps their equipment off to the south, but you’ve made an unobtrusive little camp here
 	(if) (#backpack is pristine) (then)
 		: your (#bike) locked to a piece of machinery, your (#backpack) looped over the handlebars.
 	(else)
@@ -679,6 +682,9 @@
 %% Anything else can be recovered by means of the cart and rope
 (prevent [put #rope #in *])
 	Tossing the rope into the pit is a fine idea, but it should be tied to something first. Otherwise, how will you get it back?
+
+(prevent [tie #rope to *])
+	Thin air won’t do a good job of holding your weight. You need something big and heavy.
 
 #wires
 (name *) electrical wires
@@ -1185,7 +1191,7 @@
 
 #metals
 (name *) pieces of silver and gold
-(heads *) pieces wire sheet sheets
+(heads *) pieces wire sheet sheets silver gold
 (plural *)
 (item *)
 (* is #partof #equipment)
@@ -1806,21 +1812,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (late on every tick)
-	(current room $Room)
-	~(vignette $Room)
-	~(any vignette is unvisited)
-	(select)
-		(par) That should be the last one—you’ve explored every corner of these disjointed memories, and gathered more data than your advisor could have dreamed. Now all you have to do is put it together.
-		(div @meta) {
-			You’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type (command link {FINISH}) to wrap things up.
-		}
-		(now) (finish command unlocked)
-	(or)
-	(stopping)
+	{ (current room $Room) ~(vignette $Room) } %% Not in a memory
+	~(any vignette is unvisited) %% Seen every memory
+	~(finish command unlocked) %% Not seen this message yet
+	(par) That should be the last one—you’ve explored every corner of these disjointed memories, and you have a better story than your advisor could have ever dreamed. Now all you have to do is weave it together.
+	(div @meta) {
+		You’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type (command link {FINISH}) to wrap things up.
+	}
+	(now) (finish command unlocked)
 
 (understand command [finish])
 (prevent [finish])
-	(any vignette is unvisited)
+	~(finish command unlocked)
 	Your work isn’t finished yet—there are still more
 	(if)
 		(#n-ziqqurat is visited)
@@ -1841,6 +1844,11 @@
 	make your way out of the archaeological dig, back to your bike, back to the motel, and eventually, back to the university. You’ve witnessed things no human being has seen in millennia—the department will (emph {have}) to give you a doctorate for this! (par)
 	Now, you just have to write it...
 	(game over {The End})
+
+(game over option)
+	display the whole (link) ENCYCLOPEDIA ,
+(parse game over [encyclopedia/encyclopaedia/dictionary])
+	(display the whole dictionary)
 
 (game over option)
 	see the real (link) HISTORY behind this game,
