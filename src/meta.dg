@@ -8,7 +8,7 @@
 
 (story credits)
 	This game was written by Daniel M. Stelzer for Parsercomp 2026. While the frame narrative here is fiction, it’s based on real historical events; once you’ve completed the game, you can see a summary of the actual history with some academic references. (par)
-	Tested by baezil, rh, Tabitha, Joel Burton \( round 1 \), Tobias V. I. Langhoff \( round 2 \) , and YOUR NAME HERE! \( round 3 \) . (par)
+	Tested by baezil, Tabitha, Joel Burton \( round 1 \), Tobias V. I. Langhoff, rh \( round 2 \) , and YOUR NAME HERE! \( round 3 \) . (par)
 	The cover art is a woodcut by the Pre-Raphaelite artist Arthur Murch, “The Flight of Adrammelech” from Dalziel’s Bible Gallery \( 1881 \), currently in the Met.
 
 %% We want a fancier banner than the default, for our overly dramatic subtitle
@@ -67,7 +67,7 @@
 (center $Closure with text width $Text bar width $Bar window width $Window bold $Bold)
 	($Window minus $Bar into $Margin)
 	($Margin divided by 2 into $MarginLeft)
-	($Margin minus $MarginLeft into $MarginRight)
+%%	($Margin minus $MarginLeft into $MarginRight)
 	($Bar minus $Text into $Padding)
 	($Padding divided by 2 into $PaddingRight)
 	($Padding minus $PaddingRight into $PaddingLeft)
@@ -82,5 +82,5 @@
 			(endif)
 			(space $PaddingRight)
 		}
-		(space $MarginRight)
+%%		(space $MarginRight)
 	}

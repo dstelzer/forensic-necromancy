@@ -209,7 +209,8 @@
 %% Hints
 
 (define resource @hints) hints.html; an HTML file of hints.
-(understand command [hints])
+(grammar [hint/hints] for [hints])
+(command [hints])
 (perform [hints])
 	(div @meta) {
 		(if) (interpreter supports links) (then)

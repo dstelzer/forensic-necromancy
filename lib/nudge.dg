@@ -71,11 +71,11 @@
 	(div @listitem) { (bullet) (uppercase) (query $Head) }
 	(semicolon list internal $Rest)
 
-(grammar [think/nudge/help] for [nudge])
-(command [nudge])
+(grammar [nudge/help] for [nudge])
 (perform [nudge])
 	You pause for a moment and think through your options.
 	(nudge)
+(instead of [think]) (try [nudge])
 
 (nudge)
 	(collect $Puzzle) %% Examined puzzles that can currently be solved
