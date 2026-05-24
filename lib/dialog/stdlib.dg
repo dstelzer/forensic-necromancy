@@ -1,6 +1,7 @@
-%% Auto-generated from stdlib.dg: straight quotes changed to curly
+%% Auto-generated from default stdlib.dg: straight quotes changed to curly
+%% Regexes by Daniel Stelzer https://github.com/dstelzer/dialog-unicode
 
-(library version) Library version 1.2.0.
+(library version) Library version 1.2.2-dev.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Global variables
@@ -2071,6 +2072,7 @@
 %% DRINK <obj>
 
 (grammar [drink/sip/quaff [object]] for [drink $])
+(grammar [drink/sip from [object]] for [drink $])
 
 (unlikely [drink $Obj])
 	~(potable $Obj)
@@ -3996,7 +3998,7 @@
 	(endif)
 
 (narrate $Obj leaving $ $Dir to $NewRoom)
-	(The $Obj) disappear(s $Obj) (name $Dir) 
+	(The $Obj) disappear(s $Obj) (name $Dir)
 	(if) ($NewRoom is visited) (then) to (the $NewRoom) (endif).
 
 (narrate $Obj entering $NewRoom from $OldRoom)
@@ -4525,7 +4527,7 @@
 (notice $Obj)
 	(if) (object $Obj) (then)
 		(reveal $Obj)
-		
+
 		%% Should we set plural pronouns?
 		(if)
 			(ambiguously plural $Obj) (or)
@@ -4535,7 +4537,7 @@
 		(then)
 			(now) (them refers to [$Obj])
 		(endif)
-		
+
 		%% Should we set singular pronouns?
 		(if)
 			(ambiguously plural $Obj) (or)
@@ -4557,7 +4559,7 @@
 				(endif)
 			(endif)
 		(endif)
-		
+
 	(elseif) (list $Obj) (then)
 		(if) ($Obj = [$Single]) (then)
 			(notice $Single)
@@ -4568,7 +4570,7 @@
 
 (notice player’s $Obj)
 	(if) ~(current player $Obj) (then)
-		
+
 		(if) (list $Obj) (then)
 			(if) ($Obj = [$Single]) (then)
 				(notice player’s $Single)
@@ -4576,7 +4578,7 @@
 				(now) (them refers to $Obj)
 			(endif)
 		(else)
-			
+
 			%% Should we set plural pronouns?
 			(if)
 				(ambiguously plural $Obj) (or)
@@ -4586,7 +4588,7 @@
 			(then)
 				(now) (them refers to [$Obj])
 			(endif)
-			
+
 			%% Should we set singular pronouns?
 			(if)
 				(ambiguously plural $Obj) (or)
@@ -4607,7 +4609,7 @@
 					(endif)
 				(endif)
 			(endif)
-		
+
 		(endif)
 	(endif)
 
@@ -4947,7 +4949,7 @@
 				(now) ~(moving long distances)
 				(now) ~(last step of movement)
 			(endif)
-			
+
 			(if)
 				(scoring enabled)
 				(score notifications are on)
@@ -5381,7 +5383,7 @@
 	*(parse $Words as single object $Output $Closure [])
 
 (understand $Words as object $Output preferably child of $Parent)
-	*(parse $Words as object $Output $Parent [] 1)
+	*(parse $Words as object $Output {($_ has parent $Parent)} [] 1)
 
 (understand $Words as object $Output preferably takable)
 	*(parse $Words as object $Output {(takable $_)} [] 1)
@@ -5434,11 +5436,11 @@
 	~($Obj is nested #wornby $)
 	~($Obj is nested #heldby $)
 
+%% This predicate used to do something different if $Policy was an object
+%% Now it doesn’t, because object policies caused obscure bugs for not much gain
+%% Instead, it just tests that the policy is bound to a list, because $ is used for the null policy
+%% (bound $) isn’t enough to satisfy the compiler’s checks, and (fully bound $) is too much, closures can have non-fully-bound inputs
 (interface (verify object policy $Policy $<Obj))
-
-(verify object policy (object $Policy) $Obj)
-	($Obj has parent $Policy)
-
 (verify object policy (nonempty $Policy) $Obj)
 	(query $Policy $Obj)
 
@@ -5749,6 +5751,7 @@
 	(filter $Words into $Filtered)
 	(determine object $Obj)
 		*(topic $Obj)
+		(words $Filtered sufficiently specify $Obj)
 	(from words)
 		*(dict $Obj)
 	(matching all of $Filtered)
@@ -6681,3 +6684,47 @@
 (report fatal error 6)	Long-term heap space exhausted.
 (report fatal error 7)	Invalid output state.
 (report fatal error $)	Invalid error code!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% License and copyright notice
+%% Copyright 2018-2026 Linus Åkesson and the Dialog Project contributors
+%%
+%% Redistribution and use in source and binary forms, with or without
+%% modification, are permitted provided that the following conditions are met:
+%%
+%%  1. Redistributions of source code must retain the above copyright
+%%      notice, this list of conditions and the following disclaimer.
+%%
+%%  2. Redistributions in binary form must reproduce the above copyright
+%%     notice, this list of conditions and the following disclaimer in the
+%%     documentation and/or other materials provided with the distribution.
+%%
+%%     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS
+%%     IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+%%     TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+%%     PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+%%     HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+%%     SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+%%     LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+%%     DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+%%     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+%%     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+%%     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%%
+%% This license is intended to apply to the Dialog compiler and debugger and
+%% the source code of the standard libraries. Any time those components are
+%% distributed, this copyright notice should be attached. But it is not meant
+%% to limit what the compiler’s output can be used for, even for projects that
+%% include the standard libraries. To make this explicit, the project is ALSO
+%% released under a modified two-clause BSD license, which is exactly the same
+%% as the above but adds this exception:
+%%
+%%     As an exception, if, as a result of you compiling your source code,
+%%     portions of this software are embedded into compiler output in binary
+%%     form, you may redistribute such embedded portions without complying
+%%     with condition 2 of the license.
+%%
+%% In other words, you can distribute the Z-machine and Å-machine bytecode that
+%% the compiler produces in any way you like, without needing to include this
+%% license file or comply with the attribution requirements (for the library
+%% or for the Z-machine runtime routines).
