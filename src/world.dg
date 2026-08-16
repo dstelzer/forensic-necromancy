@@ -858,6 +858,7 @@
 			somewhere else
 		(endif)
 		.
+		(update environment around player) %% Make sure it gets attracted
 	(endif)
 
 (from * go #southeast to #n-ziqqurat)
@@ -943,15 +944,31 @@
 
 #exec-tzillaya
 (name *) stout man
-(dict *) other tablet tablets sticky darkness thick fluid
+(dict *) other tablet tablets
 (male *)
 (* is #in #n-execution)
 (descr *)
 	(sufficient light)
-	The sticky darkness flows away from your lamp, leaving the man’s form clear. He’s glancing back to make sure he wasn’t followed, clutching his tablets as he slips through a...door?...to the north. Where is he going?
+	The sticky darkness flows away from your lamp, leaving the man’s form clear. He’s glancing back to make sure he wasn’t followed, clutching his tablets as he slips through...the wall? (par)
+	No, it’s a door, but a cleverly-hidden one. So there was a secret passage due north of this spot.
+	(if) (#deeppit is unvisited) (then)
+		Have the archaeologists found it yet?
+	(endif)
 	(now) (northern connection unlocked)
 (descr *)
-	You walk toward the stout man, but his form doesn’t get any clearer—there’s a sticky darkness spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But something must have gone wrong with the memory.
+	You walk toward the stout man, but his form doesn’t get any clearer—there’s a ({sticky darkness}) spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But forensic necromancy is a new process, and apparently this oily void is the result.
+
+#exec-darkness
+(name *) sticky darkness
+(dict *) oily oil void thick fluid
+(uncountable *)
+(* is #in #n-execution)
+(descr *)
+	(sufficient light)
+	It flows away from your lamp, leaving a bright, clear space around you. ({The stout man}) is now easy to see.
+(descr *)
+	You run your finger through it, and it feels like...nothing. Like your finger doesn’t exist. Thankfully the sensation goes away when you pull your hand back.
+(feel *) (descr *)
 
 (puzzle *)
 (* requires #lamp)
@@ -1445,6 +1462,14 @@
 		(fail)
 	(stopping)
 
+#palace-darkness %% For completeness, though it’s never linked
+(name *) darkness
+(dict *) dark doorway door
+(uncountable *)
+(* is #in #s-palace)
+(descr *) It looks like normal darkness from here.
+(instead of [enter *]) (try [go #east])
+
 #lamassu
 (name *) lamassu
 (dict *) lammasu
@@ -1670,7 +1695,7 @@
 #s-throneroom
 (name *) cramped passage
 (room *)
-(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky darkness coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
+(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky ({darkness}) coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
 
 (from * go #west to #s-palace)
 (from * go #northeast to #s-revelation)
@@ -1681,6 +1706,13 @@
 
 (narrate leaving #s-palace #east) You take a deep breath and step into the darkness. It flows away from your lamp like some kind of viscous fluid, leaving a small patch of visibility around you.
 (narrate leaving * #west) You step back into the light.
+
+#throne-darkness
+(name *) sticky darkness
+(dict *) thick viscous fluid
+(* is #in #s-throneroom)
+(uncountable *)
+(descr *) It flows away from your lamp like oil on a hot pan.
 
 %% Vignette 3
 #s-revelation
@@ -1816,7 +1848,7 @@
 	~(any vignette is unvisited) %% Seen every memory
 	~(finish command unlocked) %% Not seen this message yet
 	(par) That should be the last one—you’ve explored every corner of these disjointed memories, and you have a better story than your advisor could have ever dreamed. Now all you have to do is weave it together.
-	(div @meta) {
+	(div @tutorial) {
 		You’re free to keep exploring as long as you like. When you’re satisfied with your discoveries, type (command link {FINISH}) to wrap things up.
 	}
 	(now) (finish command unlocked)

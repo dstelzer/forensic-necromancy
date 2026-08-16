@@ -1,5 +1,8 @@
-SOURCES = $(shell dgt sources)
+SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
+
+regress:
+	dgt skein run
 
 build: web itch.zip forensic.z5
 
@@ -55,5 +58,5 @@ PWD := $(shell pwd)
 hints.html: hints.clu
 	( cd ~/Projects/Invisiclues && python3 maker.py $(PWD)/hints )
 
-.PHONY: build play
+.PHONY: build play regress
 all: build

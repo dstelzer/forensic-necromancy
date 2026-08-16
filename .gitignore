@@ -7,3 +7,13 @@ out
 secrets/*.dg
 vvv.log
 *.xcf
+build.*
+*.aastory
+feedback/
+*.zip
+*.log
+web/
+z5/
+*.z5
+*.z8
+*.zblorb

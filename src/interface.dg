@@ -222,6 +222,7 @@
 
 (after [nudge]) %% Little tutorial
 	~(taught hints)
+	(tutorial is active)
 	(div @tutorial) {
 		If you’re really stuck on a puzzle, you can also check the
 		(if) (interpreter supports links) (then) %% If we have proper links, don’t make the player click an extra time
@@ -319,7 +320,7 @@
 	(div @meta) {
 		You’ve solved (spell out $PNum) puzzle
 		(if) ~($PNum = 1) (then) (no space) s (endif)
-		\( (the-listing $PList) \)
+		\( (the-full-listing $PList) \)
 		(if) (nonempty $VList) (then) %% Can’t have empty PList and nonempty VList
 			and visited (spell out $VNum) memor (no space)
 			(if) ~($PNum = 1) (then) ies (else) y (endif)
