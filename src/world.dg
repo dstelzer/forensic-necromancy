@@ -482,15 +482,13 @@
 
 (try [go #west/#up])
 	(current room *)
-	(maybe jump from cart)
-(try [leave * #west/#up])
-	(current room *)
+	(#cart is #in *)
+	{ ~(upper rope connected) (or) (current player $Player) ($Player is #on #cart) }
 	(maybe jump from cart)
 
 %% Try using the cart if it’s available
 (maybe jump from cart)
-	\( using the cart \) (line)
-	(#cart is #in *)
+	\( jumping from the cart \) (line)
 	(if) ~{ (current player $Player) ($Player is #on #cart) } (then)
 		(first try [climb #cart])
 	(endif)

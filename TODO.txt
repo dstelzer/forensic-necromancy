@@ -1,9 +1,2 @@
-rewrite memories for clearer story
 weird status line breakage on C64: only when (top right) is enabled, only in the real world after visiting a memory??
 	disabled for now
-missing articles in double-nudge ("examine backpack")
-"visited one memories"
-"put it in something" "onto what?"
-"(using the cart) (using the cart)"
-suggests "put spear in" too early, gives the puzzle away
-"You" "the bone fragments" "Loose earth"

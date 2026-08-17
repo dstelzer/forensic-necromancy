@@ -328,11 +328,11 @@
 		\( (the-full-listing $PList) \)
 		(if) (nonempty $VList) (then) %% Can’t have empty PList and nonempty VList
 			and visited (spell out $VNum) memor (no space)
-			(if) ~($PNum = 1) (then) ies (else) y (endif)
+			(if) ~($VNum = 1) (then) ies (else) y (endif)
 			\( (the-listing $VList) \)
 		(endif)
 		, giving you (spell out $Score) point
-		(if) ~($PNum = 1) (then) (no space) s (endif)
+		(if) ~($Score = 1) (then) (no space) s (endif)
 		out of (spell out $Max) .
 	}
 
@@ -345,7 +345,7 @@
 
 %% A bit of extra guidance on overall goals
 (after [nudge])
-	~(any vignette is unvisited)
+	(any vignette is unvisited)
 	(par) Your overall goal is to put together a compelling narrative: something that will draw attention to your thesis.
 	Right now, that means
 	(if) (#n-execution is visited) (then)
