@@ -1,5 +1,7 @@
 SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
+OPTIONS = -vv -H 1500
+VERSION = 4
 
 regress:
 	dgt skein run
@@ -17,7 +19,7 @@ vvv.log: $(SOURCES) platform/z5.dg
 	rm tmp.z5
 
 forensic.web.aastory: $(SOURCES) platform/web.dg hints.html history.html
-	dialogc -t aa platform/web.dg $(SOURCES) -vv -o forensic.web.aastory -H 1500 2>&1 | tee build.web
+	dialogc -t aa platform/web.dg $(SOURCES) $(OPTIONS) -o forensic.web.aastory 2>&1 | tee build.web
 
 web: forensic.web.aastory hints.html cover.jpg
 	rm -rf web
@@ -34,10 +36,21 @@ itch.zip: web
 	( cd web && zip -r ../itch.zip . )
 
 forensic.c64.aastory: $(SOURCES) platform/c64.dg
-	dialogc -t aa platform/c64.dg $(SOURCES) -vv -o forensic.c64.aastory -H 1500 2>&1 | tee build.c64
+	dialogc -t aa platform/c64.dg $(SOURCES) $(OPTIONS) -o forensic.c64.aastory 2>&1 | tee build.c64
+
+c64.zip: forensic.c64.aastory
+	rm -rf c64
+	aambundle -t c64 -o c64 forensic.c64.aastory
+	cp hints.html c64/
+	cp history.html c64/
+	cp cover.jpg c64/
+	( cd c64 && zip -r ../c64.zip . )
 
 forensic.z5: $(SOURCES) platform/z5.dg
-	dialogc -t z5 platform/z5.dg $(SOURCES) -vv -o forensic.z5 -H 1500 2>&1 | tee build.z5
+	dialogc -t z5 platform/z5.dg $(SOURCES) $(OPTIONS) -o forensic.z5 2>&1 | tee build.z5
+
+zplay: forensic.z5
+	gargoyle forensic.z5
 
 z5.zip: forensic.z5 hints.html history.html
 	rm -rf z5
@@ -49,14 +62,17 @@ z5.zip: forensic.z5 hints.html history.html
 	rm -f z5.zip
 	( cd z5 && zip -r ../z5.zip . )
 
-# Uploaded as non-playable to Itch for download people
-web.zip: itch.zip
-	rm -rf web.zip
-	cp itch.zip web.zip
+itch: itch.zip z5.zip
+	cp itch.zip itch_$(VERSION).zip
+	cp z5 z5_$(VERSION).zip
+	cp itch_$(VERSION).zip web_$(VERSION).zip
+	butler push itch_$(VERSION).zip dercomai/forensic-necromancy:online
+	butler push z5_$(VERSION).z5 dercomai/forensic-necromancy:z
+	butler push web_$(VERSION).zip dercomai/forensic-necromancy:download
 
 PWD := $(shell pwd)
 hints.html: hints.clu
 	( cd ~/Projects/Invisiclues && python3 maker.py $(PWD)/hints )
 
-.PHONY: build play regress
+.PHONY: build play zplay regress itch
 all: build

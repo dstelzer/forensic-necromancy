@@ -1,9 +1,14 @@
 (style class @fullstatus)
 	height: 2em;
+(style class @ministatus)
+	height: 2em;
 
 (style class @fulldream)
 	height: 2em;
 	text-decoration: none; %% Not reversed
+(style class @minidream)
+	height: 2em;
+	text-decoration: none;
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) (space 1)
@@ -24,3 +29,6 @@
 
 (style class @roomheader)
 	margin-top: 1em;
+
+(interface (resources limited))
+(resources limited) (fail)

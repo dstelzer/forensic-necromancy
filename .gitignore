@@ -6,7 +6,6 @@ out
 .clj-kondo/cache
 secrets/*.dg
 vvv.log
-*.xcf
 build.*
 *.aastory
 feedback/
@@ -17,3 +16,4 @@ z5/
 *.z5
 *.z8
 *.zblorb
+c64/

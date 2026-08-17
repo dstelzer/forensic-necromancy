@@ -469,7 +469,9 @@
 	(div @mapholder) (automap)
 
 (startup)
-	(if) (interpreter supports status bar) (then)
+	(if) (resources limited) (then) %% C64
+		(now) ~(map enabled)
+	(elseif) (interpreter supports status bar) (then)
 		%% Normal terp with a status bar
 		(now) (map enabled)
 	(elseif) (in debugger) (then)

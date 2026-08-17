@@ -22,8 +22,8 @@
 	(endif)
 	(if) (map enabled) (then) %% Status bar map
 		(map of current layer needs $N lines)
-		($N plus 2 into $Np2)
-		($Np2 plus $Extra into $Total)
+		($N plus 1 into $Np1)
+		($Np1 plus $Extra into $Total)
 		(if) (dreaming) (then) %% Change the color of the status bar if possible to signal that something is different (see platform/ for detail)
 			(status bar @fulldream with height $Total) {
 				(automap)
@@ -40,14 +40,14 @@
 	(else)
 		(2 plus $Extra into $Total) %% Headline, progress
 		(if) (dreaming) (then)
-			(status bar @fulldream with height $Total) {
+			(status bar @minidream with height $Total) {
 				(top right)
 				(location headline) %% Default headline
 				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
 		(else)
-			(status bar @fullstatus with height $Total) {
+			(status bar @ministatus with height $Total) {
 				(top right)
 				(location headline) %% Default headline
 				(if) ($Extra = 1) (then) (meta verbs) (endif)

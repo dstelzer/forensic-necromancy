@@ -3,9 +3,13 @@
 	height: 6em;
 (style class @fulldream)
 	height: 6em;
+(style class @ministatus)
+	height: 2em;
+(style class @minidream)
+	height: 2em;
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
-(italic correction) (space 1)
+(italic correction) %% C64 uses alternate colors, not true italics
 
 (style class @meta)
 	font-style: italic;
@@ -23,3 +27,9 @@
 
 (style class @roomheader)
 	margin-top: 1em;
+
+(interface (resources limited))
+(resources limited) %% Resources are very limited!
+
+(after [options])
+	\( Warning: the automap is rather slow on a Commodore 64, and not recommended unless you have an emulator with warp speed. \)
