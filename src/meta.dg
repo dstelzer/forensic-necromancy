@@ -2,7 +2,7 @@
 (story author) Daniel M. Stelzer
 (story ifid) 185CEA3F-ED51-498B-92D7-C1A62F2D431C
 (story noun) A historical mystery
-(story release 4)
+(story release 5)
 (story blurb)
 	The theory holds up, and the lab data is promising. But if you want to be the first PhD in Forensic Necromancy, you need a story the world can’t ignore. Which is why you’re now creeping through Nineveh in the dead of night, searching for human remains in situ. What millennia-old secrets are waiting to be unearthed? And most importantly—will they be enough to impress a thesis committee?
 
@@ -46,16 +46,25 @@
 %% @title: see platform/
 %% It has top and bottom margins always, plus center alignment and side margins on web
 
-(fancy title) %% Fancy Z-machine implementation
+(fancy title) %% Fancy Z-machine and C64 implementation
 	~(interpreter supports text alignment)
 	(current div width $Width)
-	($Width > 53) %% So we can do proper centering without it wrapping
-	(div @title) {
-		(center { A MURDER IN NINEVEH } with text width 19 bar width 54 window width $Width bold 1)
-		(center { Submitted in partial fulfillment of the requirements } with text width 52 bar width 54 window width $Width bold 0)
-		(center { for the degree of Doctor of Philosophy in } with text width 41 bar width 54 window width $Width bold 0)
-		(center { FORENSIC NECROMANCY } with text width 19 bar width 54 window width $Width bold 1)
-	}
+	(if) ($Width > 53) (then) %% So we can do proper centering without it wrapping
+		(div @title) {
+			(center { A MURDER IN NINEVEH } with text width 19 bar width 54 window width $Width bold 1)
+			(center { Submitted in partial fulfillment of the requirements } with text width 52 bar width 54 window width $Width bold 0)
+			(center { for the degree of Doctor of Philosophy in } with text width 41 bar width 54 window width $Width bold 0)
+			(center { FORENSIC NECROMANCY } with text width 19 bar width 54 window width $Width bold 1)
+		}
+	(elseif) ($Width > 37) (then) %% If we’re distributing a C64 disk image, we might as well make it look nice on a 40-column screen
+		(div @title) {
+			(center { A MURDER IN NINEVEH } with text width 19 bar width 38 window width $Width bold 1)
+			(center { Submitted in partial fulfillment of } with text width 35 bar width 38 window width $Width bold 0)
+			(center { the requirements for the degree of } with text width 34 bar width 38 window width $Width bold 0)
+			(center { Doctor of Philosophy in } with text width 23 bar width 38 window width $Width bold 0)
+			(center { FORENSIC NECROMANCY } with text width 19 bar width 38 window width $Width bold 1)
+		}
+	(endif)
 
 (fancy title) %% Web implementation (and fallback on Z-machine if insufficient room or can’t estimate window width)
 	(div @title) {

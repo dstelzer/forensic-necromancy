@@ -1,8 +1,8 @@
 %% Change this if C64 ever supports (status bar $ with height $)
-(style class @fullstatus)
-	height: 6em;
+(style class @fullstatus) %% Enough for a very basic automap
+	height: 8em;
 (style class @fulldream)
-	height: 6em;
+	height: 8em;
 (style class @ministatus)
 	height: 2em;
 (style class @minidream)
@@ -12,12 +12,12 @@
 (italic correction) %% C64 uses alternate colors, not true italics
 
 (style class @meta)
-	font-style: italic;
+	font-style: italic; %% Blue
 	margin-top: 1em;
 	margin-bottom: 1em;
 
 (style class @tutorial)
-	font-style: italic;
+	font-style: italic; %% Blue
 	margin-top: 1em;
 	margin-bottom: 1em;
 

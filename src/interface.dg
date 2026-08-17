@@ -22,7 +22,7 @@
 	(endif)
 	(if) (map enabled) (then) %% Status bar map
 		(map of current layer needs $N lines)
-		($N plus 1 into $Np1)
+		($N plus 1 into $Np1) %% Progress bar
 		($Np1 plus $Extra into $Total)
 		(if) (dreaming) (then) %% Change the color of the status bar if possible to signal that something is different (see platform/ for detail)
 			(status bar @fulldream with height $Total) {
@@ -43,6 +43,9 @@
 			(status bar @minidream with height $Total) {
 				(top right)
 				(location headline) %% Default headline
+				(if) (resources limited) (then) %% See (top right) for why
+					\( dreaming \)
+				(endif)
 				(if) ($Extra = 1) (then) (meta verbs) (endif)
 				(story progress)
 			}
@@ -61,6 +64,8 @@
 	float: right;
 	width: 7ch;
 
+(top right)
+	(resources limited) %% This doesn’t work cleanly on C64 for unknown reasons, and I’m out of time to fix it...I think it’s a terp bug unfortunately
 (top right)
 	(div @topright) (top right reminder)
 

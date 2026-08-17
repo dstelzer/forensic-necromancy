@@ -22,7 +22,7 @@ command:
             [0m[7m[50m                  [0m[1m[7m[50mFORENSIC NECROMANCY[0m[7m[50m                 [0m[50m
 [0m
 A historical mystery by Daniel M. Stelzer.
-Release 4. Serial number DEBUG.
+Release 5. Serial number DEBUG.
 Dialog Interactive Debugger (dgdebug) version 1c/03-dev. Library version 1.2.2-dev. Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0, Puzzle Prompts 1.0, and Versatile Linking 1.0.
 
 [0m[1mTell Nabi Yunus[0m
@@ -858,9 +858,9 @@ Your breath catches in your throat. “T-treason? Conspiracy? I don’t—what i
 
 Your protests are cut off by a warning jab of the spear. You try one more time to force out the words. “I’m innocent! I swear by all the gods! The conspiracy—that wasn’t—my brother and me, we knew about it, but we made a report, he went to Nineveh to tell the palace! He can confirm what I’m saying, we’ll both swear to it in court! Sharhiya of Babylon, he’s a goldsmith too, he’s—”
 
-The wiry man spits and tosses his spear down in disgust. “Your brother? Oh, he’s told us [0mplenty[0m[4m.” He grabs the torch from the wall and holds it up, letting you see the fallen, crumpled shape lying in the shadows. [0mNo...[0m[4m
+The wiry man spits and tosses his spear down in disgust. “Sharhiya? Oh, he’s told us [0mplenty[0m[4m.” He grabs the torch from the wall and holds it up, letting you see the fallen, crumpled shape lying in the shadows. [0mNo...[0m[4m
 
-The stout man looks back at his tablet. “There will be no trial. The sentence is final, by order of Prince Urad-Mullissi.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?”
+The stout man looks back at his tablet. “There will be no trial. The sentence is final.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?” But all you can think is: this must be the work of Urad-Mullissi. If only your brother had listened to you...
 [0m
 <[] [[Continue]]>
 
@@ -974,7 +974,7 @@ parent-id: 1778640300974
 command: talk to him
 --------------------------------------------------------------------------------
 > talk to him
-Humans in memories are tricky things. The psychic impressions only record what actually happened; everything else is happening inside your head, as your brain fills in how things [0m[4mought[0m to work.
+Humans in memories are tricky things. The psychic impressions only record what actually happened; everything else is a sort of simulation inside your head, as your brain fills in how things [0m[4mought[0m to work.
 
 But people are harder to predict than spears and doors. If you do much of anything beyond looking at them, they get hazy and indistinct. You’re hoping to find a way to fix this, eventually.
 
@@ -1219,7 +1219,7 @@ command:
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[4m(Your [<score>] has gone up by one point.)
 [0m
@@ -1353,7 +1353,7 @@ You move toward the traces of motion, and the dream shifts...
 
 “I have important information for the King. About a threat to his royal personage. I sent a letter—”
 
-The stout man flips his tablet over and clears his throat. “He’s right. It’s recorded here. We’re to take him to the throne room immediately.”
+The stout man on the other side flips his tablet over and clears his throat. “He’s right. It’s recorded here. We’re to take him to the throne room immediately.”
 
 The wiry man sighs and gestures toward you. “Fine. But first, your cloak. Give it here. No Babylonian can look at the unveiled face of royalty.”
 
@@ -1502,7 +1502,7 @@ You walk south.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                  [ ]     [ ] 
                                      \     |  
@@ -2084,7 +2084,7 @@ You move toward the traces of motion, and the dream shifts...
 
 You close your eyes for a long moment. “Fine. Make the trip, make your report. I’ll take care of things back here. But if you expect gratitude from the Assyrians...”
 
-You meet his gaze and hold it as the shadows start to close in. “You’re going to be disappointed.”
+You meet his gaze and hold it as the shadows start to close in. “You’re going to be gravely disappointed.”
 
 And the light gutters out.
 [0m
@@ -2322,7 +2322,7 @@ You walk east.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                    [ ]     [ ] 
                                        \     |  
@@ -2356,7 +2356,7 @@ command: douse them
 --------------------------------------------------------------------------------
 > douse them
 (pouring the water-filled bucket on the hot coals)
-You tilt the bucket and start pouring out water over the coals. There’s a [0m[4mhiss[0m, but no flash of steam—just a sudden clarity as the frozen air above the coals stops looking warped and twisted.
+You tilt the bucket and start pouring out water over the coals. There’s a [0m[4mhiss[0m, but no flash of steam—just a sudden clarity, like a camera coming into focus, as the frozen air above the coals stops looking warped and twisted.
 
 [0m[4m(Your [<score>] has gone up by one point.)
 [0m
@@ -2424,13 +2424,13 @@ A moment later you see them: two men carrying torches, moving toward the pool at
 
 “...absolutely sure of the report.” That has to be the high priest; you would recognize his voice anywhere. “Urad-Mullissi might have accepted someone else as crown prince, but a son of a secondary wife? It’s insult on top of insult.”
 
-“And he’s really going to try...”
+“And he’s really going to kill...”
 
-The high priest nods. “It’s the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. It will mean civil war. Chaos.”
+The high priest nods. “It is the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. A coup will mean civil war. Chaos.”
 
 “Then what will we do to prevent it?”
 
-“Prevent it?” The high priest shakes his head. “No. Civil war can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing to him. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.”
+“Prevent it?” The high priest shakes his head. “No. War in Assyria can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing to him. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.”
 
 The two figures turn and start to move away, and you can’t make out what they say next. But the high priest’s last words come in a sharp whisper: “No. Tell no one, on pain of death.”
 [0m
@@ -2463,7 +2463,7 @@ parent-id: 1778696952882
 command: pool
 --------------------------------------------------------------------------------
 > pool
-In Mesopotamian cosmology, underground fresh water was the source of all life: the corpse of a titan who was killed to create the world. Each major temple had a pool at its heart representing that fresh water, for rituals and such.
+In Mesopotamian cosmology, underground fresh water was the source of all life: the remains of a titan who was killed to create the world. Each major temple had a pool at its heart representing that fresh water, for rituals and such.
 
 [0m[50m                                [ ]     [ ]         
                                    \     |          
@@ -2656,7 +2656,7 @@ You walk northwest through the no-longer-hot coals.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                [ ]     [ ]         
                                    \     |          
@@ -2856,7 +2856,7 @@ You walk east.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                [ ]     [ ]         
                                    \     |          
@@ -2903,13 +2903,13 @@ A moment later you see them: two men carrying torches, moving toward the pool at
 
 “...absolutely sure of the report.” That has to be the high priest; you would recognize his voice anywhere. “Urad-Mullissi might have accepted someone else as crown prince, but a son of a secondary wife? It’s insult on top of insult.”
 
-“And he’s really going to try...”
+“And he’s really going to kill...”
 
-The high priest nods. “It’s the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. It will mean civil war. Chaos.”
+The high priest nods. “It is the only way he could take the throne. But every vassal has sworn loyalty to Asshur-ahu-iddina. A coup will mean civil war. Chaos.”
 
 “Then what will we do to prevent it?”
 
-“Prevent it?” The high priest shakes his head. “No. Civil war can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing to him. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.”
+“Prevent it?” The high priest shakes his head. “No. War in Assyria can only be to our benefit. As soon as the omens show a clear victor, we offer Marduk’s blessing to him. All of the Empire will see that Marduk is the kingmaker, the one who confers true power. And the Temple will return to its old prominence.”
 
 The two figures turn and start to move away, and you can’t make out what they say next. But the high priest’s last words come in a sharp whisper: “No. Tell no one, on pain of death.”
 [0m
@@ -3055,7 +3055,7 @@ You walk northwest through the no-longer-hot coals.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                [ ]     [ ]         
                                    \     |          
@@ -3221,7 +3221,7 @@ You walk east.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                [?]     [ ]         
                                    \     |          
@@ -3270,7 +3270,7 @@ Eventually, Urad-Mullissi sighs and stands up from the throne. “I swear to Ass
 
 “You see,” he steps toward you, and you have to fight the urge to back away, “my brother has been planning something, he and his mother. He doesn’t know how to quit while he’s ahead. Father’s gotten suspicious. And now he’s overplayed his hand—now, I have proof that he’s trying to frame me for treason. This testimony should be enough to get him exiled, or worse.”
 
-The prince sees your flinch, and stops moving closer. “So I would consider it a great favor, to me and to my father, if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.”
+The prince sees your flinch, and stops moving closer. “So I would consider it a great favor, to me, and to my father, if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.”
 
 So you think back, and start to recount your story...
 [0m
@@ -3412,7 +3412,7 @@ You step back into the light.
 [0m[1mRoyal palace[0m
 The architecture here looks Assyrian—it must be Nineveh, the same place your body is in the real world. But the [<lamassu>] are taller than a three-story building, the ceilings so high they're lost in the clouds. This is Nineveh as remembered by its enemies, majestic and imposing, larger than life.
 
-Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, a passage has intersected a brazier and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
+Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, hallways slicing through walls. The doorway to the north is grand and richly decorated, while the one to the east is too dark to see. Southeast, the opening of a passage has sliced a brazier in half and spilled [<no-longer-hot coals>] across the floor; west, an outdoor balcony juts in a meter above the floor.
 
 [0m[50m                                [?]     [ ]     [ ] 
                                    \     |     /    
@@ -3459,9 +3459,9 @@ Your breath catches in your throat. “T-treason? Conspiracy? I don’t—what i
 
 Your protests are cut off by a warning jab of the spear. You try one more time to force out the words. “I’m innocent! I swear by all the gods! The conspiracy—that wasn’t—my brother and me, we knew about it, but we made a report, he went to Nineveh to tell the palace! He can confirm what I’m saying, we’ll both swear to it in court! Sharhiya of Babylon, he’s a goldsmith too, he’s—”
 
-The wiry man spits and tosses his spear down in disgust. “Your brother? Oh, he’s told us [0mplenty[0m[4m.” He grabs the torch from the wall and holds it up, letting you see the fallen, crumpled shape lying in the shadows. [0mNo...[0m[4m
+The wiry man spits and tosses his spear down in disgust. “Sharhiya? Oh, he’s told us [0mplenty[0m[4m.” He grabs the torch from the wall and holds it up, letting you see the fallen, crumpled shape lying in the shadows. [0mNo...[0m[4m
 
-The stout man looks back at his tablet. “There will be no trial. The sentence is final, by order of Prince Urad-Mullissi.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?”
+The stout man looks back at his tablet. “There will be no trial. The sentence is final.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?” But all you can think is: this must be the work of Urad-Mullissi. If only your brother had listened to you...
 [0m
 <[] [[Continue]]>
 
@@ -4165,9 +4165,9 @@ He sniffs and turns away, and you relax just a fraction. “Very well. Finish th
 
 Suddenly the king is very, very close to you, his eyes blazing with fury. “Is it you, then? You’re the one she warned me about? It must be. It has to be. Yes. That’s why—that’s why it—”
 
-“Your Majesty! Please! My loyalty has never been in question! I orchestrated that ‘conspiracy’ for you; without me, you wouldn’t—”
+“Your Majesty! Please! My loyalty has never been in question! I orchestrated that ‘conspiracy’ for you; I made sure your brother would be blamed! Without me, you wouldn’t—”
 
-It was the wrong thing to say. In a split second the king’s hands are on your throat, with far more strength than you would have expected from his frail body. “I. Need. [0mNo one[0m[4m. I can trust. [0mNo one[0m[4m. It was you...it was you, all along! And once I’m rid of you...then, then, that’s when I’ll finally be safe!”
+It was the wrong thing to say. In a split second the king’s hands are on your throat, with far more strength than you would have expected from his frail body. “I. Need. [0mNo one[0m[4m. I can trust. [0mNo one[0m[4m. First Nabiya...he’s been dealt with. Tzillaya wants favors for his silence. The promotion wasn’t enough for him, he wants the corruption inquiries ended...and now you...now you. It was you...it was you, all along! And once I’m rid of you, rid of [0mall[0m[4m of you...then, then, that’s when I’ll finally be safe!”
 [0m
 <[] [[Continue]]>
 
@@ -4204,7 +4204,7 @@ parent-id: 1778709670932
 command: frail man
 --------------------------------------------------------------------------------
 > frail man
-He doesn’t seem at all well—he looks thin and weak despite a royal diet, and a livid red rash spreads from the bridge of his nose across each cheek. Before modern medicine, that would have been taken as either a curse or a sign of divine disfavor. Neither is a good look for a king.
+Asshur-ahu-iddina doesn’t seem at all well—he looks thin and weak despite a royal diet, and a livid red rash spreads from the bridge of his nose across each cheek. Before modern medicine, his condition would have been taken as either a curse or a sign of divine disfavor. Neither is a good look for a king.
 
 [0m[50m                                    [@]             
                                      |              

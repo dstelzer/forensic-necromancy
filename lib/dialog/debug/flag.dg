@@ -6,6 +6,10 @@
 	height: 1em;
 (style class @fulldream)
 	height: 1em;
+(style class @ministatus)
+	height: 1em;
+(style class @minidream)
+	height: 1em;
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction)
@@ -26,3 +30,6 @@
 
 (style class @roomheader)
 	margin-top: 1em;
+
+(interface (resources limited))
+(resources limited) (fail)

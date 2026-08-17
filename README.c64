@@ -1,0 +1,5 @@
+Load the .d64 file in a Commodore 64 emulator like VICE, or transfer it to a physical device.
+
+Note that this game features an optional automap, which is very slow on retro hardware. If you want to enable the map, an emulator with a turbo or warp button is recommended.
+
+An REU is needed for undo capability.
