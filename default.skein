@@ -87,7 +87,7 @@ Nails are set into the ground every ten meters, north and south and east and wes
                                      -(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[the grid of string] the grid of string>][0m • [<[push the grid of string] push it>]
+[0m[1m[<[the grid of string] The grid of string>][0m • [<[push the grid of string] push it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448639
@@ -104,7 +104,7 @@ This metal post marks the datum: the origin of the archaeologists’ coordinate 
                                      -(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[the survey post] the survey post>][0m • [<[push the survey post] push it>]
+[0m[1m[<[the survey post] The survey post>][0m • [<[push the survey post] push it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448640
@@ -119,7 +119,7 @@ The strings aren’t very strong, but the datum post is solid—you yank on it w
                                      -(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[the survey post] the survey post>][0m • [<[push the survey post] push it>]
+[0m[1m[<[the survey post] The survey post>][0m • [<[push the survey post] push it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448641
@@ -136,7 +136,7 @@ This ledge is about three meters above the dig site—farther than you’re will
                                      -(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[the survey post] the survey post>][0m • [<[push the survey post] push it>]
+[0m[1m[<[the survey post] The survey post>][0m • [<[push the survey post] push it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448642
@@ -205,7 +205,7 @@ It’s faster than walking, and more reliable than a cab in the early hours of t
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[my bicycle] your bicycle>][0m • [<[unlock my bicycle] unlock it>] • [<[ride my bicycle] ride it>]
+[0m[1m[<[my bicycle] Your bicycle>][0m • [<[unlock my bicycle] unlock it>] • [<[ride my bicycle] ride it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448646
@@ -220,7 +220,7 @@ You’re not ready to leave yet, and you’re also not ready to bring a bike any
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[my bicycle] your bicycle>][0m • [<[unlock my bicycle] unlock it>] • [<[ride my bicycle] ride it>]
+[0m[1m[<[my bicycle] Your bicycle>][0m • [<[unlock my bicycle] unlock it>] • [<[ride my bicycle] ride it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448647
@@ -237,7 +237,7 @@ Very large and very sturdy, and currently zipped up tight.
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m • [<[take my backpack] take it>] • [<[wear my backpack] wear it>] • [<[open my backpack] open it>]
+[0m[1m[<[my backpack] Your backpack>][0m • [<[take my backpack] take it>] • [<[wear my backpack] wear it>] • [<[open my backpack] open it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448648
@@ -254,7 +254,7 @@ You take your backpack off your bicycle.
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[open my backpack] open it>]
+[0m[1m[<[my backpack] Your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[open my backpack] open it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448649
@@ -273,7 +273,7 @@ You open your backpack, revealing a [<water bottle>], some [<nylon rope>], and a
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
+[0m[1m[<[my backpack] Your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448650
@@ -288,7 +288,7 @@ Even if you’re not trekking through the desert, the temperature in Mosul is we
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the water bottle] the water bottle>][0m • [<[take the water bottle] take it>] • [<[drink from the water bottle] drink from it>]
+[0m[1m[<[the water bottle] The water bottle>][0m • [<[take the water bottle] take it>] • [<[drink from the water bottle] drink from it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448651
@@ -305,7 +305,7 @@ A [<water bottle>], some [<nylon rope>], and a [<[0m[4mPocket Encyclopedia of 
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the water bottle] the water bottle>][0m • [<[take the water bottle] take it>] • [<[drink from the water bottle] drink from it>]
+[0m[1m[<[the water bottle] The water bottle>][0m • [<[take the water bottle] take it>] • [<[drink from the water bottle] drink from it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448652
@@ -322,7 +322,7 @@ Well, maybe the compass isn’t strictly necessary. But archaeologists lay every
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my various tools] your various tools>][0m (held) • [<[drop my various tools] drop them>] • [<[put my various tools onto] put them on something>] • [<[put my various tools into] put them in something>]
+[0m[1m[<[my various tools] Your various tools>][0m (held) • [<[drop my various tools] drop them>] • [<[put my various tools onto] put them on something>] • [<[put my various tools into] put them in something>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448653
@@ -339,7 +339,7 @@ Light enough to carry around; strong enough to hold your weight.
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[tie the nylon rope] tie it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[tie the nylon rope] tie it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448654
@@ -360,7 +360,7 @@ If you’re confused about any of the historical names and terms in the game, th
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448655
@@ -377,7 +377,7 @@ command: look up nineveh
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448657
@@ -392,7 +392,7 @@ When it comes to looking up obscure names and terms, you can’t beat the reliab
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448659
@@ -409,7 +409,7 @@ command: look up empire
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448660
@@ -426,7 +426,7 @@ command: look up babylon
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778630448661
@@ -444,7 +444,7 @@ From this upper rim you can see the whole excavation spread out below you, marke
                                     ( )-(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448662
@@ -461,7 +461,7 @@ A [<water bottle>], some [<nylon rope>], and a [<[0m[4mPocket Encyclopedia of 
                                     ( )-(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] the [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
+[0m[1m[<[the pocket encyclopedia of the neo-assyrian world] The [0m[1m[4mPocket Encyclopedia of the Neo-Assyrian World[0m[1m>][0m • [<[take the pocket encyclopedia of the neo-assyrian world] take it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448663
@@ -476,7 +476,7 @@ Very large and very sturdy. A [<water bottle>], some [<nylon rope>], and a [<[0
                                     ( )-(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
+[0m[1m[<[my backpack] Your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448664
@@ -491,7 +491,7 @@ Light enough to carry around; strong enough to hold your weight.
                                     ( )-(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[tie the nylon rope] tie it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[tie the nylon rope] tie it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448665
@@ -535,7 +535,7 @@ Strong and well-tied to support your weight. You should be able to climb up and 
                                     ( )-(@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Above the dig site>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448668
@@ -557,7 +557,7 @@ According to the dig reports, these are the coordinates where human remains were
                                   ( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Excavation>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448669
@@ -572,7 +572,7 @@ You would need to <untie the rope> before taking it.
                                   ( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Excavation>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448670
@@ -587,7 +587,7 @@ The rope is anchored to the post above the dig site. You’d need to <[go to abo
                                   ( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Excavation>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448671
@@ -608,7 +608,7 @@ According to the dig reports, these are the coordinates where human remains were
                                   ( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Excavation>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448672
@@ -623,7 +623,7 @@ There’s not much, just a few white glints in the moonlight...or is it just you
                                   ( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the bone fragments] the bone fragments>][0m • [<[divine the bone fragments] divine them>]
+[0m[1m[<[the bone fragments] The bone fragments>][0m • [<[divine the bone fragments] divine them>]
 [0m[1m[<[look] Excavation>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778630448673
@@ -774,7 +774,7 @@ The door of the house is made of thick, sturdy wood mounted in the mud-brick wal
                                        |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the front door] the front door>][0m • [<[open the front door] open it>] • [<[enter the front door] enter it>]
+[0m[1m[<[the front door] The front door>][0m • [<[open the front door] open it>] • [<[enter the front door] enter it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778640300963
@@ -789,7 +789,7 @@ The crack is about three centimeters wide. Through it you can see a heavy bar of
                                        |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the wide crack] the wide crack>][0m
+[0m[1m[<[the wide crack] The wide crack>][0m
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778640300965
@@ -810,7 +810,7 @@ The whole tableau is frozen like a fly in amber. The dust swirls around your fee
                                        |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the wide crack] the wide crack>][0m
+[0m[1m[<[the wide crack] The wide crack>][0m
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778640300966
@@ -825,7 +825,7 @@ You squint your eyes and try to move through the light, but it’s like pushing 
                                        |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the wide crack] the wide crack>][0m
+[0m[1m[<[the wide crack] The wide crack>][0m
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778640300967
@@ -840,7 +840,7 @@ It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam 
                                        |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the blinding light] the blinding light>][0m • [<[enter the blinding light] enter it>]
+[0m[1m[<[the blinding light] The blinding light>][0m • [<[enter the blinding light] enter it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778640300968
@@ -902,7 +902,7 @@ Both of the standing men have fine clothes, richly-dyed and well-fringed, in a w
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the wiry man] the wiry man>][0m • [<[talk to the wiry man] talk to him>]
+[0m[1m[<[the wiry man] The wiry man>][0m • [<[talk to the wiry man] talk to him>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300971
@@ -918,7 +918,7 @@ The fire looks quite odd, frozen in place, but it still casts enough light to se
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the torch] the torch>][0m • [<[take the torch] take it>] • [<[douse the torch] douse it>]
+[0m[1m[<[the torch] The torch>][0m • [<[take the torch] take it>] • [<[douse the torch] douse it>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300972
@@ -934,7 +934,7 @@ The wiry man is frozen like a statue, and his hand won’t release the torch.
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the torch] the torch>][0m • [<[take the torch] take it>] • [<[douse the torch] douse it>]
+[0m[1m[<[the torch] The torch>][0m • [<[take the torch] take it>] • [<[douse the torch] douse it>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300973
@@ -950,7 +950,7 @@ You walk toward the stout man, but his form doesn’t get any clearer—there’
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the stout man] the stout man>][0m • [<[talk to the stout man] talk to him>]
+[0m[1m[<[the stout man] The stout man>][0m • [<[talk to the stout man] talk to him>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300974
@@ -966,7 +966,7 @@ You run your finger through it, and it feels like...nothing. Like your finger do
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the sticky darkness] the sticky darkness>][0m
+[0m[1m[<[the sticky darkness] The sticky darkness>][0m
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300975
@@ -984,7 +984,7 @@ But people are harder to predict than spears and doors. If you do much of anythi
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the sticky darkness] the sticky darkness>][0m
+[0m[1m[<[the sticky darkness] The sticky darkness>][0m
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300976
@@ -1002,7 +1002,7 @@ Even if the prisoner couldn’t reach it two thousand years ago, you have no suc
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300977
@@ -1020,7 +1020,7 @@ You take the iron-tipped spear.
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300980
@@ -1040,7 +1040,7 @@ If this is where “you” died, and the bodies weren’t moved post mortem...th
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the cadaver] the cadaver>][0m
+[0m[1m[<[the cadaver] The cadaver>][0m
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300981
@@ -1059,7 +1059,7 @@ If this is where “you” died, and the bodies weren’t moved post mortem...th
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the cadaver] the cadaver>][0m
+[0m[1m[<[the cadaver] The cadaver>][0m
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300983
@@ -1077,7 +1077,7 @@ If you want to go back to the memory palace, there’s a tear in the haze to the
                                          |  
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the cadaver] the cadaver>][0m
+[0m[1m[<[the cadaver] The cadaver>][0m
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300984
@@ -1165,7 +1165,7 @@ The archaeologists must use this to move their heavy equipment between the pits.
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the equipment cart] the equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
+[0m[1m[<[the equipment cart] The equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
 [0m[1m[<[look] Loose earth>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778640300989
@@ -1180,7 +1180,7 @@ A [<broken tablet>], a [<hunk of metal>]...and a handful of [<white fragments>] 
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the latest finds] the latest finds>][0m • [<[take the latest finds] take them>]
+[0m[1m[<[the latest finds] The latest finds>][0m • [<[take the latest finds] take them>]
 [0m[1m[<[look] Loose earth>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778640300990
@@ -1195,7 +1195,7 @@ Probably best not to touch the artifacts. Even if you’re an official guest of 
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the latest finds] the latest finds>][0m • [<[take the latest finds] take them>]
+[0m[1m[<[the latest finds] The latest finds>][0m • [<[take the latest finds] take them>]
 [0m[1m[<[look] Loose earth>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778640300991
@@ -1244,7 +1244,7 @@ Massive statues of winged lions with human heads, standing guard over the royal 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the lamassu] the lamassu>][0m
+[0m[1m[<[the lamassu] The lamassu>][0m
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300994
@@ -1260,7 +1260,7 @@ The heat waves coming off them are frozen in space, like a lens floating in the 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300995
@@ -1276,7 +1276,7 @@ You reach toward the hot coals, but you can feel the heat coming off them, even 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300996
@@ -1292,7 +1292,7 @@ You have no supply of water.
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300997
@@ -1308,7 +1308,7 @@ You reach toward the hot coals, but you can feel the heat coming off them, even 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300998
@@ -1324,7 +1324,7 @@ You take a few steps into the darkness, but suddenly it closes in around you, th
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778640300999
@@ -1403,7 +1403,7 @@ Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cove
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the blindfold] the blindfold>][0m (worn) • [<[take the blindfold] take it>] • [<[remove the blindfold] remove it>]
+[0m[1m[<[the blindfold] The blindfold>][0m (worn) • [<[take the blindfold] take it>] • [<[remove the blindfold] remove it>]
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778640301004
@@ -1424,7 +1424,7 @@ Even without the blindfold, there’s nothing to see. All Sharhiya remembers is 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the blindfold] the blindfold>][0m (held) • [<[drop the blindfold] drop it>] • [<[wear the blindfold] wear it>]
+[0m[1m[<[the blindfold] The blindfold>][0m (held) • [<[drop the blindfold] drop it>] • [<[wear the blindfold] wear it>]
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778646225154
@@ -1440,7 +1440,7 @@ Strong and fierce, well-cultured, with a distinctly Assyrian pronunciation. Defi
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the unknown voice] the unknown voice>][0m
+[0m[1m[<[the unknown voice] The unknown voice>][0m
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778646225156
@@ -1456,7 +1456,7 @@ You put on the blindfold.
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the unknown voice] the unknown voice>][0m
+[0m[1m[<[the unknown voice] The unknown voice>][0m
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778646225157
@@ -1472,7 +1472,7 @@ You have an [<iron-tipped spear>]. You’re wearing a [<blindfold>].
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the unknown voice] the unknown voice>][0m
+[0m[1m[<[the unknown voice] The unknown voice>][0m
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778646225158
@@ -1488,7 +1488,7 @@ The blindfold hides your surroundings, but somehow you can perceive the iron-tip
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Darkness>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778646225159
@@ -1510,7 +1510,7 @@ Bits and pieces of a dozen rooms meet at odd angles, columns blocking doorways, 
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778646225160
@@ -1531,7 +1531,7 @@ All around, other memories have forced their way in like tree roots cracking thr
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>] • [<[put the iron-tipped spear into] put it in something>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>] • [<[put the iron-tipped spear into] put it in something>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225161
@@ -1561,7 +1561,7 @@ You push the spear through the crack, wedging it under the bar.
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>] • [<[push the iron-tipped spear] push it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>] • [<[push the iron-tipped spear] push it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225163
@@ -1579,7 +1579,7 @@ You give the spear a mighty shove...and nothing happens. Another shove, still no
                                        |     \
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m • [<[take the iron-tipped spear] take it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225164
@@ -1617,7 +1617,7 @@ It sits heavily on the ground. No more use for it now.
                                      -(@)     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the bar] the bar>][0m
+[0m[1m[<[the bar] The bar>][0m
 [0m[1m[<[look] House>][0m • [<north>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778646225166
@@ -1634,7 +1634,7 @@ The walls and floor have been covered with a thin layer of fine white clay, with
                                      -(@)     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the walls and floor] the walls and floor>][0m
+[0m[1m[<[the walls and floor] The walls and floor>][0m
 [0m[1m[<[look] House>][0m • [<north>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778646225167
@@ -1706,7 +1706,7 @@ The only other individual you can make out is your [<brother>], caught mid-run w
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the crowd of people] the crowd of people>][0m • [<[talk to the crowd of people] talk to them>]
+[0m[1m[<[the crowd of people] The crowd of people>][0m • [<[talk to the crowd of people] talk to them>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225170
@@ -1723,7 +1723,7 @@ Noticeably shorter than you, and just a bit rounder, but the family resemblance 
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[my brother] your brother>][0m • [<[talk to my brother] talk to him>]
+[0m[1m[<[my brother] Your brother>][0m • [<[talk to my brother] talk to him>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225171
@@ -1756,7 +1756,7 @@ It’s made of leather instead of plastic, but the best way to carry water hasn�
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the dropped bucket] the dropped bucket>][0m • [<[take the dropped bucket] take it>]
+[0m[1m[<[the dropped bucket] The dropped bucket>][0m • [<[take the dropped bucket] take it>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225173
@@ -1775,7 +1775,7 @@ You scoop up the bucket by its handle.
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the empty bucket] the empty bucket>][0m (held) • [<[drop the empty bucket] drop it>] • [<[fill the empty bucket] fill it>]
+[0m[1m[<[the empty bucket] The empty bucket>][0m (held) • [<[drop the empty bucket] drop it>] • [<[fill the empty bucket] fill it>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225174
@@ -1793,7 +1793,7 @@ You scoop up some water in the empty bucket.
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the water -filled bucket] the water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
+[0m[1m[<[the water -filled bucket] The water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225175
@@ -1819,7 +1819,7 @@ You take a sip from the water-filled bucket. It tastes like ordinary, slightly-d
                                   [@]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the water -filled bucket] the water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
+[0m[1m[<[the water -filled bucket] The water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
 [0m[1m[<[look] Marketplace>][0m • [<east>]
 --------------------------------------------------------------------------------
 id: 1778646225179
@@ -1839,7 +1839,7 @@ Or perhaps “entrance hall” would be a better term. The room isn’t large, b
                                   [ ]-(@)     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the water -filled bucket] the water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
+[0m[1m[<[the water -filled bucket] The water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
 [0m[1m[<[look] House>][0m • [<north>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778646225180
@@ -1863,7 +1863,7 @@ You see an [<iron-tipped spear>] here.
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the water -filled bucket] the water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
+[0m[1m[<[the water -filled bucket] The water-filled bucket>][0m (held) • [<[drop the water -filled bucket] drop it>] • [<[drink from the water -filled bucket] drink from it>] • [<[fill the water -filled bucket] fill it>] • [<[empty the water -filled bucket] empty it>] • [<[pour the water -filled bucket on] pour it on something>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225181
@@ -1880,7 +1880,7 @@ You take the iron-tipped spear.
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225182
@@ -1897,7 +1897,7 @@ That would just make a mess of the iron-tipped spear. It isn’t designed to hol
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225183
@@ -1914,7 +1914,7 @@ You put on the blindfold.
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Ziggurat>][0m • [<south>] • [<east>] • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778646225184
@@ -1936,7 +1936,7 @@ You can’t see anything with the [<blindfold>] on.
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778646225185
@@ -1958,7 +1958,7 @@ A towering [<statue>] dominates the room, light blazing from its gold-plated ski
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the iron-tipped spear] the iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
+[0m[1m[<[the iron-tipped spear] The iron-tipped spear>][0m (held) • [<[drop the iron-tipped spear] drop it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778646225186
@@ -1975,7 +1975,7 @@ Crucibles, anvils, hammers, all sorts of tools you don’t even know the names o
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the tools and equipment] the tools and equipment>][0m • [<[take the tools and equipment] take them>]
+[0m[1m[<[the tools and equipment] The tools and equipment>][0m • [<[take the tools and equipment] take them>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778646225187
@@ -1992,7 +1992,7 @@ It’s about the size of a microwave, probably better for fine detail work than 
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the forge] the forge>][0m • [<[douse the forge] douse it>]
+[0m[1m[<[the forge] The forge>][0m • [<[douse the forge] douse it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778646225188
@@ -2009,7 +2009,7 @@ Some flat sheets, some wires, some misshapen bits that need to be hammered out a
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the pieces of silver and gold] the pieces of silver and gold>][0m • [<[take the pieces of silver and gold] take them>]
+[0m[1m[<[the pieces of silver and gold] The pieces of silver and gold>][0m • [<[take the pieces of silver and gold] take them>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778695576192
@@ -2028,7 +2028,7 @@ It’s only once your eyes adjust that you can see the more mundane side: the wo
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the statue of marduk] the statue of Marduk>][0m • [<[push the statue of marduk] push it>]
+[0m[1m[<[the statue of marduk] The statue of Marduk>][0m • [<[push the statue of marduk] push it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778695576193
@@ -2045,7 +2045,7 @@ The whole apparatus seems designed to rotate, letting the goldsmiths access ever
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the work platform] the work platform>][0m • [<[push the work platform] push it>]
+[0m[1m[<[the work platform] The work platform>][0m • [<[push the work platform] push it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778695576194
@@ -2064,7 +2064,7 @@ Squinting against the glare, you take hold of the platform—[0m[4mnot[0m tou
                                   [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the work platform] the work platform>][0m • [<[push the work platform] push it>]
+[0m[1m[<[the work platform] The work platform>][0m • [<[push the work platform] push it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778695576195
@@ -2126,7 +2126,7 @@ No glass in this period, just a hole in the wall that can be opened in good weat
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the window] the window>][0m • [<[close the window] close it>]
+[0m[1m[<[the window] The window>][0m • [<[close the window] close it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778695576199
@@ -2143,7 +2143,7 @@ You close the shutters, but the moonlight doesn’t change. It’s too strong a 
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the window] the window>][0m • [<[open the window] open it>]
+[0m[1m[<[the window] The window>][0m • [<[open the window] open it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778695576200
@@ -2160,7 +2160,7 @@ No glass in this period, just a hole in the wall that can be opened in good weat
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the window] the window>][0m • [<[open the window] open it>]
+[0m[1m[<[the window] The window>][0m • [<[open the window] open it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778695576201
@@ -2177,7 +2177,7 @@ You open the shutters, but the moonlight stays exactly the same.
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the window] the window>][0m • [<[close the window] close it>]
+[0m[1m[<[the window] The window>][0m • [<[close the window] close it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778695576202
@@ -2196,7 +2196,7 @@ An [<empty lamp>] is sitting on top.
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the table] the table>][0m
+[0m[1m[<[the table] The table>][0m
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778696952870
@@ -2213,7 +2213,7 @@ It’s shaped like a clay bowl with a little spout at one end. A cloth wick runs
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the empty lamp] the empty lamp>][0m • [<[take the empty lamp] take it>]
+[0m[1m[<[the empty lamp] The empty lamp>][0m • [<[take the empty lamp] take it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778696952871
@@ -2230,7 +2230,7 @@ You take the empty lamp off the table.
                                 [@] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the empty lamp] the empty lamp>][0m (held) • [<[drop the empty lamp] drop it>] • [<[put the empty lamp onto] put it on something>] • [<[fill the empty lamp] fill it>]
+[0m[1m[<[the empty lamp] The empty lamp>][0m (held) • [<[drop the empty lamp] drop it>] • [<[put the empty lamp onto] put it on something>] • [<[fill the empty lamp] fill it>]
 [0m[1m[<[look] Back room>][0m • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1778696952872
@@ -2252,7 +2252,7 @@ A towering [<statue>] dominates the room, light blazing from its gold-plated ski
                                 [ ] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the empty lamp] the empty lamp>][0m (held) • [<[drop the empty lamp] drop it>] • [<[fill the empty lamp] fill it>]
+[0m[1m[<[the empty lamp] The empty lamp>][0m (held) • [<[drop the empty lamp] drop it>] • [<[fill the empty lamp] fill it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778696952873
@@ -2271,7 +2271,7 @@ It’s only once your eyes adjust that you can see the more mundane side: the wo
                                 [ ] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the statue of marduk] the statue of Marduk>][0m • [<[push the statue of marduk] push it>]
+[0m[1m[<[the statue of marduk] The statue of Marduk>][0m • [<[push the statue of marduk] push it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778696952874
@@ -2288,7 +2288,7 @@ You adjust the position of the statue a bit, making sure the gaze doesn’t ling
                                 [ ] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the statue of marduk] the statue of Marduk>][0m • [<[push the statue of marduk] push it>]
+[0m[1m[<[the statue of marduk] The statue of Marduk>][0m • [<[push the statue of marduk] push it>]
 [0m[1m[<[look] Workshop>][0m • [<east>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778696952875
@@ -2347,7 +2347,7 @@ The heat waves coming off them are frozen in space, like a lens floating in the 
                                 [ ] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the hot coals] the hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
+[0m[1m[<[the hot coals] The hot coals>][0m • [<[douse the hot coals] douse them>] • [<[cross the hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778696952878
@@ -2367,7 +2367,7 @@ You tilt the bucket and start pouring out water over the coals. There’s a [0m
                                 [ ] [ ]-( )     
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the no-longer-hot coals] the no-longer-hot coals>][0m • [<[cross the no-longer-hot coals] cross them>]
+[0m[1m[<[the no-longer-hot coals] The no-longer-hot coals>][0m • [<[cross the no-longer-hot coals] cross them>]
 [0m[1m[<[look] Royal palace>][0m • [<north>] • [<east>] • [<west>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778696952879
@@ -2389,7 +2389,7 @@ At least it’s not actively on fire. The flickering light in the sanctum to the
                               [ ] [ ]-( )     (@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the no-longer-hot coals] the no-longer-hot coals>][0m • [<[cross the no-longer-hot coals] cross them>]
+[0m[1m[<[the no-longer-hot coals] The no-longer-hot coals>][0m • [<[cross the no-longer-hot coals] cross them>]
 [0m[1m[<[look] Ruined temple>][0m • [<east>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778696952880
@@ -2406,7 +2406,7 @@ A rough path has been cleared through the wreckage, letting the priests continue
                               [ ] [ ]-( )     (@)-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the bricks and rubble] the bricks and rubble>][0m
+[0m[1m[<[the bricks and rubble] The bricks and rubble>][0m
 [0m[1m[<[look] Ruined temple>][0m • [<east>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778696952881
@@ -2472,7 +2472,7 @@ In Mesopotamian cosmology, underground fresh water was the source of all life: t
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the deep pool] the deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
+[0m[1m[<[the deep pool] The deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952884
@@ -2489,7 +2489,7 @@ You scoop up some water in your hands. It tastes like ordinary, very pure water,
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the deep pool] the deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
+[0m[1m[<[the deep pool] The deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952885
@@ -2521,7 +2521,7 @@ You scoop up some water in the empty bucket.
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the deep pool] the deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
+[0m[1m[<[the deep pool] The deep pool>][0m • [<[drink from the deep pool] drink from it>] • [<[take the water] take the water>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952888
@@ -2538,7 +2538,7 @@ One of them remains hazy, even when you move closer, but the other resolves into
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the shadowy figures] the shadowy figures>][0m • [<[talk to the shadowy figures] talk to them>]
+[0m[1m[<[the shadowy figures] The shadowy figures>][0m • [<[talk to the shadowy figures] talk to them>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952889
@@ -2571,7 +2571,7 @@ Finally you can get a good look at the protagonist from the first few memories: 
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[my brother] your brother>][0m • [<[talk to my brother] talk to him>]
+[0m[1m[<[my brother] Your brother>][0m • [<[talk to my brother] talk to him>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952891
@@ -2588,7 +2588,7 @@ A huge jar, about the size of a person. This one is filled with a sweet-smelling
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the pithos of oil] the pithos of oil>][0m • [<[take the oil] take the oil>]
+[0m[1m[<[the pithos of oil] The pithos of oil>][0m • [<[take the oil] take the oil>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952892
@@ -2605,7 +2605,7 @@ They’re just barely visible at the edge of the dream, a hazy glow without an a
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the vaguely-defined torches] the vaguely-defined torches>][0m • [<[take the vaguely-defined torches] take them>]
+[0m[1m[<[the vaguely-defined torches] The vaguely-defined torches>][0m • [<[take the vaguely-defined torches] take them>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952893
@@ -2622,7 +2622,7 @@ Your hand passes right through. They’re not remembered clearly enough to have 
                             [ ] [ ]-( )     ( )-[@] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the vaguely-defined torches] the vaguely-defined torches>][0m • [<[take the vaguely-defined torches] take them>]
+[0m[1m[<[the vaguely-defined torches] The vaguely-defined torches>][0m • [<[take the vaguely-defined torches] take them>]
 [0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778696952894
@@ -3303,7 +3303,7 @@ parent-id: 1778703929052
 command: urad
 --------------------------------------------------------------------------------
 > urad
-Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man. Tall and broad, with dark, perpetually-angry eyes and an intricate beard that hides his mouth from view.
+Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man. Tall and broad, with dark, perpetually-angry eyes and an intricate beard that hides his mouth from view. To his credit, though, he seems to be trying to project calm sincerity; he’s just not very good at it.
 
 [0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
@@ -3329,7 +3329,7 @@ All the patterns in the walls and ceiling and floor converge on a single point, 
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the royal throne] the royal throne>][0m • [<[climb the royal throne] climb it>]
+[0m[1m[<[the royal throne] The royal throne>][0m • [<[climb the royal throne] climb it>]
 [0m[1m[<[look] Audience chamber>][0m • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778703929055
@@ -3346,7 +3346,7 @@ You take your place on the throne.
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the royal throne] the royal throne>][0m
+[0m[1m[<[the royal throne] The royal throne>][0m
 [0m[1m[<[look] Audience chamber>][0m (on [<[the royal throne] the royal throne>]) • [<stand up>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778703929056
@@ -3363,7 +3363,7 @@ You get off the royal throne.
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the royal throne] the royal throne>][0m • [<[climb the royal throne] climb it>]
+[0m[1m[<[the royal throne] The royal throne>][0m • [<[climb the royal throne] climb it>]
 [0m[1m[<[look] Audience chamber>][0m • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778703929057
@@ -3371,7 +3371,7 @@ parent-id: 1778703929056
 command: officials
 --------------------------------------------------------------------------------
 > officials
-The two now-familiar men—Nabiya and Tzillaya, the prince called them—are standing a short distance apart, trying not to get in his way. The stout one is whispering something to the wiry one, but your narrator must have been too distracted (or just too far away) to hear it.
+The two now-familiar men—Nabiya and Tzillaya, the prince called them—are standing a short distance apart, trying not to get in his way. The stout one is whispering something to the wiry one, but your narrator must have been too distracted (or just too far away) to hear it; was there really that glint of hostility in their eyes, or was your Babylonian just imagining it?
 
 [0m[50m                                [?]     [ ]     [@] 
                                    \     |     /    
@@ -3380,7 +3380,7 @@ The two now-familiar men—Nabiya and Tzillaya, the prince called them—are sta
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the two officials] the two officials>][0m • [<[talk to the two officials] talk to them>]
+[0m[1m[<[the two officials] The two officials>][0m • [<[talk to the two officials] talk to them>]
 [0m[1m[<[look] Audience chamber>][0m • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778703929058
@@ -3508,7 +3508,7 @@ No, it’s a door, but a cleverly-hidden one. So there was a secret passage due 
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the stout man] the stout man>][0m • [<[talk to the stout man] talk to him>]
+[0m[1m[<[the stout man] The stout man>][0m • [<[talk to the stout man] talk to him>]
 [0m[1m[<[look] Dungeon>][0m • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778703929065
@@ -3595,7 +3595,7 @@ It doesn’t look like it was dug by the archaeologists—it doesn’t follow th
                                 ( )-( )-( )-(?) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the opening in the ground] the opening in the ground>][0m
+[0m[1m[<[the opening in the ground] The opening in the ground>][0m
 [0m[1m[<[look] Deep pit>][0m • [<north>] • [<south>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778703929070
@@ -3611,7 +3611,7 @@ These ones do follow the grid as they snake down into the pit. Maybe there are l
                                 ( )-( )-( )-(?) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the electrical wires] the electrical wires>][0m
+[0m[1m[<[the electrical wires] The electrical wires>][0m
 [0m[1m[<[look] Deep pit>][0m • [<north>] • [<south>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778703929071
@@ -3627,7 +3627,7 @@ You can’t see much in the moonlight, but the pit must be at least a few meters
                                 ( )-( )-( )-(?) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the electrical wires] the electrical wires>][0m
+[0m[1m[<[the electrical wires] The electrical wires>][0m
 [0m[1m[<[look] Deep pit>][0m • [<north>] • [<south>] • [<southeast>]
 --------------------------------------------------------------------------------
 id: 1778703929072
@@ -3687,7 +3687,7 @@ The archaeologists must use this to move their heavy equipment between the pits.
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the equipment cart] the equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
+[0m[1m[<[the equipment cart] The equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
 [0m[1m[<[look] Loose earth>][0m • [<west>] • [<northwest>]
 --------------------------------------------------------------------------------
 id: 1778703929075
@@ -3729,7 +3729,7 @@ You can just barely make out some [<bone fragments>] in the moonlight.
                                 ( )-( )-(@)-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the equipment cart] the equipment cart>][0m • [<[lock the equipment cart] lock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
+[0m[1m[<[the equipment cart] The equipment cart>][0m • [<[lock the equipment cart] lock it>] • [<[push the equipment cart] push it>] • [<[climb the equipment cart] climb it>]
 [0m[1m[<[look] Excavation>][0m • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778703929077
@@ -3748,7 +3748,7 @@ You get onto the equipment cart.
                                 ( )-( )-(@)-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the equipment cart] the equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>]
+[0m[1m[<[the equipment cart] The equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>]
 [0m[1m[<[look] Excavation>][0m (on [<[the equipment cart] the equipment cart>]) • [<stand up>] • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778703929078
@@ -3985,7 +3985,7 @@ Strong and well-tied to support your weight. You should be able to climb up and 
                                 ( )-( )-( )-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Looters’ tunnel>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778703929091
@@ -4002,7 +4002,7 @@ The rope is anchored to the cart up above. You’d need to <[go to the deep pit]
                                 ( )-( )-( )-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the nylon rope] the nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
+[0m[1m[<[the nylon rope] The nylon rope>][0m • [<[take the nylon rope] take it>] • [<[untie the nylon rope] untie it>] • [<[climb the nylon rope] climb it>]
 [0m[1m[<[look] Looters’ tunnel>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778703929092
@@ -4019,7 +4019,7 @@ Small but bright, and judiciously placed to light up this entire section.
                                 ( )-( )-( )-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the electric lights] the electric lights>][0m
+[0m[1m[<[the electric lights] The electric lights>][0m
 [0m[1m[<[look] Looters’ tunnel>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778703929093
@@ -4036,7 +4036,7 @@ Something in the light makes them almost glow, despite being buried in the dirt.
                                 ( )-( )-( )-( ) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the bone fragments] the bone fragments>][0m • [<[divine the bone fragments] divine them>]
+[0m[1m[<[the bone fragments] The bone fragments>][0m • [<[divine the bone fragments] divine them>]
 [0m[1m[<[look] Looters’ tunnel>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778703929094
@@ -4125,7 +4125,7 @@ These surveying lines don’t look too different from the cords the modern archa
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the surveying lines] the surveying lines>][0m
+[0m[1m[<[the surveying lines] The surveying lines>][0m
 [0m[1m[<[look] Half-finished building>][0m • [<north>] • [<south>]
 --------------------------------------------------------------------------------
 id: 1778709670930
@@ -4143,7 +4143,7 @@ Stacks and stacks of new bricks, fresh out of the kiln, their edges still perfec
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the piles of bricks] the piles of bricks>][0m
+[0m[1m[<[the piles of bricks] The piles of bricks>][0m
 [0m[1m[<[look] Half-finished building>][0m • [<north>] • [<south>]
 --------------------------------------------------------------------------------
 id: 1778709670931
@@ -4215,7 +4215,7 @@ Asshur-ahu-iddina doesn’t seem at all well—he looks thin and weak despite a 
                             [ ] [ ]-( )     ( )-[ ] 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
-[0m[1m[<[the frail man] the frail man>][0m • [<[talk to the frail man] talk to him>]
+[0m[1m[<[the frail man] The frail man>][0m • [<[talk to the frail man] talk to him>]
 [0m[1m[<[look] Hidden chamber>][0m • [<south>]
 --------------------------------------------------------------------------------
 id: 1778709670934
@@ -4325,7 +4325,7 @@ Just a few white fragments among the artifacts—it’s hard to even tell which 
                                 ( )-( )-( )-(@) 
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[the bone fragments] the bone fragments>][0m • [<[divine the bone fragments] divine them>]
+[0m[1m[<[the bone fragments] The bone fragments>][0m • [<[divine the bone fragments] divine them>]
 [0m[1m[<[look] Loose earth>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778715244260
@@ -4345,7 +4345,7 @@ command: score
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
+[0m[1m[<[my backpack] Your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1779143864710
@@ -4361,7 +4361,7 @@ command: full
                                     (@)-( )-
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
-[0m[1m[<[my backpack] your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
+[0m[1m[<[my backpack] Your backpack>][0m (held) • [<[drop my backpack] drop it>] • [<[put my backpack onto] put it on something>] • [<[wear my backpack] wear it>] • [<[close my backpack] close it>]
 [0m[1m[<[look] Your camp>][0m • [<east>] • [<northeast>]
 --------------------------------------------------------------------------------
 id: 1779486866872

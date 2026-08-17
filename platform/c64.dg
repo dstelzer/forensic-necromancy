@@ -32,4 +32,8 @@
 (resources limited) %% Resources are very limited!
 
 (after [options])
-	\( Warning: the automap is rather slow on a Commodore 64, and not recommended unless you have an emulator with warp speed. \)
+	(div @meta) {
+		\( Warning: the automap is rather slow on a Commodore 64, and not recommended unless you have an emulator with warp speed. \)
+	}
+
+(pause) %% Do nothing, it’s slow enough already!

@@ -590,6 +590,7 @@
 (perform [read *])
 	(span @bold) Namzaqu : something about a “key”?
 (artifact *)
+~(action [read *] requires * to be touched)
 
 #hunk
 (name *) hunk of metal
@@ -1752,7 +1753,7 @@
 (male *)
 (dict *) prince man
 (* is #in #s-revelation)
-(descr *) Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man. Tall and broad, with dark, perpetually-angry eyes and an intricate beard that hides his mouth from view.
+(descr *) Even when he’s dwarfed by the throne, the ex-crown-prince is an imposing man. Tall and broad, with dark, perpetually-angry eyes and an intricate beard that hides his mouth from view. To his credit, though, he seems to be trying to project calm sincerity; he’s just not very good at it.
 
 #rev-officials
 (name *) two officials
@@ -1764,7 +1765,7 @@
 (dict *) official man men stout wiry
 (animate *)
 (* is #in #s-revelation)
-(descr *) The two now-familiar men—Nabiya and Tzillaya, the prince called them—are standing a short distance apart, trying not to get in his way. The stout one is whispering something to the wiry one, but your narrator must have been too distracted \( or just too far away \) to hear it.
+(descr *) The two now-familiar men—Nabiya and Tzillaya, the prince called them—are standing a short distance apart, trying not to get in his way. The stout one is whispering something to the wiry one, but your narrator must have been too distracted \( or just too far away \) to hear it; was there really that glint of hostility in their eyes, or was your Babylonian just imagining it?
 
 (from * go #west to #s-throneroom)
 

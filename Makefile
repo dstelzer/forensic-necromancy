@@ -48,6 +48,9 @@ c64.zip: forensic.c64.aastory
 	cp README.c64 c64/
 	( cd c64 && zip -r ../c64.zip . )
 
+c64play: c64.zip
+	x64sc c64/*.d64
+
 forensic.z5: $(SOURCES) platform/z5.dg
 	dialogc -t z5 platform/z5.dg $(SOURCES) $(OPTIONS) -o forensic.z5 2>&1 | tee build.z5
 
@@ -79,5 +82,5 @@ PWD := $(shell pwd)
 hints.html: hints.clu
 	( cd ~/Projects/Invisiclues && python3 maker.py $(PWD)/hints )
 
-.PHONY: build play zplay regress itch
+.PHONY: build play zplay regress itch c64play
 all: build

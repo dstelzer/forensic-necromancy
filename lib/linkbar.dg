@@ -96,10 +96,6 @@
 		(exhaust) *(intransitive action) %% Put a bullet before each one
 	}
 
-(held $Obj)
-	(current player $Player)
-	*($Obj is #heldby $Player)
-
 (something held)
 	*(held $Obj)
 	~($Obj = #tools)
@@ -128,7 +124,9 @@
 	~{ (current player $Focus) ~(suggest transitive actions for player) }
 	%% It looks odd to have an empty “Yourself” line right under “You”
 	(div @barpar) {
-		(span @bold) { (uppercase) (vlink $Focus) }
+		(span @bold) { %% The following is basically an uppercase (vlink $Focus)
+			(vlink {(link name $Focus)} {(uppercase) (the $Focus)})
+		}
 		(exhaust) *(transitive action $Focus) %% Likewise for bullets
 	}
 
@@ -136,10 +134,10 @@
 
 (held $Obj)
 	(current player $Player)
-	($Obj is #heldby $Player)
+	*($Obj is #heldby $Player)
 (worn $Obj)
 	(current player $Player)
-	($Obj is #wornby $Player)
+	*($Obj is #wornby $Player)
 
 %% Not actions per se, but this is the easiest way to implement them
 (transitive action (held $))
@@ -329,7 +327,7 @@
 (perform [put $Obj #on])
 	Onto what?
 	(asking for object in [put $Obj #on []])
-(grammar [put [held] in something] for [put $ #on])
+(grammar [put [held] in something] for [put $ #in])
 (grammar [put [held] into] for [put $ #in])
 (perform [put $Obj #in])
 	Into what?
