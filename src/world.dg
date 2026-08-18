@@ -1042,8 +1042,11 @@
 		It’s already quite thoroughly shut.
 	(endif)
 
-(instead of [put $Obj $Rel *])
+%% TERRIBLE PRACTICE - DO NOT REPLICATE
+(try [put $Obj $Rel *])
 	(#crack is #partof *)
+	\( in the crack \) (line)
+	(reveal #crack)
 	(try [put $Obj $Rel #crack])
 
 (instead of [unlock * with #spear])
@@ -1058,7 +1061,8 @@
 (name *) wide crack
 (dict *) heavy bar of wood
 (* is #partof #door)
-(container *)
+(* is hidden)
+(container *) ~(* is hidden) %% Don’t suggest putting things in it until revealed
 (descr *)
 	The crack is about three centimeters wide. Through it you can see a heavy bar of wood on the other side, holding the door closed.
 	(if) (#spear is #partof *) (then)
