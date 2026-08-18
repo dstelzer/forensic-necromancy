@@ -68,6 +68,21 @@ z5.zip: forensic.z5 hints.html history.html
 	rm -f z5.zip
 	( cd z5 && zip -r ../z5.zip . )
 
+ifcomp.zip: web forensic.z5 forensic.c64.aastory
+	rm -f ifcomp.zip
+	rm -rf ifcomp
+	mkdir ifcomp
+	aambundle -t c64 -o ifcomp/commodore64 forensic.c64.aastory
+	cp -r web ifcomp/
+	cp forensic.z5 ifcomp/zmachine.z5
+	cp README.ifcomp ifcomp/
+	cp cover.jpg ifcomp/
+	cp hints.html ifcomp/
+	cp history.html ifcomp/
+	cp index.html ifcomp/
+	( cd ifcomp && zip -r ../ifcomp.zip . )
+	cp ifcomp.zip ifcomp_$(VERSION).zip
+
 itch: itch.zip z5.zip c64.zip
 	cp itch.zip itch_$(VERSION).zip
 	cp z5.zip z5_$(VERSION).zip
