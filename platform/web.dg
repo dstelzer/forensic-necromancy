@@ -9,14 +9,14 @@
 	height: auto;
 
 %% Color scheme!
-%% Currently just Å-machine default for the real world
+%% Default Å-machine colors but with hue 270 and a varying hint of saturation, to make cool grays and blacks
 (style class @normal)
 	--theme-darkest: \#000000;
-	--theme-dark: \#222222;
-	--theme-medium: \#888888;
-	--theme-light: \#cccccc;
-	--theme-lightest: \#eeeeee;
-	--accent-dark: \#c95c03;
+	--theme-dark: \#1d1921;
+	--theme-medium: \#7f7787;
+	--theme-light: \#c5becc;
+	--theme-lightest: \#eae6ed;
+	--accent-dark: \#c95c03; %% Keeping the default links though
 	--accent-light: \#fc8f36;
 
 %% Sepia tones

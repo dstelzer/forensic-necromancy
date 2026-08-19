@@ -68,7 +68,7 @@ z5.zip: forensic.z5 hints.html history.html
 	rm -f z5.zip
 	( cd z5 && zip -r ../z5.zip . )
 
-ifcomp.zip: web forensic.z5 forensic.c64.aastory
+ifcomp.zip: web forensic.z5 forensic.c64.aastory hints.html cover.jpg
 	rm -f ifcomp.zip
 	rm -rf ifcomp
 	mkdir ifcomp
