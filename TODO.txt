@@ -1,3 +1,2 @@
 weird status line breakage on C64: only when (top right) is enabled, only in the real world after visiting a memory??
 	disabled for now
-color scheme! (both modes)
