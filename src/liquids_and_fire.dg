@@ -353,11 +353,19 @@
 (prevent [burn (fire source $Obj)])
 	(The $Obj) (is $Obj) already alight.
 
-(prevent [burn ~(item $Obj)])
-	If (the $Obj) ignited, it might end very badly for you!
+(prevent [burn $Obj])
+	($Obj is filled with #oil)
+	~($Obj = #lamp)
+	That would probably produce more fire than you’re really prepared to handle.
 
-(prevent [burn $])
-	~(fire source $ is visible)
+(prevent [burn ~(item $Obj)])
+	If (the $Obj) did ignite, it might end very badly for you!
+
+(prevent [burn $Obj])
+	~{
+		*(fire source $Source is visible)
+		{ (item $Obj) (or) (item $Source) }
+	}
 	You have no source of fire.
 
 (perform [burn $Obj])

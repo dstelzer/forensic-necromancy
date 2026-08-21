@@ -119,13 +119,16 @@
 	*(vignette $Room)
 	($Room is unvisited)
 
+(upper-vlink $Obj)
+	(vlink {(link name $Obj)} {(uppercase) (the $Obj)})
+
 (link bar paragraph) %% Current focus, and transitive actions
 	(current focus $Focus)
 	~{ (current player $Focus) ~(suggest transitive actions for player) }
 	%% It looks odd to have an empty “Yourself” line right under “You”
 	(div @barpar) {
-		(span @bold) { %% The following is basically an uppercase (vlink $Focus)
-			(vlink {(link name $Focus)} {(uppercase) (the $Focus)})
+		(span @bold) {
+			(upper-vlink $Focus)
 		}
 		(exhaust) *(transitive action $Focus) %% Likewise for bullets
 	}
@@ -282,7 +285,7 @@
 			\( (name $Rel) (vlink $Parent) \)
 			(bullet)
 			(if) ($Rel = #on) (then)
-				({stand up})
+				({climb down})
 			(else)
 				({get out})
 			(endif)

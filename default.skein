@@ -505,7 +505,7 @@ To what?
                                        / |  
                                     ( )-(@)-
 [0m
-[<[me] yourself>], [<[the grid of string] the grid of string>], [<[my backpack] your backpack>], [<[the water bottle] the water bottle>], [<[the nylon rope] the nylon rope>], [<[the pocket encyclopedia of the neo-assyrian world] the [0m[4mPocket Encyclopedia of the Neo-Assyrian World[0m>], [<[my various tools] your various tools>], [<[the survey post] the survey post>]
+[<[me] yourself>], [<[the grid of string] the grid of string>], [<[my backpack] your backpack>], [<[the water bottle] the water bottle>], [<[the nylon rope] the nylon rope>], [<[the pocket encyclopedia of the neo-assyrian world] the [0m[4mPocket Encyclopedia of the Neo-Assyrian World[0m>], [<[my various tools] your various tools>], [<[my packet of entheogen pills] your packet of entheogen pills>], [<[the survey post] the survey post>]
 --------------------------------------------------------------------------------
 id: 1778630448666
 parent-id: 1778630448665
@@ -565,7 +565,8 @@ parent-id: 1778630448668
 command: take rope
 --------------------------------------------------------------------------------
 > take rope
-You would need to <untie the rope> before taking it.
+(untying the rope from the datum)
+The rope is anchored to the post above the dig site. You’d need to <[go to above the dig site] go there> to untie it.
 
 [0m[50m                                      ( )     
                                      / |      
@@ -942,7 +943,7 @@ parent-id: 1778640300972
 command: other
 --------------------------------------------------------------------------------
 > other
-You walk toward the stout man, but his form doesn’t get any clearer—there’s a [<sticky darkness>] spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen [0m[4msomething[0m, or else this man wouldn’t be here at all. But forensic necromancy is a new process, and apparently this oily void is the result.
+You walk toward the stout man, but his form doesn’t get any clearer—there’s a [<sticky darkness>] spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen [0m[4msomething[0m, or else this man wouldn’t be here at all. But forensic necromancy is a new process, and this oily void must be coming from...somewhere. Some mistake or miscalculation.
 
 [0m[50m                                    [@]     
                                        \    
@@ -958,7 +959,7 @@ parent-id: 1778640300973
 command: darkness
 --------------------------------------------------------------------------------
 > darkness
-You run your finger through it, and it feels like...nothing. Like your finger doesn’t exist. Thankfully the sensation goes away when you pull your hand back.
+You run your finger through it, and it feels like...nothing. Like your finger doesn’t exist. Thankfully the sensation goes away when you pull your hand back. This isn’t something your subject actually witnessed; it’s some residue from your necromantic process.
 
 [0m[50m                                    [@]     
                                        \    
@@ -1316,7 +1317,7 @@ parent-id: 1778640300997
 command: e
 --------------------------------------------------------------------------------
 > e
-You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further.
+You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further—the oily void from the first memory is back, and in much larger quantities than before.
 
 [0m[50m                                  [ ]         
                                      \     |  
@@ -3240,7 +3241,7 @@ command: e
 You take a deep breath and step into the darkness. It flows away from your lamp like some kind of viscous fluid, leaving a small patch of visibility around you.
 
 [0m[1mCramped passage[0m
-While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky [<darkness>] coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
+While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and that thick, sticky [<darkness>] coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
 
 [0m[50m                                [?]     [ ]         
                                    \     |     /    
@@ -3347,7 +3348,7 @@ You take your place on the throne.
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
 [0m[1m[<[the royal throne] The royal throne>][0m
-[0m[1m[<[look] Audience chamber>][0m (on [<[the royal throne] the royal throne>]) • [<stand up>] • [<southwest>]
+[0m[1m[<[look] Audience chamber>][0m (on [<[the royal throne] the royal throne>]) • [<climb down>] • [<southwest>]
 --------------------------------------------------------------------------------
 id: 1778703929056
 parent-id: 1778703929055
@@ -3391,7 +3392,7 @@ command: sw
 You walk southwest.
 
 [0m[1mCramped passage[0m
-While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky [<darkness>] coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
+While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and that thick, sticky [<darkness>] coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
 
 [0m[50m                                [?]     [ ]     [ ] 
                                    \     |     /    
@@ -3749,7 +3750,7 @@ You get onto the equipment cart.
 [0m
 [0m[1m[<[me] You>][0m • [<inventory>] • [<wait>]
 [0m[1m[<[the equipment cart] The equipment cart>][0m • [<[unlock the equipment cart] unlock it>] • [<[push the equipment cart] push it>]
-[0m[1m[<[look] Excavation>][0m (on [<[the equipment cart] the equipment cart>]) • [<stand up>] • [<north>] • [<east>] • [<west>]
+[0m[1m[<[look] Excavation>][0m (on [<[the equipment cart] the equipment cart>]) • [<climb down>] • [<north>] • [<east>] • [<west>]
 --------------------------------------------------------------------------------
 id: 1778703929078
 parent-id: 1778703929077
@@ -4408,7 +4409,7 @@ command: score
 --------------------------------------------------------------------------------
 > score
 
-[0m[4mYou’ve solved eighteen puzzles (your backpack, the bone fragments, the bone fragments that are part of the latest finds, the opening in the ground, the iron-tipped spear, the cadaver, the sticky darkness, the front door, the oil-filled bucket, the blinding light, the statue of Marduk, the burning lamp, the no-longer-hot coals, the blindfold, the pithos of oil, the nylon rope, the equipment cart, and the Pocket Encyclopedia of the Neo-Assyrian World) and visited seven memories (the dungeon, the marketplace, the back room, the darkness, the moonlit courtyard, the audience chamber, and the hidden chamber), giving you 25 points out of 25.
+[0m[4mYou’ve solved eighteen puzzles (your backpack, the bone fragments in the excavation, the bone fragments that are part of the latest finds, the opening in the ground, the iron-tipped spear, the cadaver, the sticky darkness in the dungeon, the front door, the oil-filled bucket, the blinding light, the statue of Marduk, the burning lamp, the no-longer-hot coals, the blindfold, the pithos of oil, the nylon rope, the equipment cart, and the Pocket Encyclopedia of the Neo-Assyrian World) and visited seven memories (the dungeon, the marketplace, the back room, the darkness, the moonlit courtyard, the audience chamber, and the hidden chamber), giving you 25 points out of 25.
 [0m
 [0m[4mWould you like to:
      <UNDO> the last move,

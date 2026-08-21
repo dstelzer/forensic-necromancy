@@ -44,13 +44,13 @@
 	(if) (current room $Obj) (then)
 		this location
 	(elseif) (room $Obj) (then)
-		({go to (link name $Obj)} {(the $Obj)})
+		(vlink {go to (link name $Obj)} {(the $Obj)})
 	(elseif) ($Obj is in room $Room) ~(current room $Room) (then)
-		(the $Obj) in ({go to (link name $Room)} {(the $Room)})
+		(the $Obj) in (vlink {go to (link name $Room)} {(the $Room)})
 	(elseif) ($Obj is in room $) (then) %% Right at hand
-		($Obj) right here
+		(vlink $Obj) right here
 	(else) %% Nowhere - unlikely to happen but shouldn’t crash regardless
-		($Obj)
+		(vlink $Obj)
 	(endif)
 
 (puzzle list $List)

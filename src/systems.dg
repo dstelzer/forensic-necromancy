@@ -120,10 +120,11 @@
 
 (puzzle *)
 (solved *)
-	(upper rope connected) (or) (#dig is visited)
+	(rope puzzle solved) %% To ensure the points don’t go back down if the player unties the rope before climbing down
 (bypass *)
 	You tie the rope to the datum.
 	(now) (upper rope connected)
+	(now) (rope puzzle solved)
 	(now) ~(lower rope connected)
 	(now) (#rope is nowhere)
 	(update environment around player)
@@ -153,6 +154,7 @@
 	(stopping)
 	(now) (* is nowhere)
 	(now) (upper rope connected)
+	(now) (rope puzzle solved)
 	(update environment around player)
 	(notice #rope-u)
 
@@ -202,14 +204,18 @@
 	(endif)
 
 %% Don’t allow doing normal rope things with it
-(prevent [take (rope door $)])
-	You would need to (link) {untie the rope} before taking it.
-(prevent [tie (rope door $Obj) to $Obj])
-	It currently hangs down in a way that’s easy to climb. Making a loop wouldn’t help there.
+(instead of [take (rope door $Obj)])
+	\( untying the rope from (anchor for $Obj) \) (line)
+	(try [untie $Obj])
 (prevent [tie (rope door $) to (current player $)])
 	The pit isn’t deep enough for that type of climbing to help. Better just to (link) {climb the rope} as it stands now.
-(prevent [tie (rope door $) to $])
-	It currently hangs down in a way that’s easy to climb. Tying it to other things wouldn’t help there.
+(prevent [tie (rope door $Rope) to $Other])
+	It currently hangs down in a way that’s easy to climb.
+	(if) ($Rope = $Other) (then)
+		Making a loop wouldn’t help there.
+	(else)
+		Tying it to other things wouldn’t help there.
+	(endif)
 
 %% Commutativity
 (instead of [tie $Obj to (rope door $Door)])
@@ -222,6 +228,7 @@
 %% Upper rope, tied to the post
 #rope-u
 (rope door *)
+(anchor for *) the datum
 
 (appearance * #in #abovedig) Your ({rope}) is tied to the post, offering an easy climb down to the east.
 (appearance * #in #dig) Your ({rope}) trails down from the origin marker, offering an easy climb up to the west.
@@ -247,6 +254,7 @@
 %% Lower rope, tied to the cart
 #rope-d
 (rope door *)
+(anchor for *) the cart
 
 %% (appearance * #in #deeppit) Your ({rope}) is tied to the cart, offering a route down into the chamber below. %% Moved to cart appearance
 (appearance * #in #tunnel) Your ({rope}) is anchored to the cart up above, giving you a way to climb back out.
@@ -369,10 +377,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #dictionary
-(name *) (emph {Pocket Encyclopedia of the Neo-Assyrian World})
+(name *) (emph {(plain name *)})
+(plain name *) Pocket Encyclopedia of the Neo-Assyrian World %% Z-machine backend crashes on style changes in a (collect words); need to fix that!
+(link name *) the (plain name *)
 (dict *)
-	(just) %% The closure in a (name $) causes problems on Z-machine, so we circumvent it
-	Pocket Encyclopedia of the Neo-Assyrian World
+	(just) %% The closure in a (name $) causes problems on Z, so we circumvent it
+	(plain name *)
 	book dictionary neo assyrian encyclopaedia
 (heads *) encyclopedia
 (consultable *)

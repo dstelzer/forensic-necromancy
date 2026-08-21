@@ -266,7 +266,7 @@
 
 #tools
 (name *) various tools
-(dict *) tool ball compass mirror entheogen entheogens pill pills keychain packet
+(dict *) tool ball compass mirror keychain
 (plural *)
 (your *)
 (item *)
@@ -275,14 +275,34 @@
 	The tools of a forensic necromancer’s trade: a mirror, a packet of entheogens, and a keychain with a little ball compass. Everything you need to divine memories of the past. (par)
 	Well, maybe the compass isn’t strictly necessary. But archaeologists lay everything out by compass directions, so that one helps you find those memories in the first place.
 
-(prevent [drop/put * | $])
+(prevent [drop/put * | $Tail])
 	But without your tools, how would you accomplish anything here?
+	(if) ($Tail = [$ #backpack]) (then) %% Put them in the backpack
+		Better to keep them in your pocket than your backpack, where they might get lost under everything else.
+	(endif)
 
-(prevent [take *]) %% Needs to handle both TAKE COMPASS and TAKE PILLS
-	You’ve got them all close at hand, ready to use when the moment comes.
+#pills
+(name *) packet of entheogen pills
+(dict *) pill entheogens
+(your *)
+(* is #partof #tools)
+(item *)
+(descr *)
+	Your advisor suggested you always call them “entheogens”, not “hallucinogens” or “psychedelics”. These aren’t for recreational use; they’re specially formulated to put you in the necromantic trance that draws fragments of ancient memory into your mind palace.
+
+(prevent [take *]) %% In case of TAKE PILLS
+	You’ve got them close at hand, ready to use when the moment comes.
 	(if) (current room $Room) ($Room is one of [#dig #looseearth #deeppit]) (then)
 		All you have to do now is (link) {divine the bones} .
 	(endif)
+
+#cookies %% One tester tried this!
+(name *) box of cookies
+(dict *) cookie biscuit biscuits
+(add * to scope)
+(supposed to be nowhere *)
+(when * is not here)
+	None left now—it took you less than two minutes to finish the box. \( In fairness, they may be substituting for at least two meals at this point. But being a bit hungry helps with the necromancy. \)
 
 #camp
 (room *)
@@ -420,7 +440,7 @@
 
 #post
 (name *) survey post
-(dict *) metal datum
+(dict *) metal datum pole
 (suggest pushing *)
 (* is #in #abovedig)
 (descr *) This metal post marks the datum: the origin of the archaeologists’ coordinate system. It’s anchored very securely into the ground—if it moved even a few centimeters, after all, every single measurement would need to be redone.
@@ -513,6 +533,14 @@
 (plural *(bones $))
 (clarify location of *(bones $))
 (artifact *(bones $))
+
+%% And since (clarify location of $) doesn’t work for things directly in a room, for some reason...
+(add location information for $Obj)
+	(clarify location of $Obj)
+	~(direction $Obj) ~(relation $Obj) ~(door $Obj)
+	($Obj is $Rel $Room)
+	(room $Room)
+	(name $Rel) (the $Room)
 
 (when (artifact $) is out of reach)
 	Probably best not to touch the artifacts. Even if you’re an official guest of the dig team, you’re not a trained archaeologist, and there’s always the risk of contaminating something in the process.
@@ -955,19 +983,23 @@
 	(endif)
 	(now) (northern connection unlocked)
 (descr *)
-	You walk toward the stout man, but his form doesn’t get any clearer—there’s a ({sticky darkness}) spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But forensic necromancy is a new process, and apparently this oily void is the result.
+	You walk toward the stout man, but his form doesn’t get any clearer—there’s a ({sticky darkness}) spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But forensic necromancy is a new process, and this oily void must be coming from...somewhere. Some mistake or miscalculation.
 
 #exec-darkness
 (name *) sticky darkness
 (dict *) oily oil void thick fluid
 (uncountable *)
 (* is #in #n-execution)
+(clarify location of *)
 (descr *)
 	(sufficient light)
 	It flows away from your lamp, leaving a bright, clear space around you. ({The stout man}) is now easy to see.
 (descr *)
-	You run your finger through it, and it feels like...nothing. Like your finger doesn’t exist. Thankfully the sensation goes away when you pull your hand back.
+	You run your finger through it, and it feels like...nothing. Like your finger doesn’t exist. Thankfully the sensation goes away when you pull your hand back. This isn’t something your subject actually witnessed; it’s some residue from your necromantic process.
 (feel *) (descr *)
+(prevent [burn *])
+	(held #lamp) (fire source #lamp)
+	The darkness pulls away from your lamp, but oozes back in as soon as the flame moves away.
 
 (puzzle *)
 (* requires #lamp)
@@ -1470,8 +1502,12 @@
 (dict *) dark doorway door
 (uncountable *)
 (* is #in #s-palace)
-(descr *) It looks like normal darkness from here.
+(clarify location of *)
+(descr *) It looks like normal darkness from here, not the weird, sticky stuff from the dungeon memory.
 (instead of [enter *]) (try [go #east])
+(prevent [burn *])
+	(held #lamp) (fire source #lamp)
+	The darkness pulls away from your lamp, but oozes back in as soon as the flame moves away.
 
 #lamassu
 (name *) lamassu
@@ -1698,14 +1734,14 @@
 #s-throneroom
 (name *) cramped passage
 (room *)
-(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and thick, sticky ({darkness}) coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
+(look *) While the jumble of room-fragments to the west feels larger than any building could be, this one feels tight and confined, no matter how big the fragments are. Pieces of memory fit together at odd angles and that thick, sticky ({darkness}) coats every surface, flowing back into place as soon as your lamp moves past. Off to the northeast, though, you can make out a flicker of movement.
 
 (from * go #west to #s-palace)
 (from * go #northeast to #s-revelation)
 
 (prevent entering *)
 	~(sufficient light in *)
-	You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further.
+	You take a few steps into the darkness, but suddenly it closes in around you, thick on your skin and suffocating in your mouth! You stumble back toward the light before it can tighten any further—the oily void from the first memory is back, and in much larger quantities than before.
 
 (narrate leaving #s-palace #east) You take a deep breath and step into the darkness. It flows away from your lamp like some kind of viscous fluid, leaving a small patch of visibility around you.
 (narrate leaving * #west) You step back into the light.
@@ -1715,7 +1751,11 @@
 (dict *) thick viscous fluid
 (* is #in #s-throneroom)
 (uncountable *)
-(descr *) It flows away from your lamp like oil on a hot pan.
+(clarify location of *)
+(descr *) That oily void from the dungeon memory is back with a vengeance, filling every nook and cranny. But it flows away from your lamp like oil on a hot pan to leave a two-meter radius around your body.
+(prevent [burn *])
+	(held #lamp) (fire source #lamp)
+	The darkness pulls away from your lamp, but oozes back in as soon as the flame moves away.
 
 %% Vignette 3
 #s-revelation

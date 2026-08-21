@@ -1,2 +1,6 @@
 weird status line breakage on C64: only when (top right) is enabled, only in the real world after visiting a memory??
 	disabled for now
+style span stacking does very bad things on Z-machine
+	no time to fix, work around it (specifically, don't italicize the Pocket Encyclopedia inside a link)
+set explicit status bar colors on Z-machine for style?
+make sure people can find the fire once they have the lamp?

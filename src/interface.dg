@@ -128,6 +128,9 @@
 		(bullet) (link) restore
 		(bullet) (link) about
 		(bullet) (link) nudge
+		(if) (taught hints) (then)
+			(bullet) (link) hints
+		(endif)
 	}
 %% For this game, this will always be exactly 37 characters long
 (meta verbs)
@@ -139,7 +142,7 @@
 (meta verbs) %% Fallback
 	(meta verbs with margin 0)
 
-%% And an experimental progress bar: TODO is it good?
+%% And an experimental progress bar! It seems good so far
 
 (style class @progress)
 	font-size: smaller;
