@@ -4,3 +4,17 @@ style span stacking does very bad things on Z-machine
 	no time to fix, work around it (specifically, don't italicize the Pocket Encyclopedia inside a link)
 set explicit status bar colors on Z-machine for style?
 make sure people can find the fire once they have the lamp?
+NUDGE suggests things in the backpack before opening it
+make lamp more obvious in the room description
+"examine the darkness" should also be satisfied nudge-wise by "examine the stout man"
+bones in looter's tunnel aren't suggested as a puzzle
+"Or did you just want to empty it?" link broken
+pouring a liquid container into itself
+going west by jumping from the cart doesn't print a room description
+don't allow tying the rope to the string grid
+can look under the datum and the machinery
+LOOK UP ASDFG IN ENCYCLOPEDIA gives confusing disambiguation (LOOK UP [ASDFG IN ENC…] vs LOOK UP [ASDFG] IN ENC…)
+"Explore other exits from the above the dig site"
+Interacting with yourself in memories gives "humans are tricky things"
+Pouring liquids on animate things should be refused better
+inventory not suggested when only wearing things (not carrying them)

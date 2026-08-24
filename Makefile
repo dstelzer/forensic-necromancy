@@ -1,7 +1,7 @@
 SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
 OPTIONS = -vv -H 1500
-VERSION = 5
+VERSION = 6
 
 regress:
 	dgt skein run
