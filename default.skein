@@ -22,7 +22,7 @@ command:
             [0m[7m[50m                  [0m[1m[7m[50mFORENSIC NECROMANCY[0m[7m[50m                 [0m[50m
 [0m
 A historical mystery by Daniel M. Stelzer.
-Release 6. Serial number DEBUG.
+Release 7. Serial number DEBUG.
 Dialog Interactive Debugger (dgdebug) version 1c/03-dev. Library version 1.2.2-dev. Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0, Puzzle Prompts 1.0, and Versatile Linking 1.0.
 
 [0m[1mTell Nabi Yunus[0m
@@ -347,7 +347,7 @@ parent-id: 1778630448653
 command: encyclopedia
 --------------------------------------------------------------------------------
 > encyclopedia
-When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up nineveh in the encyclopedia] [0m[1mNineveh[0m> and <[look up the neo-assyrian empire in the encyclopedia] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
+When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up nineveh in the encyclopedia] [0m[1m[0m[1m[4mNineveh[0m> and <[look up the neo-assyrian empire in the encyclopedia] [0m[1m[0m[1m[4mthe Neo-Assyrian Empire[0m>, among others.
 
 [0m[4mTopics will be added to the encyclopedia as you come across them in the game. To look one up, click on the underlined words.
 
@@ -385,7 +385,7 @@ parent-id: 1778630448655
 command: dictionary
 --------------------------------------------------------------------------------
 > dictionary
-When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up babylon in the encyclopedia] [0m[1mBabylon[0m>, <[look up nineveh in the encyclopedia] Nineveh>, and <[look up the neo-assyrian empire in the encyclopedia] [0m[1mthe Neo-Assyrian Empire[0m>, among others.
+When it comes to looking up obscure names and terms, you can’t beat the reliability of a paper book. This one has entries on <[look up babylon in the encyclopedia] [0m[1m[0m[1m[4mBabylon[0m>, <[look up nineveh in the encyclopedia] [0m[4mNineveh[0m>, and <[look up the neo-assyrian empire in the encyclopedia] [0m[1m[0m[1m[4mthe Neo-Assyrian Empire[0m>, among others.
 
 [0m[50m                                        ( ) 
                                        / |  
@@ -4377,28 +4377,28 @@ parent-id: 1778709670938
 command: encyclopedia
 --------------------------------------------------------------------------------
 > encyclopedia
-[0m[1mBabylon:[0m At one time, the capital of the Babylonian Empire; in the time of <[look up nineveh in the encyclopedia] Nineveh>, though, it was a vassal state of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrians>. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
+[0m[1mBabylon:[0m At one time, the capital of the Babylonian Empire; in the time of <[look up nineveh in the encyclopedia] [0m[4mNineveh[0m>, though, it was a vassal state of the <[look up the neo-assyrian empire in the encyclopedia] [0m[4mNeo-Assyrians[0m>. Even so, it remained a famous center of art, culture, and religion, and never fully accepted Assyrian dominance. In the modern day it’s known as Hillah, Iraq.
 
-[0m[1mNineveh:[0m The main capital of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire>. For all its military strength, it never quite managed to supplant <[look up babylon in the encyclopedia] Babylon> as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
+[0m[1mNineveh:[0m The main capital of the <[look up the neo-assyrian empire in the encyclopedia] [0m[4mNeo-Assyrian Empire[0m>. For all its military strength, it never quite managed to supplant <[look up babylon in the encyclopedia] [0m[4mBabylon[0m> as the artistic and cultural heart of Mesopotamia. In the modern day it’s known as Mosul, Iraq.
 
 [0m[1mNeo-Assyrian Empire:[0m An Iron Age state that was briefly the largest and most powerful empire the world had ever seen, before it came to a sudden and violent end around 600 BCE. Many later empires were inspired by the Neo-Assyrians’ brutality and their goal of complete world domination.
 
-[0m[1mSiin-ahhe-eriba:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> from 705 to 681 BCE, best known for renovating the capital at <[look up nineveh in the encyclopedia] Nineveh>, and for destroying the city of <[look up babylon in the encyclopedia] Babylon> after rebels there killed his eldest son. His name means “<[look up the gods and goddesses in the encyclopedia] Siin> has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
+[0m[1mSiin-ahhe-eriba:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] [0m[4mNeo-Assyrian Empire[0m> from 705 to 681 BCE, best known for renovating the capital at <[look up nineveh in the encyclopedia] [0m[4mNineveh[0m>, and for destroying the city of <[look up babylon in the encyclopedia] [0m[4mBabylon[0m> after rebels there killed his eldest son. His name means “<[look up the gods and goddesses in the encyclopedia] [0m[4mSiin[0m> has replaced the brothers”, and is transcribed in Hebrew as “Sennacherib”.
 
-[0m[1mUrad-Mullissi:[0m A son of <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba>. He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared <[look up asshur-ahu-iddina in the encyclopedia] Asshur-ahu-iddina> his heir instead. His name means “servant of <[look up the gods and goddesses in the encyclopedia] Mullissu>”, and is transcribed (somewhat mangled) in Hebrew as “Adrammelech”.
+[0m[1mUrad-Mullissi:[0m A son of <[look up siin-ahhe-eriba in the encyclopedia] [0m[4mSiin-ahhe-eriba[0m>. He was the obvious choice for crown prince, as the eldest surviving son of the king’s primary wife, and he held the title for some time—until the king suddenly changed his mind and declared <[look up asshur-ahu-iddina in the encyclopedia] [0m[4mAsshur-ahu-iddina[0m> his heir instead. His name means “servant of <[look up the gods and goddesses in the encyclopedia] [0m[4mMullissu[0m>”, and is transcribed (somewhat mangled) in Hebrew as “Adrammelech”.
 
-[0m[1mAsshur-ahu-iddina:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba> by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(the god) <[look up the gods and goddesses in the encyclopedia] Asshur> has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
+[0m[1mAsshur-ahu-iddina:[0m King of the <[look up the neo-assyrian empire in the encyclopedia] [0m[4mNeo-Assyrian Empire[0m> from 681 to 669 BCE, best known for conquering Egypt and for the paranoia that drove him to assassinate several of his own governors. He was the youngest son of <[look up siin-ahhe-eriba in the encyclopedia] [0m[4mSiin-ahhe-eriba[0m> by a secondary wife, very far down the line of succession, and it seemed unlikely he would ever inherit the throne—but his mother’s machinations led the king to choose him as heir over his older brothers. His name means “(the god) <[look up the gods and goddesses in the encyclopedia] [0m[4mAsshur[0m> has given a brother”, and is transcribed in Hebrew as “Esarhaddon”.
 
-[0m[1mGods and goddesses:[0m The many gods of the <[look up the neo-assyrian empire in the encyclopedia] Neo-Assyrian Empire> included:
+[0m[1mGods and goddesses:[0m The many gods of the <[look up the neo-assyrian empire in the encyclopedia] [0m[4mNeo-Assyrian Empire[0m> included:
  • Anshar, titan of the horizon and ancestor of the gods
- • Asshur, god of Assyria; <[look up siin-ahhe-eriba in the encyclopedia] Siin-ahhe-eriba> claimed he was the same as Anshar
- • Marduk, god of kingship and <[look up babylon in the encyclopedia] Babylonia>
+ • Asshur, god of Assyria; <[look up siin-ahhe-eriba in the encyclopedia] [0m[4mSiin-ahhe-eriba[0m> claimed he was the same as Anshar
+ • Marduk, god of kingship and <[look up babylon in the encyclopedia] [0m[4mBabylonia[0m>
  • Mullissu, goddess of love and destiny, wife of Asshur
  • Nabuu, god of writing and knowledge, vizier of Marduk
  • Siin, god of the moon, fertility, and dairy products
 Most Assyrian and Babylonian names were full sentences, and including a god in your child’s name was a good way to ensure that god would favor them.
 
-[0m[1mZiggurats:[0m Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki (“Temple of the Foundation of Heaven and Earth”) in <[look up babylon in the encyclopedia] Babylon>, which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
+[0m[1mZiggurats:[0m Ziggurats were pyramid-shaped towers built out of a stack of terraces, each smaller than the one beneath it. The most famous one was the Etemenanki (“Temple of the Foundation of Heaven and Earth”) in <[look up babylon in the encyclopedia] [0m[4mBabylon[0m>, which was probably the inspiration for the Tower of Babel; ancient sources claimed it was almost 100 meters tall, though modern engineers think two-thirds of that is more likely.
 
 [0m[4mWould you like to:
      <UNDO> the last move,

@@ -33,3 +33,6 @@
 
 (interface (resources limited))
 (resources limited) (fail)
+
+(style class @topic)
+	font-style: italic;

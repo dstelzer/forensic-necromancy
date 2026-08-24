@@ -37,3 +37,6 @@
 	}
 
 (pause) %% Do nothing, it’s slow enough already!
+
+(style class @topic)
+	font-style: italic;

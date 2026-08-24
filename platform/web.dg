@@ -72,3 +72,7 @@
 
 (interface (resources limited))
 (resources limited) (fail)
+
+(style class @topic)
+	text-decoration: underline;
+	text-decoration-style: dotted;

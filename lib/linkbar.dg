@@ -129,7 +129,7 @@
 		(exhaust) *(transitive action $Focus) %% Likewise for bullets
 	}
 
-(suggest transitive actions for player) (fail) %% TODO: are there any?
+(suggest transitive actions for player) (fail) %% Are there any in this game? I don’t think so
 
 (held $Obj)
 	(current player $Player)

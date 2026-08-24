@@ -501,9 +501,7 @@
 
 %% Now for the actual contents!
 
-(style class @topic) %% TODO: Z-machine?
-	text-decoration: underline;
-	text-decoration-style: dotted;
+%% Style class @topic moved to platform/* and lib/dialog/debug/flag.dg
 
 (supposed to be nowhere *(topic $))
 
