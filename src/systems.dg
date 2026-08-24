@@ -90,6 +90,7 @@
 (prevent $Action)
 	*(action $Action requires $Obj to be touched)
 	(animate $Obj)
+	~(current player $Obj)
 	(when dreaming)
 
 (when dreaming)
@@ -119,6 +120,7 @@
 (item *)
 
 (puzzle *)
+(* requires #backpack)
 (solved *)
 	(rope puzzle solved) %% To ensure the points don’t go back down if the player unties the rope before climbing down
 (bypass *)
@@ -429,6 +431,7 @@
 	(now) (explained lore)
 
 (puzzle *)
+(* requires #backpack)
 (solved *) (* is examined)
 (bypass *)
 	You flip through the encyclopedia.
@@ -474,6 +477,11 @@
 			Your pocket encyclopedia is back in the real world.
 		(endif)
 	(endif)
+
+%% We run into a bit of a conundrum with disambiguation here: [look up ?] and [consult #dictionary about ?] are both considered (very very unlikely $) because they involve the unrecognized topic word. Therefore, there’s no easy way to prioritize one over the other when the player types LOOK UP ASDFG IN ENCYCLOPEDIA—that could either be LOOK UP <ASDFG IN ENCY…> or LOOK UP <ASDFG> IN ENCY….
+%% The simplest solution is to make one of them *not* be very very unlikely, merely very unlikely, so there’s no awkward disambiguation question.
+~(very very unlikely [consult #dictionary about ?])
+(very unlikely [consult #dictionary about ?])
 
 (style class @dictionary)
 	font-style: italic;

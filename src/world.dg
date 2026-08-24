@@ -2,7 +2,6 @@
 %%%%%%%%%                          Introduction                         %%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% TODO: do I want this?
 (content warnings)
 	(div @meta) {
 		(span @bold) { Content warning: }
@@ -412,6 +411,7 @@
 (name *) above the dig site
 (dict *) origin
 (heads *) above
+(proper *)
 (room *)
 (look *) From this upper rim you can see the whole excavation spread out below you, marked out with ({string}) into a chessboard of squares. A ({metal post}) marks the origin point of the whole thing.
 
@@ -445,6 +445,9 @@
 (* is #in #abovedig)
 (descr *) This metal post marks the datum: the origin of the archaeologists’ coordinate system. It’s anchored very securely into the ground—if it moved even a few centimeters, after all, every single measurement would need to be redone.
 
+(prevent [look #under *])
+	The archaeologists are looking under pretty much every centimeter of ground (emph {except}) this one. Digging around the datum post makes it more likely to move.
+
 #grid
 (name *) grid of string
 (dict *) strings square squares nail nails
@@ -455,6 +458,9 @@
 
 (perform [push/pull #post/#grid])
 	The strings aren’t very strong, but the datum post is solid—you yank on it with all your strength and it doesn’t budge.
+
+(prevent [tie $ to *])
+	The string itself is flimsy and fragile. What it’s anchored to might be a better option.
 
 #realcamp
 (name *) official camp
@@ -519,7 +525,7 @@
 	(current player $Player)
 	($Player is #on #cart)
 	Standing on the cart, you have just enough height to plant your arms firmly on top of the bank. One little \( or maybe moderate \) leap and you’re hauling yourself up.
-	(move player to #in #abovedig)
+	(enter #abovedig)
 
 (prevent [leave * #west])
 	~(upper rope connected)
@@ -780,6 +786,9 @@
 		: the bones of the unfortunate high priest.
 	(endif)
 
+(puzzle *)
+(solved *) (#m-unfinished is visited)
+
 (narrate divining *)
 	(select)
 		There’s no awkward balancing this time. The hardest part is contorting yourself into a more-or-less comfortable sitting position, so you can rest your head against one wall with the bone fragments at eye level on the other. Then the mirror, the tablet, and the meditation, linking one more memory into the palace...
@@ -982,6 +991,7 @@
 		Have the archaeologists found it yet?
 	(endif)
 	(now) (northern connection unlocked)
+	(now) (#exec-darkness is examined) %% So it will stop being nudged
 (descr *)
 	You walk toward the stout man, but his form doesn’t get any clearer—there’s a ({sticky darkness}) spilling in through the edges of the memory, covering the details like a thick fluid. “You”—that is, the person whose memories you’re exploring—must have seen (emph {something}), or else this man wouldn’t be here at all. But forensic necromancy is a new process, and this oily void must be coming from...somewhere. Some mistake or miscalculation.
 
@@ -991,6 +1001,10 @@
 (uncountable *)
 (* is #in #n-execution)
 (clarify location of *)
+(instead of [examine *]) %% Since NUDGE will suggest examining this, make the puzzle a little easier to satisfy
+	(sufficient light)
+	~(northern connection unlocked)
+	(try [examine #exec-tzillaya])
 (descr *)
 	(sufficient light)
 	It flows away from your lamp, leaving a bright, clear space around you. ({The stout man}) is now easy to see.
@@ -1272,11 +1286,17 @@
 (descr *) It’s a focused, directed ray that almost reminds you of a laser, or a sunbeam shining through dust. From the side you can clearly see its path traced out in fiery gold.
 
 (puzzle *)
-(* requires #blindfold)
+%% (* requires #blindfold)
+(* is missing dependencies) (#blindfold is pristine) %% The blindfold isn’t a puzzle (it doesn’t earn any points), but it is a prereq for this
 (solved *) (#n-workshop is visited)
 (bypass *)
 	You go through the blinding light to the workshop.
 	(move player to #in #n-workshop)
+	(if) (#blindfold is pristine) (then)
+		You get the blindfold in the process, too.
+		(now) (#blindfold is handled)
+		(now) (#blindfold is #heldby #p-memory)
+	(endif)
 
 (narrate leaving #n-ziqqurat #west)
 	~(statue is turned)
@@ -1399,6 +1419,11 @@
 	(if) (nonempty $List) (then)
 		(par) (A $List) (is $List) sitting on top .
 	(endif)
+
+(appearance *)
+	(#lamp is $ *)
+	(#lamp is pristine)
+	The burned-out ({lamp}) offers no further clarity.
 
 #lamp
 (name *) lamp
@@ -1609,12 +1634,12 @@
 (descr *) Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover his face.
 (supposed to be nowhere *)
 
-(puzzle *)
-(solved *) (* is handled)
-(bypass *)
-	You take the blindfold.
-	(now) (* is handled)
-	(now) (* is #heldby #p-memory)
+%% (puzzle *)
+%% (solved *) (* is handled)
+%% (bypass *)
+%% 	You take the blindfold.
+%% 	(now) (* is handled)
+%% 	(now) (* is #heldby #p-memory)
 
 (prevent [look])
 	(worn *)

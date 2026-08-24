@@ -252,7 +252,7 @@
 (grammar [pour out [held]] for [pour $ into])
 (grammar [pour [held] on/onto/in/into something] for [pour $ into])
 (perform [pour $Obj into])
-	On what? Or did you just want to ({empty (link name $Obj)} {empty (them $Obj)})?
+	On what? Or did you just want to (vlink {empty (link name $Obj)} {empty (them $Obj)})?
 	(asking for object in [pour $Obj into []])
 
 ~(action [pour $ into $Obj] requires $Obj to be touched) %% It’s okay if it’s hot
@@ -266,6 +266,17 @@
 (prevent [pour $Obj into $])
 	~{ (liquid container $Obj) ($Obj is filled with $) }
 	There is no liquid in (the $Obj) to pour out.
+
+(prevent [pour $Source into $Source])
+	That would be quite a feat!
+
+(prevent [pour $Source into (current player $)])
+	($Source is filled with $Liquid)
+	It might feel good for a moment, but then you would be covered in (name $Liquid) all night.
+
+(prevent [pour $Source into (animate $Target)])
+	($Source is filled with $Liquid)
+	Covering (the $Target) in (name $Liquid) seems unlikely to accomplish much.
 
 (prevent [pour $Source into $Target])
 	(liquid container $Target)

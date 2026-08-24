@@ -96,12 +96,8 @@
 		(exhaust) *(intransitive action) %% Put a bullet before each one
 	}
 
-(something held)
-	*(held $Obj)
-	~($Obj = #tools)
-
 (intransitive action)
-	(something held)
+	(at most once) { *(held $Obj) ~($Obj = #tools) (or) (worn $) }
 	(bullet) ({inventory})
 
 (intransitive action)

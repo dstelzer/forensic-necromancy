@@ -22,7 +22,7 @@ command:
             [0m[7m[50m                  [0m[1m[7m[50mFORENSIC NECROMANCY[0m[7m[50m                 [0m[50m
 [0m
 A historical mystery by Daniel M. Stelzer.
-Release 5. Serial number DEBUG.
+Release 6. Serial number DEBUG.
 Dialog Interactive Debugger (dgdebug) version 1c/03-dev. Library version 1.2.2-dev. Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0, Puzzle Prompts 1.0, and Versatile Linking 1.0.
 
 [0m[1mTell Nabi Yunus[0m
@@ -1417,8 +1417,6 @@ You tug the blindfold off and blink a few times until your eyes adjust.
 [0m[1mDarkness[0m
 Even without the blindfold, there’s nothing to see. All Sharhiya remembers is darkness. You have to guess that you entered from the south, and [<that voice>] came from the north.
 
-[0m[4m(Your [<score>] has gone up by one point.)
-[0m
 [0m[50m                                  [ ]     [@] 
                                      \     |  
                                      -(?)-( )-
@@ -2101,6 +2099,8 @@ You jerk yourself free of the memory, and everything freezes again.
 
 [0m[1mBack room[0m
 This room is suggested more than seen, the moonlight through the [<window>] tracing the outlines in shades of black. Is it a workshop, a kitchen, a storage space? All you can see clearly is [<[my brother] your brother>], eyes fixed intently on the [<table>].
+
+The burned-out [<lamp>] offers no further clarity.
 
 [0m[4m(Your [<score>] has gone up by one point.)
 [0m
@@ -3760,6 +3760,11 @@ command: w
 (jumping from the cart)
 Standing on the cart, you have just enough height to plant your arms firmly on top of the bank. One little (or maybe moderate) leap and you’re hauling yourself up.
 
+[0m[1mAbove the dig site[0m
+From this upper rim you can see the whole excavation spread out below you, marked out with [<string>] into a chessboard of squares. A [<metal post>] marks the origin point of the whole thing.
+
+Your [<rope>] is tied to the post, offering an easy climb down to the east.
+
 [0m[50m                                         |      
                                     ( ) ( )     
                                    / |   | \    
@@ -4059,6 +4064,8 @@ command:
 [0m[1mHalf-finished building[0m
 Or perhaps “construction site”? This area is an odd mixture of old and new: [<surveying lines>] are laid out over crumbling walls, piles of new [<bricks>] carted in to join to the old. Two real passages cut through the maze of chest-high and waist-high walls, one leading north, the other south.
 
+[0m[4m(Your [<score>] has gone up by one point.)
+[0m
 [0m[50m                                     |              
                                 [ ] (@) [ ]     [ ] 
                                    \ |   |     /    
@@ -4409,7 +4416,7 @@ command: score
 --------------------------------------------------------------------------------
 > score
 
-[0m[4mYou’ve solved eighteen puzzles (your backpack, the bone fragments in the excavation, the bone fragments that are part of the latest finds, the opening in the ground, the iron-tipped spear, the cadaver, the sticky darkness in the dungeon, the front door, the oil-filled bucket, the blinding light, the statue of Marduk, the burning lamp, the no-longer-hot coals, the blindfold, the pithos of oil, the nylon rope, the equipment cart, and the Pocket Encyclopedia of the Neo-Assyrian World) and visited seven memories (the dungeon, the marketplace, the back room, the darkness, the moonlit courtyard, the audience chamber, and the hidden chamber), giving you 25 points out of 25.
+[0m[4mYou’ve solved eighteen puzzles (your backpack, the bone fragments in the excavation, the bone fragments that are part of the latest finds, the opening in the ground, the bone fragments in this location, the iron-tipped spear, the cadaver, the sticky darkness in the dungeon, the front door, the oil-filled bucket, the blinding light, the statue of Marduk, the burning lamp, the no-longer-hot coals, the pithos of oil, the nylon rope, the equipment cart, and the Pocket Encyclopedia of the Neo-Assyrian World) and visited seven memories (the dungeon, the marketplace, the back room, the darkness, the moonlit courtyard, the audience chamber, and the hidden chamber), giving you 25 points out of 25.
 [0m
 [0m[4mWould you like to:
      <UNDO> the last move,
