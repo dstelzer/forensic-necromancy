@@ -84,14 +84,17 @@
 	(stopping)
 
 %% We also cut off all NPC interaction in the dream world
-(prevent [talk to (animate $)]) (when dreaming)
-(prevent [tell (animate $) to | $]) (when dreaming)
-(prevent [give/show $ to (animate $)]) (when dreaming)
+(prevent [talk to (npc $)]) (when dreaming)
+(prevent [tell (npc $) to | $]) (when dreaming)
+(prevent [give/show $ to (npc $)]) (when dreaming)
 (prevent $Action)
 	*(action $Action requires $Obj to be touched)
-	(animate $Obj)
-	~(current player $Obj)
+	(npc $Obj)
 	(when dreaming)
+
+(npc $Obj)
+	*(animate $Obj)
+	~(current player $Obj)
 
 (when dreaming)
 	(dreaming)
@@ -487,6 +490,13 @@
 	font-style: italic;
 	margin-top: 1em;
 	margin-bottom: 1em;
+
+%% One special case has to come first: this one uses a dict word, not an object, so it can’t have flags set on it
+(topic keyword @namzaqu)
+(describe topic @namzaqu) the word (span @italic) namzaqu
+(perform [consult #dictionary about @namzaqu])
+	You would need a dictionary for that, not an encyclopedia—it’s the Akkadian word for “key”, the kind that opens a lock.
+	%% Ignore the fact that the object is called #dictionary here...
 
 (perform [consult #dictionary about $Topic])
 	(topic $Topic)

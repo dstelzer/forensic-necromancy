@@ -312,14 +312,11 @@
 
 (perform [pour $Obj into $Target])
 	($Obj is filled with $Liquid)
-	That would just make a mess of (the $Target). (It $Target isn’t) designed to hold (name $Liquid)
+	That would just make a mess of (the $Target). (It $Target) (is $Target) (no space)n’t designed to hold (name $Liquid)
 	(if) ~(container $Target) (then)
 		...or much of anything, really
 	(endif)
 	.
-
-(It $Obj isn’t) %% Quick little addition
-	(uppercase) (it $Obj is) (no space) n’t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                          Fire Sources                         %%%%%%%%%
@@ -368,6 +365,9 @@
 	($Obj is filled with #oil)
 	~($Obj = #lamp)
 	That would probably produce more fire than you’re really prepared to handle.
+
+(prevent [burn (current player $)])
+	If the goal is to shock yourself awake, there are less painful options. (emph {Much}) less painful.
 
 (prevent [burn ~(item $Obj)])
 	If (the $Obj) did ignite, it might end very badly for you!

@@ -289,10 +289,12 @@
 (descr *)
 	Your advisor suggested you always call them “entheogens”, not “hallucinogens” or “psychedelics”. These aren’t for recreational use; they’re specially formulated to put you in the necromantic trance that draws fragments of ancient memory into your mind palace.
 
-(prevent [take *]) %% In case of TAKE PILLS
+(prevent [take/eat/drink/open *]) %% In case of TAKE PILLS
 	You’ve got them close at hand, ready to use when the moment comes.
 	(if) (current room $Room) ($Room is one of [#dig #looseearth #deeppit]) (then)
 		All you have to do now is (link) {divine the bones} .
+	(else)
+		You just need to find some human remains in situ—that is, relatively close to the place where they died.
 	(endif)
 
 #cookies %% One tester tried this!
@@ -1089,18 +1091,22 @@
 	(endif)
 
 %% TERRIBLE PRACTICE - DO NOT REPLICATE
+%% Because Dialog doesn’t like putting objects #in a ($ is closed) thing
 (try [put $Obj $Rel *])
 	(#crack is #partof *)
 	\( in the crack \) (line)
-	(reveal #crack)
 	(try [put $Obj $Rel #crack])
 
-(instead of [unlock * with #spear])
+(before [put $ $ #crack]) %% And make sure it turns into a container before anything happens
+	(reveal #crack)
+
+(grammar [open/pry [single] with [held]] for [unlock $ with $]) %% Special syntax players suggested
+(instead of [unlock */#crack with #spear])
 	(#crack is #partof *)
 	\( putting the spear in the crack \) (line)
 	(try [put #spear #in #crack])
 	(tick)
-	\( pushing the spear \) (line)
+	\( then pushing the spear \) (line)
 	(try [push #spear])
 
 #crack
@@ -1108,7 +1114,7 @@
 (dict *) heavy bar of wood
 (* is #partof #door)
 (* is hidden)
-(container *) ~(* is hidden) %% Don’t suggest putting things in it until revealed
+(container *) ~(* is hidden) %% Don’t suggest PUT SPEAR IN X until it’s revealed (that option appears if any container is in the room)
 (descr *)
 	The crack is about three centimeters wide. Through it you can see a heavy bar of wood on the other side, holding the door closed.
 	(if) (#spear is #partof *) (then)
@@ -1133,6 +1139,10 @@
 (perform [put #spear #in *])
 	You push the spear through the crack, wedging it under the bar.
 	(now) (#spear is #partof *)
+
+(prevent [take #spear]) %% Default error message is inappropriate here
+	(#spear is #partof *)
+	You give the spear a little tug, but it doesn’t move. It’s quite thoroughly wedged under the bar.
 
 (perform [push/pull/turn #spear])
 	(#spear is #partof *)
@@ -1633,6 +1643,10 @@
 (wearable *)
 (descr *) Sharhiya’s cloak has been folded into a thick band of cloth to thoroughly cover his face.
 (supposed to be nowhere *)
+(instead of [take *])
+	(worn *)
+	\( taking it off \) (line)
+	(try [remove *])
 
 %% (puzzle *)
 %% (solved *) (* is handled)
