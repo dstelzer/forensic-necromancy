@@ -11,7 +11,7 @@
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) %% No styling on Apple II currently
 
-(style class @meta)
+(style class @meta) %% No styling available :(
 	margin-top: 1em;
 	margin-bottom: 1em;
 
@@ -34,7 +34,7 @@
 		\( Warning: the automap is rather slow on an Apple II, and not recommended unless you have an emulator with warp speed. \)
 	}
 
-%% Use the normal pause, because the Apple II terp has no [more] prompt
+(pause) %% The game is slow enough already without additional pauses; the [more] prompt works well enough
 
 (style class @topic) %% Without styling, there’s not much we can do
 

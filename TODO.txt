@@ -5,3 +5,4 @@ style span stacking does very bad things on Z-machine
 set explicit status bar colors on Z-machine for style?
 	but how to make sure it fits people's general palette?
 make sure people can find the fire once they have the lamp?
+rebuild with new aambundle

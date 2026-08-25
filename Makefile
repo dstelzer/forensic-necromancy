@@ -1,6 +1,6 @@
 SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
-OPTIONS = -vv -H 1500
+OPTIONS = -vv -H 1500 --resources resources
 VERSION = 8
 
 regress:
@@ -82,11 +82,12 @@ z5.zip: forensic.z5 hints.html history.html
 	rm -f z5.zip
 	( cd z5 && zip -r ../z5.zip . )
 
-ifcomp.zip: web forensic.z5 forensic.c64.aastory hints.html cover.jpg
+ifcomp.zip: web forensic.z5 forensic.c64.aastory forensic.apple2.aastory hints.html cover.jpg
 	rm -f ifcomp.zip
 	rm -rf ifcomp
 	mkdir ifcomp
 	aambundle -t c64 -o ifcomp/commodore64 forensic.c64.aastory
+	~/Projects/aamachine-apple2/src/aambundle -t apple2 -o ifcomp/apple2 forensic.apple2.aastory
 	cp -r web ifcomp/
 	cp forensic.z5 ifcomp/zmachine.z5
 	cp README.ifcomp ifcomp/

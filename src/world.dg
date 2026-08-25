@@ -58,15 +58,6 @@
 	(now) (taught blocked exits)
 
 (give the tutorial)
-	~(taught suggestions)
-	(suggestions enabled)
-	(current focus $)
-	(div @tutorial) {
-		After you examine something, the bar at the bottom of the screen will suggest some actions you might do with it.
-	}
-	(now) (taught suggestions)
-
-(give the tutorial)
 	~(taught secondary objects)
 	(current focus $Focus)
 	($Focus has secondary objects) %% Things that mention nouns in their description
@@ -85,7 +76,7 @@
 	~(taught rope)
 	(current focus #rope)
 	(div @tutorial) {
-		Examining things will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
+		When you examine things, the description will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
 	}
 	(now) (taught rope)
 
@@ -148,7 +139,7 @@
 	(current focus #backpack)
 	(suggestions enabled)
 	(div @tutorial) {
-		After you examine something, the bar above the command prompt suggests some possible commands you could try.
+		After you examine something, the bar above the command prompt suggests the most obvious things you could do with it.
 		(if) (#backpack is open) (then)
 			If something is open, for example, you might close it;
 		(else)
@@ -159,7 +150,7 @@
 		(else)
 			if something is wearable, you might put it on.
 		(endif)
-		But you can always ignore it and type your own commands instead.
+		But you can always ignore it and type your own commands instead, or turn it off entirely in the ({OPTIONS}).
 	}
 	(now) (taught interaction)
 
@@ -214,7 +205,7 @@
 		If you’re ever not sure where to go, (command link {NUDGE}) will tell you what obstacles you can currently make progress on.
 		(if) (pointers enabled) (then)
 			You’ll also see them as (space) (span @command) ? signs on the map.
-		(elseif) (map enabled) (then)
+		(else)
 			You can also use (command link {POINTERS ON}) to see them marked on your map.
 		(endif)
 	}

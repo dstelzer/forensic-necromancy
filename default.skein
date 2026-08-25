@@ -80,7 +80,7 @@ command: string
 > string
 Nails are set into the ground every ten meters, north and south and east and west (and in some cases up and down). A grid of strings between them divides the whole site into squares.
 
-[0m[4mAfter you examine something, the bar at the bottom of the screen will suggest some actions you might do with it.
+[0m[4mIf this interface isn’t working for you, you can adjust it in the [0m[4m[50m[<OPTIONS>][0m[4m.
 [0m
 [0m[50m                                      ( ) 
                                      / |  
@@ -97,8 +97,6 @@ command: metal post
 > metal post
 This metal post marks the datum: the origin of the archaeologists’ coordinate system. It’s anchored very securely into the ground—if it moved even a few centimeters, after all, every single measurement would need to be redone.
 
-[0m[4mIf this interface isn’t working for you, you can adjust it in the [0m[4m[50m[<OPTIONS>][0m[4m.
-[0m
 [0m[50m                                      ( ) 
                                      / |  
                                      -(@)-
@@ -247,7 +245,7 @@ command: take it
 > take it
 You take your backpack off your bicycle.
 
-[0m[4mAfter you examine something, the bar above the command prompt suggests some possible commands you could try. If something is closed, for example, you might open it; if something is wearable, you might put it on. But you can always ignore it and type your own commands instead.
+[0m[4mAfter you examine something, the bar above the command prompt suggests the most obvious things you could do with it. If something is closed, for example, you might open it; if something is wearable, you might put it on. But you can always ignore it and type your own commands instead, or turn it off entirely in the [<OPTIONS>].
 [0m
 [0m[50m                                        ( ) 
                                        / |  
@@ -332,7 +330,7 @@ command: rope
 > rope
 Light enough to carry around; strong enough to hold your weight.
 
-[0m[4mExamining things will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
+[0m[4mWhen you examine things, the description will often suggest what you might do with them. The rope, for example, is meant to be climbed. But where would that be useful?
 [0m
 [0m[50m                                        ( ) 
                                        / |  
