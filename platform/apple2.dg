@@ -1,0 +1,41 @@
+%% Change this if Apple II ever supports (status bar $ with height $)
+(style class @fullstatus) %% Enough for a very basic automap
+	height: 8em;
+(style class @fulldream)
+	height: 8em;
+(style class @ministatus)
+	height: 2em;
+(style class @minidream)
+	height: 2em;
+
+(interface (italic correction)) %% Used between (emph $) and a closing quotation mark
+(italic correction) %% No styling on Apple II currently
+
+(style class @meta)
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @tutorial)
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @title)
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+(style class @roomheader)
+	margin-top: 1em;
+
+(interface (resources limited))
+(resources limited) %% Resources are very limited!
+
+(after [options])
+	(div @meta) {
+		\( Warning: the automap is rather slow on an Apple II, and not recommended unless you have an emulator with warp speed. \)
+	}
+
+%% Use the normal pause, because the Apple II terp has no [more] prompt
+
+(style class @topic) %% Without styling, there’s not much we can do
+
+(bullet) (space) - (space) %% The Apple II does not support non-ASCII characters, and the terp does not currently handle • properly

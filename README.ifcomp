@@ -1,12 +1,14 @@
 FORENSIC NECROMANCY: IFCOMP EDITION
 
-There are three builds of the game included in this zip file.
+There are four builds of the game included in this zip file.
 
-web/ has the most user-friendly version, which can be played in a web browser; double-click index.html to start.
+web/ has the most user-friendly version, which can be played in a web browser; double-click index.html to start. Unless you have a strong reason to use one of the other versions, this is the one you should play. It looks the best and is the easiest to interact with.
 
-zmachine.z5 has a Z-machine version, for people who prefer to use a dedicated interpreter. This version doesn’t have hyperlinks or a custom color scheme, but can be played on all sorts of platforms.
+zmachine.z5 is a Z-machine version, for people who prefer to use a dedicated interpreter. This version doesn’t have hyperlinks, special fonts, or a custom color scheme, but can be played on all sorts of platforms. And it does have better styling than the retro versions: colors for highlighting, italics for emphasis, and so on.
 
-commodore64/ has a Commodore 64 disk image, for retro enthusiasts. Don’t use this one if you’re at all in a hurry—every turn takes several seconds to complete, for the true 1980s experience!
+commodore64/ has a Commodore 64 disk image, for retro enthusiasts. Don’t use this one if you’re at all in a hurry—every turn takes several seconds to complete, for the true 1980s experience! This version does not automatically show the map every turn, since it is so slow to draw; type MAP whenever you want to see it.
+
+apple2/ has an experimental Apple II disk image, for a different subset of retro enthusiasts. I don’t recommend this one: unlike the Commodore 64 version, it has no text styling at all, and long descriptions can sometimes get lost off the top of the screen. But for any players whose only device is an Apple II, this should make it playable.
 
 If you run into any problems, ping @Draconis on the forums, or send an email to <dsdraco7@gmail.com>.
 

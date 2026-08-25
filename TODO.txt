@@ -5,3 +5,13 @@ style span stacking does very bad things on Z-machine
 set explicit status bar colors on Z-machine for style?
 	but how to make sure it fits people's general palette?
 make sure people can find the fire once they have the lamp?
+turn the crack into a container before PUT X IN IT
+explain why you can't take the spear back out of the crack
+"if yourself did ignite..."
+talking to yourself gives "humans in memories..."
+cart is nudged before you have any use for it
+TAKE BLINDFOLD "you're already wearing it"
+update blurb: most -> more
+EAT PILLS, OPEN PILLS doesn't work
+They’ren’t designed to hold water
+add namzaqu to dictionary?
