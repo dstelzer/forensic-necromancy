@@ -1,7 +1,7 @@
 SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
 OPTIONS = -vv -H 1500 --resources resources
-VERSION = 8
+VERSION = 10
 
 regress:
 	dgt skein run
@@ -57,12 +57,11 @@ forensic.apple2.aastory: $(SOURCES) platform/apple2.dg
 apple2.zip: forensic.apple2.aastory
 	rm -f apple2.zip
 	rm -rf apple2
-	## Change this if the Apple 2 support is merged into the main repo
-	~/Projects/aamachine-apple2/src/aambundle -t apple2 -o apple2 forensic.apple2.aastory
+	aambundle -t apple2 -o apple2 forensic.apple2.aastory
 	cp hints.html apple2/
 	cp history.html apple2/
 	cp cover.jpg apple2/
-	## Has its own readme included
+	## Has its own readme included, we don't need an extra one
 	( cd apple2 && zip -r ../apple2.zip . )
 
 forensic.z5: $(SOURCES) platform/z5.dg
@@ -87,7 +86,7 @@ ifcomp.zip: web forensic.z5 forensic.c64.aastory forensic.apple2.aastory hints.h
 	rm -rf ifcomp
 	mkdir ifcomp
 	aambundle -t c64 -o ifcomp/commodore64 forensic.c64.aastory
-	~/Projects/aamachine-apple2/src/aambundle -t apple2 -o ifcomp/apple2 forensic.apple2.aastory
+	aambundle -t apple2 -o ifcomp/apple2 forensic.apple2.aastory
 	cp -r web ifcomp/
 	cp forensic.z5 ifcomp/zmachine.z5
 	cp README.ifcomp ifcomp/

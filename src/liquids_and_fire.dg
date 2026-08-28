@@ -255,7 +255,9 @@
 	On what? Or did you just want to (vlink {empty (link name $Obj)} {empty (them $Obj)})?
 	(asking for object in [pour $Obj into []])
 
-~(action [pour $ into $Obj] requires $Obj to be touched) %% It’s okay if it’s hot
+~(action [pour $ into $Obj] requires $Obj to be touched) %% It’s okay if it’s hot; intangible things like the afterimage have their own code to handle this
+
+(unlikely [pour $Obj | $]) ~(liquid container $Obj)
 
 (instead of [pour $Obj into (room $)]) %% POUR X ON THE GROUND
 	(try [empty $Obj])
@@ -284,6 +286,13 @@
 	($Target is filled with $Second)
 	~($First = $Second)
 	(The $First) from the (name $Source) would mix with (the $Second) from the (name $Target), and that would just be a mess!
+
+(prevent [pour $Source into $Target])
+	(liquid source $Target)
+	($Source is filled with $First)
+	($Target is filled with $Second)
+	~($First = $Second)
+	Adding a bit of (name $First) into a lot of (the $Second) is unlikely to accomplish much. Better to keep them separate for now.
 
 (perform [pour $Obj into $Target])
 	(liquid source $Target)
@@ -386,10 +395,12 @@
 %% Redirect other common actions to burning
 
 (instead of [put $Obj $ (fire source $)])
+	~{ (liquid container $Obj) ($Obj is filled with #water) } %% This redirects to a different action entirely!
 	\( igniting (the $Obj) \) (line)
 	(try [burn $Obj])
 
 (instead of [put (fire source $) $ $Obj])
+	~{ (liquid container $Obj) ($Obj is filled with #water) }
 	\( igniting (the $Obj) \) (line)
 	(try [burn $Obj])
 

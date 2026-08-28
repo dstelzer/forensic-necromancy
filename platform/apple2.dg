@@ -38,4 +38,4 @@
 
 (style class @topic) %% Without styling, there’s not much we can do
 
-(bullet) (space) - (space) %% The Apple II does not support non-ASCII characters, and the terp does not currently handle • properly
+(bullet) (space) - (space) %% The Apple II does not support non-ASCII characters, and the substitute for • is *; I think a dash works better here

@@ -908,6 +908,7 @@
 (#n-execution attracts *) ~(#spear is #in #n-execution)
 (unlikely $Action) (* is one of $Action) %% Don’t disambiguate on X SPEAR
 (descr *) There’s an outline on the ground where the spear started out, but your mind understands that a spear is able to be moved, so it lets you pick it up and roam around the memories with it. It’s like a very limited sort of lucid dream.
+(instead of [pour $Obj into *]) (try [empty $Obj])
 
 #spear
 (name *) iron-tipped spear
@@ -1097,7 +1098,7 @@
 	\( putting the spear in the crack \) (line)
 	(try [put #spear #in #crack])
 	(tick)
-	\( then pushing the spear \) (line)
+	(par) \( then pushing the spear \) (line)
 	(try [push #spear])
 
 #crack
@@ -1350,7 +1351,12 @@
 	(try [push *])
 (perform [push/pull/turn * | $])
 	(if) ~(statue is turned) (then)
-		Squinting against the glare, you take hold of the platform—(no space) (emph {not}) touching the statue itself—and give it a mighty heave. It shakes and rocks, tilting dangerously to one side for a moment...but then it starts to turn. Marduk’s gaze burns a fiery trail across the wall until it’s aimed safely away from the doors.
+		(if) (worn #blindfold) (then)
+			With your eyes suitably protected,
+		(else)
+			Squinting against the glare,
+		(endif)
+		you take hold of the platform—(no space) (emph {not}) touching the statue itself—and give it a mighty heave. It shakes and rocks, tilting dangerously to one side for a moment...but then it starts to turn. Marduk’s gaze burns a fiery trail across the wall until it’s aimed safely away from the doors.
 		(now) (statue is turned)
 	(else)
 		You adjust the position of the statue a bit, making sure the gaze doesn’t linger too long on any one spot.
@@ -1797,7 +1803,7 @@
 	As your eyes come into focus, you can see him directly now: tall and broad, built like a wrestler, with fierce eyes and a thick beard. He waits patiently for you to fumble your cloak back on. (par)
 	“Now, Sharhiya of Babylon, this is very important. I need you to tell me exactly what you heard, and who you heard it from. Tzillaya, please get this verbatim.” The stout man nods and pulls out a new stylus. Then all three of them look at you expectantly while you stammer and grasp for the words. (par)
 	Eventually, Urad-Mullissi sighs and stands up from the throne. “I swear to Asshur that you will not be punished for anything you speak of today. Nabiya, Tzillaya, make sure he’s properly compensated, with a little extra for lodgings until he returns to Babylon. But I need to know every detail, exactly as you remember it. (par)
-	“You see,” he steps toward you, and you have to fight the urge to back away, “my brother has been planning something, he and his mother. He doesn’t know how to quit while he’s ahead. Father’s gotten suspicious. And now he’s overplayed his hand—now, I have proof that he’s trying to frame me for treason. If I can find his collaborators, that should be enough to have him exiled, or worse.” (par)
+	“You see,” he steps toward you, and you have to fight the urge to back away, “my brother has been planning something, he and his mother. He doesn’t know how to quit while he’s ahead. Father’s gotten suspicious. And now he’s overplayed his hand—now, I have proof that he’s trying to frame me for treason. If I can find his collaborators, that should be enough to have him exiled, at the very least.” (par)
 	The prince sees your flinch, and stops moving closer. “So I would consider it a great favor, to me, and to my father, if you’d testify under oath. I know the royal family is...not popular in Babylon, for very good reason. But avoiding a civil war would be better for us all. And...perhaps when I take the throne, I can try to mend some of those rifts.” (par)
 	So you think back, and start to recount your story...
 

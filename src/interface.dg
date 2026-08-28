@@ -104,10 +104,33 @@
 (show exits if applicable)
 	(current room $Room)
 	(collect $Dir)
-		(from $Room go $Dir to $Next)
+		*(from $Room go $Dir to $Next)
 		{ (room $Next) (or) (door $Next) }
 	(into $ExitList)
-	(span @bold) { Exits: } (link list $ExitList)
+	(span @bold) { Exits: } (direction list $ExitList) (no space)
+
+(direction list $List)
+	(resources limited) %% On small screens, we have to be concise
+	(exhaust) {
+		*($Dir is one of $List)
+		(abbreviate $Dir)
+	}
+(direction list $List)
+	(link list $List)
+
+(abbreviate #north) N
+(abbreviate #northeast) NE
+(abbreviate #east) E
+(abbreviate #southeast) SE
+(abbreviate #south) S
+(abbreviate #southwest) SW
+(abbreviate #west) W
+(abbreviate #northwest) NW
+(abbreviate #up) U
+(abbreviate #down) D
+(abbreviate #in) IN
+(abbreviate #out) OUT
+(abbreviate $Dir) (name $Dir)
 
 %% Now, what are those “meta verbs”?
 
