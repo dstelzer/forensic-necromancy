@@ -1,7 +1,7 @@
 SOURCES = $(shell dgt -N sources)
 COVER = --cover cover.jpg --cover-alt "A woodcut of an ancient Assyrian man fleeing a palace, with the game title overlaid onto it."
 OPTIONS = -vv -H 1500 --resources resources
-VERSION = 10
+VERSION = 11
 
 regress:
 	dgt skein run
@@ -9,7 +9,9 @@ regress:
 build: web itch.zip forensic.z5 c64.zip
 
 cover.jpg: cover_large.jpg
-	convert cover_large.jpg -resize 1000x1000 cover.jpg
+	##convert cover_large.jpg -resize 1000x1000 cover.jpg
+	cp cover_large.jpg cover.jpg
+	## Experiment: include the large cover
 
 cover_small.jpg: cover_large.jpg
 	convert cover_large.jpg -resize 500x500 cover_small.jpg

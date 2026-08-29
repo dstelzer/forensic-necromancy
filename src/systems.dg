@@ -652,6 +652,7 @@
 			Now you have the freedom to look around the tableau; you can’t change the past, but you can search and poke and prod to your heart’s content. A gap to the southeast leads back to the memory palace.
 		(or)
 		(stopping)
+		(now) ($Room is examined)
 	(else)
 		You (select) jerk (or) pull (or) snap (at random) back out of the memory.
 	(endif)

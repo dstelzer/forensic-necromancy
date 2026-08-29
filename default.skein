@@ -22,7 +22,7 @@ command:
             [0m[7m[50m                  [0m[1m[7m[50mFORENSIC NECROMANCY[0m[7m[50m                 [0m[50m
 [0m
 A historical mystery by Daniel M. Stelzer.
-Release 10. Serial number DEBUG.
+Release 11. Serial number DEBUG.
 Dialog Interactive Debugger (dgdebug) version 1c/03-dev. Library version 1.2.2-dev. Debugging extension 1.1. Draconis extensions: Automap 1.2, Suggestion Bars 1.0, Puzzle Prompts 1.0, and Versatile Linking 1.0.
 
 [0m[1mTell Nabi Yunus[0m
@@ -2912,19 +2912,28 @@ The high priest nods. “It is the only way he could take the throne. But every 
 
 The two figures turn and start to move away, and you can’t make out what they say next. But the high priest’s last words come in a sharp whisper: “No. Tell no one, on pain of death.”
 [0m
-<[] [[Continue]]>
+You snap back out of the memory.
 
+[0m[1mMoonlit courtyard[0m
+The edges of the memory are blurry, but this must be somewhere in the Temple of Marduk: the floor is an intricate mosaic, hundreds of twisting paths all leading to the [<pool>] in the center. [<Your brother>] is crouched behind a large [<pithos>], watching the [<shadowy figures>] on the opposite side.
+
+[0m[50m                                [ ]     [ ]         
+                                   \     |          
+                                ( )-( )-( )-        
+                               /     |     \        
+                            [ ] [ ]-( )     ( )-[@] 
+[0m
+[0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
+[0m[1m[<[look] Moonlit courtyard>][0m • [<west>]
 --------------------------------------------------------------------------------
 id: 1778703286166
 parent-id: 1778703286165
 command:  
 --------------------------------------------------------------------------------
 >  
-You pull yourself out of the memory with a [0m[4msnap[0m, and everything goes still.
 
-[0m[1mMoonlit courtyard[0m
-The edges of the memory are blurry, but this must be somewhere in the Temple of Marduk: the floor is an intricate mosaic, hundreds of twisting paths all leading to the [<pool>] in the center. [<Your brother>] is crouched behind a large [<pithos>], watching the [<shadowy figures>] on the opposite side.
-
+[0m[4mCome again?
+[0m
 [0m[50m                                [ ]     [ ]         
                                    \     |          
                                 ( )-( )-( )-        
@@ -3462,15 +3471,7 @@ The wiry man spits and tosses his spear down in disgust. “Sharhiya? Oh, he’s
 
 The stout man looks back at his tablet. “There will be no trial. The sentence is final.” He turns and strides off into the darkness, while the wiry one looks down at you with a sneer. “Any final words?” But all you can think is: this must be the work of Urad-Mullissi. If only your brother had listened to you...
 [0m
-<[] [[Continue]]>
-
---------------------------------------------------------------------------------
-id: 1778703929062
-parent-id: 1778703929061
-command:  
---------------------------------------------------------------------------------
->  
-You snap yourself out of the memory and take a look around.
+You pull back out of the memory.
 
 [0m[1mDungeon[0m
 You’re kneeling (suddenly back to kneeling again?) on hard-packed dirt under a low dirt ceiling. Everything else is darkness outside the little circle of light.
@@ -3479,6 +3480,23 @@ The [<wiry man>] is pointing the torch eastward with an awful smirk, letting you
 
 The memory of the dropped spear is just [<a faint afterimage>], now that you’ve moved it.
 
+[0m[50m                                [@]     [ ]     [ ] 
+                                   \     |     /    
+                                ( )-( )-( )-( )     
+                               /     |     \        
+                            [ ] [ ]-( )     ( )-[ ] 
+[0m
+[0m[1m[<[me] You>][0m • [<inventory>] • [<wait>] • [<wake up>]
+[0m[1m[<[look] Dungeon>][0m • [<southeast>]
+--------------------------------------------------------------------------------
+id: 1778703929062
+parent-id: 1778703929061
+command:  
+--------------------------------------------------------------------------------
+>  
+
+[0m[4mCome again?
+[0m
 [0m[50m                                [@]     [ ]     [ ] 
                                    \     |     /    
                                 ( )-( )-( )-( )     
@@ -4183,7 +4201,7 @@ parent-id: 1778709670931
 command:  
 --------------------------------------------------------------------------------
 >  
-You pull yourself out of the memory with a [0m[4msnap[0m, and everything goes still.
+You snap yourself out of the memory and take a look around.
 
 [0m[1mHidden chamber[0m
 (You extricate yourself from the king’s grip and stand up, brushing yourself off. That was unpleasant.)
