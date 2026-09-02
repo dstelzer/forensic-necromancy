@@ -39,4 +39,22 @@
 (pause) %% Do nothing, it’s slow enough already!
 
 (style class @topic)
-	font-style: italic;
+	font-style: italic; %% Color change
+
+%% We can do colored links on the C64, but not directly
+(style class @c64link)
+	-iftf-reverse-video: reverse; %% Warm color palette
+	font-style: italic; %% Saturated
+	%% In other words, red
+
+(color link $Text)
+	~(brackets enabled)
+	(span @c64link) (query $Text)
+(color link $ $Text)
+	~(brackets enabled)
+	(span @c64link) (query $Text)
+
+%% Hack to make this happen after (startup)
+(intro)
+	(now) ~(brackets enabled)
+	(fail)

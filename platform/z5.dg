@@ -6,9 +6,11 @@
 (style class @fulldream)
 	height: 2em;
 	text-decoration: none; %% Not reversed
+	-iftf-reverse-video: none;
 (style class @minidream)
 	height: 2em;
 	text-decoration: none;
+	-iftf-reverse-video: none;
 
 (interface (italic correction)) %% Used between (emph $) and a closing quotation mark
 (italic correction) (space 1)
